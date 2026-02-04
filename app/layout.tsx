@@ -83,12 +83,16 @@ export default function RootLayout({
         <nav className="sticky top-0 z-50 backdrop-blur-xl bg-stone-950/80 border-b border-white/10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <div className="flex items-center justify-between h-16">
-              <Link href="/" className="flex items-center gap-2">
-                <div className="w-8 h-8 bg-gradient-to-br from-red-500 to-amber-500 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">KE</span>
-                </div>
-                <span className="font-bold text-lg hidden sm:inline">PAYE Calculator</span>
-              </Link>
+            <Link href="/" className="flex items-center gap-2">
+  <Image
+    src="/logo-256.png"
+    alt="PAYE Calculator"
+    width={32}
+    height={32}
+    priority
+  />
+  <span className="font-bold text-lg hidden sm:inline">PAYE Calculator</span>
+</Link>
               <div className="flex items-center gap-6">
                 <Link href="/" className="text-stone-300 hover:text-white transition-colors text-sm font-medium">
                   Calculator
