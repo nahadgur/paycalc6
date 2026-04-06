@@ -31,7 +31,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.85,
   }))
 
-  const blogPages: MetadataRoute.Sitemap = articles.map((a: any) => ({
+  const blogPages: MetadataRoute.Sitemap = articles.map((a) => ({
     url: `${baseUrl}/blog/${a.slug}`,
     lastModified: now,
     changeFrequency: 'monthly' as const,

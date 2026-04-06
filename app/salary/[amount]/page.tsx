@@ -68,8 +68,8 @@ const fmtCompact = (n: number) => {
 }
 
 // ── Metadata ───────────────────────────────────────────────────────────────
-export async function generateMetadata({ params }: { params: Promise<{ amount: string }> }): Promise<Metadata> {
-  const { amount } = await params
+export async function generateMetadata({ params }: { params: { amount: string } }): Promise<Metadata> {
+  const { amount } = params
   const gross = parseInt(amount, 10)
   if (!SALARY_AMOUNTS.includes(gross)) return { title: 'Salary Not Found' }
   const c = calcAll(gross)
@@ -104,8 +104,8 @@ function budgetSplit(net: number) {
 }
 
 // ── Page ───────────────────────────────────────────────────────────────────
-export default async function SalaryPage({ params }: { params: Promise<{ amount: string }> }) {
-  const { amount } = await params
+export default async function SalaryPage({ params }: { params: { amount: string } }) {
+  const { amount } = params
   const gross = parseInt(amount, 10)
   if (!SALARY_AMOUNTS.includes(gross)) notFound()
 

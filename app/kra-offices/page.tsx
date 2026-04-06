@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { MapPin, Phone, Clock, ExternalLink, Search } from 'lucide-react'
+import { MapPin, Phone, Clock, ExternalLink } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'KRA Tax Offices Kenya 2026 | Nairobi, Mombasa, Kisumu, Nakuru, Eldoret',
