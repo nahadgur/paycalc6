@@ -168,7 +168,7 @@ const ONLINE_SERVICES = [
   { service: 'Nil Return Filing', url: 'https://itax.kra.go.ke', note: 'Required even if you have zero income' },
 ]
 
-const REGION_GROUPS = [...new Set(OFFICES.map(o => o.region))]
+const REGION_GROUPS = Array.from(new Set(OFFICES.map(o => o.region)))
 
 export default function KRAOfficesPage() {
   const schema = {

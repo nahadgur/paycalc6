@@ -130,7 +130,7 @@ const FAQS: FAQ[] = [
   },
 ]
 
-const CATEGORIES = [...new Set(FAQS.map(f => f.category))]
+const CATEGORIES = Array.from(new Set(FAQS.map(f => f.category)))
 
 export default function FAQPage() {
   const schema = {
