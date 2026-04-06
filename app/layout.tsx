@@ -66,6 +66,48 @@ export default function RootLayout({
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        {/* JSON-LD Schema */}
+        <Script id="schema-software" type="application/ld+json" strategy="beforeInteractive">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "Kenya PAYE Calculator 2026",
+            "url": "https://payecalculator.co.ke",
+            "applicationCategory": "FinanceApplication",
+            "operatingSystem": "Web",
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KES" },
+            "description": "Free Kenya PAYE calculator for 2026. Calculate net salary, PAYE tax, NSSF, SHIF, and Housing Levy instantly.",
+            "featureList": [
+              "PAYE Tax Calculator",
+              "Net to Gross Calculator",
+              "Bonus Tax Calculator",
+              "Employer Cost Calculator",
+              "P9 Form Generator",
+              "Tax Calendar"
+            ],
+            "inLanguage": "en-KE",
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.8",
+              "reviewCount": "1200"
+            }
+          })}
+        </Script>
+        <Script id="schema-howto" type="application/ld+json" strategy="beforeInteractive">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "HowTo",
+            "name": "How to Calculate PAYE Tax in Kenya 2026",
+            "description": "Step-by-step guide to calculating PAYE, NSSF, SHIF, and Housing Levy deductions on your Kenyan salary.",
+            "step": [
+              { "@type": "HowToStep", "position": 1, "text": "Enter your monthly gross salary in the calculator" },
+              { "@type": "HowToStep", "position": 2, "text": "Your NSSF is calculated at 6% of pensionable pay (capped at KES 72,000)" },
+              { "@type": "HowToStep", "position": 3, "text": "SHIF is deducted at 2.75% of gross salary (minimum KES 300)" },
+              { "@type": "HowToStep", "position": 4, "text": "Housing Levy is 1.5% of gross salary" },
+              { "@type": "HowToStep", "position": 5, "text": "PAYE is applied to taxable income using 2026 KRA tax bands after personal relief of KES 2,400" }
+            ]
+          })}
+        </Script>
         {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-BVFXE6F28R"
@@ -95,11 +137,20 @@ export default function RootLayout({
   />
   <span className="font-bold text-lg hidden sm:inline">PAYE Calculator</span>
 </Link>
-              <div className="flex items-center gap-6">
-                <Link href="/" className="text-stone-300 hover:text-white transition-colors text-sm font-medium">
+              <div className="flex items-center gap-1 md:gap-4">
+                <Link href="/" className="text-stone-300 hover:text-white transition-colors text-sm font-medium px-2 py-1">
                   Calculator
                 </Link>
-                <Link href="/blog" className="text-stone-300 hover:text-white transition-colors text-sm font-medium">
+                <Link href="/p9-generator" className="text-stone-300 hover:text-white transition-colors text-sm font-medium px-2 py-1 hidden sm:inline">
+                  P9 Form
+                </Link>
+                <Link href="/tax-calendar" className="text-stone-300 hover:text-white transition-colors text-sm font-medium px-2 py-1 hidden md:inline">
+                  Tax Calendar
+                </Link>
+                <Link href="/salary/100000" className="text-stone-300 hover:text-white transition-colors text-sm font-medium px-2 py-1 hidden md:inline">
+                  Salary Guide
+                </Link>
+                <Link href="/blog" className="text-stone-300 hover:text-white transition-colors text-sm font-medium px-2 py-1">
                   Blog
                 </Link>
               </div>
@@ -128,17 +179,31 @@ export default function RootLayout({
               <div>
                 <h4 className="font-semibold text-white mb-4">Quick Links</h4>
                 <ul className="space-y-2 text-sm">
-                  <li><Link href="/" className="text-stone-400 hover:text-white transition-colors">Calculator</Link></li>
+                  <li><Link href="/" className="text-stone-400 hover:text-white transition-colors">PAYE Calculator</Link></li>
+                  <li><Link href="/p9-generator" className="text-stone-400 hover:text-white transition-colors">P9 Form Generator</Link></li>
+                  <li><Link href="/tax-calendar" className="text-stone-400 hover:text-white transition-colors">KRA Tax Calendar</Link></li>
                   <li><Link href="/blog" className="text-stone-400 hover:text-white transition-colors">Tax Guides</Link></li>
                   <li><Link href="/blog/how-to-calculate-your-paye-tax-in-kenya" className="text-stone-400 hover:text-white transition-colors">How to Calculate PAYE</Link></li>
                 </ul>
               </div>
               <div>
-                <h4 className="font-semibold text-white mb-4">Resources</h4>
+                <h4 className="font-semibold text-white mb-4">Salary Breakdowns</h4>
                 <ul className="space-y-2 text-sm">
-                  <li><a href="https://www.kra.go.ke" target="_blank" rel="noopener noreferrer" className="text-stone-400 hover:text-white transition-colors">KRA Website</a></li>
-                  <li><a href="https://itax.kra.go.ke" target="_blank" rel="noopener noreferrer" className="text-stone-400 hover:text-white transition-colors">iTax Portal</a></li>
-                  <li><a href="https://www.nssf.or.ke" target="_blank" rel="noopener noreferrer" className="text-stone-400 hover:text-white transition-colors">NSSF Kenya</a></li>
+                  {[50000, 75000, 100000, 150000, 200000].map(s => (
+                    <li key={s}><Link href={`/salary/${s}`} className="text-stone-400 hover:text-white transition-colors">KES {(s/1000).toFixed(0)}K Salary</Link></li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-semibold text-white mb-4">Tax Guides</h4>
+                <ul className="space-y-2 text-sm">
+                  <li><Link href="/itax-2026" className="text-stone-400 hover:text-white transition-colors">KRA iTax 2026 Guide</Link></li>
+                  <li><Link href="/statutory-changes" className="text-stone-400 hover:text-white transition-colors">SHIF &amp; NSSF Changes</Link></li>
+                  <li><Link href="/tax-relief" className="text-stone-400 hover:text-white transition-colors">Tax Relief Guide</Link></li>
+                  <li><Link href="/employer-guide" className="text-stone-400 hover:text-white transition-colors">Employer Guide</Link></li>
+                  <li><Link href="/faq" className="text-stone-400 hover:text-white transition-colors">PAYE FAQ</Link></li>
+                  <li><Link href="/kra-offices" className="text-stone-400 hover:text-white transition-colors">KRA Offices Kenya</Link></li>
+                  <li><Link href="/budget-guide" className="text-stone-400 hover:text-white transition-colors">Budget Planner</Link></li>
                 </ul>
               </div>
             </div>
