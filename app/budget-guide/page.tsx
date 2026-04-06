@@ -349,6 +349,68 @@ export default function BudgetGuidePage() {
             Increase your take-home with tax reliefs <ChevronRight className="w-4 h-4" />
           </Link>
         </div>
+
+        {/* Related */}
+        <section className="mt-14 border-t border-white/10 pt-10">
+          <h2 className="text-lg font-bold text-white mb-5">Related Tools &amp; Guides</h2>
+          <div className="grid sm:grid-cols-3 gap-3">
+            <Link href="/tax-relief" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-emerald-500/40 rounded-xl p-4 transition-all group">
+              <span className="text-xl">💰</span>
+              <span className="font-semibold text-white text-sm group-hover:text-emerald-400 transition-colors">Tax Relief Guide</span>
+              <span className="text-stone-500 text-xs">Increase take-home with reliefs</span>
+            </Link>
+            <Link href="/" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-red-500/40 rounded-xl p-4 transition-all group">
+              <span className="text-xl">🧮</span>
+              <span className="font-semibold text-white text-sm group-hover:text-red-400 transition-colors">PAYE Calculator</span>
+              <span className="text-stone-500 text-xs">Recalculate with any salary</span>
+            </Link>
+            <Link href="/salary/100000" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-blue-500/40 rounded-xl p-4 transition-all group">
+              <span className="text-xl">📊</span>
+              <span className="font-semibold text-white text-sm group-hover:text-blue-400 transition-colors">Salary Breakdowns</span>
+              <span className="text-stone-500 text-xs">Detailed pages by salary level</span>
+            </Link>
+            <Link href="/tax-calendar" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-amber-500/40 rounded-xl p-4 transition-all group">
+              <span className="text-xl">📅</span>
+              <span className="font-semibold text-white text-sm group-hover:text-amber-400 transition-colors">Tax Calendar</span>
+              <span className="text-stone-500 text-xs">Key dates to plan your finances</span>
+            </Link>
+          </div>
+        </section>
+
+        {/* Related guides */}
+        <section className="mt-14 mb-6">
+          <h2 className="text-sm font-semibold text-stone-500 uppercase tracking-wider mb-4">Increase the money you're planning with</h2>
+          <div className="grid sm:grid-cols-2 gap-3">
+            <Link href="/tax-relief" className="flex items-start gap-3 bg-white/5 border border-white/10 hover:border-amber-500/30 rounded-xl p-4 transition-all group">
+              <span className="text-xl shrink-0">💰</span>
+              <div>
+                <p className="font-semibold text-white text-sm group-hover:text-amber-400 transition-colors">Tax Relief Guide</p>
+                <p className="text-stone-500 text-xs mt-0.5">Add KES 5,000–20,000/month to your take-home</p>
+              </div>
+            </Link>
+            <Link href="/" className="flex items-start gap-3 bg-white/5 border border-white/10 hover:border-amber-500/30 rounded-xl p-4 transition-all group">
+              <span className="text-xl shrink-0">🧮</span>
+              <div>
+                <p className="font-semibold text-white text-sm group-hover:text-amber-400 transition-colors">PAYE Calculator</p>
+                <p className="text-stone-500 text-xs mt-0.5">Calculate your exact net pay first</p>
+              </div>
+            </Link>
+            <Link href="/salary/100000" className="flex items-start gap-3 bg-white/5 border border-white/10 hover:border-amber-500/30 rounded-xl p-4 transition-all group">
+              <span className="text-xl shrink-0">📊</span>
+              <div>
+                <p className="font-semibold text-white text-sm group-hover:text-amber-400 transition-colors">Salary Breakdown Pages</p>
+                <p className="text-stone-500 text-xs mt-0.5">See full deductions for your specific salary</p>
+              </div>
+            </Link>
+            <Link href="/statutory-changes" className="flex items-start gap-3 bg-white/5 border border-white/10 hover:border-amber-500/30 rounded-xl p-4 transition-all group">
+              <span className="text-xl shrink-0">📋</span>
+              <div>
+                <p className="font-semibold text-white text-sm group-hover:text-amber-400 transition-colors">What Changed in 2026</p>
+                <p className="text-stone-500 text-xs mt-0.5">Why your take-home may have shifted</p>
+              </div>
+            </Link>
+          </div>
+        </section>
       </div>
     </div>
   )

@@ -283,6 +283,78 @@ export default function TaxReliefPage() {
             Open Full Calculator with All Relief Options →
           </Link>
         </div>
+
+        {/* Related */}
+        <section className="mt-14 border-t border-white/10 pt-10">
+          <h2 className="text-lg font-bold text-white mb-5">Related Tools &amp; Guides</h2>
+          <div className="grid sm:grid-cols-3 gap-3">
+            <Link href="/" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-red-500/40 rounded-xl p-4 transition-all group">
+              <span className="text-xl">🧮</span>
+              <span className="font-semibold text-white text-sm group-hover:text-red-400 transition-colors">PAYE Calculator</span>
+              <span className="text-stone-500 text-xs">Apply reliefs and see savings</span>
+            </Link>
+            <Link href="/statutory-changes" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-blue-500/40 rounded-xl p-4 transition-all group">
+              <span className="text-xl">📊</span>
+              <span className="font-semibold text-white text-sm group-hover:text-blue-400 transition-colors">Statutory Changes</span>
+              <span className="text-stone-500 text-xs">SHIF & NSSF 2026 rates</span>
+            </Link>
+            <Link href="/employer-guide" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-purple-500/40 rounded-xl p-4 transition-all group">
+              <span className="text-xl">🏢</span>
+              <span className="font-semibold text-white text-sm group-hover:text-purple-400 transition-colors">Employer Guide</span>
+              <span className="text-stone-500 text-xs">Applying reliefs in payroll</span>
+            </Link>
+            <Link href="/faq" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-stone-500/40 rounded-xl p-4 transition-all group">
+              <span className="text-xl">❓</span>
+              <span className="font-semibold text-white text-sm group-hover:text-stone-400 transition-colors">FAQ</span>
+              <span className="text-stone-500 text-xs">Relief questions answered</span>
+            </Link>
+            <Link href="/tax-calendar" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-amber-500/40 rounded-xl p-4 transition-all group">
+              <span className="text-xl">📅</span>
+              <span className="font-semibold text-white text-sm group-hover:text-amber-400 transition-colors">Tax Calendar</span>
+              <span className="text-stone-500 text-xs">When to claim reliefs</span>
+            </Link>
+            <Link href="/p9-generator" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-red-500/40 rounded-xl p-4 transition-all group">
+              <span className="text-xl">📄</span>
+              <span className="font-semibold text-white text-sm group-hover:text-red-400 transition-colors">P9 Generator</span>
+              <span className="text-stone-500 text-xs">Check reliefs on your P9</span>
+            </Link>
+          </div>
+        </section>
+
+        {/* Related guides */}
+        <section className="mt-14 mb-6">
+          <h2 className="text-sm font-semibold text-stone-500 uppercase tracking-wider mb-4">Apply these reliefs now</h2>
+          <div className="grid sm:grid-cols-2 gap-3">
+            <Link href="/" className="flex items-start gap-3 bg-white/5 border border-white/10 hover:border-amber-500/30 rounded-xl p-4 transition-all group">
+              <span className="text-xl shrink-0">🧮</span>
+              <div>
+                <p className="font-semibold text-white text-sm group-hover:text-amber-400 transition-colors">PAYE Calculator</p>
+                <p className="text-stone-500 text-xs mt-0.5">Enter your reliefs and see the saving instantly</p>
+              </div>
+            </Link>
+            <Link href="/p9-generator" className="flex items-start gap-3 bg-white/5 border border-white/10 hover:border-amber-500/30 rounded-xl p-4 transition-all group">
+              <span className="text-xl shrink-0">📄</span>
+              <div>
+                <p className="font-semibold text-white text-sm group-hover:text-amber-400 transition-colors">P9 Generator</p>
+                <p className="text-stone-500 text-xs mt-0.5">Verify reliefs were applied on your P9 form</p>
+              </div>
+            </Link>
+            <Link href="/statutory-changes" className="flex items-start gap-3 bg-white/5 border border-white/10 hover:border-amber-500/30 rounded-xl p-4 transition-all group">
+              <span className="text-xl shrink-0">📊</span>
+              <div>
+                <p className="font-semibold text-white text-sm group-hover:text-amber-400 transition-colors">SHIF & NSSF Changes</p>
+                <p className="text-stone-500 text-xs mt-0.5">How rate changes interact with relief calculations</p>
+              </div>
+            </Link>
+            <Link href="/budget-guide" className="flex items-start gap-3 bg-white/5 border border-white/10 hover:border-amber-500/30 rounded-xl p-4 transition-all group">
+              <span className="text-xl shrink-0">📐</span>
+              <div>
+                <p className="font-semibold text-white text-sm group-hover:text-amber-400 transition-colors">Budget Planner</p>
+                <p className="text-stone-500 text-xs mt-0.5">Plan spending on your higher take-home</p>
+              </div>
+            </Link>
+          </div>
+        </section>
       </div>
     </div>
   )

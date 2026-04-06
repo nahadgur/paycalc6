@@ -294,6 +294,78 @@ export default function EmployerGuidePage() {
             </Link>
           ))}
         </div>
+
+        {/* Related */}
+        <section className="mt-14 border-t border-white/10 pt-10">
+          <h2 className="text-lg font-bold text-white mb-5">Related Tools &amp; Guides</h2>
+          <div className="grid sm:grid-cols-3 gap-3">
+            <Link href="/p9-generator" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-red-500/40 rounded-xl p-4 transition-all group">
+              <span className="text-xl">📄</span>
+              <span className="font-semibold text-white text-sm group-hover:text-red-400 transition-colors">P9 Form Generator</span>
+              <span className="text-stone-500 text-xs">Create P9 certificates instantly</span>
+            </Link>
+            <Link href="/tax-calendar" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-amber-500/40 rounded-xl p-4 transition-all group">
+              <span className="text-xl">📅</span>
+              <span className="font-semibold text-white text-sm group-hover:text-amber-400 transition-colors">Tax Calendar</span>
+              <span className="text-stone-500 text-xs">Every employer deadline for 2026</span>
+            </Link>
+            <Link href="/statutory-changes" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-blue-500/40 rounded-xl p-4 transition-all group">
+              <span className="text-xl">📊</span>
+              <span className="font-semibold text-white text-sm group-hover:text-blue-400 transition-colors">SHIF & NSSF Changes</span>
+              <span className="text-stone-500 text-xs">Updated rate obligations</span>
+            </Link>
+            <Link href="/tax-relief" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-emerald-500/40 rounded-xl p-4 transition-all group">
+              <span className="text-xl">💰</span>
+              <span className="font-semibold text-white text-sm group-hover:text-emerald-400 transition-colors">Tax Relief Guide</span>
+              <span className="text-stone-500 text-xs">Reliefs employers must apply</span>
+            </Link>
+            <Link href="/" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-red-500/40 rounded-xl p-4 transition-all group">
+              <span className="text-xl">🧮</span>
+              <span className="font-semibold text-white text-sm group-hover:text-red-400 transition-colors">PAYE Calculator</span>
+              <span className="text-stone-500 text-xs">Verify payroll calculations</span>
+            </Link>
+            <Link href="/faq" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-stone-500/40 rounded-xl p-4 transition-all group">
+              <span className="text-xl">❓</span>
+              <span className="font-semibold text-white text-sm group-hover:text-stone-400 transition-colors">PAYE FAQ</span>
+              <span className="text-stone-500 text-xs">Common employer questions</span>
+            </Link>
+          </div>
+        </section>
+
+        {/* Related guides */}
+        <section className="mt-14 mb-6">
+          <h2 className="text-sm font-semibold text-stone-500 uppercase tracking-wider mb-4">Tools for your payroll workflow</h2>
+          <div className="grid sm:grid-cols-2 gap-3">
+            <Link href="/p9-generator" className="flex items-start gap-3 bg-white/5 border border-white/10 hover:border-amber-500/30 rounded-xl p-4 transition-all group">
+              <span className="text-xl shrink-0">📄</span>
+              <div>
+                <p className="font-semibold text-white text-sm group-hover:text-amber-400 transition-colors">P9 Form Generator</p>
+                <p className="text-stone-500 text-xs mt-0.5">Create employee certificates in bulk</p>
+              </div>
+            </Link>
+            <Link href="/tax-calendar" className="flex items-start gap-3 bg-white/5 border border-white/10 hover:border-amber-500/30 rounded-xl p-4 transition-all group">
+              <span className="text-xl shrink-0">📅</span>
+              <div>
+                <p className="font-semibold text-white text-sm group-hover:text-amber-400 transition-colors">Filing Deadline Calendar</p>
+                <p className="text-stone-500 text-xs mt-0.5">Monthly P10, annual P9, NSSF — all deadlines</p>
+              </div>
+            </Link>
+            <Link href="/statutory-changes" className="flex items-start gap-3 bg-white/5 border border-white/10 hover:border-amber-500/30 rounded-xl p-4 transition-all group">
+              <span className="text-xl shrink-0">📊</span>
+              <div>
+                <p className="font-semibold text-white text-sm group-hover:text-amber-400 transition-colors">SHIF & NSSF 2026 Rates</p>
+                <p className="text-stone-500 text-xs mt-0.5">Updated employer contribution amounts</p>
+              </div>
+            </Link>
+            <Link href="/" className="flex items-start gap-3 bg-white/5 border border-white/10 hover:border-amber-500/30 rounded-xl p-4 transition-all group">
+              <span className="text-xl shrink-0">🧮</span>
+              <div>
+                <p className="font-semibold text-white text-sm group-hover:text-amber-400 transition-colors">PAYE Calculator</p>
+                <p className="text-stone-500 text-xs mt-0.5">Verify deductions for any employee salary</p>
+              </div>
+            </Link>
+          </div>
+        </section>
       </div>
     </div>
   )

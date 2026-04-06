@@ -294,6 +294,73 @@ export default function TaxCalendarPage() {
           </div>
         </div>
 
+
+        {/* Related */}
+        <section className="mt-14 border-t border-white/10 pt-10">
+          <h2 className="text-lg font-bold text-white mb-5">Related Tools &amp; Guides</h2>
+          <div className="grid sm:grid-cols-3 gap-3">
+            <Link href="/p9-generator" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-red-500/40 rounded-xl p-4 transition-all group">
+              <span className="text-xl">📄</span>
+              <span className="font-semibold text-white text-sm group-hover:text-red-400 transition-colors">P9 Form Generator</span>
+              <span className="text-stone-500 text-xs">Create certificates before Jan 31</span>
+            </Link>
+            <Link href="/itax-2026" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-emerald-500/40 rounded-xl p-4 transition-all group">
+              <span className="text-xl">🖥️</span>
+              <span className="font-semibold text-white text-sm group-hover:text-emerald-400 transition-colors">KRA iTax 2026</span>
+              <span className="text-stone-500 text-xs">How pre-filled returns work in 2026</span>
+            </Link>
+            <Link href="/employer-guide" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-purple-500/40 rounded-xl p-4 transition-all group">
+              <span className="text-xl">🏢</span>
+              <span className="font-semibold text-white text-sm group-hover:text-purple-400 transition-colors">Employer Guide</span>
+              <span className="text-stone-500 text-xs">Full remittance obligations</span>
+            </Link>
+            <Link href="/kra-offices" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-red-500/40 rounded-xl p-4 transition-all group">
+              <span className="text-xl">🗺️</span>
+              <span className="font-semibold text-white text-sm group-hover:text-red-400 transition-colors">KRA Offices</span>
+              <span className="text-stone-500 text-xs">In-person help near you</span>
+            </Link>
+            <Link href="/faq" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-stone-500/40 rounded-xl p-4 transition-all group">
+              <span className="text-xl">❓</span>
+              <span className="font-semibold text-white text-sm group-hover:text-stone-400 transition-colors">PAYE FAQ</span>
+              <span className="text-stone-500 text-xs">Deadline penalty questions</span>
+            </Link>
+          </div>
+        </section>
+
+        {/* Related guides */}
+        <section className="mt-14 mb-6">
+          <h2 className="text-sm font-semibold text-stone-500 uppercase tracking-wider mb-4">Prepare for the deadlines</h2>
+          <div className="grid sm:grid-cols-2 gap-3">
+            <Link href="/p9-generator" className="flex items-start gap-3 bg-white/5 border border-white/10 hover:border-amber-500/30 rounded-xl p-4 transition-all group">
+              <span className="text-xl shrink-0">📄</span>
+              <div>
+                <p className="font-semibold text-white text-sm group-hover:text-amber-400 transition-colors">Generate P9 Forms</p>
+                <p className="text-stone-500 text-xs mt-0.5">Due to employees by 31 January</p>
+              </div>
+            </Link>
+            <Link href="/itax-2026" className="flex items-start gap-3 bg-white/5 border border-white/10 hover:border-amber-500/30 rounded-xl p-4 transition-all group">
+              <span className="text-xl shrink-0">💻</span>
+              <div>
+                <p className="font-semibold text-white text-sm group-hover:text-amber-400 transition-colors">iTax 2026 Guide</p>
+                <p className="text-stone-500 text-xs mt-0.5">How to file your June 30 return</p>
+              </div>
+            </Link>
+            <Link href="/employer-guide" className="flex items-start gap-3 bg-white/5 border border-white/10 hover:border-amber-500/30 rounded-xl p-4 transition-all group">
+              <span className="text-xl shrink-0">🏢</span>
+              <div>
+                <p className="font-semibold text-white text-sm group-hover:text-amber-400 transition-colors">Employer Compliance</p>
+                <p className="text-stone-500 text-xs mt-0.5">Monthly P10 obligations and penalties</p>
+              </div>
+            </Link>
+            <Link href="/" className="flex items-start gap-3 bg-white/5 border border-white/10 hover:border-amber-500/30 rounded-xl p-4 transition-all group">
+              <span className="text-xl shrink-0">🧮</span>
+              <div>
+                <p className="font-semibold text-white text-sm group-hover:text-amber-400 transition-colors">PAYE Calculator</p>
+                <p className="text-stone-500 text-xs mt-0.5">Verify your figures before filing</p>
+              </div>
+            </Link>
+          </div>
+        </section>
       </div>
     </div>
   )

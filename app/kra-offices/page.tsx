@@ -350,6 +350,68 @@ export default function KRAOfficesPage() {
         <p className="text-xs text-stone-600 text-center mt-6">
           Office locations and contact details verified April 2026. KRA offices may relocate — always confirm via kra.go.ke before visiting.
         </p>
+
+        {/* Related */}
+        <section className="mt-14 border-t border-white/10 pt-10">
+          <h2 className="text-lg font-bold text-white mb-5">Related Tools &amp; Guides</h2>
+          <div className="grid sm:grid-cols-3 gap-3">
+            <Link href="/itax-2026" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-emerald-500/40 rounded-xl p-4 transition-all group">
+              <span className="text-xl">🖥️</span>
+              <span className="font-semibold text-white text-sm group-hover:text-emerald-400 transition-colors">KRA iTax 2026</span>
+              <span className="text-stone-500 text-xs">File online — no office visit</span>
+            </Link>
+            <Link href="/tax-calendar" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-amber-500/40 rounded-xl p-4 transition-all group">
+              <span className="text-xl">📅</span>
+              <span className="font-semibold text-white text-sm group-hover:text-amber-400 transition-colors">Tax Calendar</span>
+              <span className="text-stone-500 text-xs">Know your filing deadlines</span>
+            </Link>
+            <Link href="/p9-generator" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-red-500/40 rounded-xl p-4 transition-all group">
+              <span className="text-xl">📄</span>
+              <span className="font-semibold text-white text-sm group-hover:text-red-400 transition-colors">P9 Generator</span>
+              <span className="text-stone-500 text-xs">Create your P9 before visiting</span>
+            </Link>
+            <Link href="/faq" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-stone-500/40 rounded-xl p-4 transition-all group">
+              <span className="text-xl">❓</span>
+              <span className="font-semibold text-white text-sm group-hover:text-stone-400 transition-colors">PAYE FAQ</span>
+              <span className="text-stone-500 text-xs">Quick answers to common questions</span>
+            </Link>
+          </div>
+        </section>
+
+        {/* Related guides */}
+        <section className="mt-14 mb-6">
+          <h2 className="text-sm font-semibold text-stone-500 uppercase tracking-wider mb-4">Do most tasks online first</h2>
+          <div className="grid sm:grid-cols-2 gap-3">
+            <Link href="/itax-2026" className="flex items-start gap-3 bg-white/5 border border-white/10 hover:border-amber-500/30 rounded-xl p-4 transition-all group">
+              <span className="text-xl shrink-0">💻</span>
+              <div>
+                <p className="font-semibold text-white text-sm group-hover:text-amber-400 transition-colors">iTax 2026 Filing Guide</p>
+                <p className="text-stone-500 text-xs mt-0.5">File your return without visiting an office</p>
+              </div>
+            </Link>
+            <Link href="/tax-calendar" className="flex items-start gap-3 bg-white/5 border border-white/10 hover:border-amber-500/30 rounded-xl p-4 transition-all group">
+              <span className="text-xl shrink-0">📅</span>
+              <div>
+                <p className="font-semibold text-white text-sm group-hover:text-amber-400 transition-colors">KRA Deadline Calendar</p>
+                <p className="text-stone-500 text-xs mt-0.5">All monthly and annual filing dates</p>
+              </div>
+            </Link>
+            <Link href="/p9-generator" className="flex items-start gap-3 bg-white/5 border border-white/10 hover:border-amber-500/30 rounded-xl p-4 transition-all group">
+              <span className="text-xl shrink-0">📄</span>
+              <div>
+                <p className="font-semibold text-white text-sm group-hover:text-amber-400 transition-colors">P9 Form Generator</p>
+                <p className="text-stone-500 text-xs mt-0.5">Generate your P9 certificate online</p>
+              </div>
+            </Link>
+            <Link href="/faq" className="flex items-start gap-3 bg-white/5 border border-white/10 hover:border-amber-500/30 rounded-xl p-4 transition-all group">
+              <span className="text-xl shrink-0">❓</span>
+              <div>
+                <p className="font-semibold text-white text-sm group-hover:text-amber-400 transition-colors">PAYE FAQ</p>
+                <p className="text-stone-500 text-xs mt-0.5">Answers before you make the trip</p>
+              </div>
+            </Link>
+          </div>
+        </section>
       </div>
     </div>
   )

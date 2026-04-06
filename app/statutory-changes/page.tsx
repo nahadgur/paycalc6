@@ -281,6 +281,78 @@ export default function StatutoryChangesPage() {
             <ChevronRight className="w-5 h-5 text-stone-500 group-hover:text-emerald-400 transition-colors" />
           </Link>
         </div>
+
+        {/* Related */}
+        <section className="mt-14 border-t border-white/10 pt-10">
+          <h2 className="text-lg font-bold text-white mb-5">Related Tools &amp; Guides</h2>
+          <div className="grid sm:grid-cols-3 gap-3">
+            <Link href="/" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-red-500/40 rounded-xl p-4 transition-all group">
+              <span className="text-xl">🧮</span>
+              <span className="font-semibold text-white text-sm group-hover:text-red-400 transition-colors">PAYE Calculator</span>
+              <span className="text-stone-500 text-xs">See your updated take-home</span>
+            </Link>
+            <Link href="/tax-relief" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-emerald-500/40 rounded-xl p-4 transition-all group">
+              <span className="text-xl">💰</span>
+              <span className="font-semibold text-white text-sm group-hover:text-emerald-400 transition-colors">Tax Relief Guide</span>
+              <span className="text-stone-500 text-xs">Legally reduce your PAYE</span>
+            </Link>
+            <Link href="/tax-calendar" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-amber-500/40 rounded-xl p-4 transition-all group">
+              <span className="text-xl">📅</span>
+              <span className="font-semibold text-white text-sm group-hover:text-amber-400 transition-colors">Tax Calendar</span>
+              <span className="text-stone-500 text-xs">SHIF & NSSF remittance dates</span>
+            </Link>
+            <Link href="/employer-guide" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-blue-500/40 rounded-xl p-4 transition-all group">
+              <span className="text-xl">🏢</span>
+              <span className="font-semibold text-white text-sm group-hover:text-blue-400 transition-colors">Employer Guide</span>
+              <span className="text-stone-500 text-xs">Payroll compliance obligations</span>
+            </Link>
+            <Link href="/faq" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-stone-500/40 rounded-xl p-4 transition-all group">
+              <span className="text-xl">❓</span>
+              <span className="font-semibold text-white text-sm group-hover:text-stone-400 transition-colors">PAYE FAQ</span>
+              <span className="text-stone-500 text-xs">SHIF & NSSF questions answered</span>
+            </Link>
+            <Link href="/p9-generator" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-red-500/40 rounded-xl p-4 transition-all group">
+              <span className="text-xl">📄</span>
+              <span className="font-semibold text-white text-sm group-hover:text-red-400 transition-colors">P9 Form Generator</span>
+              <span className="text-stone-500 text-xs">Create updated P9 certificates</span>
+            </Link>
+          </div>
+        </section>
+
+        {/* Related guides */}
+        <section className="mt-14 mb-6">
+          <h2 className="text-sm font-semibold text-stone-500 uppercase tracking-wider mb-4">Related tools and guides</h2>
+          <div className="grid sm:grid-cols-2 gap-3">
+            <Link href="/" className="flex items-start gap-3 bg-white/5 border border-white/10 hover:border-amber-500/30 rounded-xl p-4 transition-all group">
+              <span className="text-xl shrink-0">🧮</span>
+              <div>
+                <p className="font-semibold text-white text-sm group-hover:text-amber-400 transition-colors">PAYE Calculator</p>
+                <p className="text-stone-500 text-xs mt-0.5">See your updated take-home with 2026 SHIF & NSSF</p>
+              </div>
+            </Link>
+            <Link href="/tax-relief" className="flex items-start gap-3 bg-white/5 border border-white/10 hover:border-amber-500/30 rounded-xl p-4 transition-all group">
+              <span className="text-xl shrink-0">💰</span>
+              <div>
+                <p className="font-semibold text-white text-sm group-hover:text-amber-400 transition-colors">Tax Relief Hub</p>
+                <p className="text-stone-500 text-xs mt-0.5">Offset higher deductions with legal reliefs</p>
+              </div>
+            </Link>
+            <Link href="/employer-guide" className="flex items-start gap-3 bg-white/5 border border-white/10 hover:border-amber-500/30 rounded-xl p-4 transition-all group">
+              <span className="text-xl shrink-0">🏢</span>
+              <div>
+                <p className="font-semibold text-white text-sm group-hover:text-amber-400 transition-colors">Employer Compliance</p>
+                <p className="text-stone-500 text-xs mt-0.5">Update payroll for SHIF — full checklist</p>
+              </div>
+            </Link>
+            <Link href="/faq" className="flex items-start gap-3 bg-white/5 border border-white/10 hover:border-amber-500/30 rounded-xl p-4 transition-all group">
+              <span className="text-xl shrink-0">❓</span>
+              <div>
+                <p className="font-semibold text-white text-sm group-hover:text-amber-400 transition-colors">SHIF FAQs</p>
+                <p className="text-stone-500 text-xs mt-0.5">Is SHIF mandatory? Does my employer pay too?</p>
+              </div>
+            </Link>
+          </div>
+        </section>
       </div>
     </div>
   )
