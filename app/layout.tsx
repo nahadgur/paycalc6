@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Script from 'next/script'
+import SiteNav from '@/components/SiteNav'
 import Link from 'next/link'
 import './globals.css'
 import Image from "next/image"
@@ -124,39 +125,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen bg-gradient-to-br from-stone-950 via-stone-900 to-stone-950 text-white">
         {/* Navigation */}
-        <nav className="sticky top-0 z-50 backdrop-blur-xl bg-stone-950/80 border-b border-white/10">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6">
-            <div className="flex items-center justify-between h-16">
-            <Link href="/" className="flex items-center gap-2">
-  <Image
-    src="/logo-256.png"
-    alt="PAYE Calculator"
-    width={32}
-    height={32}
-    priority
-  />
-  <span className="font-bold text-lg hidden sm:inline">PAYE Calculator</span>
-</Link>
-              <div className="flex items-center gap-1 md:gap-4">
-                <Link href="/" className="text-stone-300 hover:text-white transition-colors text-sm font-medium px-2 py-1">
-                  Calculator
-                </Link>
-                <Link href="/p9-generator" className="text-stone-300 hover:text-white transition-colors text-sm font-medium px-2 py-1 hidden sm:inline">
-                  P9 Form
-                </Link>
-                <Link href="/tax-calendar" className="text-stone-300 hover:text-white transition-colors text-sm font-medium px-2 py-1 hidden md:inline">
-                  Tax Calendar
-                </Link>
-                <Link href="/salary/100000" className="text-stone-300 hover:text-white transition-colors text-sm font-medium px-2 py-1 hidden md:inline">
-                  Salary Guide
-                </Link>
-                <Link href="/blog" className="text-stone-300 hover:text-white transition-colors text-sm font-medium px-2 py-1">
-                  Blog
-                </Link>
-              </div>
-            </div>
-          </div>
-        </nav>
+        <SiteNav />
 
         {/* Main Content */}
         <main>{children}</main>
