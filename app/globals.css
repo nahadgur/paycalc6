@@ -2,43 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
 
 :root {
-  --foreground-rgb: 255, 255, 255;
-  --background-start-rgb: 12, 10, 9;
-  --background-end-rgb: 28, 25, 23;
+  --brand: #F04C40;
+  --brand-600: #C73B2F;
+  --brand-700: #8A2820;
+  --brand-50: #FFF5F2;
+  --brand-100: #FFE9E6;
+  --brand-200: #FFD9D3;
+  --brand-300: #F5B9B2;
+  --brand-900: #2a0f0c;
+  --ink: #111111;
+  --ink-soft: #2a2a2a;
+  --cream: #FFF5F2;
+  --surface: #ffffff;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-    to bottom right,
-    rgb(var(--background-start-rgb)),
-    rgb(var(--background-end-rgb))
-  );
+html, body {
+  background: #ffffff;
+  color: var(--ink);
   min-height: 100vh;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: #ffffff;
 }
 
-::-webkit-scrollbar-track {
-  background: #1f2937;
-}
+/* Scrollbar */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--brand-50); }
+::-webkit-scrollbar-thumb { background: var(--brand-300); border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: var(--brand); }
 
-::-webkit-scrollbar-thumb {
-  background: #4b5563;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #6b7280;
-}
-
-/* Slider styles */
+/* Brand slider */
 input[type="range"] {
   -webkit-appearance: none;
   appearance: none;
@@ -49,103 +47,338 @@ input[type="range"] {
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #DC2626, #F59E0B);
+  background: #F04C40;
   cursor: pointer;
-  border: 3px solid #1F2937;
-  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.4);
-  margin-top: -8px;
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 1px #F04C40, 0 2px 6px rgba(240, 76, 64, 0.3);
+  margin-top: -9px;
+  transition: transform .15s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.12);
 }
 
 input[type="range"]::-moz-range-thumb {
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #DC2626, #F59E0B);
+  background: #F04C40;
   cursor: pointer;
-  border: 3px solid #1F2937;
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 1px #F04C40, 0 2px 6px rgba(240, 76, 64, 0.3);
 }
 
 input[type="range"]::-webkit-slider-runnable-track {
-  height: 8px;
-  border-radius: 4px;
-  background: #374151;
+  height: 4px;
+  border-radius: 2px;
+  background: #FFD9D3;
 }
 
 input[type="range"]::-moz-range-track {
-  height: 8px;
-  border-radius: 4px;
-  background: #374151;
+  height: 4px;
+  border-radius: 2px;
+  background: #FFD9D3;
 }
 
-/* Blog content styles */
+/* When slider sits inside a red hero section, track goes darker */
+.on-brand input[type="range"]::-webkit-slider-runnable-track {
+  background: rgba(255,255,255,0.25);
+}
+.on-brand input[type="range"]::-moz-range-track {
+  background: rgba(255,255,255,0.25);
+}
+
+/* ===== OVERRIDES FOR OLD DARK-THEMED TAILWIND CLASSES =====
+   The legacy calculator component uses Tailwind classes from the prior dark
+   aesthetic (bg-stone-950, from-white/10, text-white, etc.). Rather than
+   rewriting 1200+ lines of JSX, we override those class combinations here to
+   fit the Bold Poster light/editorial theme while keeping all logic intact. */
+
+/* Legacy dark page backgrounds → white */
+.bg-stone-950, .from-stone-950, .to-stone-950, .via-stone-900, .from-stone-900, .to-stone-900, .bg-stone-900 {
+  background-color: #ffffff !important;
+}
+
+/* Legacy text-white everywhere inside the calculator → ink */
+.paye-app {
+  color: var(--ink);
+}
+
+.paye-app .text-white { color: var(--ink) !important; }
+.paye-app .text-stone-300 { color: #555 !important; }
+.paye-app .text-stone-400 { color: #666 !important; }
+.paye-app .text-stone-500 { color: #888 !important; }
+.paye-app .text-stone-600 { color: #999 !important; }
+
+/* Legacy dark glass cards → clean white cards with 0.5px border */
+.paye-app .bg-white\/5,
+.paye-app .bg-white\/10 {
+  background-color: #ffffff !important;
+  border-color: #eeeeee !important;
+}
+
+.paye-app .from-white\/10, .paye-app .to-white\/5 {
+  --tw-gradient-from: #ffffff !important;
+  --tw-gradient-to: #ffffff !important;
+}
+
+.paye-app .border-white\/10,
+.paye-app .border-white\/20,
+.paye-app .border-stone-700,
+.paye-app .border-stone-800 {
+  border-color: #eeeeee !important;
+}
+
+.paye-app .backdrop-blur-xl {
+  backdrop-filter: none !important;
+}
+
+/* Legacy colored tinted cards → cream branded cards */
+.paye-app .from-emerald-600\/20,
+.paye-app .from-emerald-900\/20,
+.paye-app .to-emerald-900\/20,
+.paye-app .to-emerald-600\/20,
+.paye-app .bg-emerald-600\/20,
+.paye-app .border-emerald-500\/20 {
+  --tw-gradient-from: var(--brand-50) !important;
+  --tw-gradient-to: var(--brand-100) !important;
+  background-color: var(--brand-50) !important;
+  border-color: var(--brand-300) !important;
+}
+
+.paye-app .text-emerald-400,
+.paye-app .text-emerald-500 {
+  color: var(--brand) !important;
+}
+
+.paye-app .from-red-600\/20, .paye-app .to-red-900\/20, .paye-app .border-red-500\/20 {
+  --tw-gradient-from: #fff !important;
+  --tw-gradient-to: #fff !important;
+  background-color: #fff !important;
+  border-color: #eee !important;
+}
+
+.paye-app .text-red-400, .paye-app .text-red-500 {
+  color: var(--brand) !important;
+}
+
+.paye-app .from-amber-600\/20, .paye-app .to-amber-900\/20 {
+  --tw-gradient-from: #fff !important;
+  --tw-gradient-to: #fff !important;
+}
+
+.paye-app .text-amber-400, .paye-app .text-amber-500 {
+  color: var(--ink) !important;
+}
+
+/* Legacy input backgrounds */
+.paye-app .bg-stone-800\/50, .paye-app .bg-stone-800 {
+  background-color: #fafafa !important;
+  color: var(--ink) !important;
+}
+
+.paye-app input[type="number"], .paye-app input[type="text"], .paye-app select {
+  background-color: #fafafa !important;
+  border-color: #eee !important;
+  color: var(--ink) !important;
+}
+
+/* Legacy gradient buttons / pills → brand red flat */
+.paye-app .from-red-500,
+.paye-app .from-red-600,
+.paye-app .to-amber-500,
+.paye-app .to-red-500,
+.paye-app .from-amber-500,
+.paye-app .bg-gradient-to-r,
+.paye-app .bg-gradient-to-br {
+  --tw-gradient-from: var(--brand) !important;
+  --tw-gradient-to: var(--brand) !important;
+  background-image: none !important;
+  background-color: var(--brand) !important;
+}
+
+/* The gradient-clipped big heading "Kenya PAYE" in original — make it brand red */
+.paye-app .bg-clip-text.text-transparent {
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+  color: var(--brand) !important;
+  -webkit-text-fill-color: var(--brand) !important;
+}
+
+/* Hide the legacy animated background blobs */
+.paye-app .blur-3xl { display: none !important; }
+
+/* Large display numbers in brand red */
+.paye-app .tabular-nums.font-black,
+.paye-app .text-5xl.font-black,
+.paye-app .text-7xl.font-black {
+  color: var(--brand) !important;
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 500 !important;
+  letter-spacing: -0.02em;
+}
+
+/* Shadow glow from old buttons — remove */
+.paye-app .shadow-red-500\/25, .paye-app .shadow-red-500\/40, .paye-app .shadow-emerald-500\/25 {
+  box-shadow: none !important;
+}
+
+/* ===== BOLD POSTER UTILITY CLASSES ===== */
+
+.editorial-h {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.editorial-h .accent {
+  color: var(--brand);
+  font-style: italic;
+}
+
+.section-marker {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--brand);
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.card-edit {
+  background: #fff;
+  border: 0.5px solid #eee;
+  border-radius: 16px;
+  padding: 18px;
+  transition: transform .2s ease, border-color .2s ease;
+}
+
+.card-edit:hover {
+  transform: translateY(-2px);
+  border-color: var(--brand-300);
+}
+
+/* ===== BLOG CONTENT (light mode) ===== */
+.blog-content {
+  color: #333;
+}
+
 .blog-content h2 {
-  @apply text-2xl font-bold text-white mt-8 mb-4;
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.75rem;
+  font-weight: 500;
+  color: var(--ink);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
 }
 
 .blog-content h3 {
-  @apply text-xl font-semibold text-white mt-6 mb-3;
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: var(--ink);
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
 }
 
 .blog-content p {
-  @apply text-stone-300 leading-relaxed mb-4;
+  color: #333;
+  line-height: 1.7;
+  margin-bottom: 1rem;
 }
 
 .blog-content ul, .blog-content ol {
-  @apply text-stone-300 mb-4 pl-6 space-y-2;
+  color: #333;
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
 }
 
-.blog-content ul {
-  @apply list-disc;
+.blog-content ul li, .blog-content ol li {
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
 }
 
-.blog-content ol {
-  @apply list-decimal;
-}
-
-.blog-content li {
-  @apply leading-relaxed;
-}
+.blog-content ul { list-style: disc; }
+.blog-content ol { list-style: decimal; }
 
 .blog-content table {
-  @apply w-full my-6 border-collapse;
+  width: 100%;
+  margin: 1.5rem 0;
+  border-collapse: collapse;
+  border: 0.5px solid #eee;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .blog-content thead {
-  @apply bg-white/10;
+  background: var(--brand-50);
 }
 
 .blog-content th {
-  @apply text-left py-3 px-4 text-stone-200 font-semibold border-b border-white/10;
+  text-align: left;
+  padding: 12px 16px;
+  color: var(--brand-700);
+  font-weight: 500;
+  border-bottom: 0.5px solid var(--brand-300);
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
 }
 
 .blog-content td {
-  @apply py-3 px-4 text-stone-300 border-b border-white/5;
+  padding: 12px 16px;
+  color: #333;
+  border-bottom: 0.5px solid #f0f0f0;
+  font-size: 0.95rem;
 }
 
-.blog-content tr:hover {
-  @apply bg-white/5;
+.blog-content tr:hover td {
+  background: var(--brand-50);
 }
 
 .blog-content b, .blog-content strong {
-  @apply text-white font-semibold;
+  color: var(--ink);
+  font-weight: 500;
 }
 
 .blog-content i, .blog-content em {
-  @apply text-stone-200;
+  color: var(--ink);
 }
 
 .blog-content a {
-  @apply text-amber-400 hover:text-amber-300 underline;
+  color: var(--brand);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.blog-content a:hover {
+  color: var(--brand-600);
 }
 
 .blog-content img {
-  @apply rounded-xl my-6 w-full max-w-2xl mx-auto;
+  border-radius: 12px;
+  margin: 1.5rem 0;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
 }
 
-/* Animation */
+.blog-content blockquote {
+  border-left: 3px solid var(--brand);
+  padding: 4px 0 4px 20px;
+  margin: 1.5rem 0;
+  font-family: 'Fraunces', Georgia, serif;
+  font-style: italic;
+  color: var(--brand-700);
+  font-size: 1.05rem;
+}
+
+/* ===== ANIMATIONS ===== */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
@@ -160,3 +393,21 @@ input[type="range"]::-moz-range-track {
 .animate-delay-300 { animation-delay: 0.3s; }
 .animate-delay-400 { animation-delay: 0.4s; }
 .animate-delay-500 { animation-delay: 0.5s; }
+
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.4); opacity: 0; }
+}
+
+.pulse-dot {
+  position: relative;
+}
+.pulse-dot::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: pulseDot 2s infinite;
+  z-index: -1;
+}

@@ -2,27 +2,16 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import articles from '@/lib/articles.json'
-import { ArrowLeft, Calculator, Clock, Share2 } from 'lucide-react'
 
-type Props = {
-  params: { slug: string }
-}
+type Props = { params: { slug: string } }
 
 export async function generateStaticParams() {
-  return articles.map((article) => ({
-    slug: article.slug,
-  }))
+  return articles.map((article) => ({ slug: article.slug }))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const article = articles.find((a) => a.slug === params.slug)
-  
-  if (!article) {
-    return {
-      title: 'Article Not Found',
-    }
-  }
-
+  if (!article) return { title: 'Article not found' }
   return {
     title: article.metaTitle || article.title,
     description: article.metaDescription,
@@ -42,130 +31,101 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default function BlogArticle({ params }: Props) {
   const article = articles.find((a) => a.slug === params.slug)
+  if (!article) notFound()
 
-  if (!article) {
-    notFound()
-  }
-
-  // Get related articles (simple: just get 3 random ones that aren't this one)
   const relatedArticles = articles
     .filter((a) => a.slug !== params.slug)
     .sort(() => Math.random() - 0.5)
     .slice(0, 3)
 
-  // Clean up the content - fix escaped quotes in img tags
-  const cleanContent = article.content
+  const cleanContent = article!.content
     .replace(/\"\"/g, '"')
     .replace(/width\s*=\s*"[^"]*"/g, '')
-    .replace(/<img([^>]*)>/g, '<img$1 class="rounded-xl my-6 max-w-full" loading="lazy">')
+    .replace(/<img([^>]*)>/g, '<img$1 loading="lazy">')
 
   return (
-    <div className="min-h-screen">
-      {/* Header */}
-      <article className="px-4 py-12">
-        <div className="max-w-4xl mx-auto">
-          {/* Breadcrumb */}
-          <div className="mb-8">
-            <Link 
-              href="/blog" 
-              className="inline-flex items-center gap-2 text-stone-400 hover:text-white transition-colors text-sm"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              Back to all guides
+    <div className="bg-white">
+      {/* Hero — red band with title */}
+      <section className="bg-brand text-white">
+        <div className="max-w-3xl mx-auto px-5 sm:px-6 py-12 sm:py-16">
+          <Link href="/blog" className="inline-flex items-center gap-2 text-white/80 hover:text-white text-[12px] mb-6 transition">
+            ← All guides
+          </Link>
+          <div className="flex justify-between items-baseline mb-6 text-[11px] tracking-[0.2em] uppercase font-medium">
+            <span>Kenya · Tax guide</span>
+            <span className="opacity-80">2026</span>
+          </div>
+          <h1 className="editorial-h text-[30px] sm:text-[44px] mb-5">
+            {article!.title}
+          </h1>
+          <p className="text-[14px] sm:text-[16px] opacity-90 leading-relaxed">
+            {article!.metaDescription}
+          </p>
+          <div className="flex items-center gap-4 mt-6 text-[11px] opacity-80">
+            <span>10 min read</span>
+            <span className="w-1 h-1 bg-white/60 rounded-full"></span>
+            <span>Updated January 2026</span>
+          </div>
+        </div>
+      </section>
+
+      {/* Article body */}
+      <article className="max-w-3xl mx-auto px-5 sm:px-6 py-12">
+
+        {/* Calculator CTA card */}
+        <div className="bg-brand-50 border border-brand-300 rounded-2xl p-5 mb-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div>
+            <p className="section-marker mb-1 text-[10px]">CALCULATE</p>
+            <h3 className="editorial-h text-[18px] text-brand-900 mb-1">Your exact take-home</h3>
+            <p className="text-brand-700 text-[12px]">2026 KRA rates · instant</p>
+          </div>
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 px-5 py-3 bg-brand text-white rounded-full font-medium text-[13px] hover:bg-brand-600 transition whitespace-nowrap"
+          >
+            Open calculator →
+          </Link>
+        </div>
+
+        {/* Content */}
+        <div className="blog-content" dangerouslySetInnerHTML={{ __html: cleanContent }} />
+
+        {/* Share */}
+        <div className="mt-12 pt-8 border-t border-[#eee]">
+          <div className="flex items-center justify-between">
+            <span className="text-[#666] text-[13px]">Was this helpful?</span>
+            <Link href="/" className="inline-flex items-center gap-2 px-4 py-2 bg-brand-50 text-brand-700 rounded-full text-[12px] font-medium hover:bg-brand-100 transition">
+              Try the calculator →
             </Link>
-          </div>
-
-          {/* Title */}
-          <header className="mb-8">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4 leading-tight">
-              {article.title}
-            </h1>
-            <p className="text-lg text-stone-400">
-              {article.metaDescription}
-            </p>
-            <div className="flex items-center gap-4 mt-6 text-sm text-stone-500">
-              <span className="flex items-center gap-1">
-                <Clock className="w-4 h-4" />
-                10 min read
-              </span>
-              <span>Updated January 2026</span>
-            </div>
-          </header>
-
-          {/* Calculator CTA */}
-          <div className="bg-gradient-to-r from-red-600/20 to-amber-600/20 backdrop-blur-xl rounded-2xl border border-red-500/20 p-6 mb-10">
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-              <div>
-                <h3 className="font-bold text-white mb-1">Calculate Your Salary Now</h3>
-                <p className="text-stone-400 text-sm">See your exact take-home pay with the 2026 tax rates</p>
-              </div>
-              <Link
-                href="/"
-                className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-red-500 to-amber-500 rounded-xl font-semibold text-white text-sm hover:shadow-lg hover:shadow-red-500/25 transition-all whitespace-nowrap"
-              >
-                <Calculator className="w-4 h-4" />
-                Open Calculator
-              </Link>
-            </div>
-          </div>
-
-          {/* Content */}
-          <div 
-            className="blog-content prose prose-invert max-w-none"
-            dangerouslySetInnerHTML={{ __html: cleanContent }}
-          />
-
-          {/* Share */}
-          <div className="mt-12 pt-8 border-t border-white/10">
-            <div className="flex items-center justify-between">
-              <span className="text-stone-400 text-sm">Found this helpful?</span>
-              <button className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 rounded-lg text-stone-300 hover:bg-white/10 transition-colors text-sm">
-                <Share2 className="w-4 h-4" />
-                Share
-              </button>
-            </div>
           </div>
         </div>
       </article>
 
-      {/* Related Articles */}
-      <section className="px-4 py-12 border-t border-white/10">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl font-bold mb-6">Related Guides</h2>
+      {/* Related — cream section */}
+      <section className="bg-brand-50">
+        <div className="max-w-5xl mx-auto px-5 sm:px-6 py-14">
+          <div className="flex items-baseline justify-between mb-6">
+            <p className="section-marker">§ NEXT</p>
+            <p className="text-[10px] tracking-[0.15em] text-brand-700 uppercase">Related</p>
+          </div>
+          <h2 className="editorial-h text-[26px] sm:text-[32px] mb-8 text-brand-900">
+            Keep <span className="accent">reading</span>
+          </h2>
           <div className="grid md:grid-cols-3 gap-4">
             {relatedArticles.map((related) => (
               <Link
                 key={related.slug}
                 href={`/blog/${related.slug}`}
-                className="group bg-white/5 backdrop-blur-xl rounded-xl border border-white/10 p-5 hover:bg-white/10 hover:border-white/20 transition-all"
+                className="group bg-white rounded-xl p-5 border border-brand-300/50 hover:border-brand transition-all duration-200 hover:-translate-y-0.5"
               >
-                <h3 className="font-semibold text-white mb-2 group-hover:text-amber-400 transition-colors line-clamp-2">
+                <h3 className="editorial-h text-[17px] text-[#111] mb-2 group-hover:text-brand transition-colors leading-snug">
                   {related.title}
                 </h3>
-                <p className="text-stone-500 text-sm line-clamp-2">
+                <p className="text-[#666] text-[12px] line-clamp-2 leading-relaxed">
                   {related.metaDescription}
                 </p>
               </Link>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Final CTA */}
-      <section className="px-4 pb-20">
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-gradient-to-br from-emerald-600/20 to-emerald-900/20 backdrop-blur-xl rounded-3xl border border-emerald-500/20 p-8 text-center">
-            <h2 className="text-2xl font-bold mb-3">Ready to See Your Net Salary?</h2>
-            <p className="text-stone-300 mb-6">
-              Use our free calculator with the latest 2026 Kenya tax rates.
-            </p>
-            <Link
-              href="/"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-xl font-semibold text-white hover:shadow-lg hover:shadow-emerald-500/25 transition-all"
-            >
-              <Calculator className="w-5 h-5" />
-              Calculate Now
-            </Link>
           </div>
         </div>
       </section>

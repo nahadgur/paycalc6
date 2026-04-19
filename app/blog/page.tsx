@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import { Metadata } from 'next'
 import articles from '@/lib/articles.json'
-import { BookOpen, ArrowRight, Calculator, Clock, TrendingUp } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Kenya Tax & PAYE Guides',
@@ -12,33 +11,32 @@ export const metadata: Metadata = {
   },
 }
 
-// Categorize articles
-const categories = {
-  'How-To Guides': [
+const categories: Record<string, string[]> = {
+  'How-to guides': [
     'how-to-calculate-your-paye-tax-in-kenya',
     'how-kenyan-employees-can-calculate-their-net-salary',
     'working-backwards-from-net-to-gross-salary-in-kenya',
   ],
-  'Statutory Deductions': [
+  'Statutory deductions': [
     'the-complete-guide-to-nssf-contributions-in-kenya-for-2026',
     'understanding-shif-deductions-in-kenya-and-what-replaced-nhif',
     'everything-you-need-to-know-about-kenyas-housing-levy',
   ],
-  'Tax Savings': [
+  'Tax savings': [
     '7-legal-ways-kenyan-employees-can-reduce-their-paye',
     'how-insurance-relief-works-for-kenyan-taxpayers',
     'claiming-mortgage-interest-relief-on-your-kenyan-tax-return',
     'why-kenyan-employees-should-max-out-their-pension-contributions',
     'tax-benefits-for-persons-with-disability-in-kenya',
   ],
-  'Salary Breakdowns': [
+  'Salary breakdowns': [
     'what-a-kes-50000-salary-actually-looks-like-after-tax-in-kenya',
     'take-home-pay-on-a-kes-100000-salary-in-kenya',
     'how-much-tax-do-you-pay-on-kes-150000-in-kenya',
     'the-real-cost-of-earning-kes-200000-in-kenya',
     'paye-rates-for-high-earners-in-kenya-explained',
   ],
-  'Employment Situations': [
+  'Employment situations': [
     'how-kenyan-employers-tax-your-bonus-and-13th-month-pay',
     'freelancing-vs-employment-in-kenya-and-which-pays-less-tax',
     'how-helb-loan-repayments-are-deducted-from-kenyan-salaries',
@@ -46,13 +44,13 @@ const categories = {
     'what-to-do-if-your-kenyan-employer-is-deducting-wrong-paye',
     'how-kenyan-couples-can-file-taxes-together-or-separately',
   ],
-  'For Employers': [
+  'For employers': [
     'the-true-cost-of-hiring-an-employee-in-kenya',
     'a-kenyan-employers-guide-to-nssf-and-housing-levy-obligations',
     'filing-paye-returns-on-itax-in-kenya-without-getting-penalised',
     'taxable-benefits-in-kind-that-kenyan-employers-must-declare',
   ],
-  'News & Updates': [
+  'News & updates': [
     'what-the-kenya-finance-bill-2025-means-for-your-salary',
     'key-kra-tax-deadlines-every-kenyan-should-know-in-2026',
     'how-the-new-nssf-rates-affect-kenyan-workers',
@@ -62,63 +60,65 @@ const categories = {
   ],
 }
 
-const categoryIcons: Record<string, React.ReactNode> = {
-  'How-To Guides': <Calculator className="w-5 h-5" />,
-  'Statutory Deductions': <BookOpen className="w-5 h-5" />,
-  'Tax Savings': <TrendingUp className="w-5 h-5" />,
-  'Salary Breakdowns': <Clock className="w-5 h-5" />,
-}
-
 export default function BlogPage() {
   const articleMap = new Map(articles.map(a => [a.slug, a]))
+  const featuredSlugs = [
+    'how-to-calculate-your-paye-tax-in-kenya',
+    'the-complete-guide-to-nssf-contributions-in-kenya-for-2026',
+    '7-legal-ways-kenyan-employees-can-reduce-their-paye',
+  ]
 
   return (
-    <div className="min-h-screen">
-      {/* Hero */}
-      <section className="py-16 px-4 text-center">
-        <div className="max-w-4xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 rounded-full border border-white/10 mb-6">
-            <BookOpen className="w-4 h-4 text-amber-400" />
-            <span className="text-sm text-stone-300">30 In-Depth Guides</span>
+    <div className="bg-white">
+      {/* Hero — red canvas Bold Poster */}
+      <section className="bg-brand text-white">
+        <div className="max-w-5xl mx-auto px-5 sm:px-6 py-16 sm:py-20">
+          <div className="flex justify-between items-baseline mb-6 text-[11px] tracking-[0.2em] uppercase font-medium">
+            <span>Kenya · 2026</span>
+            <span className="opacity-80">The guides</span>
           </div>
-          <h1 className="text-4xl md:text-5xl font-black mb-4">
-            <span className="bg-gradient-to-r from-red-500 via-amber-400 to-emerald-500 bg-clip-text text-transparent">
-              Kenya Tax & PAYE
-            </span>{' '}
-            Guides
+          <h1 className="editorial-h text-[44px] sm:text-[72px] mb-4">
+            Kenya tax, <span className="italic">explained</span>.
           </h1>
-          <p className="text-stone-400 text-lg max-w-2xl mx-auto">
-            Everything you need to know about PAYE, NSSF, SHIF, Housing Levy, and how to legally reduce your tax in Kenya.
+          <p className="text-[14px] sm:text-[16px] opacity-90 max-w-xl leading-relaxed">
+            Thirty in-depth guides on PAYE, NSSF, SHIF, Housing Levy, and every legal way to reduce your tax in Kenya.
           </p>
+          <div className="mt-8 h-px bg-white/40"></div>
         </div>
       </section>
 
-      {/* Featured Articles */}
-      <section className="px-4 pb-12">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-2xl font-bold mb-6">Featured Guides</h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            {['how-to-calculate-your-paye-tax-in-kenya', 'the-complete-guide-to-nssf-contributions-in-kenya-for-2026', '7-legal-ways-kenyan-employees-can-reduce-their-paye'].map((slug) => {
+      {/* Featured — white */}
+      <section className="bg-white">
+        <div className="max-w-5xl mx-auto px-5 sm:px-6 py-14">
+          <div className="flex items-baseline justify-between mb-6">
+            <p className="section-marker">§ 01</p>
+            <p className="text-[10px] tracking-[0.15em] text-[#888] uppercase">Start here</p>
+          </div>
+          <h2 className="editorial-h text-[26px] sm:text-[32px] mb-8">
+            Featured <span className="accent">guides</span>
+          </h2>
+          <div className="grid md:grid-cols-3 gap-5">
+            {featuredSlugs.map((slug, i) => {
               const article = articleMap.get(slug)
               if (!article) return null
               return (
-                <Link 
+                <Link
                   key={slug}
                   href={`/blog/${slug}`}
-                  className="group bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-2xl border border-white/10 p-6 hover:border-amber-500/50 transition-all duration-300"
+                  className="group relative bg-white border border-[#eee] rounded-2xl p-6 hover:border-brand transition-all duration-300 hover:-translate-y-0.5 flex flex-col"
                 >
-                  <div className="flex items-center gap-2 text-amber-400 text-sm mb-3">
-                    <BookOpen className="w-4 h-4" />
-                    <span>Featured</span>
+                  <div className="absolute top-4 right-4 w-6 h-6 bg-brand-50 rounded-full flex items-center justify-center text-[10px] font-medium text-brand-700">
+                    {String(i + 1).padStart(2, '0')}
                   </div>
-                  <h3 className="text-lg font-bold text-white mb-2 group-hover:text-amber-400 transition-colors">
+                  <p className="section-marker text-[10px] mb-3">Featured</p>
+                  <h3 className="editorial-h text-[20px] mb-3 group-hover:text-brand transition-colors">
                     {article.title}
                   </h3>
-                  <p className="text-stone-400 text-sm line-clamp-2 mb-4">
+                  <p className="text-[#666] text-[13px] leading-relaxed line-clamp-3 mb-4">
                     {article.metaDescription}
                   </p>
-                  <div className="flex items-center gap-2 text-amber-400 text-sm font-medium">
-                    Read Guide <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <div className="mt-auto text-brand text-[12px] font-medium flex items-center gap-1">
+                    Read guide <span className="group-hover:translate-x-1 transition-transform inline-block">→</span>
                   </div>
                 </Link>
               )
@@ -127,55 +127,49 @@ export default function BlogPage() {
         </div>
       </section>
 
-      {/* All Categories */}
-      <section className="px-4 pb-20">
-        <div className="max-w-7xl mx-auto space-y-12">
-          {Object.entries(categories).map(([category, slugs]) => (
-            <div key={category}>
-              <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
-                <div className="w-1 h-6 bg-gradient-to-b from-red-500 to-amber-500 rounded-full" />
-                {category}
-              </h2>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {slugs.map((slug) => {
-                  const article = articleMap.get(slug)
-                  if (!article) return null
-                  return (
-                    <Link
-                      key={slug}
-                      href={`/blog/${slug}`}
-                      className="group bg-white/5 backdrop-blur-xl rounded-xl border border-white/10 p-5 hover:bg-white/10 hover:border-white/20 transition-all"
-                    >
-                      <h3 className="font-semibold text-white mb-2 group-hover:text-amber-400 transition-colors line-clamp-2">
-                        {article.title}
-                      </h3>
-                      <p className="text-stone-500 text-sm line-clamp-2">
-                        {article.metaDescription}
-                      </p>
-                    </Link>
-                  )
-                })}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+      {/* All categories — cream section */}
+      <section className="bg-brand-50">
+        <div className="max-w-5xl mx-auto px-5 sm:px-6 py-14">
+          <div className="flex items-baseline justify-between mb-6">
+            <p className="section-marker">§ 02</p>
+            <p className="text-[10px] tracking-[0.15em] text-brand-700 uppercase">By category</p>
+          </div>
+          <h2 className="editorial-h text-[26px] sm:text-[32px] mb-10 text-brand-900">
+            The full <span className="accent">library</span>
+          </h2>
 
-      {/* CTA */}
-      <section className="px-4 pb-20">
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-gradient-to-br from-red-600/20 to-amber-600/20 backdrop-blur-xl rounded-3xl border border-red-500/20 p-8 md:p-12 text-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">Ready to Calculate Your Salary?</h2>
-            <p className="text-stone-300 mb-6">
-              Use our free PAYE calculator to see your exact take-home pay with all 2026 deductions.
-            </p>
-            <Link
-              href="/"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-red-500 to-amber-500 rounded-xl font-semibold text-white hover:shadow-lg hover:shadow-red-500/25 transition-all"
-            >
-              <Calculator className="w-5 h-5" />
-              Open Calculator
-            </Link>
+          <div className="space-y-10">
+            {Object.entries(categories).map(([category, slugs], catIdx) => (
+              <div key={category}>
+                <div className="flex items-baseline gap-3 mb-4 pb-3 border-b border-brand-300">
+                  <span className="text-[10px] text-brand-700 font-medium tracking-wider">
+                    {String(catIdx + 1).padStart(2, '0')}
+                  </span>
+                  <h3 className="editorial-h text-[20px] text-brand-900">{category}</h3>
+                  <span className="text-[11px] text-brand-700 opacity-70 ml-auto">{slugs.length} guide{slugs.length > 1 ? 's' : ''}</span>
+                </div>
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                  {slugs.map((slug) => {
+                    const article = articleMap.get(slug)
+                    if (!article) return null
+                    return (
+                      <Link
+                        key={slug}
+                        href={`/blog/${slug}`}
+                        className="group bg-white rounded-xl p-5 border border-brand-300/50 hover:border-brand transition-all duration-200 hover:-translate-y-0.5"
+                      >
+                        <h4 className="font-medium text-[14px] text-[#111] mb-2 group-hover:text-brand transition-colors leading-snug">
+                          {article.title}
+                        </h4>
+                        <p className="text-[#666] text-[12px] line-clamp-2 leading-relaxed">
+                          {article.metaDescription}
+                        </p>
+                      </Link>
+                    )
+                  })}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
