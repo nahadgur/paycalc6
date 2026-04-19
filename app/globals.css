@@ -15,7 +15,6 @@
   --brand-900: #2a0f0c;
   --ink: #111111;
   --ink-soft: #2a2a2a;
-  --cream: #FFF5F2;
 }
 
 html, body {
@@ -79,179 +78,186 @@ input[type="range"]::-moz-range-track {
   background: #FFD9D3;
 }
 
-/* ===== CALCULATOR RE-THEMING — scoped to .paye-app =====
-   Surgical overrides. Critical: we do NOT blanket override .bg-gradient-to-r
-   or .bg-gradient-to-br — those are used for almost every card surface in
-   the original component. */
+/* ===== CALCULATOR RE-THEMING =====
+   Critical: scoped to .paye-calc-body (the calculator tab content area ONLY).
+   NOT scoped to .paye-app because that includes the dark benchmarks section
+   and other sibling panels that intentionally use white text on dark. */
 
-/* Dark page background → white */
-.paye-app [class*="from-stone-950"],
-.paye-app [class*="via-stone-900"],
-.paye-app [class*="to-stone-950"] {
+/* Kill dark page background */
+.paye-calc-body [class*="from-stone-950"],
+.paye-calc-body [class*="via-stone-900"],
+.paye-calc-body [class*="to-stone-950"] {
   background-image: none !important;
   background-color: #ffffff !important;
 }
 
-/* Animated blob backgrounds — hide */
-.paye-app .blur-3xl { display: none !important; }
+/* Hide animated blobs */
+.paye-calc-body .blur-3xl { display: none !important; }
 
-/* Dark glass white/5 white/10 → white + light border */
-.paye-app .bg-white\/5 {
+/* Glass cards → white + light border */
+.paye-calc-body .bg-white\/5 {
   background-color: #ffffff !important;
   border: 0.5px solid #ececec !important;
 }
-.paye-app .bg-white\/10,
-.paye-app .hover\:bg-white\/10:hover {
+.paye-calc-body .bg-white\/10,
+.paye-calc-body .hover\:bg-white\/10:hover {
   background-color: #fafafa !important;
 }
 
-/* The from-white/10 to-white/5 gradient cards → clean cream brand card */
-.paye-app [class*="from-white/10"][class*="to-white/5"] {
+/* Big from-white/10 to-white/5 gradient card → cream card */
+.paye-calc-body [class*="from-white/10"][class*="to-white/5"] {
   background-image: none !important;
   background-color: var(--brand-50) !important;
   border-color: var(--brand-300) !important;
 }
 
 /* Dark borders → light */
-.paye-app .border-white\/10,
-.paye-app .border-white\/20,
-.paye-app .border-stone-700,
-.paye-app .border-stone-800 {
+.paye-calc-body .border-white\/10,
+.paye-calc-body .border-white\/20,
+.paye-calc-body .border-stone-700,
+.paye-calc-body .border-stone-800 {
   border-color: #ececec !important;
 }
 
 /* Kill backdrop blur */
-.paye-app .backdrop-blur-xl,
-.paye-app .backdrop-blur-lg {
+.paye-calc-body .backdrop-blur-xl,
+.paye-calc-body .backdrop-blur-lg {
   backdrop-filter: none !important;
 }
 
-/* Text colours — only inside calculator */
-.paye-app .text-white { color: var(--ink) !important; }
-.paye-app .text-stone-200 { color: #333 !important; }
-.paye-app .text-stone-300 { color: #444 !important; }
-.paye-app .text-stone-400 { color: #666 !important; }
-.paye-app .text-stone-500 { color: #888 !important; }
-.paye-app .text-stone-600 { color: #999 !important; }
+/* Text remapping */
+.paye-calc-body .text-white { color: var(--ink) !important; }
+.paye-calc-body .text-stone-200 { color: #333 !important; }
+.paye-calc-body .text-stone-300 { color: #444 !important; }
+.paye-calc-body .text-stone-400 { color: #666 !important; }
+.paye-calc-body .text-stone-500 { color: #888 !important; }
+.paye-calc-body .text-stone-600 { color: #999 !important; }
 
-/* Net salary card (was emerald glass) → brand cream */
-.paye-app [class*="from-emerald-600/20"],
-.paye-app [class*="from-emerald-900/20"] {
+/* CRITICAL: SVG gauge fills that were fill-white on dark now need dark on light */
+.paye-calc-body .fill-white { fill: var(--ink) !important; }
+.paye-calc-body .fill-stone-400 { fill: #666 !important; }
+
+/* Net salary card (emerald glass) → brand cream card */
+.paye-calc-body [class*="from-emerald-600/20"],
+.paye-calc-body [class*="from-emerald-900/20"] {
   background-image: none !important;
   background-color: var(--brand-50) !important;
   border-color: var(--brand-300) !important;
 }
-.paye-app .text-emerald-400,
-.paye-app .text-emerald-500 {
+.paye-calc-body .text-emerald-400,
+.paye-calc-body .text-emerald-500 {
   color: var(--brand) !important;
 }
-.paye-app .border-emerald-500\/20 {
+.paye-calc-body .border-emerald-500\/20 {
   border-color: var(--brand-300) !important;
 }
 
-/* PAYE card (was red glass) → clean white */
-.paye-app [class*="from-red-600/20"],
-.paye-app [class*="from-red-900/20"] {
+/* PAYE card (red glass) → clean white */
+.paye-calc-body [class*="from-red-600/20"],
+.paye-calc-body [class*="from-red-900/20"] {
   background-image: none !important;
   background-color: #ffffff !important;
   border-color: #ececec !important;
 }
-.paye-app .text-red-400,
-.paye-app .text-red-500 {
+.paye-calc-body .text-red-400,
+.paye-calc-body .text-red-500 {
   color: var(--brand) !important;
 }
-.paye-app .border-red-500\/20 {
+.paye-calc-body .border-red-500\/20 {
   border-color: #ececec !important;
 }
 
-/* Deductions card (was amber glass) → clean white */
-.paye-app [class*="from-amber-600/20"],
-.paye-app [class*="from-amber-900/20"] {
+/* Deductions card (amber glass) → clean white */
+.paye-calc-body [class*="from-amber-600/20"],
+.paye-calc-body [class*="from-amber-900/20"] {
   background-image: none !important;
   background-color: #ffffff !important;
   border-color: #ececec !important;
 }
-.paye-app .text-amber-400,
-.paye-app .text-amber-500 {
+.paye-calc-body .text-amber-400,
+.paye-calc-body .text-amber-500 {
   color: var(--ink) !important;
 }
+.paye-calc-body .text-blue-400 { color: var(--brand-600) !important; }
+.paye-calc-body .text-purple-400 { color: var(--brand-900) !important; }
+.paye-calc-body .text-pink-400 { color: var(--brand) !important; }
 
 /* Inputs */
-.paye-app .bg-stone-800\/50,
-.paye-app .bg-stone-800 {
+.paye-calc-body .bg-stone-800\/50,
+.paye-calc-body .bg-stone-800 {
   background-color: #ffffff !important;
   color: var(--ink) !important;
 }
-.paye-app input[type="number"],
-.paye-app input[type="text"],
-.paye-app select {
+.paye-calc-body input[type="number"],
+.paye-calc-body input[type="text"],
+.paye-calc-body select {
   background-color: #fafafa !important;
   border: 1px solid #ececec !important;
   color: var(--ink) !important;
   border-radius: 8px !important;
 }
-.paye-app input[type="number"]:focus,
-.paye-app input[type="text"]:focus,
-.paye-app select:focus {
+.paye-calc-body input[type="number"]:focus,
+.paye-calc-body input[type="text"]:focus,
+.paye-calc-body select:focus {
   outline: none !important;
   border-color: var(--brand) !important;
   box-shadow: 0 0 0 3px rgba(240, 76, 64, 0.1) !important;
 }
 
-/* Gradient-clipped titles in headings → flat brand red */
-.paye-app h1 .bg-clip-text.text-transparent,
-.paye-app h2 .bg-clip-text.text-transparent {
+/* Gradient-clipped titles inside headings → brand red */
+.paye-calc-body h1 .bg-clip-text.text-transparent,
+.paye-calc-body h2 .bg-clip-text.text-transparent {
   -webkit-background-clip: unset !important;
   background-clip: unset !important;
   color: var(--brand) !important;
   -webkit-text-fill-color: var(--brand) !important;
 }
 
-/* Big display numbers in Fraunces */
-.paye-app .text-5xl.font-black,
-.paye-app .text-6xl.font-black,
-.paye-app .text-7xl.font-black,
-.paye-app .tabular-nums.font-black {
+/* Big display numbers — Fraunces */
+.paye-calc-body .text-5xl.font-black,
+.paye-calc-body .text-6xl.font-black,
+.paye-calc-body .text-7xl.font-black,
+.paye-calc-body .tabular-nums.font-black {
   font-family: 'Fraunces', Georgia, serif;
   font-weight: 500 !important;
   letter-spacing: -0.02em;
   color: var(--ink) !important;
 }
-.paye-app .text-emerald-400.font-black,
-.paye-app [class*="text-emerald-"].font-black {
+.paye-calc-body .text-emerald-400.font-black,
+.paye-calc-body [class*="text-emerald-"].font-black {
   color: var(--brand) !important;
 }
 
-/* CTA buttons with red/amber gradient → flat brand */
-.paye-app button[class*="from-red-500"],
-.paye-app a[class*="from-red-500"],
-.paye-app button[class*="from-red-600"],
-.paye-app a[class*="from-red-600"] {
+/* Red/amber gradient buttons → flat brand */
+.paye-calc-body button[class*="from-red-500"],
+.paye-calc-body a[class*="from-red-500"],
+.paye-calc-body button[class*="from-red-600"],
+.paye-calc-body a[class*="from-red-600"] {
   background-image: none !important;
   background-color: var(--brand) !important;
   color: #ffffff !important;
 }
 
-/* Small icon badges inside cards — stay brand red */
-.paye-app .p-3.bg-gradient-to-br,
-.paye-app .p-2.bg-gradient-to-br {
+/* Small icon badges (stay brand red) */
+.paye-calc-body .p-3.bg-gradient-to-br,
+.paye-calc-body .p-2.bg-gradient-to-br {
   background-image: none !important;
   background-color: var(--brand) !important;
 }
 
-/* Remove shadows */
-.paye-app .shadow-red-500\/25,
-.paye-app .shadow-red-500\/40,
-.paye-app .shadow-emerald-500\/25,
-.paye-app .shadow-lg {
+/* Remove decorative shadows */
+.paye-calc-body .shadow-red-500\/25,
+.paye-calc-body .shadow-red-500\/40,
+.paye-calc-body .shadow-emerald-500\/25,
+.paye-calc-body .shadow-lg {
   box-shadow: none !important;
 }
 
-/* Tax band table */
-.paye-app table {
+/* Tax band table readability */
+.paye-calc-body table {
   border-collapse: collapse;
 }
-.paye-app th {
+.paye-calc-body th {
   color: #666 !important;
   font-weight: 500 !important;
   font-size: 12px !important;
@@ -259,13 +265,13 @@ input[type="range"]::-moz-range-track {
   text-transform: uppercase !important;
   border-bottom: 0.5px solid #ececec !important;
 }
-.paye-app td {
+.paye-calc-body td {
   color: var(--ink) !important;
   border-bottom: 0.5px solid #f3f3f3 !important;
 }
 
-/* Desktop max width — give calculator room to breathe */
-.paye-app main .max-w-7xl {
+/* Desktop width containment — keep calculator legible */
+.paye-calc-body .max-w-7xl {
   max-width: 64rem !important;
 }
 
@@ -291,10 +297,8 @@ input[type="range"]::-moz-range-track {
   text-transform: uppercase;
 }
 
-/* ===== Blog content (light mode, Fraunces headings) ===== */
-.blog-content {
-  color: #333;
-}
+/* ===== Blog content ===== */
+.blog-content { color: #333; }
 
 .blog-content h2 {
   font-family: 'Fraunces', Georgia, serif;
@@ -345,9 +349,7 @@ input[type="range"]::-moz-range-track {
   overflow: hidden;
 }
 
-.blog-content thead {
-  background: var(--brand-50);
-}
+.blog-content thead { background: var(--brand-50); }
 
 .blog-content th {
   text-align: left;
@@ -366,18 +368,14 @@ input[type="range"]::-moz-range-track {
   font-size: 0.95rem;
 }
 
-.blog-content tr:hover td {
-  background: var(--brand-50);
-}
+.blog-content tr:hover td { background: var(--brand-50); }
 
 .blog-content b, .blog-content strong {
   color: var(--ink);
   font-weight: 500;
 }
 
-.blog-content i, .blog-content em {
-  color: var(--ink);
-}
+.blog-content i, .blog-content em { color: var(--ink); }
 
 .blog-content a {
   color: var(--brand);
@@ -385,9 +383,7 @@ input[type="range"]::-moz-range-track {
   text-underline-offset: 2px;
 }
 
-.blog-content a:hover {
-  color: var(--brand-600);
-}
+.blog-content a:hover { color: var(--brand-600); }
 
 .blog-content img {
   border-radius: 12px;
@@ -413,9 +409,7 @@ input[type="range"]::-moz-range-track {
   to { opacity: 1; transform: translateY(0); }
 }
 
-.animate-fadeIn {
-  animation: fadeIn 0.6s ease-out forwards;
-}
+.animate-fadeIn { animation: fadeIn 0.6s ease-out forwards; }
 
 .animate-delay-100 { animation-delay: 0.1s; }
 .animate-delay-200 { animation-delay: 0.2s; }
@@ -437,4 +431,17 @@ input[type="range"]::-moz-range-track {
   background: currentColor;
   animation: pulseDot 2s infinite;
   z-index: -1;
+}
+
+/* ===== Sr-only (for SEO hidden keywords) ===== */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }

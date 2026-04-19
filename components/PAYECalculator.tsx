@@ -483,39 +483,46 @@ export default function PAYECalculatorV2() {
   return (
     <div className="paye-app min-h-screen bg-white overflow-x-hidden">
 
-      {/* Hero — Bold Poster red canvas */}
-      <header className="bg-brand text-white">
-        <div className="max-w-5xl mx-auto px-5 sm:px-6 pt-10 sm:pt-14 pb-10">
-          <div className={`transition-all duration-1000 ${animated ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-            {/* Issue line */}
-            <div className="flex justify-between items-baseline mb-6 text-[11px] tracking-[0.2em] uppercase font-medium">
-              <span>Kenya · 2026</span>
-              <span className="opacity-80">Issue №01</span>
+      {/* Hero — Bold Poster red, contained with rounded corners */}
+      <div className="bg-white pt-4 sm:pt-6 px-4 sm:px-6">
+        <header className="max-w-5xl mx-auto bg-brand text-white rounded-2xl sm:rounded-3xl overflow-hidden">
+          <div className="px-5 sm:px-8 md:px-10 pt-10 sm:pt-14 pb-10">
+            <div className={`transition-all duration-1000 ${animated ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+              {/* Issue line */}
+              <div className="flex justify-between items-baseline mb-6 text-[11px] tracking-[0.2em] uppercase font-medium">
+                <span>Kenya · 2026 KRA rates</span>
+                <span className="opacity-80">Issue №01</span>
+              </div>
+
+              {/* SEO H1 — keyword-rich, crawler-priority */}
+              <h1 className="text-[22px] sm:text-[28px] font-medium leading-tight mb-3 max-w-3xl" style={{ fontFamily: "'Inter', sans-serif" }}>
+                Kenya PAYE Calculator 2026 — Net Salary, NSSF, SHIF &amp; Housing Levy
+              </h1>
+
+              {/* Editorial tagline — visual anchor */}
+              <p className="editorial-h text-[48px] sm:text-[80px] mb-5" style={{ fontFamily: "'Fraunces', Georgia, serif", lineHeight: 1 }}>
+                Calculate your <span className="italic">take-home</span>.
+              </p>
+
+              <p className="text-[13px] sm:text-[15px] opacity-90 max-w-xl leading-relaxed">
+                Free Kenya PAYE and salary calculator. Works out your monthly net pay after PAYE tax, NSSF pension, SHIF (former NHIF), Housing Levy, HELB, SACCO and benefits in kind — using 2026 KRA tax bands.
+              </p>
+              <div className="mt-8 h-px bg-white/40"></div>
             </div>
 
-            {/* Big editorial title */}
-            <p className="text-[12px] opacity-90 tracking-[0.12em] uppercase font-medium mb-2">Net salary</p>
-            <h1 className="editorial-h text-[54px] sm:text-[88px] mb-4" style={{ fontFamily: "'Fraunces', Georgia, serif" }}>
-              Calculate your <span className="italic">take-home</span>.
-            </h1>
-            <p className="text-[13px] sm:text-[15px] opacity-90 max-w-xl leading-relaxed">
-              Complete Kenya payroll calculator. PAYE, NSSF, SHIF, Housing Levy, HELB, SACCO, benefits in kind — updated with 2026 KRA rates.
-            </p>
-            <div className="mt-8 h-px bg-white/40"></div>
+            {/* Tab Navigation */}
+            <div className="flex flex-wrap gap-2 mt-6">
+              <TabButton active={activeTab === 'calculator'} onClick={() => setActiveTab('calculator')} icon={Calculator} label="Calculator" />
+              <TabButton active={activeTab === 'reverse'} onClick={() => setActiveTab('reverse')} icon={RefreshCw} label="Net → Gross" />
+              <TabButton active={activeTab === 'bonus'} onClick={() => setActiveTab('bonus')} icon={Gift} label="Bonus" />
+              <TabButton active={activeTab === 'employer'} onClick={() => setActiveTab('employer')} icon={Building} label="Employer Cost" />
+              <TabButton active={activeTab === 'compare'} onClick={() => setActiveTab('compare')} icon={BarChart3} label="Compare" />
+            </div>
           </div>
+        </header>
+      </div>
 
-          {/* Tab Navigation */}
-          <div className="flex flex-wrap gap-2 mt-6">
-            <TabButton active={activeTab === 'calculator'} onClick={() => setActiveTab('calculator')} icon={Calculator} label="Calculator" />
-            <TabButton active={activeTab === 'reverse'} onClick={() => setActiveTab('reverse')} icon={RefreshCw} label="Net → Gross" />
-            <TabButton active={activeTab === 'bonus'} onClick={() => setActiveTab('bonus')} icon={Gift} label="Bonus" />
-            <TabButton active={activeTab === 'employer'} onClick={() => setActiveTab('employer')} icon={Building} label="Employer Cost" />
-            <TabButton active={activeTab === 'compare'} onClick={() => setActiveTab('compare')} icon={BarChart3} label="Compare" />
-          </div>
-        </div>
-      </header>
-
-      <main className="relative z-10 px-4 md:px-6 pt-8 pb-20 bg-white">
+      <main className="paye-calc-body relative z-10 px-4 md:px-6 pt-8 pb-16 bg-white">
         <div className="max-w-5xl mx-auto">
           <p className="section-marker mb-4">§ 01 · CALCULATION</p>
 
@@ -1231,84 +1238,88 @@ export default function PAYECalculatorV2() {
         </div>
       </main>
 
-      {/* ================= SALARY BENCHMARKS — dark band ================= */}
-      <section className="bg-[#111] text-white">
-        <div className="max-w-5xl mx-auto px-5 sm:px-6 py-14">
-          <div className="flex items-baseline justify-between mb-4">
-            <p className="section-marker" style={{ color: '#F04C40' }}>§ 02</p>
-            <p className="text-[10px] tracking-[0.15em] text-white/60 uppercase">Common salaries</p>
+      {/* ================= SALARY BENCHMARKS — dark contained panel ================= */}
+      <div className="bg-white px-4 sm:px-6 pb-6">
+        <section className="max-w-5xl mx-auto bg-[#111] text-white rounded-2xl sm:rounded-3xl overflow-hidden">
+          <div className="px-5 sm:px-8 md:px-10 py-12 sm:py-14">
+            <div className="flex items-baseline justify-between mb-4">
+              <p className="section-marker" style={{ color: '#F04C40' }}>§ 02</p>
+              <p className="text-[10px] tracking-[0.15em] text-white/60 uppercase">Common salaries</p>
+            </div>
+            <h2 className="editorial-h text-[26px] sm:text-[32px] mb-8" style={{ fontFamily: "'Fraunces', Georgia, serif" }}>
+              Salary <span className="italic" style={{ color: '#F04C40' }}>benchmarks</span>
+            </h2>
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3">
+              {[
+                { gross: 50000, net: 39128, label: 'Entry level' },
+                { gross: 75000, net: 55436, label: 'Mid level' },
+                { gross: 100000, net: 70343, label: 'Senior' },
+                { gross: 150000, net: 102843, label: 'Lead' },
+                { gross: 200000, net: 135343, label: 'Exec' },
+                { gross: 300000, net: 200343, label: 'Executive' },
+              ].map((row) => (
+                <a
+                  key={row.gross}
+                  href={`/blog/take-home-pay-on-a-kes-${row.gross}-salary-in-kenya`}
+                  className="group flex items-center justify-between p-4 bg-white/5 hover:bg-white/10 rounded-xl border border-white/10 hover:border-[#F04C40]/50 transition-all"
+                >
+                  <div>
+                    <p className="text-[14px] font-medium m-0 text-white">Ksh {row.gross.toLocaleString()}</p>
+                    <p className="text-[10px] text-white/60 m-0 tracking-wider uppercase">{row.label}</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-[14px] font-medium m-0" style={{ color: '#F04C40' }}>{row.net.toLocaleString()}</p>
+                    <p className="text-[10px] text-white/60 m-0">take-home</p>
+                  </div>
+                </a>
+              ))}
+            </div>
           </div>
-          <h2 className="editorial-h text-[26px] sm:text-[32px] mb-8" style={{ fontFamily: "'Fraunces', Georgia, serif" }}>
-            Salary <span className="italic" style={{ color: '#F04C40' }}>benchmarks</span>
-          </h2>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3">
-            {[
-              { gross: 50000, net: 39128, label: 'Entry level' },
-              { gross: 75000, net: 55436, label: 'Mid level' },
-              { gross: 100000, net: 70343, label: 'Senior' },
-              { gross: 150000, net: 102843, label: 'Lead' },
-              { gross: 200000, net: 135343, label: 'Exec' },
-              { gross: 300000, net: 200343, label: 'Executive' },
-            ].map((row) => (
-              <a
-                key={row.gross}
-                href={`/blog/take-home-pay-on-a-kes-${row.gross}-salary-in-kenya`}
-                className="group flex items-center justify-between p-4 bg-white/5 hover:bg-white/10 rounded-xl border border-white/10 hover:border-[#F04C40]/50 transition-all"
-              >
-                <div>
-                  <p className="text-[14px] font-medium m-0">Ksh {row.gross.toLocaleString()}</p>
-                  <p className="text-[10px] text-white/50 m-0 tracking-wider uppercase">{row.label}</p>
-                </div>
-                <div className="text-right">
-                  <p className="text-[14px] font-medium m-0" style={{ color: '#F04C40' }}>{row.net.toLocaleString()}</p>
-                  <p className="text-[10px] text-white/50 m-0">take-home</p>
-                </div>
+        </section>
+      </div>
+
+      {/* ================= TOOLS & GUIDES — cream contained panel ================= */}
+      <div className="bg-white px-4 sm:px-6 pb-8">
+        <section className="max-w-5xl mx-auto bg-brand-50 rounded-2xl sm:rounded-3xl overflow-hidden">
+          <div className="px-5 sm:px-8 md:px-10 py-12 sm:py-14">
+            <div className="flex items-baseline justify-between mb-4">
+              <p className="section-marker">§ 03</p>
+              <p className="text-[10px] tracking-[0.15em] text-brand-700 uppercase">Keep going</p>
+            </div>
+            <h2 className="editorial-h text-[26px] sm:text-[32px] mb-8 text-brand-900" style={{ fontFamily: "'Fraunces', Georgia, serif" }}>
+              Guides & <span className="italic text-brand">explainers</span>
+            </h2>
+
+            <div className="grid sm:grid-cols-2 gap-3">
+              {[
+                { href: '/blog/how-to-calculate-your-paye-tax-in-kenya', title: 'How to calculate your PAYE', desc: 'Step-by-step using 2026 KRA bands' },
+                { href: '/blog/the-complete-guide-to-nssf-contributions-in-kenya-for-2026', title: 'NSSF contributions 2026', desc: '6% rate, 72K cap, what changed' },
+                { href: '/blog/understanding-shif-deductions-in-kenya-and-what-replaced-nhif', title: 'SHIF replaces NHIF', desc: 'The new 2.75% health deduction' },
+                { href: '/blog/everything-you-need-to-know-about-kenyas-housing-levy', title: "Kenya's Housing Levy", desc: 'Why 1.5% comes out of every salary' },
+                { href: '/blog/7-legal-ways-kenyan-employees-can-reduce-their-paye', title: '7 ways to reduce your PAYE', desc: 'Pension, mortgage, insurance relief' },
+                { href: '/blog/how-kenyan-employers-tax-your-bonus-and-13th-month-pay', title: 'Bonus & 13th month pay', desc: 'How your extras get taxed' },
+              ].map((g) => (
+                <a
+                  key={g.href}
+                  href={g.href}
+                  className="group block p-5 bg-white rounded-xl border border-brand-300/50 hover:border-brand hover:-translate-y-0.5 transition-all"
+                >
+                  <h3 className="editorial-h text-[16px] text-[#111] m-0 mb-1 group-hover:text-brand transition-colors leading-snug" style={{ fontFamily: "'Fraunces', Georgia, serif", fontWeight: 500 }}>
+                    {g.title}
+                  </h3>
+                  <p className="text-[12px] text-[#666] m-0 leading-relaxed">{g.desc}</p>
+                </a>
+              ))}
+            </div>
+
+            <div className="text-center mt-8">
+              <a href="/blog" className="inline-flex items-center gap-2 text-brand-700 hover:text-brand text-[13px] font-medium">
+                See all 30 guides →
               </a>
-            ))}
+            </div>
           </div>
-        </div>
-      </section>
-
-      {/* ================= TOOLS & GUIDES — cream editorial band ================= */}
-      <section className="bg-brand-50">
-        <div className="max-w-5xl mx-auto px-5 sm:px-6 py-14">
-          <div className="flex items-baseline justify-between mb-4">
-            <p className="section-marker">§ 03</p>
-            <p className="text-[10px] tracking-[0.15em] text-brand-700 uppercase">Keep going</p>
-          </div>
-          <h2 className="editorial-h text-[26px] sm:text-[32px] mb-8 text-brand-900" style={{ fontFamily: "'Fraunces', Georgia, serif" }}>
-            Guides & <span className="italic text-brand">explainers</span>
-          </h2>
-
-          <div className="grid sm:grid-cols-2 gap-3">
-            {[
-              { href: '/blog/how-to-calculate-your-paye-tax-in-kenya', title: 'How to calculate your PAYE', desc: 'Step-by-step using 2026 KRA bands' },
-              { href: '/blog/the-complete-guide-to-nssf-contributions-in-kenya-for-2026', title: 'NSSF contributions 2026', desc: '6% rate, 72K cap, what changed' },
-              { href: '/blog/understanding-shif-deductions-in-kenya-and-what-replaced-nhif', title: 'SHIF replaces NHIF', desc: 'The new 2.75% health deduction' },
-              { href: '/blog/everything-you-need-to-know-about-kenyas-housing-levy', title: "Kenya's Housing Levy", desc: 'Why 1.5% comes out of every salary' },
-              { href: '/blog/7-legal-ways-kenyan-employees-can-reduce-their-paye', title: '7 ways to reduce your PAYE', desc: 'Pension, mortgage, insurance relief' },
-              { href: '/blog/how-kenyan-employers-tax-your-bonus-and-13th-month-pay', title: 'Bonus & 13th month pay', desc: 'How your extras get taxed' },
-            ].map((g) => (
-              <a
-                key={g.href}
-                href={g.href}
-                className="group block p-5 bg-white rounded-xl border border-brand-300/50 hover:border-brand hover:-translate-y-0.5 transition-all"
-              >
-                <h3 className="editorial-h text-[16px] text-[#111] m-0 mb-1 group-hover:text-brand transition-colors leading-snug" style={{ fontFamily: "'Fraunces', Georgia, serif", fontWeight: 500 }}>
-                  {g.title}
-                </h3>
-                <p className="text-[12px] text-[#666] m-0 leading-relaxed">{g.desc}</p>
-              </a>
-            ))}
-          </div>
-
-          <div className="text-center mt-8">
-            <a href="/blog" className="inline-flex items-center gap-2 text-brand-700 hover:text-brand text-[13px] font-medium">
-              See all 30 guides →
-            </a>
-          </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </div>
   );
 }

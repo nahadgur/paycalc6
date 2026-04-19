@@ -79,9 +79,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Main */}
         <main>{children}</main>
 
-        {/* Footer — Bold Poster red block */}
-        <footer className="bg-brand text-white mt-0">
-          <div className="max-w-5xl mx-auto px-5 sm:px-6 py-14">
+        {/* Footer — Bold Poster red block, contained */}
+        <div className="bg-white px-4 sm:px-6 pb-6">
+          <footer className="max-w-5xl mx-auto bg-brand text-white rounded-2xl sm:rounded-3xl overflow-hidden px-5 sm:px-8 md:px-10 py-12 sm:py-14">
             {/* CTA band */}
             <div className="text-center mb-14">
               <p className="text-[11px] tracking-[0.2em] opacity-85 font-medium mb-3">— KEEP GOING —</p>
@@ -150,8 +150,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 Estimates only. Consult a qualified tax professional for official advice.
               </p>
             </div>
-          </div>
-        </footer>
+          </footer>
+        </div>
       </body>
     </html>
   )
