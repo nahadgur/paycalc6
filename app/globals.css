@@ -16,7 +16,6 @@
   --ink: #111111;
   --ink-soft: #2a2a2a;
   --cream: #FFF5F2;
-  --surface: #ffffff;
 }
 
 html, body {
@@ -30,13 +29,11 @@ body {
   background: #ffffff;
 }
 
-/* Scrollbar */
 ::-webkit-scrollbar { width: 10px; }
 ::-webkit-scrollbar-track { background: var(--brand-50); }
 ::-webkit-scrollbar-thumb { background: var(--brand-300); border-radius: 5px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--brand); }
 
-/* Brand slider */
 input[type="range"] {
   -webkit-appearance: none;
   appearance: none;
@@ -58,9 +55,7 @@ input[type="range"]::-webkit-slider-thumb {
   transition: transform .15s ease;
 }
 
-input[type="range"]::-webkit-slider-thumb:hover {
-  transform: scale(1.12);
-}
+input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.12); }
 
 input[type="range"]::-moz-range-thumb {
   width: 22px;
@@ -84,150 +79,197 @@ input[type="range"]::-moz-range-track {
   background: #FFD9D3;
 }
 
-/* When slider sits inside a red hero section, track goes darker */
-.on-brand input[type="range"]::-webkit-slider-runnable-track {
-  background: rgba(255,255,255,0.25);
-}
-.on-brand input[type="range"]::-moz-range-track {
-  background: rgba(255,255,255,0.25);
-}
+/* ===== CALCULATOR RE-THEMING — scoped to .paye-app =====
+   Surgical overrides. Critical: we do NOT blanket override .bg-gradient-to-r
+   or .bg-gradient-to-br — those are used for almost every card surface in
+   the original component. */
 
-/* ===== OVERRIDES FOR OLD DARK-THEMED TAILWIND CLASSES =====
-   The legacy calculator component uses Tailwind classes from the prior dark
-   aesthetic (bg-stone-950, from-white/10, text-white, etc.). Rather than
-   rewriting 1200+ lines of JSX, we override those class combinations here to
-   fit the Bold Poster light/editorial theme while keeping all logic intact. */
-
-/* Legacy dark page backgrounds → white */
-.bg-stone-950, .from-stone-950, .to-stone-950, .via-stone-900, .from-stone-900, .to-stone-900, .bg-stone-900 {
+/* Dark page background → white */
+.paye-app [class*="from-stone-950"],
+.paye-app [class*="via-stone-900"],
+.paye-app [class*="to-stone-950"] {
+  background-image: none !important;
   background-color: #ffffff !important;
 }
 
-/* Legacy text-white everywhere inside the calculator → ink */
-.paye-app {
-  color: var(--ink);
-}
+/* Animated blob backgrounds — hide */
+.paye-app .blur-3xl { display: none !important; }
 
-.paye-app .text-white { color: var(--ink) !important; }
-.paye-app .text-stone-300 { color: #555 !important; }
-.paye-app .text-stone-400 { color: #666 !important; }
-.paye-app .text-stone-500 { color: #888 !important; }
-.paye-app .text-stone-600 { color: #999 !important; }
-
-/* Legacy dark glass cards → clean white cards with 0.5px border */
-.paye-app .bg-white\/5,
-.paye-app .bg-white\/10 {
+/* Dark glass white/5 white/10 → white + light border */
+.paye-app .bg-white\/5 {
   background-color: #ffffff !important;
-  border-color: #eeeeee !important;
+  border: 0.5px solid #ececec !important;
+}
+.paye-app .bg-white\/10,
+.paye-app .hover\:bg-white\/10:hover {
+  background-color: #fafafa !important;
 }
 
-.paye-app .from-white\/10, .paye-app .to-white\/5 {
-  --tw-gradient-from: #ffffff !important;
-  --tw-gradient-to: #ffffff !important;
-}
-
-.paye-app .border-white\/10,
-.paye-app .border-white\/20,
-.paye-app .border-stone-700,
-.paye-app .border-stone-800 {
-  border-color: #eeeeee !important;
-}
-
-.paye-app .backdrop-blur-xl {
-  backdrop-filter: none !important;
-}
-
-/* Legacy colored tinted cards → cream branded cards */
-.paye-app .from-emerald-600\/20,
-.paye-app .from-emerald-900\/20,
-.paye-app .to-emerald-900\/20,
-.paye-app .to-emerald-600\/20,
-.paye-app .bg-emerald-600\/20,
-.paye-app .border-emerald-500\/20 {
-  --tw-gradient-from: var(--brand-50) !important;
-  --tw-gradient-to: var(--brand-100) !important;
+/* The from-white/10 to-white/5 gradient cards → clean cream brand card */
+.paye-app [class*="from-white/10"][class*="to-white/5"] {
+  background-image: none !important;
   background-color: var(--brand-50) !important;
   border-color: var(--brand-300) !important;
 }
 
+/* Dark borders → light */
+.paye-app .border-white\/10,
+.paye-app .border-white\/20,
+.paye-app .border-stone-700,
+.paye-app .border-stone-800 {
+  border-color: #ececec !important;
+}
+
+/* Kill backdrop blur */
+.paye-app .backdrop-blur-xl,
+.paye-app .backdrop-blur-lg {
+  backdrop-filter: none !important;
+}
+
+/* Text colours — only inside calculator */
+.paye-app .text-white { color: var(--ink) !important; }
+.paye-app .text-stone-200 { color: #333 !important; }
+.paye-app .text-stone-300 { color: #444 !important; }
+.paye-app .text-stone-400 { color: #666 !important; }
+.paye-app .text-stone-500 { color: #888 !important; }
+.paye-app .text-stone-600 { color: #999 !important; }
+
+/* Net salary card (was emerald glass) → brand cream */
+.paye-app [class*="from-emerald-600/20"],
+.paye-app [class*="from-emerald-900/20"] {
+  background-image: none !important;
+  background-color: var(--brand-50) !important;
+  border-color: var(--brand-300) !important;
+}
 .paye-app .text-emerald-400,
 .paye-app .text-emerald-500 {
   color: var(--brand) !important;
 }
-
-.paye-app .from-red-600\/20, .paye-app .to-red-900\/20, .paye-app .border-red-500\/20 {
-  --tw-gradient-from: #fff !important;
-  --tw-gradient-to: #fff !important;
-  background-color: #fff !important;
-  border-color: #eee !important;
+.paye-app .border-emerald-500\/20 {
+  border-color: var(--brand-300) !important;
 }
 
-.paye-app .text-red-400, .paye-app .text-red-500 {
+/* PAYE card (was red glass) → clean white */
+.paye-app [class*="from-red-600/20"],
+.paye-app [class*="from-red-900/20"] {
+  background-image: none !important;
+  background-color: #ffffff !important;
+  border-color: #ececec !important;
+}
+.paye-app .text-red-400,
+.paye-app .text-red-500 {
   color: var(--brand) !important;
 }
-
-.paye-app .from-amber-600\/20, .paye-app .to-amber-900\/20 {
-  --tw-gradient-from: #fff !important;
-  --tw-gradient-to: #fff !important;
+.paye-app .border-red-500\/20 {
+  border-color: #ececec !important;
 }
 
-.paye-app .text-amber-400, .paye-app .text-amber-500 {
-  color: var(--ink) !important;
-}
-
-/* Legacy input backgrounds */
-.paye-app .bg-stone-800\/50, .paye-app .bg-stone-800 {
-  background-color: #fafafa !important;
-  color: var(--ink) !important;
-}
-
-.paye-app input[type="number"], .paye-app input[type="text"], .paye-app select {
-  background-color: #fafafa !important;
-  border-color: #eee !important;
-  color: var(--ink) !important;
-}
-
-/* Legacy gradient buttons / pills → brand red flat */
-.paye-app .from-red-500,
-.paye-app .from-red-600,
-.paye-app .to-amber-500,
-.paye-app .to-red-500,
-.paye-app .from-amber-500,
-.paye-app .bg-gradient-to-r,
-.paye-app .bg-gradient-to-br {
-  --tw-gradient-from: var(--brand) !important;
-  --tw-gradient-to: var(--brand) !important;
+/* Deductions card (was amber glass) → clean white */
+.paye-app [class*="from-amber-600/20"],
+.paye-app [class*="from-amber-900/20"] {
   background-image: none !important;
-  background-color: var(--brand) !important;
+  background-color: #ffffff !important;
+  border-color: #ececec !important;
+}
+.paye-app .text-amber-400,
+.paye-app .text-amber-500 {
+  color: var(--ink) !important;
 }
 
-/* The gradient-clipped big heading "Kenya PAYE" in original — make it brand red */
-.paye-app .bg-clip-text.text-transparent {
+/* Inputs */
+.paye-app .bg-stone-800\/50,
+.paye-app .bg-stone-800 {
+  background-color: #ffffff !important;
+  color: var(--ink) !important;
+}
+.paye-app input[type="number"],
+.paye-app input[type="text"],
+.paye-app select {
+  background-color: #fafafa !important;
+  border: 1px solid #ececec !important;
+  color: var(--ink) !important;
+  border-radius: 8px !important;
+}
+.paye-app input[type="number"]:focus,
+.paye-app input[type="text"]:focus,
+.paye-app select:focus {
+  outline: none !important;
+  border-color: var(--brand) !important;
+  box-shadow: 0 0 0 3px rgba(240, 76, 64, 0.1) !important;
+}
+
+/* Gradient-clipped titles in headings → flat brand red */
+.paye-app h1 .bg-clip-text.text-transparent,
+.paye-app h2 .bg-clip-text.text-transparent {
   -webkit-background-clip: unset !important;
   background-clip: unset !important;
   color: var(--brand) !important;
   -webkit-text-fill-color: var(--brand) !important;
 }
 
-/* Hide the legacy animated background blobs */
-.paye-app .blur-3xl { display: none !important; }
-
-/* Large display numbers in brand red */
-.paye-app .tabular-nums.font-black,
+/* Big display numbers in Fraunces */
 .paye-app .text-5xl.font-black,
-.paye-app .text-7xl.font-black {
-  color: var(--brand) !important;
+.paye-app .text-6xl.font-black,
+.paye-app .text-7xl.font-black,
+.paye-app .tabular-nums.font-black {
   font-family: 'Fraunces', Georgia, serif;
   font-weight: 500 !important;
   letter-spacing: -0.02em;
+  color: var(--ink) !important;
+}
+.paye-app .text-emerald-400.font-black,
+.paye-app [class*="text-emerald-"].font-black {
+  color: var(--brand) !important;
 }
 
-/* Shadow glow from old buttons — remove */
-.paye-app .shadow-red-500\/25, .paye-app .shadow-red-500\/40, .paye-app .shadow-emerald-500\/25 {
+/* CTA buttons with red/amber gradient → flat brand */
+.paye-app button[class*="from-red-500"],
+.paye-app a[class*="from-red-500"],
+.paye-app button[class*="from-red-600"],
+.paye-app a[class*="from-red-600"] {
+  background-image: none !important;
+  background-color: var(--brand) !important;
+  color: #ffffff !important;
+}
+
+/* Small icon badges inside cards — stay brand red */
+.paye-app .p-3.bg-gradient-to-br,
+.paye-app .p-2.bg-gradient-to-br {
+  background-image: none !important;
+  background-color: var(--brand) !important;
+}
+
+/* Remove shadows */
+.paye-app .shadow-red-500\/25,
+.paye-app .shadow-red-500\/40,
+.paye-app .shadow-emerald-500\/25,
+.paye-app .shadow-lg {
   box-shadow: none !important;
 }
 
-/* ===== BOLD POSTER UTILITY CLASSES ===== */
+/* Tax band table */
+.paye-app table {
+  border-collapse: collapse;
+}
+.paye-app th {
+  color: #666 !important;
+  font-weight: 500 !important;
+  font-size: 12px !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  border-bottom: 0.5px solid #ececec !important;
+}
+.paye-app td {
+  color: var(--ink) !important;
+  border-bottom: 0.5px solid #f3f3f3 !important;
+}
+
+/* Desktop max width — give calculator room to breathe */
+.paye-app main .max-w-7xl {
+  max-width: 64rem !important;
+}
+
+/* ===== Bold Poster utility classes ===== */
 
 .editorial-h {
   font-family: 'Fraunces', Georgia, serif;
@@ -249,20 +291,7 @@ input[type="range"]::-moz-range-track {
   text-transform: uppercase;
 }
 
-.card-edit {
-  background: #fff;
-  border: 0.5px solid #eee;
-  border-radius: 16px;
-  padding: 18px;
-  transition: transform .2s ease, border-color .2s ease;
-}
-
-.card-edit:hover {
-  transform: translateY(-2px);
-  border-color: var(--brand-300);
-}
-
-/* ===== BLOG CONTENT (light mode) ===== */
+/* ===== Blog content (light mode, Fraunces headings) ===== */
 .blog-content {
   color: #333;
 }
@@ -378,7 +407,7 @@ input[type="range"]::-moz-range-track {
   font-size: 1.05rem;
 }
 
-/* ===== ANIMATIONS ===== */
+/* ===== Animations ===== */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
@@ -399,9 +428,7 @@ input[type="range"]::-moz-range-track {
   50% { transform: scale(1.4); opacity: 0; }
 }
 
-.pulse-dot {
-  position: relative;
-}
+.pulse-dot { position: relative; }
 .pulse-dot::after {
   content: '';
   position: absolute;

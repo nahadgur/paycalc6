@@ -6,11 +6,11 @@ import { Calculator, TrendingUp, Wallet, Building2, Heart, Shield, ChevronDown, 
 
 // 2026 Kenya Tax Constants
 const TAX_BANDS = [
-  { min: 0, max: 24000, rate: 0.10, label: '10%', color: '#10B981' },
-  { min: 24000, max: 32333, rate: 0.25, label: '25%', color: '#3B82F6' },
-  { min: 32333, max: 500000, rate: 0.30, label: '30%', color: '#F59E0B' },
-  { min: 500000, max: 800000, rate: 0.325, label: '32.5%', color: '#F97316' },
-  { min: 800000, max: Infinity, rate: 0.35, label: '35%', color: '#EF4444' }
+  { min: 0, max: 24000, rate: 0.10, label: '10%', color: '#FFD9D3' },
+  { min: 24000, max: 32333, rate: 0.25, label: '25%', color: '#F5B9B2' },
+  { min: 32333, max: 500000, rate: 0.30, label: '30%', color: '#F04C40' },
+  { min: 500000, max: 800000, rate: 0.325, label: '32.5%', color: '#C73B2F' },
+  { min: 800000, max: Infinity, rate: 0.35, label: '35%', color: '#8A2820' }
 ];
 
 const PERSONAL_RELIEF = 2400;
@@ -250,7 +250,7 @@ const AnimatedValue = ({ value, prefix = '', suffix = '' }) => {
 };
 
 // Gauge Component
-const GaugeChart = ({ value, max = 50, label, color = '#EF4444' }) => {
+const GaugeChart = ({ value, max = 50, label, color = '#8A2820' }) => {
   const percentage = Math.min((value / max) * 100, 100);
   const rotation = (percentage / 100) * 180;
   
@@ -261,7 +261,7 @@ const GaugeChart = ({ value, max = 50, label, color = '#EF4444' }) => {
         <path
           d="M 20 100 A 80 80 0 0 1 180 100"
           fill="none"
-          stroke="#374151"
+          stroke="#ececec"
           strokeWidth="16"
           strokeLinecap="round"
         />
@@ -337,7 +337,7 @@ const WaterfallChart = ({ data }) => {
           <div className="h-8 bg-stone-800/50 rounded-lg relative overflow-hidden">
             <div 
               className={`absolute h-full rounded-lg transition-all duration-700 ${
-                item.isPositive ? 'bg-gradient-to-r from-emerald-600 to-emerald-500' : 'bg-gradient-to-r from-red-600 to-red-500'
+                item.isPositive ? 'bg-brand' : 'bg-[#8A2820]'
               }`}
               style={{ 
                 left: `${(item.start / waterfallData[0].value) * 100}%`,
@@ -417,12 +417,12 @@ export default function PAYECalculatorV2() {
 
   // Chart Data
   const pieData = [
-    { name: 'Net Salary', value: calculations.netSalary, color: '#10B981' },
-    { name: 'PAYE Tax', value: calculations.paye, color: '#EF4444' },
-    { name: 'NSSF', value: calculations.nssf, color: '#3B82F6' },
-    { name: 'SHIF', value: calculations.shif, color: '#8B5CF6' },
-    { name: 'Housing Levy', value: calculations.housingLevy, color: '#F59E0B' },
-    ...(calculations.helbRepayment > 0 ? [{ name: 'HELB', value: calculations.helbRepayment, color: '#EC4899' }] : []),
+    { name: 'Net Salary', value: calculations.netSalary, color: '#F04C40' },
+    { name: 'PAYE Tax', value: calculations.paye, color: '#8A2820' },
+    { name: 'NSSF', value: calculations.nssf, color: '#C73B2F' },
+    { name: 'SHIF', value: calculations.shif, color: '#2a0f0c' },
+    { name: 'Housing Levy', value: calculations.housingLevy, color: '#F5B9B2' },
+    ...(calculations.helbRepayment > 0 ? [{ name: 'HELB', value: calculations.helbRepayment, color: '#F04C40' }] : []),
     ...(calculations.saccoContribution > 0 ? [{ name: 'SACCO', value: calculations.saccoContribution, color: '#06B6D4' }] : []),
   ].filter(d => d.value > 0);
 
@@ -456,9 +456,9 @@ export default function PAYECalculatorV2() {
   ];
 
   const employerCostData = [
-    { name: 'Gross Salary', value: calculations.grossSalary, color: '#3B82F6' },
-    { name: 'Employer NSSF', value: calculations.employerNSSF, color: '#10B981' },
-    { name: 'Employer Housing', value: calculations.employerHousingLevy, color: '#F59E0B' },
+    { name: 'Gross Salary', value: calculations.grossSalary, color: '#C73B2F' },
+    { name: 'Employer NSSF', value: calculations.employerNSSF, color: '#F04C40' },
+    { name: 'Employer Housing', value: calculations.employerHousingLevy, color: '#F5B9B2' },
   ];
 
   const monthlyTrend = Array.from({ length: 12 }, (_, i) => ({
@@ -471,11 +471,11 @@ export default function PAYECalculatorV2() {
   }));
 
   const deductionBreakdown = [
-    { name: 'PAYE', value: calculations.paye, fill: '#EF4444' },
-    { name: 'NSSF', value: calculations.nssf, fill: '#3B82F6' },
-    { name: 'SHIF', value: calculations.shif, fill: '#8B5CF6' },
-    { name: 'Housing', value: calculations.housingLevy, fill: '#F59E0B' },
-    { name: 'HELB', value: calculations.helbRepayment, fill: '#EC4899' },
+    { name: 'PAYE', value: calculations.paye, fill: '#8A2820' },
+    { name: 'NSSF', value: calculations.nssf, fill: '#C73B2F' },
+    { name: 'SHIF', value: calculations.shif, fill: '#2a0f0c' },
+    { name: 'Housing', value: calculations.housingLevy, fill: '#F5B9B2' },
+    { name: 'HELB', value: calculations.helbRepayment, fill: '#F04C40' },
     { name: 'SACCO', value: calculations.saccoContribution, fill: '#06B6D4' },
     { name: 'Union', value: calculations.unionDues, fill: '#84CC16' },
   ].filter(d => d.value > 0);
@@ -606,10 +606,10 @@ export default function PAYECalculatorV2() {
               {/* Statutory Deductions */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                 {[
-                  { label: 'NSSF Pension', value: calculations.nssf, icon: Shield, color: '#3B82F6', desc: '6% to 72K' },
-                  { label: 'SHIF Health', value: calculations.shif, icon: Heart, color: '#8B5CF6', desc: '2.75%' },
-                  { label: 'Housing Levy', value: calculations.housingLevy, icon: Home, color: '#F59E0B', desc: '1.5%' },
-                  { label: 'Taxable Income', value: calculations.taxableIncome, icon: Briefcase, color: '#10B981', desc: 'After NSSF' },
+                  { label: 'NSSF Pension', value: calculations.nssf, icon: Shield, color: '#C73B2F', desc: '6% to 72K' },
+                  { label: 'SHIF Health', value: calculations.shif, icon: Heart, color: '#2a0f0c', desc: '2.75%' },
+                  { label: 'Housing Levy', value: calculations.housingLevy, icon: Home, color: '#F5B9B2', desc: '1.5%' },
+                  { label: 'Taxable Income', value: calculations.taxableIncome, icon: Briefcase, color: '#F04C40', desc: 'After NSSF' },
                 ].map((item, i) => (
                   <div key={i} className="bg-white/5 backdrop-blur-xl rounded-xl border border-white/10 p-4 hover:bg-white/10 transition-all">
                     <div className="flex items-center gap-2 mb-2">
@@ -821,8 +821,8 @@ export default function PAYECalculatorV2() {
                     Tax Rates
                   </h3>
                   <div className="grid grid-cols-2 gap-4">
-                    <GaugeChart value={calculations.effectiveTaxRate} max={40} label="Effective Tax" color="#EF4444" />
-                    <GaugeChart value={calculations.totalDeductionRate} max={50} label="Total Deductions" color="#F59E0B" />
+                    <GaugeChart value={calculations.effectiveTaxRate} max={40} label="Effective Tax" color="#8A2820" />
+                    <GaugeChart value={calculations.totalDeductionRate} max={50} label="Total Deductions" color="#F5B9B2" />
                   </div>
                 </div>
 
@@ -835,9 +835,9 @@ export default function PAYECalculatorV2() {
                   <div className="h-52">
                     <ResponsiveContainer width="100%" height="100%">
                       <RadarChart data={taxEfficiencyData}>
-                        <PolarGrid stroke="#374151" />
+                        <PolarGrid stroke="#ececec" />
                         <PolarAngleAxis dataKey="subject" tick={{ fill: '#9CA3AF', fontSize: 10 }} />
-                        <Radar name="Score" dataKey="A" stroke="#3B82F6" fill="#3B82F6" fillOpacity={0.3} />
+                        <Radar name="Score" dataKey="A" stroke="#C73B2F" fill="#C73B2F" fillOpacity={0.3} />
                       </RadarChart>
                     </ResponsiveContainer>
                   </div>
@@ -852,8 +852,8 @@ export default function PAYECalculatorV2() {
                   <div className="h-52">
                     <ResponsiveContainer width="100%" height="100%">
                       <BarChart data={deductionBreakdown} layout="vertical">
-                        <XAxis type="number" tickFormatter={(v) => formatCompact(v)} stroke="#6B7280" />
-                        <YAxis type="category" dataKey="name" width={60} stroke="#6B7280" tick={{ fontSize: 11 }} />
+                        <XAxis type="number" tickFormatter={(v) => formatCompact(v)} stroke="#888" />
+                        <YAxis type="category" dataKey="name" width={60} stroke="#888" tick={{ fontSize: 11 }} />
                         <Tooltip formatter={(v) => formatCurrency(v)} contentStyle={{ backgroundColor: '#1F2937', border: '1px solid #374151', borderRadius: '8px' }} />
                         <Bar dataKey="value" radius={[0, 4, 4, 0]}>
                           {deductionBreakdown.map((entry, index) => (
@@ -877,19 +877,19 @@ export default function PAYECalculatorV2() {
                     <AreaChart data={monthlyTrend}>
                       <defs>
                         <linearGradient id="colorNet" x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="5%" stopColor="#10B981" stopOpacity={0.3}/>
-                          <stop offset="95%" stopColor="#10B981" stopOpacity={0}/>
+                          <stop offset="5%" stopColor="#F04C40" stopOpacity={0.3}/>
+                          <stop offset="95%" stopColor="#F04C40" stopOpacity={0}/>
                         </linearGradient>
                         <linearGradient id="colorTax" x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="5%" stopColor="#EF4444" stopOpacity={0.3}/>
-                          <stop offset="95%" stopColor="#EF4444" stopOpacity={0}/>
+                          <stop offset="5%" stopColor="#8A2820" stopOpacity={0.3}/>
+                          <stop offset="95%" stopColor="#8A2820" stopOpacity={0}/>
                         </linearGradient>
                       </defs>
-                      <XAxis dataKey="month" stroke="#6B7280" />
-                      <YAxis tickFormatter={(v) => formatCompact(v)} stroke="#6B7280" />
+                      <XAxis dataKey="month" stroke="#888" />
+                      <YAxis tickFormatter={(v) => formatCompact(v)} stroke="#888" />
                       <Tooltip formatter={(v) => formatCurrency(v)} contentStyle={{ backgroundColor: '#1F2937', border: '1px solid #374151', borderRadius: '8px' }} />
-                      <Area type="monotone" dataKey="cumNet" name="Cumulative Net" stroke="#10B981" fill="url(#colorNet)" />
-                      <Area type="monotone" dataKey="cumTax" name="Cumulative Tax" stroke="#EF4444" fill="url(#colorTax)" />
+                      <Area type="monotone" dataKey="cumNet" name="Cumulative Net" stroke="#F04C40" fill="url(#colorNet)" />
+                      <Area type="monotone" dataKey="cumTax" name="Cumulative Tax" stroke="#8A2820" fill="url(#colorTax)" />
                     </AreaChart>
                   </ResponsiveContainer>
                 </div>
@@ -1046,12 +1046,12 @@ export default function PAYECalculatorV2() {
                       { name: 'Gross Bonus', gross: bonusAmount, net: 0, tax: 0 },
                       { name: 'Breakdown', gross: 0, net: bonusCalc.netBonus, tax: bonusCalc.bonusTax }
                     ]}>
-                      <XAxis dataKey="name" stroke="#6B7280" />
-                      <YAxis tickFormatter={(v) => formatCompact(v)} stroke="#6B7280" />
+                      <XAxis dataKey="name" stroke="#888" />
+                      <YAxis tickFormatter={(v) => formatCompact(v)} stroke="#888" />
                       <Tooltip formatter={(v) => formatCurrency(v)} contentStyle={{ backgroundColor: '#1F2937', border: '1px solid #374151', borderRadius: '8px' }} />
-                      <Bar dataKey="gross" name="Gross" fill="#6B7280" radius={[4, 4, 0, 0]} />
-                      <Bar dataKey="net" name="Net" fill="#10B981" radius={[4, 4, 0, 0]} />
-                      <Bar dataKey="tax" name="Tax" fill="#EF4444" radius={[4, 4, 0, 0]} />
+                      <Bar dataKey="gross" name="Gross" fill="#888" radius={[4, 4, 0, 0]} />
+                      <Bar dataKey="net" name="Net" fill="#F04C40" radius={[4, 4, 0, 0]} />
+                      <Bar dataKey="tax" name="Tax" fill="#8A2820" radius={[4, 4, 0, 0]} />
                     </BarChart>
                   </ResponsiveContainer>
                 </div>
@@ -1146,14 +1146,14 @@ export default function PAYECalculatorV2() {
                 <div className="h-80">
                   <ResponsiveContainer width="100%" height="100%">
                     <ComposedChart data={salaryProgression}>
-                      <XAxis dataKey="salary" stroke="#6B7280" />
-                      <YAxis yAxisId="left" tickFormatter={(v) => formatCompact(v)} stroke="#6B7280" />
-                      <YAxis yAxisId="right" orientation="right" tickFormatter={(v) => `${v}%`} stroke="#6B7280" />
+                      <XAxis dataKey="salary" stroke="#888" />
+                      <YAxis yAxisId="left" tickFormatter={(v) => formatCompact(v)} stroke="#888" />
+                      <YAxis yAxisId="right" orientation="right" tickFormatter={(v) => `${v}%`} stroke="#888" />
                       <Tooltip formatter={(v, name) => name === 'effectiveRate' ? `${v}%` : formatCurrency(v)} contentStyle={{ backgroundColor: '#1F2937', border: '1px solid #374151', borderRadius: '8px' }} />
                       <Legend />
-                      <Bar yAxisId="left" dataKey="gross" name="Gross" fill="#6B7280" fillOpacity={0.3} radius={[4, 4, 0, 0]} />
-                      <Bar yAxisId="left" dataKey="net" name="Net" fill="#10B981" radius={[4, 4, 0, 0]} />
-                      <Line yAxisId="right" type="monotone" dataKey="effectiveRate" name="Effective Tax %" stroke="#EF4444" strokeWidth={3} dot={{ fill: '#EF4444' }} />
+                      <Bar yAxisId="left" dataKey="gross" name="Gross" fill="#888" fillOpacity={0.3} radius={[4, 4, 0, 0]} />
+                      <Bar yAxisId="left" dataKey="net" name="Net" fill="#F04C40" radius={[4, 4, 0, 0]} />
+                      <Line yAxisId="right" type="monotone" dataKey="effectiveRate" name="Effective Tax %" stroke="#8A2820" strokeWidth={3} dot={{ fill: '#8A2820' }} />
                     </ComposedChart>
                   </ResponsiveContainer>
                 </div>
