@@ -25,7 +25,7 @@ const MAX_MORTGAGE_DEDUCTION = 25000;
 const MAX_INSURANCE_RELIEF = 5000;
 
 // Car benefit rates based on CC
-const CAR_BENEFIT_RATES: Record<string, number> = {
+const CAR_BENEFIT_RATES = {
   'none': 0,
   'below1500': 3600,
   '1500to2000': 4800,
@@ -34,7 +34,7 @@ const CAR_BENEFIT_RATES: Record<string, number> = {
 };
 
 // Helper functions
-const formatCurrency = (amount: number): string => {
+const formatCurrency = (amount) => {
   return new Intl.NumberFormat('en-KE', {
     style: 'currency',
     currency: 'KES',
@@ -43,27 +43,27 @@ const formatCurrency = (amount: number): string => {
   }).format(amount);
 };
 
-const formatCompact = (amount: number): string => {
+const formatCompact = (amount) => {
   if (amount >= 1000000) return `${(amount / 1000000).toFixed(1)}M`;
   if (amount >= 1000) return `${(amount / 1000).toFixed(0)}K`;
   return amount.toString();
 };
 
-const calculateNSSF = (grossSalary: number): number => {
+const calculateNSSF = (grossSalary) => {
   const pensionableEarnings = Math.min(grossSalary, NSSF_UPPER_LIMIT);
   return pensionableEarnings * NSSF_RATE;
 };
 
-const calculateSHIF = (grossSalary: number): number => {
+const calculateSHIF = (grossSalary) => {
   const shif = grossSalary * SHIF_RATE;
   return Math.max(shif, SHIF_MIN);
 };
 
-const calculateHousingLevy = (grossSalary: number): number => {
+const calculateHousingLevy = (grossSalary) => {
   return grossSalary * HOUSING_LEVY_RATE;
 };
 
-const calculatePAYE = (taxableIncome: number, hasDisability: boolean = false): number => {
+const calculatePAYE = (taxableIncome, hasDisability = false) => {
   let tax = 0;
   let remainingIncome = taxableIncome;
   
@@ -82,7 +82,7 @@ const calculatePAYE = (taxableIncome: number, hasDisability: boolean = false): n
   return tax;
 };
 
-const getTaxBandBreakdown = (taxableIncome: number) => {
+const getTaxBandBreakdown = (taxableIncome) => {
   const breakdown = [];
   let remainingIncome = taxableIncome;
   
@@ -101,7 +101,7 @@ const getTaxBandBreakdown = (taxableIncome: number) => {
 };
 
 // Reverse calculation - Net to Gross
-const calculateGrossFromNet = (targetNet: number, deductions: any): number => {
+const calculateGrossFromNet = (targetNet, deductions) => {
   let low = targetNet;
   let high = targetNet * 3;
   
@@ -124,7 +124,7 @@ const calculateGrossFromNet = (targetNet: number, deductions: any): number => {
 };
 
 // Full calculation function
-const fullCalculation = (grossSalary: number, options: any = {}) => {
+const fullCalculation = (grossSalary, options = {}) => {
   const {
     pensionContribution = 0,
     mortgageInterest = 0,
@@ -139,7 +139,7 @@ const fullCalculation = (grossSalary: number, options: any = {}) => {
   } = options;
 
   // Calculate benefits in kind
-  const carBenefitAmount = CAR_BENEFIT_RATES[carBenefit as string] || 0;
+  const carBenefitAmount = CAR_BENEFIT_RATES[carBenefit] || 0;
   const housingBenefitTaxable = Math.min(housingBenefit, grossSalary * 0.15);
   const totalBenefits = carBenefitAmount + housingBenefitTaxable + otherTaxableBenefits;
   
@@ -208,7 +208,7 @@ const fullCalculation = (grossSalary: number, options: any = {}) => {
 };
 
 // Tab Button Component
-const TabButton = ({ active, onClick, icon: Icon, label }: { active: boolean; onClick: () => void; icon: any; label: string }) => (
+const TabButton = ({ active, onClick, icon: Icon, label }) => (
   <button
     onClick={onClick}
     className={`flex items-center gap-2 px-4 py-3 rounded-xl font-medium text-sm transition-all duration-300 ${
@@ -223,7 +223,7 @@ const TabButton = ({ active, onClick, icon: Icon, label }: { active: boolean; on
 );
 
 // Animated Counter Component
-const AnimatedValue = ({ value, prefix = '', suffix = '' }: { value: number; prefix?: string; suffix?: string }) => {
+const AnimatedValue = ({ value, prefix = '', suffix = '' }) => {
   const [displayValue, setDisplayValue] = useState(0);
   
   useEffect(() => {
@@ -249,7 +249,7 @@ const AnimatedValue = ({ value, prefix = '', suffix = '' }: { value: number; pre
 };
 
 // Gauge Component
-const GaugeChart = ({ value, max = 50, label, color = '#EF4444' }: { value: number; max?: number; label: string; color?: string }) => {
+const GaugeChart = ({ value, max = 50, label, color = '#EF4444' }) => {
   const percentage = Math.min((value / max) * 100, 100);
   const rotation = (percentage / 100) * 180;
   
@@ -287,7 +287,7 @@ const GaugeChart = ({ value, max = 50, label, color = '#EF4444' }: { value: numb
 };
 
 // Progress Bar Component
-const ProgressBar = ({ label, value, max, color, icon: Icon }: { label: string; value: number; max: number; color: string; icon: any }) => {
+const ProgressBar = ({ label, value, max, color, icon: Icon }) => {
   const percentage = (value / max) * 100;
   
   return (
@@ -310,7 +310,7 @@ const ProgressBar = ({ label, value, max, color, icon: Icon }: { label: string; 
 };
 
 // Waterfall Chart Component
-const WaterfallChart = ({ data }: { data: Array<{ name: string; value: number }> }) => {
+const WaterfallChart = ({ data }) => {
   let cumulative = 0;
   const waterfallData = data.map((item, index) => {
     const start = cumulative;
@@ -798,7 +798,7 @@ export default function PAYECalculatorV2() {
                             <Cell key={index} fill={entry.color} />
                           ))}
                         </Pie>
-                        <Tooltip formatter={(v) => formatCurrency(Number(v))} contentStyle={{ backgroundColor: '#1F2937', border: '1px solid #374151', borderRadius: '8px' }} />
+                        <Tooltip formatter={(v) => formatCurrency(v)} contentStyle={{ backgroundColor: '#1F2937', border: '1px solid #374151', borderRadius: '8px' }} />
                         <Legend formatter={(v) => <span className="text-stone-300 text-xs">{v}</span>} />
                       </PieChart>
                     </ResponsiveContainer>
@@ -857,7 +857,7 @@ export default function PAYECalculatorV2() {
                       <BarChart data={deductionBreakdown} layout="vertical">
                         <XAxis type="number" tickFormatter={(v) => formatCompact(v)} stroke="#6B7280" />
                         <YAxis type="category" dataKey="name" width={60} stroke="#6B7280" tick={{ fontSize: 11 }} />
-                        <Tooltip formatter={(v) => formatCurrency(Number(v))} contentStyle={{ backgroundColor: '#1F2937', border: '1px solid #374151', borderRadius: '8px' }} />
+                        <Tooltip formatter={(v) => formatCurrency(v)} contentStyle={{ backgroundColor: '#1F2937', border: '1px solid #374151', borderRadius: '8px' }} />
                         <Bar dataKey="value" radius={[0, 4, 4, 0]}>
                           {deductionBreakdown.map((entry, index) => (
                             <Cell key={index} fill={entry.fill} />
@@ -890,7 +890,7 @@ export default function PAYECalculatorV2() {
                       </defs>
                       <XAxis dataKey="month" stroke="#6B7280" />
                       <YAxis tickFormatter={(v) => formatCompact(v)} stroke="#6B7280" />
-                      <Tooltip formatter={(v) => formatCurrency(Number(v))} contentStyle={{ backgroundColor: '#1F2937', border: '1px solid #374151', borderRadius: '8px' }} />
+                      <Tooltip formatter={(v) => formatCurrency(v)} contentStyle={{ backgroundColor: '#1F2937', border: '1px solid #374151', borderRadius: '8px' }} />
                       <Area type="monotone" dataKey="cumNet" name="Cumulative Net" stroke="#10B981" fill="url(#colorNet)" />
                       <Area type="monotone" dataKey="cumTax" name="Cumulative Tax" stroke="#EF4444" fill="url(#colorTax)" />
                     </AreaChart>
@@ -1051,7 +1051,7 @@ export default function PAYECalculatorV2() {
                     ]}>
                       <XAxis dataKey="name" stroke="#6B7280" />
                       <YAxis tickFormatter={(v) => formatCompact(v)} stroke="#6B7280" />
-                      <Tooltip formatter={(v) => formatCurrency(Number(v))} contentStyle={{ backgroundColor: '#1F2937', border: '1px solid #374151', borderRadius: '8px' }} />
+                      <Tooltip formatter={(v) => formatCurrency(v)} contentStyle={{ backgroundColor: '#1F2937', border: '1px solid #374151', borderRadius: '8px' }} />
                       <Bar dataKey="gross" name="Gross" fill="#6B7280" radius={[4, 4, 0, 0]} />
                       <Bar dataKey="net" name="Net" fill="#10B981" radius={[4, 4, 0, 0]} />
                       <Bar dataKey="tax" name="Tax" fill="#EF4444" radius={[4, 4, 0, 0]} />
@@ -1120,7 +1120,7 @@ export default function PAYECalculatorV2() {
                           <Cell key={index} fill={entry.color} />
                         ))}
                       </Pie>
-                      <Tooltip formatter={(v) => formatCurrency(Number(v))} contentStyle={{ backgroundColor: '#1F2937', border: '1px solid #374151', borderRadius: '8px' }} />
+                      <Tooltip formatter={(v) => formatCurrency(v)} contentStyle={{ backgroundColor: '#1F2937', border: '1px solid #374151', borderRadius: '8px' }} />
                       <Legend formatter={(v) => <span className="text-stone-300 text-sm">{v}</span>} />
                     </PieChart>
                   </ResponsiveContainer>
@@ -1152,7 +1152,7 @@ export default function PAYECalculatorV2() {
                       <XAxis dataKey="salary" stroke="#6B7280" />
                       <YAxis yAxisId="left" tickFormatter={(v) => formatCompact(v)} stroke="#6B7280" />
                       <YAxis yAxisId="right" orientation="right" tickFormatter={(v) => `${v}%`} stroke="#6B7280" />
-                      <Tooltip formatter={(v, name) => name === 'effectiveRate' ? `${v}%` : formatCurrency(Number(v))} contentStyle={{ backgroundColor: '#1F2937', border: '1px solid #374151', borderRadius: '8px' }} />
+                      <Tooltip formatter={(v, name) => name === 'effectiveRate' ? `${v}%` : formatCurrency(v)} contentStyle={{ backgroundColor: '#1F2937', border: '1px solid #374151', borderRadius: '8px' }} />
                       <Legend />
                       <Bar yAxisId="left" dataKey="gross" name="Gross" fill="#6B7280" fillOpacity={0.3} radius={[4, 4, 0, 0]} />
                       <Bar yAxisId="left" dataKey="net" name="Net" fill="#10B981" radius={[4, 4, 0, 0]} />
