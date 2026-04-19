@@ -39,6 +39,13 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  icons: {
+    icon: [
+      { url: '/logo-256.png', sizes: '256x256', type: 'image/png' },
+    ],
+    shortcut: '/logo-256.png',
+    apple: '/logo-256.png',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -59,9 +66,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="max-w-5xl mx-auto px-5 sm:px-6">
             <div className="flex items-center justify-between h-14">
               <Link href="/" className="flex items-center gap-2.5 group">
-                <div className="w-7 h-7 bg-brand rounded-md flex items-center justify-center">
-                  <span className="text-white font-medium text-[11px]">P</span>
-                </div>
+                <img src="/logo-256.png" alt="PAYE Calculator Kenya logo" className="w-7 h-7 rounded-md object-contain" width="28" height="28" />
                 <span className="font-medium text-[13px] tracking-wide">PAYE.CALC</span>
                 <span className="hidden sm:inline-flex items-center gap-1.5 ml-2 px-2 py-0.5 bg-brand-50 text-brand-700 rounded-full text-[10px] font-medium tracking-wider">
                   <span className="w-1.5 h-1.5 bg-brand rounded-full pulse-dot" style={{ color: '#F04C40' }}></span>
@@ -105,8 +110,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <div className="border-t border-white/25 pt-10 grid grid-cols-2 md:grid-cols-4 gap-8">
               <div className="col-span-2 md:col-span-1">
                 <div className="flex items-center gap-2 mb-3">
-                  <div className="w-7 h-7 bg-white rounded-md flex items-center justify-center">
-                    <span className="text-brand font-medium text-[11px]">P</span>
+                  <div className="w-7 h-7 bg-white rounded-md flex items-center justify-center p-1">
+                    <img src="/logo-256.png" alt="PAYE Calculator Kenya logo" className="w-full h-full object-contain" width="20" height="20" />
                   </div>
                   <span className="font-medium text-[13px] tracking-wide">PAYE.CALC</span>
                 </div>
