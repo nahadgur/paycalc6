@@ -46,6 +46,9 @@ export const metadata: Metadata = {
     shortcut: '/logo-256.png',
     apple: '/logo-256.png',
   },
+  verification: {
+    google: 'RTGtfmUJlOBad0COgiVkh4euoW5CO9sQCgkDwmnj_dM',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
