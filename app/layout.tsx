@@ -47,7 +47,10 @@ export const metadata: Metadata = {
     apple: '/logo-256.png',
   },
   verification: {
-    google: 'RTGtfmUJlOBad0COgiVkh4euoW5CO9sQCgkDwmnj_dM',
+    google: [
+      'RTGtfmUJlOBad0COgiVkh4euoW5CO9sQCgkDwmnj_dM',
+      '89CXZSvy3OvCOYAkL7Yow-HWJHYinCLlABl1YMwKREA',
+    ],
   },
 }
 
