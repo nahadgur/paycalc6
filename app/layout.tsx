@@ -5,10 +5,10 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: {
-    default: 'Kenya PAYE Calculator 2026 | Calculate Net Salary, NSSF, SHIF & Tax',
+    default: 'PAYE Calculator Kenya 2026 | Free Net Salary, Tax, NSSF & SHIF',
     template: '%s | Kenya PAYE Calculator'
   },
-  description: 'Free Kenya PAYE calculator for 2026. Calculate your net salary, PAYE tax, NSSF, SHIF, and Housing Levy instantly. Updated with latest KRA tax bands and rates.',
+  description: 'Work out your exact take-home pay in seconds. Free Kenya PAYE calculator with the latest 2026 KRA tax bands, NSSF, SHIF and Housing Levy - plus net-to-gross and employer cost.',
   keywords: ['PAYE calculator Kenya', 'Kenya tax calculator', 'net salary calculator Kenya', 'NSSF calculator', 'SHIF calculator', 'KRA tax bands 2026'],
   authors: [{ name: 'PAYE Calculator Kenya' }],
   creator: 'PAYE Calculator Kenya',
@@ -65,6 +65,38 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             gtag('js', new Date());
             gtag('config', 'G-BVFXE6F28R');`}
         </Script>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@graph': [
+                {
+                  '@type': 'Organization',
+                  '@id': 'https://payecalculator.co.ke/#organization',
+                  name: 'Kenya PAYE Calculator',
+                  url: 'https://payecalculator.co.ke',
+                  logo: 'https://payecalculator.co.ke/logo-512.png',
+                },
+                {
+                  '@type': 'WebSite',
+                  '@id': 'https://payecalculator.co.ke/#website',
+                  url: 'https://payecalculator.co.ke',
+                  name: 'Kenya PAYE Calculator',
+                  publisher: { '@id': 'https://payecalculator.co.ke/#organization' },
+                  potentialAction: {
+                    '@type': 'SearchAction',
+                    target: {
+                      '@type': 'EntryPoint',
+                      urlTemplate: 'https://payecalculator.co.ke/salary/{search_term_string}',
+                    },
+                    'query-input': 'required name=search_term_string',
+                  },
+                },
+              ],
+            }),
+          }}
+        />
       </head>
       <body className="min-h-screen bg-white text-[#111]">
         {/* Nav */}
@@ -113,7 +145,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
 
             {/* Footer columns */}
-            <div className="border-t border-white/25 pt-10 grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="border-t border-white/25 pt-10 grid grid-cols-2 md:grid-cols-5 gap-8">
               <div className="col-span-2 md:col-span-1">
                 <div className="flex items-center gap-2 mb-3">
                   <div className="w-7 h-7 bg-white rounded-md flex items-center justify-center p-1">
@@ -129,9 +161,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <p className="text-[10px] tracking-[0.15em] opacity-75 mb-3 font-medium">CALCULATORS</p>
                 <ul className="space-y-2 text-[12px]">
                   <li><Link href="/" className="opacity-90 hover:opacity-100 hover:underline">Net salary</Link></li>
-                  <li><Link href="/" className="opacity-90 hover:opacity-100 hover:underline">Net → Gross</Link></li>
-                  <li><Link href="/" className="opacity-90 hover:opacity-100 hover:underline">Bonus impact</Link></li>
-                  <li><Link href="/" className="opacity-90 hover:opacity-100 hover:underline">Employer cost</Link></li>
+                  <li><Link href="/salary/50000" className="opacity-90 hover:opacity-100 hover:underline">Salary breakdowns</Link></li>
+                  <li><Link href="/nssf-calculator" className="opacity-90 hover:opacity-100 hover:underline">NSSF calculator</Link></li>
+                  <li><Link href="/mortgage-relief" className="opacity-90 hover:opacity-100 hover:underline">Mortgage relief</Link></li>
+                  <li><Link href="/p9-generator" className="opacity-90 hover:opacity-100 hover:underline">P9 generator</Link></li>
+                  <li><Link href="/tax-relief" className="opacity-90 hover:opacity-100 hover:underline">Tax relief</Link></li>
+                  <li><Link href="/budget-guide" className="opacity-90 hover:opacity-100 hover:underline">Budget planner</Link></li>
+                </ul>
+              </div>
+              <div>
+                <p className="text-[10px] tracking-[0.15em] opacity-75 mb-3 font-medium">RESOURCES</p>
+                <ul className="space-y-2 text-[12px]">
+                  <li><Link href="/tax-calendar" className="opacity-90 hover:opacity-100 hover:underline">Tax calendar</Link></li>
+                  <li><Link href="/itax-2026" className="opacity-90 hover:opacity-100 hover:underline">iTax 2026 guide</Link></li>
+                  <li><Link href="/statutory-changes" className="opacity-90 hover:opacity-100 hover:underline">SHIF &amp; NSSF changes</Link></li>
+                  <li><Link href="/employer-guide" className="opacity-90 hover:opacity-100 hover:underline">Employer guide</Link></li>
+                  <li><Link href="/faq" className="opacity-90 hover:opacity-100 hover:underline">FAQ</Link></li>
                 </ul>
               </div>
               <div>

@@ -445,3 +445,29 @@ input[type="range"]::-moz-range-track {
   white-space: nowrap;
   border-width: 0;
 }
+
+/* Print-only payslip sheet (Download payslip / PDF) */
+#payslip-sheet {
+  display: none;
+}
+@media print {
+  body * {
+    visibility: hidden !important;
+  }
+  #payslip-sheet {
+    display: block !important;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding: 24px;
+    background: #fff;
+  }
+  #payslip-sheet,
+  #payslip-sheet * {
+    visibility: visible !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+}

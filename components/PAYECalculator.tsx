@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo, useEffect } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, Legend, AreaChart, Area, LineChart, Line, RadarChart, Radar, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ComposedChart, Treemap, FunnelChart, Funnel, LabelList } from 'recharts';
-import { Calculator, TrendingUp, Wallet, Building2, Heart, Shield, ChevronDown, ChevronUp, Info, Sparkles, ArrowRight, Minus, Plus, DollarSign, PiggyBank, Home, Briefcase, Car, Users, GraduationCap, Utensils, Gift, ArrowLeftRight, Building, Percent, Target, Zap, BarChart3, PieChartIcon, Activity, Gauge, TrendingDown, RefreshCw, CircleDollarSign, BadgePercent, Landmark, HandCoins } from 'lucide-react';
+import { Calculator, TrendingUp, Wallet, Building2, Heart, Shield, ChevronDown, ChevronUp, Info, Sparkles, ArrowRight, Minus, Plus, DollarSign, PiggyBank, Home, Briefcase, Car, Users, GraduationCap, Utensils, Gift, ArrowLeftRight, Building, Percent, Target, Zap, BarChart3, PieChartIcon, Activity, Gauge, TrendingDown, RefreshCw, CircleDollarSign, BadgePercent, Landmark, HandCoins, Download } from 'lucide-react';
 
 // 2026 Kenya Tax Constants
 const TAX_BANDS = [
@@ -16,12 +16,14 @@ const TAX_BANDS = [
 const PERSONAL_RELIEF = 2400;
 const DISABILITY_RELIEF = 150000;
 const NSSF_RATE = 0.06;
-const NSSF_UPPER_LIMIT = 72000;
+// Upper Earnings Limit raised to KES 108,000 from 1 Feb 2026 (NSSF Phase 4).
+// Max employee NSSF = 6% x 108,000 = KES 6,480/month (Tier I 540 + Tier II 5,940).
+const NSSF_UPPER_LIMIT = 108000;
 const SHIF_RATE = 0.0275;
 const SHIF_MIN = 300;
 const HOUSING_LEVY_RATE = 0.015;
 const MAX_PENSION_DEDUCTION = 30000;
-const MAX_MORTGAGE_DEDUCTION = 25000;
+const MAX_MORTGAGE_DEDUCTION = 30000; // raised to KES 30,000/mo (360,000/yr) by Tax Laws (Amendment) Act 2024
 const MAX_INSURANCE_RELIEF = 5000;
 
 // Car benefit rates based on CC
@@ -360,6 +362,7 @@ export default function PAYECalculatorV2() {
   const [grossSalary, setGrossSalary] = useState(100000);
   const [targetNetSalary, setTargetNetSalary] = useState(75000);
   const [bonusAmount, setBonusAmount] = useState(50000);
+  const [raisePercent, setRaisePercent] = useState(10);
   
   // Deductions & Reliefs
   const [pensionContribution, setPensionContribution] = useState(0);
@@ -380,9 +383,11 @@ export default function PAYECalculatorV2() {
   const [showAdvanced, setShowAdvanced] = useState(false);
   const [showBenefits, setShowBenefits] = useState(false);
   const [animated, setAnimated] = useState(false);
+  const [printDate, setPrintDate] = useState('');
 
   useEffect(() => {
     setAnimated(true);
+    setPrintDate(new Date().toLocaleDateString('en-KE', { day: 'numeric', month: 'long', year: 'numeric' }));
   }, []);
 
   const deductionOptions = {
@@ -414,6 +419,16 @@ export default function PAYECalculatorV2() {
     const bonusTaxRate = (bonusTax / bonusAmount) * 100;
     return { bonusTax, netBonus, bonusTaxRate };
   }, [grossSalary, bonusAmount, calculations.paye, deductionOptions]);
+
+  // Raise analyser — how much of a pay rise you keep after tax
+  const raiseCalc = useMemo(() => {
+    const newGross = Math.round(grossSalary * (1 + raisePercent / 100));
+    const newCalc = fullCalculation(newGross, deductionOptions);
+    const grossIncrease = newGross - grossSalary;
+    const monthlyNetGain = newCalc.netSalary - calculations.netSalary;
+    const keptPercent = grossIncrease > 0 ? (monthlyNetGain / grossIncrease) * 100 : 0;
+    return { newGross, newNet: newCalc.netSalary, grossIncrease, monthlyNetGain, annualNetGain: monthlyNetGain * 12, keptPercent };
+  }, [grossSalary, raisePercent, calculations.netSalary, deductionOptions]);
 
   // Chart Data
   const pieData = [
@@ -515,6 +530,7 @@ export default function PAYECalculatorV2() {
               <TabButton active={activeTab === 'calculator'} onClick={() => setActiveTab('calculator')} icon={Calculator} label="Calculator" />
               <TabButton active={activeTab === 'reverse'} onClick={() => setActiveTab('reverse')} icon={RefreshCw} label="Net → Gross" />
               <TabButton active={activeTab === 'bonus'} onClick={() => setActiveTab('bonus')} icon={Gift} label="Bonus" />
+              <TabButton active={activeTab === 'raise'} onClick={() => setActiveTab('raise')} icon={TrendingUp} label="Raise" />
               <TabButton active={activeTab === 'employer'} onClick={() => setActiveTab('employer')} icon={Building} label="Employer Cost" />
               <TabButton active={activeTab === 'compare'} onClick={() => setActiveTab('compare')} icon={BarChart3} label="Compare" />
             </div>
@@ -575,6 +591,48 @@ export default function PAYECalculatorV2() {
                       {formatCompact(amount)}
                     </button>
                   ))}
+                </div>
+              </div>
+
+              {/* Download payslip */}
+              <div className="flex justify-center no-print">
+                <button
+                  onClick={() => window.print()}
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 border border-white/15 text-white text-sm font-medium transition-all"
+                >
+                  <Download className="w-4 h-4" />
+                  Download payslip (PDF)
+                </button>
+              </div>
+
+              {/* Print-only payslip sheet (hidden on screen, shown when printing) */}
+              <div id="payslip-sheet" aria-hidden="true">
+                <div style={{ maxWidth: '640px', margin: '0 auto', color: '#111', fontFamily: 'Inter, system-ui, sans-serif' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', borderBottom: '2px solid #F04C40', paddingBottom: '12px', marginBottom: '20px' }}>
+                    <div>
+                      <div style={{ fontSize: '20px', fontWeight: 700 }}>Payslip estimate</div>
+                      <div style={{ fontSize: '12px', color: '#666' }}>Kenya PAYE Calculator · 2026 KRA rates</div>
+                    </div>
+                    <div style={{ fontSize: '12px', color: '#666', textAlign: 'right' }}>
+                      payecalculator.co.ke<br />{printDate}
+                    </div>
+                  </div>
+                  <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '14px' }}>
+                    <tbody>
+                      <tr><td style={{ padding: '8px 0', fontWeight: 600 }}>Gross salary</td><td style={{ padding: '8px 0', textAlign: 'right', fontWeight: 600 }}>{formatCurrency(calculations.grossSalary)}</td></tr>
+                      <tr><td style={{ padding: '6px 0', color: '#444' }}>PAYE (income tax)</td><td style={{ padding: '6px 0', textAlign: 'right' }}>− {formatCurrency(calculations.paye)}</td></tr>
+                      <tr><td style={{ padding: '6px 0', color: '#444' }}>NSSF</td><td style={{ padding: '6px 0', textAlign: 'right' }}>− {formatCurrency(calculations.nssf)}</td></tr>
+                      <tr><td style={{ padding: '6px 0', color: '#444' }}>SHIF</td><td style={{ padding: '6px 0', textAlign: 'right' }}>− {formatCurrency(calculations.shif)}</td></tr>
+                      <tr><td style={{ padding: '6px 0', color: '#444' }}>Housing Levy</td><td style={{ padding: '6px 0', textAlign: 'right' }}>− {formatCurrency(calculations.housingLevy)}</td></tr>
+                      {calculations.helbRepayment > 0 && <tr><td style={{ padding: '6px 0', color: '#444' }}>HELB</td><td style={{ padding: '6px 0', textAlign: 'right' }}>− {formatCurrency(calculations.helbRepayment)}</td></tr>}
+                      {calculations.saccoContribution > 0 && <tr><td style={{ padding: '6px 0', color: '#444' }}>SACCO</td><td style={{ padding: '6px 0', textAlign: 'right' }}>− {formatCurrency(calculations.saccoContribution)}</td></tr>}
+                      {calculations.unionDues > 0 && <tr><td style={{ padding: '6px 0', color: '#444' }}>Union dues</td><td style={{ padding: '6px 0', textAlign: 'right' }}>− {formatCurrency(calculations.unionDues)}</td></tr>}
+                      <tr><td style={{ padding: '12px 0', borderTop: '1px solid #ddd', fontWeight: 700, fontSize: '16px' }}>Net pay (take-home)</td><td style={{ padding: '12px 0', borderTop: '1px solid #ddd', textAlign: 'right', fontWeight: 700, fontSize: '16px', color: '#F04C40' }}>{formatCurrency(calculations.netSalary)}</td></tr>
+                    </tbody>
+                  </table>
+                  <p style={{ fontSize: '11px', color: '#888', marginTop: '20px' }}>
+                    Estimate only, based on 2026 KRA tax bands, NSSF (max KES 6,480), SHIF (2.75%) and Housing Levy (1.5%). Not an official payslip. Consult a qualified tax professional for advice.
+                  </p>
                 </div>
               </div>
 
@@ -984,6 +1042,64 @@ export default function PAYECalculatorV2() {
                 <div className="bg-white/5 rounded-xl p-4 text-center">
                   <p className="text-stone-400 text-sm">Housing Levy</p>
                   <p className="text-xl font-bold text-amber-400">{formatCurrency(reverseCalc.housingLevy)}</p>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Raise Analyser Tab */}
+          {activeTab === 'raise' && (
+            <div className="space-y-6">
+              <div className="bg-gradient-to-br from-indigo-600/20 to-indigo-900/20 backdrop-blur-xl rounded-3xl border border-indigo-500/20 p-6 md:p-8">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-3 bg-gradient-to-br from-indigo-500 to-blue-500 rounded-2xl">
+                    <TrendingUp className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h2 className="text-xl font-bold">Pay Raise Analyser</h2>
+                    <p className="text-stone-400 text-sm">See how much of a raise you actually keep after tax</p>
+                  </div>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-6 mb-6">
+                  <div>
+                    <label className="block text-stone-400 mb-2">Current monthly gross</label>
+                    <div className="text-3xl font-bold text-white">{formatCurrency(grossSalary)}</div>
+                    <p className="text-stone-500 text-sm">Adjust in Calculator tab</p>
+                  </div>
+                  <div>
+                    <label className="block text-stone-400 mb-2">Raise (%)</label>
+                    <input
+                      type="number"
+                      value={raisePercent}
+                      onChange={(e) => setRaisePercent(Number(e.target.value))}
+                      className="w-full text-3xl font-bold bg-transparent border-b-2 border-indigo-500 py-2 text-white focus:outline-none"
+                    />
+                    <p className="text-stone-500 text-sm mt-1">New gross: {formatCurrency(raiseCalc.newGross)}</p>
+                  </div>
+                </div>
+
+                <div className="grid md:grid-cols-3 gap-4">
+                  <div className="bg-gradient-to-br from-emerald-600/30 to-emerald-900/30 rounded-2xl p-5 text-center">
+                    <p className="text-stone-400 mb-2">Extra take-home / month</p>
+                    <div className="text-4xl font-black text-emerald-400">{formatCurrency(raiseCalc.monthlyNetGain)}</div>
+                  </div>
+                  <div className="bg-gradient-to-br from-amber-600/30 to-amber-900/30 rounded-2xl p-5 text-center">
+                    <p className="text-stone-400 mb-2">You keep</p>
+                    <div className="text-4xl font-black text-amber-400">{raiseCalc.keptPercent.toFixed(0)}%</div>
+                    <p className="text-stone-500 text-xs mt-1">of the gross increase</p>
+                  </div>
+                  <div className="bg-gradient-to-br from-indigo-600/30 to-indigo-900/30 rounded-2xl p-5 text-center">
+                    <p className="text-stone-400 mb-2">Extra per year</p>
+                    <div className="text-4xl font-black text-indigo-300">{formatCurrency(raiseCalc.annualNetGain)}</div>
+                  </div>
+                </div>
+
+                <div className="mt-6 p-4 bg-white/5 rounded-xl">
+                  <p className="text-stone-400 text-sm">
+                    <Info className="w-4 h-4 inline mr-2" />
+                    A {raisePercent}% raise lifts your gross by {formatCurrency(raiseCalc.grossIncrease)}, but after PAYE, NSSF, SHIF and Housing Levy you take home about {formatCurrency(raiseCalc.monthlyNetGain)} more a month — roughly {raiseCalc.keptPercent.toFixed(0)}% of the increase.
+                  </p>
                 </div>
               </div>
             </div>
