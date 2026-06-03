@@ -1,0 +1,25 @@
+# Fleet line-ending policy. These sites deploy on Linux (Vercel), so the
+# repo stores LF and checks out LF on every platform. This stops the
+# "LF will be replaced by CRLF the next time Git touches it" warnings on
+# Windows without changing what ships.
+* text=auto eol=lf
+
+# Binary assets: never normalise or diff as text.
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.webp  binary
+*.avif  binary
+*.ico   binary
+*.svg   text eol=lf
+*.woff  binary
+*.woff2 binary
+*.ttf   binary
+*.otf   binary
+*.eot   binary
+*.pdf   binary
+*.zip   binary
+*.mp4   binary
+*.webm  binary
+*.mov   binary
