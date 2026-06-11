@@ -186,7 +186,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   <li><Link href="/guides/tax-relief" className="opacity-90 hover:opacity-100 hover:underline">Tax savings &amp; reliefs</Link></li>
                   <li><Link href="/guides/salary-breakdowns" className="opacity-90 hover:opacity-100 hover:underline">Salary breakdowns</Link></li>
                   <li><Link href="/guides/employment-situations" className="opacity-90 hover:opacity-100 hover:underline">Employment situations</Link></li>
-                  <li><Link href="/blog" className="opacity-90 hover:opacity-100 hover:underline">All guides →</Link></li>
+                  <li><Link href="/blog" className="opacity-90 hover:opacity-100 hover:underline">All articles →</Link></li>
                 </ul>
               </div>
               <div>

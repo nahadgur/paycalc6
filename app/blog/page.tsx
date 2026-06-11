@@ -3,11 +3,11 @@ import { Metadata } from 'next'
 import articles from '@/lib/articles.json'
 
 export const metadata: Metadata = {
-  title: 'Kenya Tax & PAYE Guides',
-  description: 'Comprehensive guides on Kenya PAYE tax, NSSF contributions, SHIF deductions, Housing Levy, and more. Learn how to calculate your salary and reduce your tax legally.',
+  title: 'Kenya Tax & PAYE Articles',
+  description: 'Comprehensive articles on Kenya PAYE tax, NSSF contributions, SHIF deductions, Housing Levy, and more. Learn how to calculate your salary and reduce your tax legally.',
   openGraph: {
-    title: 'Kenya Tax & PAYE Guides | PAYE Calculator Kenya',
-    description: 'Comprehensive guides on Kenya PAYE tax, NSSF contributions, SHIF deductions, and more.',
+    title: 'Kenya Tax & PAYE Articles | PAYE Calculator Kenya',
+    description: 'Comprehensive articles on Kenya PAYE tax, NSSF contributions, SHIF deductions, and more.',
   },
 }
 
@@ -75,13 +75,13 @@ export default function BlogPage() {
         <div className="max-w-5xl mx-auto px-5 sm:px-6 py-16 sm:py-20">
           <div className="flex justify-between items-baseline mb-6 text-xs text-stone-500 font-medium">
             <span>Kenya · 2026</span>
-            <span className="opacity-80">The guides</span>
+            <span className="opacity-80">The blog</span>
           </div>
           <h1 className="editorial-h text-[44px] sm:text-[72px] mb-4">
             Kenya tax, <span className="italic">explained</span>.
           </h1>
           <p className="text-[14px] sm:text-[16px] opacity-90 max-w-xl leading-relaxed">
-            Thirty in-depth guides on PAYE, NSSF, SHIF, Housing Levy, and every legal way to reduce your tax in Kenya.
+            Thirty in-depth articles on PAYE, NSSF, SHIF, Housing Levy, and every legal way to reduce your tax in Kenya.
           </p>
           <div className="mt-8 h-px bg-white/40"></div>
         </div>
@@ -90,10 +90,8 @@ export default function BlogPage() {
       {/* Featured — white */}
       <section className="bg-white">
         <div className="max-w-5xl mx-auto px-5 sm:px-6 py-14">
-          <div className="flex items-baseline justify-between mb-6">
-          </div>
           <h2 className="editorial-h text-[26px] sm:text-[32px] mb-8">
-            Featured <span className="accent">guides</span>
+            Featured <span className="accent">articles</span>
           </h2>
           <div className="grid md:grid-cols-3 gap-5">
             {featuredSlugs.map((slug, i) => {
@@ -115,7 +113,7 @@ export default function BlogPage() {
                     {article.metaDescription}
                   </p>
                   <div className="mt-auto text-brand text-[12px] font-medium flex items-center gap-1">
-                    Read guide <span className="group-hover:translate-x-1 transition-transform inline-block">→</span>
+                    Read article <span className="group-hover:translate-x-1 transition-transform inline-block">→</span>
                   </div>
                 </Link>
               )
@@ -127,8 +125,6 @@ export default function BlogPage() {
       {/* All categories — cream section */}
       <section className="bg-brand-50">
         <div className="max-w-5xl mx-auto px-5 sm:px-6 py-14">
-          <div className="flex items-baseline justify-between mb-6">
-          </div>
           <h2 className="editorial-h text-[26px] sm:text-[32px] mb-10 text-brand-900">
             The full <span className="accent">library</span>
           </h2>
@@ -141,7 +137,7 @@ export default function BlogPage() {
                     {String(catIdx + 1).padStart(2, '0')}
                   </span>
                   <h3 className="editorial-h text-[20px] text-brand-900">{category}</h3>
-                  <span className="text-[11px] text-brand-700 opacity-70 ml-auto">{slugs.length} guide{slugs.length > 1 ? 's' : ''}</span>
+                  <span className="text-[11px] text-brand-700 opacity-70 ml-auto">{slugs.length} article{slugs.length > 1 ? 's' : ''}</span>
                 </div>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
                   {slugs.map((slug) => {

@@ -74,7 +74,7 @@ export default function BlogArticle({ params }: Props) {
             )}
           </nav>
           <div className="flex justify-between items-baseline mb-6 text-xs text-stone-500 font-medium">
-            <span>Kenya · Tax guide</span>
+            <span>Kenya · Tax article</span>
             <span className="opacity-80">2026</span>
           </div>
           <h1 className="editorial-h text-[30px] sm:text-[44px] mb-5">
@@ -125,8 +125,6 @@ export default function BlogArticle({ params }: Props) {
       {/* Related — cream section */}
       <section className="bg-brand-50">
         <div className="max-w-5xl mx-auto px-5 sm:px-6 py-14">
-          <div className="flex items-baseline justify-between mb-6">
-          </div>
           <h2 className="editorial-h text-[26px] sm:text-[32px] mb-8 text-brand-900">
             Keep <span className="accent">reading</span>
           </h2>
