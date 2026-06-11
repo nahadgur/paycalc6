@@ -23,7 +23,7 @@ const categories: Record<string, string[]> = {
     'everything-you-need-to-know-about-kenyas-housing-levy',
   ],
   'Tax savings': [
-    '7-legal-ways-kenyan-employees-can-reduce-their-paye',
+    'legal-ways-to-reduce-paye-in-kenya',
     'how-insurance-relief-works-for-kenyan-taxpayers',
     'claiming-mortgage-interest-relief-on-your-kenyan-tax-return',
     'why-kenyan-employees-should-max-out-their-pension-contributions',
@@ -65,7 +65,7 @@ export default function BlogPage() {
   const featuredSlugs = [
     'how-to-calculate-your-paye-tax-in-kenya',
     'the-complete-guide-to-nssf-contributions-in-kenya-for-2026',
-    '7-legal-ways-kenyan-employees-can-reduce-their-paye',
+    'legal-ways-to-reduce-paye-in-kenya',
   ]
 
   return (

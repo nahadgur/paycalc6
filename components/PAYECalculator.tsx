@@ -1469,7 +1469,7 @@ export default function PAYECalculatorV2({ defaultTab = 'calculator', single = f
                 { href: '/blog/the-complete-guide-to-nssf-contributions-in-kenya-for-2026', title: 'NSSF contributions 2026', desc: '6% rate, 108K cap, what changed' },
                 { href: '/blog/understanding-shif-deductions-in-kenya-and-what-replaced-nhif', title: 'SHIF replaces NHIF', desc: 'The new 2.75% health deduction' },
                 { href: '/blog/everything-you-need-to-know-about-kenyas-housing-levy', title: "Kenya's Housing Levy", desc: 'Why 1.5% comes out of every salary' },
-                { href: '/blog/7-legal-ways-kenyan-employees-can-reduce-their-paye', title: '7 ways to reduce your PAYE', desc: 'Pension, mortgage, insurance relief' },
+                { href: '/blog/legal-ways-to-reduce-paye-in-kenya', title: 'Legal ways to reduce your PAYE', desc: 'Pension, mortgage, insurance relief' },
                 { href: '/blog/how-kenyan-employers-tax-your-bonus-and-13th-month-pay', title: 'Bonus & 13th month pay', desc: 'How your extras get taxed' },
               ].map((g) => (
                 <a

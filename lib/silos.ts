@@ -49,7 +49,7 @@ export const SILOS: Silo[] = [
     hubHref: '/guides/tax-relief',
     blurb: 'Legal ways to reduce your PAYE: insurance relief, mortgage interest relief, pension contributions, and disability exemptions.',
     spokes: [
-      '7-legal-ways-kenyan-employees-can-reduce-their-paye',
+      'legal-ways-to-reduce-paye-in-kenya',
       'how-insurance-relief-works-for-kenyan-taxpayers',
       'claiming-mortgage-interest-relief-on-your-kenyan-tax-return',
       'why-kenyan-employees-should-max-out-their-pension-contributions',
