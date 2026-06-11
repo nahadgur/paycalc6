@@ -488,7 +488,7 @@ export default function PAYECalculatorV2({ defaultTab = 'calculator', single = f
       gross: salary,
       net: calc.netSalary,
       paye: calc.paye,
-      effectiveRate: calc.effectiveTaxRate
+      effectiveRate: Math.round(calc.effectiveTaxRate * 10) / 10
     };
   });
 
@@ -1109,7 +1109,7 @@ export default function PAYECalculatorV2({ defaultTab = 'calculator', single = f
                       type="number"
                       value={grossSalary}
                       onChange={(e) => setGrossSalary(Number(e.target.value))}
-                      className="w-full text-3xl font-bold bg-transparent border-b-2 border-indigo-500 py-2 text-white focus:outline-none"
+                      className="w-full text-3xl font-bold bg-transparent border-b-2 border-brand py-2 text-white focus:outline-none"
                     />
                   </div>
                   <div>
@@ -1118,7 +1118,7 @@ export default function PAYECalculatorV2({ defaultTab = 'calculator', single = f
                       type="number"
                       value={raisePercent}
                       onChange={(e) => setRaisePercent(Number(e.target.value))}
-                      className="w-full text-3xl font-bold bg-transparent border-b-2 border-indigo-500 py-2 text-white focus:outline-none"
+                      className="w-full text-3xl font-bold bg-transparent border-b-2 border-brand py-2 text-white focus:outline-none"
                     />
                     <p className="text-stone-500 text-sm mt-1">New gross: {formatCurrency(raiseCalc.newGross)}</p>
                   </div>
@@ -1171,7 +1171,7 @@ export default function PAYECalculatorV2({ defaultTab = 'calculator', single = f
                       type="number"
                       value={grossSalary}
                       onChange={(e) => setGrossSalary(Number(e.target.value))}
-                      className="w-full text-3xl font-bold bg-transparent border-b-2 border-pink-500 py-2 text-white focus:outline-none"
+                      className="w-full text-3xl font-bold bg-transparent border-b-2 border-brand py-2 text-white focus:outline-none"
                     />
                   </div>
                   <div>
@@ -1180,7 +1180,7 @@ export default function PAYECalculatorV2({ defaultTab = 'calculator', single = f
                       type="number"
                       value={bonusAmount}
                       onChange={(e) => setBonusAmount(Number(e.target.value))}
-                      className="w-full text-3xl font-bold bg-transparent border-b-2 border-pink-500 py-2 text-white focus:outline-none"
+                      className="w-full text-3xl font-bold bg-transparent border-b-2 border-brand py-2 text-white focus:outline-none"
                     />
                   </div>
                 </div>
@@ -1251,7 +1251,7 @@ export default function PAYECalculatorV2({ defaultTab = 'calculator', single = f
                     type="number"
                     value={grossSalary}
                     onChange={(e) => setGrossSalary(Number(e.target.value))}
-                    className="w-full text-3xl font-bold bg-transparent border-b-2 border-blue-500 py-2 text-white text-center focus:outline-none"
+                    className="w-full text-3xl font-bold bg-transparent border-b-2 border-brand py-2 text-white text-center focus:outline-none"
                   />
                 </div>
 

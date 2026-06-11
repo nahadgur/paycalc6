@@ -275,6 +275,56 @@ input[type="range"]::-moz-range-track {
   max-width: 64rem !important;
 }
 
+/* ===== TOOL-PANEL COLOUR NORMALISATION =====
+   The reverse / bonus / raise / employer / compare panels were authored for the
+   original multicolour dark theme. Each now has its own page, so their off-brand
+   tints (purple, pink, indigo, blue, emerald, and the /30 opacity variants the
+   earlier remap missed) show through. Fold them all into the brand palette.
+   Lower specificity than the icon-badge (.p-3) and button (element) rules above,
+   so those keep their solid brand red. */
+
+/* Coloured gradient panels and stat cards → brand cream */
+.paye-calc-body [class*="from-purple-"],
+.paye-calc-body [class*="from-pink-"],
+.paye-calc-body [class*="from-indigo-"],
+.paye-calc-body [class*="from-blue-"],
+.paye-calc-body [class*="from-emerald-"],
+.paye-calc-body [class*="from-amber-"],
+.paye-calc-body [class*="from-red-"] {
+  background-image: none !important;
+  background-color: var(--brand-50) !important;
+  border-color: var(--brand-300) !important;
+}
+
+/* Coloured borders → light hairline */
+.paye-calc-body [class*="border-purple-"],
+.paye-calc-body [class*="border-pink-"],
+.paye-calc-body [class*="border-indigo-"],
+.paye-calc-body [class*="border-blue-"],
+.paye-calc-body [class*="border-emerald-"],
+.paye-calc-body [class*="border-amber-"] {
+  border-color: var(--brand-300) !important;
+}
+
+/* Coloured tint backgrounds (info boxes, table badges) → faint brand */
+.paye-calc-body [class*="bg-blue-500/"],
+.paye-calc-body [class*="bg-emerald-500/"],
+.paye-calc-body [class*="bg-amber-500/"],
+.paye-calc-body [class*="bg-purple-500/"],
+.paye-calc-body [class*="bg-pink-500/"],
+.paye-calc-body [class*="bg-indigo-500/"] {
+  background-color: var(--brand-50) !important;
+}
+
+/* Remaining off-brand text → brand red */
+.paye-calc-body .text-indigo-300,
+.paye-calc-body .text-indigo-400,
+.paye-calc-body .text-blue-300,
+.paye-calc-body .text-cyan-400,
+.paye-calc-body .text-rose-400 {
+  color: var(--brand-600) !important;
+}
+
 /* ===== Bold Poster utility classes ===== */
 
 .editorial-h {
