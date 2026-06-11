@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import Link from 'next/link';
+import ToolTabs from './ToolTabs';
 import { PieChart, Pie, Cell, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, Legend, AreaChart, Area, LineChart, Line, RadarChart, Radar, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ComposedChart, Treemap, FunnelChart, Funnel, LabelList } from 'recharts';
 import { Calculator, TrendingUp, Wallet, Building2, Heart, Shield, ChevronDown, ChevronUp, Info, Sparkles, ArrowRight, Minus, Plus, DollarSign, PiggyBank, Home, Briefcase, Car, Users, GraduationCap, Utensils, Gift, ArrowLeftRight, Building, Percent, Target, Zap, BarChart3, PieChartIcon, Activity, Gauge, TrendingDown, RefreshCw, CircleDollarSign, BadgePercent, Landmark, HandCoins, Download } from 'lucide-react';
 
@@ -345,15 +345,6 @@ const WaterfallChart = ({ data }) => {
 
 // Tool registry — each tab also lives at its own URL. On a dedicated page the
 // hero tab bar renders these as links; on the homepage they switch in place.
-const TOOLS = [
-  { key: 'calculator', href: '/', icon: Calculator, label: 'Calculator' },
-  { key: 'reverse', href: '/net-gross-calculator', icon: RefreshCw, label: 'Net → Gross' },
-  { key: 'bonus', href: '/bonus-calculator', icon: Gift, label: 'Bonus' },
-  { key: 'raise', href: '/raise-calculator', icon: TrendingUp, label: 'Raise' },
-  { key: 'employer', href: '/employer-cost-calculator', icon: Building, label: 'Employer Cost' },
-  { key: 'compare', href: '/salary-comparison', icon: BarChart3, label: 'Compare' },
-];
-
 // Per-tool hero copy used when the component is rendered as a standalone page.
 const TOOL_HERO: Record<string, { h1: string; pre: string; em: string; post: string; desc: string }> = {
   reverse: {
@@ -554,24 +545,8 @@ export default function PAYECalculatorV2({ defaultTab = 'calculator', single = f
               <div className="mt-8 h-px bg-white/40"></div>
             </div>
 
-            {/* Tab Navigation — each calculator is its own page, so every tab is a link. */}
-            <div className="flex flex-wrap gap-2 mt-6">
-              {TOOLS.map((t) => (
-                <Link
-                  key={t.key}
-                  href={t.href}
-                  className={`flex items-center gap-2 px-4 py-2.5 rounded-full font-medium text-[12px] transition-all duration-200 ${
-                    activeTab === t.key
-                      ? 'bg-white text-brand hover:bg-white/95'
-                      : 'bg-transparent text-white border border-white/40 hover:bg-white/10 hover:border-white/70'
-                  }`}
-                  style={{ fontFamily: 'Inter, system-ui, sans-serif' }}
-                >
-                  <t.icon className="w-3.5 h-3.5" />
-                  <span className="hidden sm:inline">{t.label}</span>
-                </Link>
-              ))}
-            </div>
+            {/* Tab Navigation — every calculator is its own page, so each pill is a link. */}
+            <ToolTabs active={activeTab} />
           </div>
         </header>
       </div>

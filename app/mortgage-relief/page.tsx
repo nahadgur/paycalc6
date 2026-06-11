@@ -75,6 +75,7 @@ export default function MortgageReliefPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <ToolHero
+        active="mortgage"
         h1="Mortgage Relief Calculator Kenya 2026"
         pre="A bigger "
         em="take-home"

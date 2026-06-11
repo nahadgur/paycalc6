@@ -221,6 +221,7 @@ export default function P9GeneratorPage() {
   return (
     <>
       <ToolHero
+        active="p9"
         h1="Annual P9 Tax Deduction Certificate Generator"
         pre="Generate a "
         em="P9"

@@ -81,6 +81,7 @@ export default function NSSFCalculatorPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <ToolHero
+        active="nssf"
         h1="NSSF Calculator Kenya 2026 — Tier I & Tier II"
         pre="Your new "
         em="NSSF"
