@@ -504,7 +504,7 @@ export default function PAYECalculatorV2() {
           <div className="px-5 sm:px-8 md:px-10 pt-10 sm:pt-14 pb-10">
             <div className={`transition-all duration-1000 ${animated ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
               {/* Issue line */}
-              <div className="flex justify-between items-baseline mb-6 text-[11px] tracking-[0.2em] uppercase font-medium">
+              <div className="flex justify-between items-baseline mb-6 text-xs text-stone-500 font-medium">
                 <span>Kenya · 2026 KRA rates</span>
                 <span className="opacity-80">Issue №01</span>
               </div>
@@ -1360,7 +1360,6 @@ export default function PAYECalculatorV2() {
           <div className="px-5 sm:px-8 md:px-10 py-12 sm:py-14">
             <div className="flex items-baseline justify-between mb-4">
               <p className="section-marker" style={{ color: '#F04C40' }}>§ 02</p>
-              <p className="text-[10px] tracking-[0.15em] text-white/60 uppercase">Common salaries</p>
             </div>
             <h2 className="editorial-h text-[26px] sm:text-[32px] mb-8" style={{ fontFamily: "'Fraunces', Georgia, serif" }}>
               Salary <span className="italic" style={{ color: '#F04C40' }}>benchmarks</span>
@@ -1400,7 +1399,6 @@ export default function PAYECalculatorV2() {
           <div className="px-5 sm:px-8 md:px-10 py-12 sm:py-14">
             <div className="flex items-baseline justify-between mb-4">
               <p className="section-marker">§ 03</p>
-              <p className="text-[10px] tracking-[0.15em] text-brand-700 uppercase">Keep going</p>
             </div>
             <h2 className="editorial-h text-[26px] sm:text-[32px] mb-8 text-brand-900" style={{ fontFamily: "'Fraunces', Georgia, serif" }}>
               Guides & <span className="italic text-brand">explainers</span>

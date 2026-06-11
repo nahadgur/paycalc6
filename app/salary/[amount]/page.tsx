@@ -263,7 +263,7 @@ export default async function SalaryPage({ params }: { params: { amount: string 
           <h2 className="text-lg font-bold text-white mb-5">Annual Figures</h2>
           <div className="grid sm:grid-cols-2 gap-6">
             <div className="space-y-2 text-sm">
-              <h3 className="text-stone-400 text-xs font-semibold uppercase tracking-wider mb-3">Employee (Annual)</h3>
+              <h3 className="text-xs font-semibold text-stone-600 mb-3">Employee (Annual)</h3>
               {[
                 { label: 'Annual Gross',     value: c.gross * 12,            color: 'text-white' },
                 { label: 'Annual PAYE',      value: c.paye * 12,             color: 'text-red-400' },
@@ -279,7 +279,7 @@ export default async function SalaryPage({ params }: { params: { amount: string 
               ))}
             </div>
             <div className="space-y-2 text-sm">
-              <h3 className="text-stone-400 text-xs font-semibold uppercase tracking-wider mb-3">Employer Cost</h3>
+              <h3 className="text-xs font-semibold text-stone-600 mb-3">Employer Cost</h3>
               {[
                 { label: 'Gross Salary',      value: c.gross,               color: 'text-white' },
                 { label: 'Employer NSSF',     value: c.employerNSSF,        color: 'text-blue-400' },
@@ -349,7 +349,7 @@ export default async function SalaryPage({ params }: { params: { amount: string 
 
         {/* Navigation to nearby salaries */}
         <section className="mb-10">
-          <h2 className="text-sm font-semibold text-stone-400 uppercase tracking-wider mb-4">Compare with Other Salaries</h2>
+          <h2 className="text-lg font-semibold text-stone-800 mb-4">Compare with Other Salaries</h2>
           <div className="flex flex-wrap gap-3">
             {SALARY_AMOUNTS.filter(a => a !== gross).map(a => (
               <Link key={a} href={`/salary/${a}`}

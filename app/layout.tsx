@@ -127,7 +127,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <footer className="max-w-5xl mx-auto bg-brand text-white rounded-2xl sm:rounded-3xl overflow-hidden px-5 sm:px-8 md:px-10 py-12 sm:py-14">
             {/* CTA band */}
             <div className="text-center mb-14">
-              <p className="text-[11px] tracking-[0.2em] opacity-85 font-medium mb-3">— KEEP GOING —</p>
               <h2 className="editorial-h text-[34px] sm:text-[44px] mb-3">
                 Know your <span className="italic">exact</span> take-home.
               </h2>

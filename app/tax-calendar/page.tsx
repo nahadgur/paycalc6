@@ -329,7 +329,7 @@ export default function TaxCalendarPage() {
 
         {/* Related guides */}
         <section className="mt-14 mb-6">
-          <h2 className="text-sm font-semibold text-stone-500 uppercase tracking-wider mb-4">Prepare for the deadlines</h2>
+          <h2 className="text-lg font-semibold text-stone-800 mb-4">Prepare for the deadlines</h2>
           <div className="grid sm:grid-cols-2 gap-3">
             <Link href="/p9-generator" className="flex items-start gap-3 bg-white/5 border border-white/10 hover:border-amber-500/30 rounded-xl p-4 transition-all group">
               <span className="text-xl shrink-0">📄</span>

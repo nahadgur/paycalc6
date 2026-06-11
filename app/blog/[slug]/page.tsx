@@ -51,7 +51,7 @@ export default function BlogArticle({ params }: Props) {
           <Link href="/blog" className="inline-flex items-center gap-2 text-white/80 hover:text-white text-[12px] mb-6 transition">
             ← All guides
           </Link>
-          <div className="flex justify-between items-baseline mb-6 text-[11px] tracking-[0.2em] uppercase font-medium">
+          <div className="flex justify-between items-baseline mb-6 text-xs text-stone-500 font-medium">
             <span>Kenya · Tax guide</span>
             <span className="opacity-80">2026</span>
           </div>
@@ -106,7 +106,6 @@ export default function BlogArticle({ params }: Props) {
         <div className="max-w-5xl mx-auto px-5 sm:px-6 py-14">
           <div className="flex items-baseline justify-between mb-6">
             <p className="section-marker">§ NEXT</p>
-            <p className="text-[10px] tracking-[0.15em] text-brand-700 uppercase">Related</p>
           </div>
           <h2 className="editorial-h text-[26px] sm:text-[32px] mb-8 text-brand-900">
             Keep <span className="accent">reading</span>

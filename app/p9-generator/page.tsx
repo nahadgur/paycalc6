@@ -497,7 +497,7 @@ export default function P9GeneratorPage() {
 
         {/* Related guides */}
         <section className="no-print mt-10 mb-6">
-          <h2 className="text-sm font-semibold text-stone-500 uppercase tracking-wider mb-4">Related tools and guides</h2>
+          <h2 className="text-lg font-semibold text-stone-800 mb-4">Related tools and guides</h2>
           <div className="grid sm:grid-cols-2 gap-3">
             {[
               { href: '/tax-calendar',   icon: '📅', label: 'KRA Tax Calendar',        desc: 'P9 due January 31 — see all 2026 deadlines' },

@@ -280,7 +280,7 @@ export default function KRAOfficesPage() {
                     </div>
 
                     <div className="mb-4">
-                      <p className="text-xs text-stone-500 uppercase tracking-wider mb-2">Services available</p>
+                      <p className="text-xs font-semibold text-stone-600 mb-2">Services available</p>
                       <div className="flex flex-wrap gap-1.5">
                         {office.services.slice(0, 4).map(s => (
                           <span key={s} className="text-xs bg-white/5 border border-white/10 text-stone-400 px-2 py-0.5 rounded">{s}</span>
@@ -380,7 +380,7 @@ export default function KRAOfficesPage() {
 
         {/* Related guides */}
         <section className="mt-14 mb-6">
-          <h2 className="text-sm font-semibold text-stone-500 uppercase tracking-wider mb-4">Do most tasks online first</h2>
+          <h2 className="text-lg font-semibold text-stone-800 mb-4">Do most tasks online first</h2>
           <div className="grid sm:grid-cols-2 gap-3">
             <Link href="/itax-2026" className="flex items-start gap-3 bg-white/5 border border-white/10 hover:border-amber-500/30 rounded-xl p-4 transition-all group">
               <span className="text-xl shrink-0">💻</span>

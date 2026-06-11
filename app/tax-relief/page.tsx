@@ -205,13 +205,13 @@ export default function TaxReliefPage() {
                 </div>
 
                 <div className="mb-3">
-                  <p className="text-xs text-stone-500 font-semibold uppercase tracking-wider mb-2">Requirements</p>
+                  <p className="text-xs font-semibold text-stone-600 mb-2">Requirements</p>
                   <p className="text-stone-400 text-xs leading-relaxed">{relief.requirement}</p>
                 </div>
 
                 {!relief.isAutomatic && (
                   <div>
-                    <p className="text-xs text-stone-500 font-semibold uppercase tracking-wider mb-2">How to Claim</p>
+                    <p className="text-xs font-semibold text-stone-600 mb-2">How to Claim</p>
                     <div className="space-y-1">
                       {relief.howToClaim.map((step, i) => (
                         <div key={i} className="flex items-start gap-2 text-xs text-stone-400">
@@ -323,7 +323,7 @@ export default function TaxReliefPage() {
 
         {/* Related guides */}
         <section className="mt-14 mb-6">
-          <h2 className="text-sm font-semibold text-stone-500 uppercase tracking-wider mb-4">Apply these reliefs now</h2>
+          <h2 className="text-lg font-semibold text-stone-800 mb-4">Apply these reliefs now</h2>
           <div className="grid sm:grid-cols-2 gap-3">
             <Link href="/" className="flex items-start gap-3 bg-white/5 border border-white/10 hover:border-amber-500/30 rounded-xl p-4 transition-all group">
               <span className="text-xl shrink-0">🧮</span>

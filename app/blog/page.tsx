@@ -73,7 +73,7 @@ export default function BlogPage() {
       {/* Hero — red canvas Bold Poster */}
       <section className="bg-brand text-white">
         <div className="max-w-5xl mx-auto px-5 sm:px-6 py-16 sm:py-20">
-          <div className="flex justify-between items-baseline mb-6 text-[11px] tracking-[0.2em] uppercase font-medium">
+          <div className="flex justify-between items-baseline mb-6 text-xs text-stone-500 font-medium">
             <span>Kenya · 2026</span>
             <span className="opacity-80">The guides</span>
           </div>
@@ -92,7 +92,6 @@ export default function BlogPage() {
         <div className="max-w-5xl mx-auto px-5 sm:px-6 py-14">
           <div className="flex items-baseline justify-between mb-6">
             <p className="section-marker">§ 01</p>
-            <p className="text-[10px] tracking-[0.15em] text-[#888] uppercase">Start here</p>
           </div>
           <h2 className="editorial-h text-[26px] sm:text-[32px] mb-8">
             Featured <span className="accent">guides</span>
@@ -132,7 +131,6 @@ export default function BlogPage() {
         <div className="max-w-5xl mx-auto px-5 sm:px-6 py-14">
           <div className="flex items-baseline justify-between mb-6">
             <p className="section-marker">§ 02</p>
-            <p className="text-[10px] tracking-[0.15em] text-brand-700 uppercase">By category</p>
           </div>
           <h2 className="editorial-h text-[26px] sm:text-[32px] mb-10 text-brand-900">
             The full <span className="accent">library</span>
