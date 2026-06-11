@@ -527,7 +527,7 @@ export default function PAYECalculatorV2({ defaultTab = 'calculator', single = f
               <h1 className="text-[22px] sm:text-[28px] font-medium leading-tight mb-3 max-w-3xl" style={{ fontFamily: "'Inter', sans-serif" }}>
                 {single && TOOL_HERO[activeTab]
                   ? TOOL_HERO[activeTab].h1
-                  : <>Kenya PAYE Calculator 2026 — Net Salary, NSSF, SHIF &amp; Housing Levy</>}
+                  : <>Kenya PAYE &amp; Take-Home Pay Calculator 2026 — Net Salary, NSSF &amp; SHIF</>}
               </h1>
 
               {/* Editorial tagline — visual anchor */}
