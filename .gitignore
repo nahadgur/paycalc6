@@ -20,3 +20,6 @@ yarn-error.log*
 
 # local env files
 .env*.local
+
+# lockfile is resolved on Vercel from package.json (committing a local one broke npm install)
+package-lock.json
