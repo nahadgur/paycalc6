@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { SpokeGrid } from '@/components/SpokeGrid'
 import Link from 'next/link'
-import { Building2, CheckCircle2, AlertTriangle, TrendingUp, Clock, FileText, ChevronRight } from 'lucide-react'
+import { CheckCircle2, AlertTriangle, Clock, FileText } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Kenya Employer Payroll Compliance Guide 2026 | PAYE, NSSF, SHIF & Housing Levy',
@@ -137,10 +137,6 @@ export default function EmployerGuidePage() {
 
         {/* Header */}
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full mb-5">
-            <Building2 className="w-4 h-4 text-blue-400" />
-            <span className="text-blue-400 text-sm font-medium">Employer Guide — 2026</span>
-          </div>
           <h1 className="text-3xl md:text-4xl font-bold text-white mb-3">Kenya Employer Payroll Compliance 2026</h1>
           <p className="text-stone-400 max-w-xl mx-auto text-sm leading-relaxed">
             For HR managers, SME owners, and finance teams. Everything you need to know about PAYE, NSSF, SHIF, Housing Levy obligations, the true cost of hiring, and the 2026 changes that affect your payroll.

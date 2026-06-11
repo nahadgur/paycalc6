@@ -2,7 +2,7 @@
 
 import { useState, useMemo, useRef } from 'react'
 import Link from 'next/link'
-import { FileText, Download, Printer, ArrowLeft, Plus, Trash2, ChevronDown, ChevronUp, Info } from 'lucide-react'
+import { FileText, Printer, ArrowLeft, ChevronDown, ChevronUp, Info } from 'lucide-react'
 
 // 2026 Tax constants
 const TAX_BANDS = [
@@ -108,10 +108,6 @@ export default function P9GeneratorPage() {
 
         {/* Header */}
         <div className="no-print text-center mb-10">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-amber-500/10 border border-amber-500/20 rounded-full mb-5">
-            <FileText className="w-4 h-4 text-amber-400" />
-            <span className="text-amber-400 text-sm font-medium">P9 Form Generator — 2026 Tax Year</span>
-          </div>
           <h1 className="text-3xl md:text-4xl font-bold text-white mb-3">Annual P9 Tax Deduction Certificate</h1>
           <p className="text-stone-400 text-sm max-w-xl mx-auto leading-relaxed">
             Generate a P9 certificate for any employee. Enter monthly gross salary — all PAYE, NSSF, SHIF, and Housing Levy figures are computed automatically using 2026 KRA rates.

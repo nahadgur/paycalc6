@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Script from 'next/script'
 import Link from 'next/link'
+import NavCalculators from '@/components/NavCalculators'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -111,8 +112,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   2026
                 </span>
               </Link>
-              <div className="flex items-center gap-6">
-                <Link href="/" className="text-[#555] hover:text-brand transition-colors text-[13px] font-medium">Calculator</Link>
+              <div className="flex items-center gap-5 sm:gap-6">
+                <NavCalculators />
                 <Link href="/guides" className="text-[#555] hover:text-brand transition-colors text-[13px] font-medium">Guides</Link>
                 <Link href="/blog" className="text-[#555] hover:text-brand transition-colors text-[13px] font-medium">Blog</Link>
               </div>

@@ -211,22 +211,6 @@ const fullCalculation = (grossSalary, options: any = {}) => {
   };
 };
 
-// Tab Button Component — Bold Poster style (sits on red hero)
-const TabButton = ({ active, onClick, icon: Icon, label }) => (
-  <button
-    onClick={onClick}
-    className={`flex items-center gap-2 px-4 py-2.5 rounded-full font-medium text-[12px] transition-all duration-200 ${
-      active
-        ? 'bg-white text-brand hover:bg-white/95'
-        : 'bg-transparent text-white border border-white/40 hover:bg-white/10 hover:border-white/70'
-    }`}
-    style={{ fontFamily: 'Inter, system-ui, sans-serif' }}
-  >
-    <Icon className="w-3.5 h-3.5" />
-    <span className="hidden sm:inline">{label}</span>
-  </button>
-);
-
 // Animated Counter Component
 const AnimatedValue = ({ value, prefix = '', suffix = '' }) => {
   const [displayValue, setDisplayValue] = useState(0);
@@ -401,7 +385,7 @@ const TOOL_HERO: Record<string, { h1: string; pre: string; em: string; post: str
 
 // Main Component
 export default function PAYECalculatorV2({ defaultTab = 'calculator', single = false }: { defaultTab?: string; single?: boolean }) {
-  const [activeTab, setActiveTab] = useState(defaultTab);
+  const [activeTab] = useState(defaultTab);
   const [grossSalary, setGrossSalary] = useState(100000);
   const [targetNetSalary, setTargetNetSalary] = useState(75000);
   const [bonusAmount, setBonusAmount] = useState(50000);
@@ -548,12 +532,6 @@ export default function PAYECalculatorV2({ defaultTab = 'calculator', single = f
         <header className="max-w-5xl mx-auto bg-brand text-white rounded-2xl sm:rounded-3xl overflow-hidden">
           <div className="px-5 sm:px-8 md:px-10 pt-10 sm:pt-14 pb-10">
             <div className={`transition-all duration-1000 ${animated ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-              {/* Issue line */}
-              <div className="flex justify-between items-baseline mb-6 text-xs text-stone-500 font-medium">
-                <span>Kenya · 2026 KRA rates</span>
-                <span className="opacity-80">Issue №01</span>
-              </div>
-
               {/* SEO H1 — keyword-rich, crawler-priority. Tool pages get their own H1. */}
               <h1 className="text-[22px] sm:text-[28px] font-medium leading-tight mb-3 max-w-3xl" style={{ fontFamily: "'Inter', sans-serif" }}>
                 {single && TOOL_HERO[activeTab]
@@ -576,27 +554,23 @@ export default function PAYECalculatorV2({ defaultTab = 'calculator', single = f
               <div className="mt-8 h-px bg-white/40"></div>
             </div>
 
-            {/* Tab Navigation — links across tool pages when standalone, in-place switch on the homepage */}
+            {/* Tab Navigation — each calculator is its own page, so every tab is a link. */}
             <div className="flex flex-wrap gap-2 mt-6">
-              {single
-                ? TOOLS.map((t) => (
-                    <Link
-                      key={t.key}
-                      href={t.href}
-                      className={`flex items-center gap-2 px-4 py-2.5 rounded-full font-medium text-[12px] transition-all duration-200 ${
-                        activeTab === t.key
-                          ? 'bg-white text-brand hover:bg-white/95'
-                          : 'bg-transparent text-white border border-white/40 hover:bg-white/10 hover:border-white/70'
-                      }`}
-                      style={{ fontFamily: 'Inter, system-ui, sans-serif' }}
-                    >
-                      <t.icon className="w-3.5 h-3.5" />
-                      <span className="hidden sm:inline">{t.label}</span>
-                    </Link>
-                  ))
-                : TOOLS.map((t) => (
-                    <TabButton key={t.key} active={activeTab === t.key} onClick={() => setActiveTab(t.key)} icon={t.icon} label={t.label} />
-                  ))}
+              {TOOLS.map((t) => (
+                <Link
+                  key={t.key}
+                  href={t.href}
+                  className={`flex items-center gap-2 px-4 py-2.5 rounded-full font-medium text-[12px] transition-all duration-200 ${
+                    activeTab === t.key
+                      ? 'bg-white text-brand hover:bg-white/95'
+                      : 'bg-transparent text-white border border-white/40 hover:bg-white/10 hover:border-white/70'
+                  }`}
+                  style={{ fontFamily: 'Inter, system-ui, sans-serif' }}
+                >
+                  <t.icon className="w-3.5 h-3.5" />
+                  <span className="hidden sm:inline">{t.label}</span>
+                </Link>
+              ))}
             </div>
           </div>
         </header>

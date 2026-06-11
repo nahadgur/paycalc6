@@ -150,9 +150,6 @@ export default function FAQPage() {
 
         {/* Header */}
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full mb-5">
-            <span className="text-blue-400 text-sm font-medium">❓ FAQ Library — 2026</span>
-          </div>
           <h1 className="text-3xl md:text-4xl font-bold text-white mb-3">Kenya PAYE Tax Questions — Answered</h1>
           <p className="text-stone-400 text-sm max-w-lg mx-auto">
             {FAQS.length} commonly asked questions about PAYE, SHIF, NSSF, Housing Levy, P9 forms, and iTax filing in Kenya for 2026.

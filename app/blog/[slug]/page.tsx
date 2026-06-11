@@ -73,10 +73,6 @@ export default function BlogArticle({ params }: Props) {
               </>
             )}
           </nav>
-          <div className="flex justify-between items-baseline mb-6 text-xs text-stone-500 font-medium">
-            <span>Kenya · Tax article</span>
-            <span className="opacity-80">2026</span>
-          </div>
           <h1 className="editorial-h text-[30px] sm:text-[44px] mb-5">
             {article!.title}
           </h1>

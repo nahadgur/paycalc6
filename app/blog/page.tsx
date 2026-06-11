@@ -73,10 +73,6 @@ export default function BlogPage() {
       {/* Hero — red canvas Bold Poster */}
       <section className="bg-brand text-white">
         <div className="max-w-5xl mx-auto px-5 sm:px-6 py-16 sm:py-20">
-          <div className="flex justify-between items-baseline mb-6 text-xs text-stone-500 font-medium">
-            <span>Kenya · 2026</span>
-            <span className="opacity-80">The blog</span>
-          </div>
           <h1 className="editorial-h text-[44px] sm:text-[72px] mb-4">
             Kenya tax, <span className="italic">explained</span>.
           </h1>

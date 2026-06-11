@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { FileText, CheckCircle2, ArrowRight, AlertTriangle, Clock, Shield, ChevronRight } from 'lucide-react'
+import { CheckCircle2, AlertTriangle, Clock, ChevronRight } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'KRA iTax 2026 Guide | Pre-Filled Returns, How to File & New Features',
@@ -59,10 +59,6 @@ export default function ITax2026Page() {
 
         {/* Header */}
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full mb-5">
-            <Shield className="w-4 h-4 text-emerald-400" />
-            <span className="text-emerald-400 text-sm font-medium">Updated for 2026</span>
-          </div>
           <h1 className="text-3xl md:text-4xl font-bold text-white mb-3">KRA iTax 2026 — Complete Guide</h1>
           <p className="text-stone-400 max-w-xl mx-auto text-sm leading-relaxed">
             In 2026, KRA&apos;s iTax system introduced pre-filled tax returns for salaried employees. Most Kenyans can now file in under 5 minutes using just their PIN and national ID. Here is everything you need to know.

@@ -3,7 +3,7 @@
 import { useState, useMemo } from 'react'
 import Link from 'next/link'
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts'
-import { PiggyBank, Home, Coffee, TrendingUp, AlertTriangle, ChevronRight } from 'lucide-react'
+import { Home, Coffee, TrendingUp, AlertTriangle, ChevronRight } from 'lucide-react'
 
 const TAX_BANDS = [
   { min: 0,      max: 24000,    rate: 0.10 },
@@ -103,10 +103,6 @@ export default function BudgetGuidePage() {
 
         {/* Header */}
         <div className="text-center mb-10">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full mb-5">
-            <PiggyBank className="w-4 h-4 text-emerald-400" />
-            <span className="text-emerald-400 text-sm font-medium">Budget Planner — Kenya 2026</span>
-          </div>
           <h1 className="text-3xl md:text-4xl font-bold text-white mb-3">Kenyan Salary Budget Planner</h1>
           <p className="text-stone-400 text-sm max-w-xl mx-auto leading-relaxed">
             Enter your gross salary — we calculate your take-home pay after all 2026 deductions, then split it using your chosen budget rule. See if your salary covers Nairobi living costs.

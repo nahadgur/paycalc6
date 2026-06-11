@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { Landmark, TrendingUp, CheckCircle2, ChevronRight } from 'lucide-react'
+import { TrendingUp, CheckCircle2, ChevronRight } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'NSSF Calculator Kenya 2026 | New Tier I & II Rates (Max KES 6,480)',
@@ -83,10 +83,6 @@ export default function NSSFCalculatorPage() {
 
         {/* Header */}
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-brand-50 border border-brand-200 rounded-full mb-5">
-            <Landmark className="w-4 h-4 text-brand-700" />
-            <span className="text-brand-700 text-sm font-medium">New rates · effective 1 Feb 2026</span>
-          </div>
           <h1 className="text-3xl md:text-4xl font-bold text-white mb-3">NSSF Calculator Kenya 2026 — Tier I &amp; Tier II</h1>
           <p className="text-stone-400 max-w-xl mx-auto text-sm leading-relaxed">
             From February 2026, NSSF is 6% of your pay up to a new upper limit of KES 108,000 — a maximum of

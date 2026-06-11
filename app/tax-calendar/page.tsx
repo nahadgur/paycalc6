@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { Calendar, Clock, AlertTriangle, CheckCircle2, ChevronRight, Bell, FileText } from 'lucide-react'
+import { Calendar, Clock, AlertTriangle, FileText } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'KRA Tax Calendar 2026 | PAYE, NSSF, SHIF & iTax Filing Deadlines Kenya',
@@ -94,10 +94,6 @@ export default function TaxCalendarPage() {
 
         {/* Header */}
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-amber-500/10 border border-amber-500/20 rounded-full mb-5">
-            <Calendar className="w-4 h-4 text-amber-400" />
-            <span className="text-amber-400 text-sm font-medium">Updated for 2026</span>
-          </div>
           <h1 className="text-3xl md:text-4xl font-bold text-white mb-3">KRA Tax Calendar 2026</h1>
           <p className="text-stone-400 max-w-xl mx-auto text-sm leading-relaxed">
             Every PAYE, NSSF, SHIF, Housing Levy, and iTax filing deadline for Kenyan employers and employees.

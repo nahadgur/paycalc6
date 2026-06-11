@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { SpokeGrid } from '@/components/SpokeGrid'
 import Link from 'next/link'
-import { TrendingUp, AlertTriangle, CheckCircle2, ArrowRight, ChevronRight } from 'lucide-react'
+import { AlertTriangle, CheckCircle2, ChevronRight } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'SHIF & NSSF 2026 Changes Kenya | Complete Statutory Transition Guide',
@@ -99,10 +99,6 @@ export default function StatutoryChangesPage() {
 
         {/* Header */}
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full mb-5">
-            <TrendingUp className="w-4 h-4 text-blue-400" />
-            <span className="text-blue-400 text-sm font-medium">2026 Statutory Changes</span>
-          </div>
           <h1 className="text-3xl md:text-4xl font-bold text-white mb-3">SHIF &amp; NSSF 2026 — What Changed and What It Costs You</h1>
           <p className="text-stone-400 max-w-xl mx-auto text-sm leading-relaxed">
             The biggest overhaul to Kenyan statutory deductions in a decade. NHIF is gone, SHIF is here, and NSSF rates have increased. Here is the definitive guide for employees and employers.

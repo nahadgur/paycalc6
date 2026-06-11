@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { Home, CheckCircle2, AlertTriangle, ChevronRight } from 'lucide-react'
+import { CheckCircle2, AlertTriangle, ChevronRight } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Mortgage Relief Calculator Kenya 2026 | Save up to KES 9,000/mo',
@@ -77,10 +77,6 @@ export default function MortgageReliefPage() {
 
         {/* Header */}
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-brand-50 border border-brand-200 rounded-full mb-5">
-            <Home className="w-4 h-4 text-brand-700" />
-            <span className="text-brand-700 text-sm font-medium">Updated 2026 · KES 30,000/month</span>
-          </div>
           <h1 className="text-3xl md:text-4xl font-bold text-white mb-3">Mortgage Relief Calculator Kenya 2026</h1>
           <p className="text-stone-400 max-w-xl mx-auto text-sm leading-relaxed">
             If you have a home loan, mortgage interest relief is one of the biggest PAYE savings available — up to

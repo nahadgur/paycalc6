@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { SpokeGrid } from '@/components/SpokeGrid'
 import Link from 'next/link'
-import { PiggyBank, Home, Shield, GraduationCap, CheckCircle2, AlertTriangle, ChevronRight } from 'lucide-react'
+import { PiggyBank, Home, Shield, GraduationCap, AlertTriangle, ChevronRight } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Kenya Tax Reliefs 2026 | Reduce Your PAYE — Complete Guide',
@@ -147,10 +147,6 @@ export default function TaxReliefPage() {
 
         {/* Header */}
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full mb-5">
-            <PiggyBank className="w-4 h-4 text-emerald-400" />
-            <span className="text-emerald-400 text-sm font-medium">Updated 2026</span>
-          </div>
           <h1 className="text-3xl md:text-4xl font-bold text-white mb-3">Kenya Tax Reliefs 2026 — Reduce Your PAYE Legally</h1>
           <p className="text-stone-400 max-w-xl mx-auto text-sm leading-relaxed">
             Most Kenyan employees pay more tax than they need to. There are six legal reliefs that can reduce your monthly PAYE — some by up to KES 20,000 per month. Here is every one, explained clearly.
