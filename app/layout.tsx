@@ -171,6 +171,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   <li><Link href="/nssf-calculator" className="opacity-90 hover:opacity-100 hover:underline">NSSF calculator</Link></li>
                   <li><Link href="/mortgage-relief" className="opacity-90 hover:opacity-100 hover:underline">Mortgage relief</Link></li>
                   <li><Link href="/p9-generator" className="opacity-90 hover:opacity-100 hover:underline">P9 generator</Link></li>
+                  <li><Link href="/payslip-generator" className="opacity-90 hover:opacity-100 hover:underline">Payslip generator</Link></li>
                 </ul>
               </div>
               <div>

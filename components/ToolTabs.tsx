@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Calculator, RefreshCw, Gift, TrendingUp, Building, BarChart3, Landmark, Home, FileText } from 'lucide-react'
+import { Calculator, RefreshCw, Gift, TrendingUp, Building, BarChart3, Landmark, Home, FileText, Receipt } from 'lucide-react'
 
 // Every calculator on the site, shown as the pill bar in each hero. `key` is
 // matched against the current page so the active pill is highlighted.
@@ -13,6 +13,7 @@ export const TOOLS = [
   { key: 'nssf', href: '/nssf-calculator', icon: Landmark, label: 'NSSF' },
   { key: 'mortgage', href: '/mortgage-relief', icon: Home, label: 'Mortgage' },
   { key: 'p9', href: '/p9-generator', icon: FileText, label: 'P9' },
+  { key: 'payslip', href: '/payslip-generator', icon: Receipt, label: 'Payslip' },
 ]
 
 export default function ToolTabs({ active }: { active: string }) {

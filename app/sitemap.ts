@@ -17,6 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Static / landing pages (priority reflects commercial + search value)
   const staticPages: MetadataRoute.Sitemap = [
     { url: baseUrl, changeFrequency: 'weekly' as const, priority: 1 },
+    { url: `${baseUrl}/payslip-generator`, changeFrequency: 'monthly' as const, priority: 0.9 },
     { url: `${baseUrl}/net-gross-calculator`, changeFrequency: 'monthly' as const, priority: 0.9 },
     { url: `${baseUrl}/bonus-calculator`, changeFrequency: 'monthly' as const, priority: 0.9 },
     { url: `${baseUrl}/raise-calculator`, changeFrequency: 'monthly' as const, priority: 0.9 },

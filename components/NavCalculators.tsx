@@ -14,6 +14,7 @@ const ITEMS = [
   { href: '/nssf-calculator', label: 'NSSF calculator', desc: 'Tier I & II deduction' },
   { href: '/mortgage-relief', label: 'Mortgage relief', desc: 'PAYE saving on interest' },
   { href: '/p9-generator', label: 'P9 generator', desc: 'Annual P9 certificate' },
+  { href: '/payslip-generator', label: 'Payslip generator', desc: 'Branded payslip PDF' },
 ]
 
 export default function NavCalculators() {
