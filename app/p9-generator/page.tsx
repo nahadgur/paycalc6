@@ -4,7 +4,7 @@ import { useState, useMemo, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import Link from 'next/link'
 import { FileText, Printer, ChevronDown, ChevronUp, Info } from 'lucide-react'
-import ToolHero from '@/components/ToolHero'
+import Hero from '@/components/Hero'
 
 // 2026 Tax constants
 const TAX_BANDS = [
@@ -220,7 +220,7 @@ export default function P9GeneratorPage() {
 
   return (
     <>
-      <ToolHero
+      <Hero
         active="p9"
         h1="Annual P9 Tax Deduction Certificate Generator"
         pre="Generate a "

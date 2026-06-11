@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { CheckCircle2, AlertTriangle, ChevronRight } from 'lucide-react'
-import ToolHero from '@/components/ToolHero'
+import Hero from '@/components/Hero'
 
 export const metadata: Metadata = {
   title: 'Mortgage Relief Calculator Kenya 2026 | Save up to KES 9,000/mo',
@@ -74,7 +74,7 @@ export default function MortgageReliefPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      <ToolHero
+      <Hero
         active="mortgage"
         h1="Mortgage Relief Calculator Kenya 2026"
         pre="A bigger "

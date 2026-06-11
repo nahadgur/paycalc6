@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useMemo, useEffect } from 'react';
-import ToolTabs from './ToolTabs';
+import Hero from './Hero';
 import { PieChart, Pie, Cell, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, Legend, AreaChart, Area, LineChart, Line, RadarChart, Radar, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ComposedChart, Treemap, FunnelChart, Funnel, LabelList } from 'recharts';
 import { Calculator, TrendingUp, Wallet, Building2, Heart, Shield, ChevronDown, ChevronUp, Info, Sparkles, ArrowRight, Minus, Plus, DollarSign, PiggyBank, Home, Briefcase, Car, Users, GraduationCap, Utensils, Gift, ArrowLeftRight, Building, Percent, Target, Zap, BarChart3, PieChartIcon, Activity, Gauge, TrendingDown, RefreshCw, CircleDollarSign, BadgePercent, Landmark, HandCoins, Download } from 'lucide-react';
 
@@ -513,38 +513,15 @@ export default function PAYECalculatorV2({ defaultTab = 'calculator', single = f
   return (
     <div className="paye-app min-h-screen bg-white overflow-x-hidden">
 
-      {/* Hero — Bold Poster red, contained with rounded corners */}
-      <div className="bg-white pt-4 sm:pt-6 px-4 sm:px-6">
-        <header className="max-w-5xl mx-auto bg-brand text-white rounded-2xl sm:rounded-3xl overflow-hidden">
-          <div className="px-5 sm:px-8 md:px-10 pt-10 sm:pt-14 pb-10">
-            <div className={`transition-all duration-1000 ${animated ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-              {/* SEO H1 — keyword-rich, crawler-priority. Tool pages get their own H1. */}
-              <h1 className="text-[22px] sm:text-[28px] font-medium leading-tight mb-3 max-w-3xl" style={{ fontFamily: "'Inter', sans-serif" }}>
-                {single && TOOL_HERO[activeTab]
-                  ? TOOL_HERO[activeTab].h1
-                  : <>Kenya PAYE &amp; Take-Home Pay Calculator 2026 — Net Salary, NSSF &amp; SHIF</>}
-              </h1>
-
-              {/* Editorial tagline — visual anchor */}
-              <p className="editorial-h text-[48px] sm:text-[80px] mb-5" style={{ fontFamily: "'Fraunces', Georgia, serif", lineHeight: 1 }}>
-                {single && TOOL_HERO[activeTab]
-                  ? <>{TOOL_HERO[activeTab].pre}<span className="italic">{TOOL_HERO[activeTab].em}</span>{TOOL_HERO[activeTab].post}</>
-                  : <>Calculate your <span className="italic">take-home</span>.</>}
-              </p>
-
-              <p className="text-[13px] sm:text-[15px] opacity-90 max-w-xl leading-relaxed">
-                {single && TOOL_HERO[activeTab]
-                  ? TOOL_HERO[activeTab].desc
-                  : 'Free Kenya PAYE and salary calculator. Works out your monthly net pay after PAYE tax, NSSF pension, SHIF (former NHIF), Housing Levy, HELB, SACCO and benefits in kind — using 2026 KRA tax bands.'}
-              </p>
-              <div className="mt-8 h-px bg-white/40"></div>
-            </div>
-
-            {/* Tab Navigation — every calculator is its own page, so each pill is a link. */}
-            <ToolTabs active={activeTab} />
-          </div>
-        </header>
-      </div>
+      {/* Hero — the single shared component, identical on every calculator page */}
+      <Hero
+        h1={single && TOOL_HERO[activeTab] ? TOOL_HERO[activeTab].h1 : 'Kenya PAYE & Take-Home Pay Calculator 2026 — Net Salary, NSSF & SHIF'}
+        pre={single && TOOL_HERO[activeTab] ? TOOL_HERO[activeTab].pre : 'Calculate your '}
+        em={single && TOOL_HERO[activeTab] ? TOOL_HERO[activeTab].em : 'take-home'}
+        post={single && TOOL_HERO[activeTab] ? TOOL_HERO[activeTab].post : '.'}
+        desc={single && TOOL_HERO[activeTab] ? TOOL_HERO[activeTab].desc : 'Free Kenya PAYE and salary calculator. Works out your monthly net pay after PAYE tax, NSSF pension, SHIF (former NHIF), Housing Levy, HELB, SACCO and benefits in kind, using 2026 KRA tax bands.'}
+        active={activeTab}
+      />
 
       <main className="paye-calc-body relative z-10 px-4 md:px-6 pt-8 pb-16 bg-white">
         <div className="max-w-5xl mx-auto">

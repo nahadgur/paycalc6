@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import ToolHero from '@/components/ToolHero'
+import Hero from '@/components/Hero'
 import PayslipGenerator from '@/components/PayslipGenerator'
 
 export const metadata: Metadata = {
@@ -60,7 +60,7 @@ export default function PayslipGeneratorPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      <ToolHero
+      <Hero
         active="payslip"
         h1="Payslip Generator Kenya 2026 — Free Payslip Maker"
         pre="Make a "

@@ -18,12 +18,13 @@ export const TOOLS = [
 
 export default function ToolTabs({ active }: { active: string }) {
   return (
-    <div className="flex flex-wrap gap-2 mt-6">
+    // Mobile: one swipeable row (no wrapping = hero stays short). Desktop: wraps.
+    <div className="flex gap-2 overflow-x-auto no-scrollbar -mx-5 px-5 sm:mx-0 sm:px-0 sm:flex-wrap sm:overflow-visible">
       {TOOLS.map((t) => (
         <Link
           key={t.key}
           href={t.href}
-          className={`flex items-center gap-2 px-4 py-2.5 rounded-full font-medium text-[12px] transition-all duration-200 ${
+          className={`shrink-0 flex items-center gap-2 px-4 py-2.5 rounded-full font-medium text-[12px] whitespace-nowrap transition-all duration-200 ${
             active === t.key
               ? 'bg-white text-brand hover:bg-white/95'
               : 'bg-transparent text-white border border-white/40 hover:bg-white/10 hover:border-white/70'
@@ -31,7 +32,7 @@ export default function ToolTabs({ active }: { active: string }) {
           style={{ fontFamily: 'Inter, system-ui, sans-serif' }}
         >
           <t.icon className="w-3.5 h-3.5" />
-          <span className="hidden sm:inline">{t.label}</span>
+          <span>{t.label}</span>
         </Link>
       ))}
     </div>

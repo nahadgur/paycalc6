@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { TrendingUp, CheckCircle2, ChevronRight } from 'lucide-react'
-import ToolHero from '@/components/ToolHero'
+import Hero from '@/components/Hero'
 
 export const metadata: Metadata = {
   title: 'NSSF Calculator Kenya 2026 | New Tier I & II Rates (Max KES 6,480)',
@@ -80,7 +80,7 @@ export default function NSSFCalculatorPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      <ToolHero
+      <Hero
         active="nssf"
         h1="NSSF Calculator Kenya 2026 — Tier I & Tier II"
         pre="Your new "
