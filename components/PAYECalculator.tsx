@@ -1466,7 +1466,7 @@ export default function PAYECalculatorV2({ defaultTab = 'calculator', single = f
             <div className="grid sm:grid-cols-2 gap-3">
               {[
                 { href: '/blog/how-to-calculate-your-paye-tax-in-kenya', title: 'How to calculate your PAYE', desc: 'Step-by-step using 2026 KRA bands' },
-                { href: '/blog/the-complete-guide-to-nssf-contributions-in-kenya-for-2026', title: 'NSSF contributions 2026', desc: '6% rate, 108K cap, what changed' },
+                { href: '/blog/the-complete-guide-to-nssf-contributions-in-kenya', title: 'NSSF contributions 2026', desc: '6% rate, 108K cap, what changed' },
                 { href: '/blog/understanding-shif-deductions-in-kenya-and-what-replaced-nhif', title: 'SHIF replaces NHIF', desc: 'The new 2.75% health deduction' },
                 { href: '/blog/everything-you-need-to-know-about-kenyas-housing-levy', title: "Kenya's Housing Levy", desc: 'Why 1.5% comes out of every salary' },
                 { href: '/blog/legal-ways-to-reduce-paye-in-kenya', title: 'Legal ways to reduce your PAYE', desc: 'Pension, mortgage, insurance relief' },

@@ -38,7 +38,7 @@ export const SILOS: Silo[] = [
     hubHref: '/guides/statutory-deductions',
     blurb: 'NSSF, SHIF, and the Housing Levy: the three mandatory deductions that come out of every Kenyan payslip in 2026.',
     spokes: [
-      'the-complete-guide-to-nssf-contributions-in-kenya-for-2026',
+      'the-complete-guide-to-nssf-contributions-in-kenya',
       'understanding-shif-deductions-in-kenya-and-what-replaced-nhif',
       'everything-you-need-to-know-about-kenyas-housing-levy',
     ],
@@ -103,7 +103,7 @@ export const SILOS: Silo[] = [
     blurb: 'The latest changes to Kenyan payroll: the Finance Bill, KRA deadlines, and the new NSSF rates.',
     spokes: [
       'what-the-kenya-finance-bill-2025-means-for-your-salary',
-      'key-kra-tax-deadlines-every-kenyan-should-know-in-2026',
+      'key-kra-tax-deadlines-every-kenyan-should-know',
       'how-the-new-nssf-rates-affect-kenyan-workers',
     ],
   },

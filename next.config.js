@@ -27,6 +27,16 @@ const nextConfig = {
         destination: '/blog/legal-ways-to-reduce-paye-in-kenya',
         permanent: true,
       },
+      {
+        source: '/blog/the-complete-guide-to-nssf-contributions-in-kenya-for-2026',
+        destination: '/blog/the-complete-guide-to-nssf-contributions-in-kenya',
+        permanent: true,
+      },
+      {
+        source: '/blog/key-kra-tax-deadlines-every-kenyan-should-know-in-2026',
+        destination: '/blog/key-kra-tax-deadlines-every-kenyan-should-know',
+        permanent: true,
+      },
     ]
 
     return [...guideRedirects, ...blogRedirects]

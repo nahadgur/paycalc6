@@ -18,7 +18,7 @@ const categories: Record<string, string[]> = {
     'working-backwards-from-net-to-gross-salary-in-kenya',
   ],
   'Statutory deductions': [
-    'the-complete-guide-to-nssf-contributions-in-kenya-for-2026',
+    'the-complete-guide-to-nssf-contributions-in-kenya',
     'understanding-shif-deductions-in-kenya-and-what-replaced-nhif',
     'everything-you-need-to-know-about-kenyas-housing-levy',
   ],
@@ -52,7 +52,7 @@ const categories: Record<string, string[]> = {
   ],
   'News & updates': [
     'what-the-kenya-finance-bill-2025-means-for-your-salary',
-    'key-kra-tax-deadlines-every-kenyan-should-know-in-2026',
+    'key-kra-tax-deadlines-every-kenyan-should-know',
     'how-the-new-nssf-rates-affect-kenyan-workers',
   ],
   'Lifestyle': [
@@ -64,7 +64,7 @@ export default function BlogPage() {
   const articleMap = new Map(articles.map(a => [a.slug, a]))
   const featuredSlugs = [
     'how-to-calculate-your-paye-tax-in-kenya',
-    'the-complete-guide-to-nssf-contributions-in-kenya-for-2026',
+    'the-complete-guide-to-nssf-contributions-in-kenya',
     'legal-ways-to-reduce-paye-in-kenya',
   ]
 

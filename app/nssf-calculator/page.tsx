@@ -200,7 +200,7 @@ export default function NSSFCalculatorPage() {
               <span className="font-semibold text-white text-sm group-hover:text-brand-700 transition-colors flex items-center gap-2"><CheckCircle2 className="w-4 h-4" /> PAYE Calculator</span>
               <span className="text-stone-500 text-xs">Net salary with NSSF, SHIF &amp; levy</span>
             </Link>
-            <Link href="/blog/the-complete-guide-to-nssf-contributions-in-kenya-for-2026" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-blue-500/40 rounded-xl p-4 transition-all group">
+            <Link href="/blog/the-complete-guide-to-nssf-contributions-in-kenya" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-blue-500/40 rounded-xl p-4 transition-all group">
               <span className="font-semibold text-white text-sm group-hover:text-brand-700 transition-colors">NSSF 2026 Guide</span>
               <span className="text-stone-500 text-xs">Rates, tiers, benefits &amp; rules</span>
             </Link>
