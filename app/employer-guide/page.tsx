@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { SpokeGrid } from '@/components/SpokeGrid'
 import Link from 'next/link'
 import { Building2, CheckCircle2, AlertTriangle, TrendingUp, Clock, FileText, ChevronRight } from 'lucide-react'
 
@@ -294,6 +295,8 @@ export default function EmployerGuidePage() {
             </Link>
           ))}
         </div>
+
+        <SpokeGrid siloKey="for-employers" />
 
         {/* Related */}
         <section className="mt-14 border-t border-white/10 pt-10">

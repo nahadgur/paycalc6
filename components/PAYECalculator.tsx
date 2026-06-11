@@ -540,7 +540,6 @@ export default function PAYECalculatorV2() {
 
       <main className="paye-calc-body relative z-10 px-4 md:px-6 pt-8 pb-16 bg-white">
         <div className="max-w-5xl mx-auto">
-          <p className="section-marker mb-4">§ 01 · CALCULATION</p>
 
           {/* Main Calculator Tab */}
           {activeTab === 'calculator' && (
@@ -1359,7 +1358,6 @@ export default function PAYECalculatorV2() {
         <section className="max-w-5xl mx-auto bg-[#111] text-white rounded-2xl sm:rounded-3xl overflow-hidden">
           <div className="px-5 sm:px-8 md:px-10 py-12 sm:py-14">
             <div className="flex items-baseline justify-between mb-4">
-              <p className="section-marker" style={{ color: '#F04C40' }}>§ 02</p>
             </div>
             <h2 className="editorial-h text-[26px] sm:text-[32px] mb-8" style={{ fontFamily: "'Fraunces', Georgia, serif" }}>
               Salary <span className="italic" style={{ color: '#F04C40' }}>benchmarks</span>
@@ -1398,7 +1396,6 @@ export default function PAYECalculatorV2() {
         <section className="max-w-5xl mx-auto bg-brand-50 rounded-2xl sm:rounded-3xl overflow-hidden">
           <div className="px-5 sm:px-8 md:px-10 py-12 sm:py-14">
             <div className="flex items-baseline justify-between mb-4">
-              <p className="section-marker">§ 03</p>
             </div>
             <h2 className="editorial-h text-[26px] sm:text-[32px] mb-8 text-brand-900" style={{ fontFamily: "'Fraunces', Georgia, serif" }}>
               Guides & <span className="italic text-brand">explainers</span>

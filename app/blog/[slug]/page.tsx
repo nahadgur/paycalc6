@@ -2,8 +2,12 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import articles from '@/lib/articles.json'
+import { siloForSpoke } from '@/lib/silos'
+import { ChevronRight } from 'lucide-react'
 
 type Props = { params: { slug: string } }
+
+const BASE = 'https://payecalculator.co.ke'
 
 export async function generateStaticParams() {
   return articles.map((article) => ({ slug: article.slug }))
@@ -33,6 +37,14 @@ export default function BlogArticle({ params }: Props) {
   const article = articles.find((a) => a.slug === params.slug)
   if (!article) notFound()
 
+  const silo = siloForSpoke(params.slug)
+  const crumbs = [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${BASE}/` },
+    ...(silo ? [{ '@type': 'ListItem', position: 2, name: silo.title, item: `${BASE}${silo.hubHref}` }] : []),
+    { '@type': 'ListItem', position: silo ? 3 : 2, name: article!.title, item: `${BASE}/blog/${params.slug}` },
+  ]
+  const breadcrumb = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: crumbs }
+
   const relatedArticles = articles
     .filter((a) => a.slug !== params.slug)
     .sort(() => Math.random() - 0.5)
@@ -45,12 +57,21 @@ export default function BlogArticle({ params }: Props) {
 
   return (
     <div className="bg-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
       {/* Hero — red band with title */}
       <section className="bg-brand text-white">
         <div className="max-w-3xl mx-auto px-5 sm:px-6 py-12 sm:py-16">
-          <Link href="/blog" className="inline-flex items-center gap-2 text-white/80 hover:text-white text-[12px] mb-6 transition">
-            ← All guides
-          </Link>
+          <nav className="flex items-center flex-wrap gap-1.5 text-[12px] text-white/80 mb-6">
+            <Link href="/" className="hover:text-white">Home</Link>
+            {silo && (
+              <>
+                <ChevronRight className="w-3 h-3" />
+                <Link href={silo.hubHref} className="hover:text-white">{silo.title}</Link>
+              </>
+            )}
+            <ChevronRight className="w-3 h-3" />
+            <Link href="/blog" className="hover:text-white">Guides</Link>
+          </nav>
           <div className="flex justify-between items-baseline mb-6 text-xs text-stone-500 font-medium">
             <span>Kenya · Tax guide</span>
             <span className="opacity-80">2026</span>
@@ -75,7 +96,6 @@ export default function BlogArticle({ params }: Props) {
         {/* Calculator CTA card */}
         <div className="bg-brand-50 border border-brand-300 rounded-2xl p-5 mb-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
-            <p className="section-marker mb-1 text-[10px]">CALCULATE</p>
             <h3 className="editorial-h text-[18px] text-brand-900 mb-1">Your exact take-home</h3>
             <p className="text-brand-700 text-[12px]">2026 KRA rates · instant</p>
           </div>
@@ -105,7 +125,6 @@ export default function BlogArticle({ params }: Props) {
       <section className="bg-brand-50">
         <div className="max-w-5xl mx-auto px-5 sm:px-6 py-14">
           <div className="flex items-baseline justify-between mb-6">
-            <p className="section-marker">§ NEXT</p>
           </div>
           <h2 className="editorial-h text-[26px] sm:text-[32px] mb-8 text-brand-900">
             Keep <span className="accent">reading</span>

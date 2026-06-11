@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { SpokeGrid } from '@/components/SpokeGrid'
 import Link from 'next/link'
 import { TrendingUp, AlertTriangle, CheckCircle2, ArrowRight, ChevronRight } from 'lucide-react'
 
@@ -281,6 +282,8 @@ export default function StatutoryChangesPage() {
             <ChevronRight className="w-5 h-5 text-stone-500 group-hover:text-emerald-400 transition-colors" />
           </Link>
         </div>
+
+        <SpokeGrid siloKey="news-updates" />
 
         {/* Related */}
         <section className="mt-14 border-t border-white/10 pt-10">

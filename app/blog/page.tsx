@@ -91,7 +91,6 @@ export default function BlogPage() {
       <section className="bg-white">
         <div className="max-w-5xl mx-auto px-5 sm:px-6 py-14">
           <div className="flex items-baseline justify-between mb-6">
-            <p className="section-marker">§ 01</p>
           </div>
           <h2 className="editorial-h text-[26px] sm:text-[32px] mb-8">
             Featured <span className="accent">guides</span>
@@ -109,7 +108,6 @@ export default function BlogPage() {
                   <div className="absolute top-4 right-4 w-6 h-6 bg-brand-50 rounded-full flex items-center justify-center text-[10px] font-medium text-brand-700">
                     {String(i + 1).padStart(2, '0')}
                   </div>
-                  <p className="section-marker text-[10px] mb-3">Featured</p>
                   <h3 className="editorial-h text-[20px] mb-3 group-hover:text-brand transition-colors">
                     {article.title}
                   </h3>
@@ -130,7 +128,6 @@ export default function BlogPage() {
       <section className="bg-brand-50">
         <div className="max-w-5xl mx-auto px-5 sm:px-6 py-14">
           <div className="flex items-baseline justify-between mb-6">
-            <p className="section-marker">§ 02</p>
           </div>
           <h2 className="editorial-h text-[26px] sm:text-[32px] mb-10 text-brand-900">
             The full <span className="accent">library</span>

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { SpokeGrid } from '@/components/SpokeGrid'
 import Link from 'next/link'
 import { PiggyBank, Home, Shield, GraduationCap, CheckCircle2, AlertTriangle, ChevronRight } from 'lucide-react'
 
@@ -283,6 +284,8 @@ export default function TaxReliefPage() {
             Open Full Calculator with All Relief Options →
           </Link>
         </div>
+
+        <SpokeGrid siloKey="tax-savings" />
 
         {/* Related */}
         <section className="mt-14 border-t border-white/10 pt-10">

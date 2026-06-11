@@ -181,9 +181,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <div>
                 <p className="text-[10px] tracking-[0.15em] opacity-75 mb-3 font-medium">GUIDES</p>
                 <ul className="space-y-2 text-[12px]">
-                  <li><Link href="/blog/how-to-calculate-your-paye-tax-in-kenya" className="opacity-90 hover:opacity-100 hover:underline">How to calculate PAYE</Link></li>
-                  <li><Link href="/blog/the-complete-guide-to-nssf-contributions-in-kenya-for-2026" className="opacity-90 hover:opacity-100 hover:underline">NSSF 2026</Link></li>
-                  <li><Link href="/blog/understanding-shif-deductions-in-kenya-and-what-replaced-nhif" className="opacity-90 hover:opacity-100 hover:underline">SHIF explained</Link></li>
+                  <li><Link href="/statutory-deductions" className="opacity-90 hover:opacity-100 hover:underline">Statutory deductions</Link></li>
+                  <li><Link href="/tax-relief" className="opacity-90 hover:opacity-100 hover:underline">Tax savings &amp; reliefs</Link></li>
+                  <li><Link href="/salary-breakdowns" className="opacity-90 hover:opacity-100 hover:underline">Salary breakdowns</Link></li>
+                  <li><Link href="/employment-situations" className="opacity-90 hover:opacity-100 hover:underline">Employment situations</Link></li>
                   <li><Link href="/blog" className="opacity-90 hover:opacity-100 hover:underline">All guides →</Link></li>
                 </ul>
               </div>
