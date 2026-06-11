@@ -77,15 +77,15 @@ export default function NSSFCalculatorPage() {
   }
 
   return (
-    <div className="min-h-screen py-10 px-4">
+    <div className="paye-calc-body min-h-screen py-10 px-4">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <div className="max-w-4xl mx-auto">
 
         {/* Header */}
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full mb-5">
-            <Landmark className="w-4 h-4 text-blue-400" />
-            <span className="text-blue-400 text-sm font-medium">New rates · effective 1 Feb 2026</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-brand-50 border border-brand-200 rounded-full mb-5">
+            <Landmark className="w-4 h-4 text-brand-700" />
+            <span className="text-brand-700 text-sm font-medium">New rates · effective 1 Feb 2026</span>
           </div>
           <h1 className="text-3xl md:text-4xl font-bold text-white mb-3">NSSF Calculator Kenya 2026 — Tier I &amp; Tier II</h1>
           <p className="text-stone-400 max-w-xl mx-auto text-sm leading-relaxed">
@@ -102,9 +102,9 @@ export default function NSSFCalculatorPage() {
               { label: 'Upper earnings limit', value: 'KES 108,000', sub: 'Up from KES 72,000' },
               { label: 'Max employee NSSF', value: 'KES 6,480/mo', sub: 'Up from KES 4,320' },
             ].map(card => (
-              <div key={card.label} className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4 text-center">
+              <div key={card.label} className="bg-brand-50 border border-brand-200 rounded-xl p-4 text-center">
                 <p className="text-stone-400 text-xs mb-1">{card.label}</p>
-                <p className="text-blue-400 text-xl font-black">{card.value}</p>
+                <p className="text-brand-700 text-xl font-black">{card.value}</p>
                 <p className="text-stone-500 text-xs mt-1">{card.sub}</p>
               </div>
             ))}
@@ -125,13 +125,13 @@ export default function NSSFCalculatorPage() {
                   <th className="text-left py-3 px-4 text-stone-400">Tier</th>
                   <th className="text-left py-3 px-4 text-stone-400">Pensionable pay band</th>
                   <th className="text-right py-3 px-4 text-stone-400">Rate</th>
-                  <th className="text-right py-3 px-4 text-blue-400">Max employee</th>
+                  <th className="text-right py-3 px-4 text-brand-700">Max employee</th>
                 </tr>
               </thead>
               <tbody>
                 <tr className="border-b border-white/5"><td className="py-3 px-4 text-white">Tier I</td><td className="py-3 px-4 text-stone-400">First KES 9,000</td><td className="py-3 px-4 text-right text-stone-400">6%</td><td className="py-3 px-4 text-right text-stone-300">KES 540</td></tr>
                 <tr className="border-b border-white/5"><td className="py-3 px-4 text-white">Tier II</td><td className="py-3 px-4 text-stone-400">KES 9,001 – 108,000</td><td className="py-3 px-4 text-right text-stone-400">6%</td><td className="py-3 px-4 text-right text-stone-300">KES 5,940</td></tr>
-                <tr className="bg-white/5"><td className="py-3 px-4 text-white font-bold">Total</td><td className="py-3 px-4 text-stone-300">Up to KES 108,000</td><td className="py-3 px-4 text-right text-stone-300 font-bold">6%</td><td className="py-3 px-4 text-right text-blue-400 font-bold">KES 6,480</td></tr>
+                <tr className="bg-white/5"><td className="py-3 px-4 text-white font-bold">Total</td><td className="py-3 px-4 text-stone-300">Up to KES 108,000</td><td className="py-3 px-4 text-right text-stone-300 font-bold">6%</td><td className="py-3 px-4 text-right text-brand-700 font-bold">KES 6,480</td></tr>
               </tbody>
             </table>
           </div>
@@ -148,7 +148,7 @@ export default function NSSFCalculatorPage() {
                   <th className="text-left py-3 px-4 text-stone-400">Monthly gross</th>
                   <th className="text-right py-3 px-4 text-stone-400">Tier I</th>
                   <th className="text-right py-3 px-4 text-stone-400">Tier II</th>
-                  <th className="text-right py-3 px-4 text-blue-400">Employee NSSF</th>
+                  <th className="text-right py-3 px-4 text-brand-700">Employee NSSF</th>
                   <th className="text-right py-3 px-4 text-stone-400">+ Employer</th>
                 </tr>
               </thead>
@@ -160,7 +160,7 @@ export default function NSSFCalculatorPage() {
                       <td className="py-3 px-4 text-white font-medium">{fmt(s)}{s >= UEL && <span className="text-stone-500 text-xs"> +</span>}</td>
                       <td className="py-3 px-4 text-right text-stone-400">{fmt(c.tier1)}</td>
                       <td className="py-3 px-4 text-right text-stone-400">{fmt(c.tier2)}</td>
-                      <td className="py-3 px-4 text-right text-blue-400 font-bold">{fmt(c.employee)}</td>
+                      <td className="py-3 px-4 text-right text-brand-700 font-bold">{fmt(c.employee)}</td>
                       <td className="py-3 px-4 text-right text-stone-500">{fmt(c.employer)}</td>
                     </tr>
                   )
@@ -191,7 +191,7 @@ export default function NSSFCalculatorPage() {
 
         {/* CTA */}
         <div className="text-center mb-12">
-          <Link href="/" className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-red-500 text-white font-semibold rounded-xl text-sm hover:opacity-90 transition-all">
+          <Link href="/" className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-brand to-brand-600 text-white font-semibold rounded-xl text-sm hover:opacity-90 transition-all">
             See your full net pay with the PAYE calculator →
           </Link>
         </div>
@@ -201,11 +201,11 @@ export default function NSSFCalculatorPage() {
           <h2 className="text-lg font-bold text-white mb-5">Related tools &amp; guides</h2>
           <div className="grid sm:grid-cols-3 gap-3">
             <Link href="/" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-red-500/40 rounded-xl p-4 transition-all group">
-              <span className="font-semibold text-white text-sm group-hover:text-red-400 transition-colors flex items-center gap-2"><CheckCircle2 className="w-4 h-4" /> PAYE Calculator</span>
+              <span className="font-semibold text-white text-sm group-hover:text-brand-700 transition-colors flex items-center gap-2"><CheckCircle2 className="w-4 h-4" /> PAYE Calculator</span>
               <span className="text-stone-500 text-xs">Net salary with NSSF, SHIF &amp; levy</span>
             </Link>
             <Link href="/blog/the-complete-guide-to-nssf-contributions-in-kenya-for-2026" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-blue-500/40 rounded-xl p-4 transition-all group">
-              <span className="font-semibold text-white text-sm group-hover:text-blue-400 transition-colors">NSSF 2026 Guide</span>
+              <span className="font-semibold text-white text-sm group-hover:text-brand-700 transition-colors">NSSF 2026 Guide</span>
               <span className="text-stone-500 text-xs">Rates, tiers, benefits &amp; rules</span>
             </Link>
             <Link href="/statutory-changes" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-amber-500/40 rounded-xl p-4 transition-all group">

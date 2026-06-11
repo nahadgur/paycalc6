@@ -71,15 +71,15 @@ export default function MortgageReliefPage() {
   }
 
   return (
-    <div className="min-h-screen py-10 px-4">
+    <div className="paye-calc-body min-h-screen py-10 px-4">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <div className="max-w-4xl mx-auto">
 
         {/* Header */}
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full mb-5">
-            <Home className="w-4 h-4 text-blue-400" />
-            <span className="text-blue-400 text-sm font-medium">Updated 2026 · KES 30,000/month</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-brand-50 border border-brand-200 rounded-full mb-5">
+            <Home className="w-4 h-4 text-brand-700" />
+            <span className="text-brand-700 text-sm font-medium">Updated 2026 · KES 30,000/month</span>
           </div>
           <h1 className="text-3xl md:text-4xl font-bold text-white mb-3">Mortgage Relief Calculator Kenya 2026</h1>
           <p className="text-stone-400 max-w-xl mx-auto text-sm leading-relaxed">
@@ -97,9 +97,9 @@ export default function MortgageReliefPage() {
               { label: 'Max PAYE saved', value: 'KES 9,000/mo', sub: 'At the 30% tax band' },
               { label: 'Mechanism', value: 'Deduction', sub: 'Reduces taxable income' },
             ].map(card => (
-              <div key={card.label} className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4 text-center">
+              <div key={card.label} className="bg-brand-50 border border-brand-200 rounded-xl p-4 text-center">
                 <p className="text-stone-400 text-xs mb-1">{card.label}</p>
-                <p className="text-blue-400 text-xl font-black">{card.value}</p>
+                <p className="text-brand-700 text-xl font-black">{card.value}</p>
                 <p className="text-stone-500 text-xs mt-1">{card.sub}</p>
               </div>
             ))}
@@ -119,7 +119,7 @@ export default function MortgageReliefPage() {
                 <tr className="bg-white/5 border-b border-white/10">
                   <th className="text-left py-3 px-4 text-stone-400">Monthly interest paid</th>
                   <th className="text-right py-3 px-4 text-stone-400">Allowable deduction</th>
-                  <th className="text-right py-3 px-4 text-blue-400">Est. PAYE saved (30%)</th>
+                  <th className="text-right py-3 px-4 text-brand-700">Est. PAYE saved (30%)</th>
                 </tr>
               </thead>
               <tbody>
@@ -127,7 +127,7 @@ export default function MortgageReliefPage() {
                   <tr key={r.interest} className="border-b border-white/5 hover:bg-white/5">
                     <td className="py-3 px-4 text-white font-medium">{fmt(r.interest)}{r.interest > CAP && <span className="text-stone-500 text-xs"> (capped)</span>}</td>
                     <td className="py-3 px-4 text-right text-stone-400">{fmt(r.allowed)}</td>
-                    <td className="py-3 px-4 text-right text-blue-400 font-bold">{fmt(r.saved)}/mo</td>
+                    <td className="py-3 px-4 text-right text-brand-700 font-bold">{fmt(r.saved)}/mo</td>
                   </tr>
                 ))}
               </tbody>
@@ -150,7 +150,7 @@ export default function MortgageReliefPage() {
               'You hold the mortgage statement showing the interest portion of your repayments.',
             ].map((req, i) => (
               <div key={i} className="flex items-start gap-3 bg-white/5 border border-white/10 rounded-xl p-4">
-                <CheckCircle2 className="w-5 h-5 text-blue-400 shrink-0 mt-0.5" />
+                <CheckCircle2 className="w-5 h-5 text-brand-700 shrink-0 mt-0.5" />
                 <p className="text-stone-300 text-sm leading-relaxed">{req}</p>
               </div>
             ))}
@@ -178,7 +178,7 @@ export default function MortgageReliefPage() {
 
         {/* CTA */}
         <div className="text-center mb-12">
-          <Link href="/" className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-red-500 text-white font-semibold rounded-xl text-sm hover:opacity-90 transition-all">
+          <Link href="/" className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-brand to-brand-600 text-white font-semibold rounded-xl text-sm hover:opacity-90 transition-all">
             Calculate your net pay with mortgage relief →
           </Link>
         </div>
@@ -188,15 +188,15 @@ export default function MortgageReliefPage() {
           <h2 className="text-lg font-bold text-white mb-5">Related tools &amp; guides</h2>
           <div className="grid sm:grid-cols-3 gap-3">
             <Link href="/" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-red-500/40 rounded-xl p-4 transition-all group">
-              <span className="font-semibold text-white text-sm group-hover:text-red-400 transition-colors flex items-center gap-2"><CheckCircle2 className="w-4 h-4" /> PAYE Calculator</span>
+              <span className="font-semibold text-white text-sm group-hover:text-brand-700 transition-colors flex items-center gap-2"><CheckCircle2 className="w-4 h-4" /> PAYE Calculator</span>
               <span className="text-stone-500 text-xs">Add mortgage relief and see net pay</span>
             </Link>
             <Link href="/tax-relief" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-emerald-500/40 rounded-xl p-4 transition-all group">
-              <span className="font-semibold text-white text-sm group-hover:text-emerald-400 transition-colors">All Tax Reliefs</span>
+              <span className="font-semibold text-white text-sm group-hover:text-brand-700 transition-colors">All Tax Reliefs</span>
               <span className="text-stone-500 text-xs">Pension, insurance, disability &amp; more</span>
             </Link>
             <Link href="/blog/claiming-mortgage-interest-relief-on-your-kenyan-tax-return" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-blue-500/40 rounded-xl p-4 transition-all group">
-              <span className="font-semibold text-white text-sm group-hover:text-blue-400 transition-colors">Claiming Guide</span>
+              <span className="font-semibold text-white text-sm group-hover:text-brand-700 transition-colors">Claiming Guide</span>
               <span className="text-stone-500 text-xs">Step-by-step on your tax return</span>
             </Link>
           </div>
