@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useMemo, useEffect } from 'react';
-import { createPortal } from 'react-dom';
 import ToolTabs from './ToolTabs';
 import { PieChart, Pie, Cell, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, Legend, AreaChart, Area, LineChart, Line, RadarChart, Radar, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ComposedChart, Treemap, FunnelChart, Funnel, LabelList } from 'recharts';
 import { Calculator, TrendingUp, Wallet, Building2, Heart, Shield, ChevronDown, ChevronUp, Info, Sparkles, ArrowRight, Minus, Plus, DollarSign, PiggyBank, Home, Briefcase, Car, Users, GraduationCap, Utensils, Gift, ArrowLeftRight, Building, Percent, Target, Zap, BarChart3, PieChartIcon, Activity, Gauge, TrendingDown, RefreshCw, CircleDollarSign, BadgePercent, Landmark, HandCoins, Download } from 'lucide-react';
@@ -401,13 +400,9 @@ export default function PAYECalculatorV2({ defaultTab = 'calculator', single = f
   const [showAdvanced, setShowAdvanced] = useState(false);
   const [showBenefits, setShowBenefits] = useState(false);
   const [animated, setAnimated] = useState(false);
-  const [mounted, setMounted] = useState(false);
-  const [printDate, setPrintDate] = useState('');
 
   useEffect(() => {
     setAnimated(true);
-    setMounted(true);
-    setPrintDate(new Date().toLocaleDateString('en-KE', { day: 'numeric', month: 'long', year: 'numeric' }));
   }, []);
 
   const deductionOptions = {
@@ -606,51 +601,16 @@ export default function PAYECalculatorV2({ defaultTab = 'calculator', single = f
                 </div>
               </div>
 
-              {/* Download payslip */}
-              <div className="flex justify-center no-print">
-                <button
-                  onClick={() => window.print()}
+              {/* Payslip — the polished, gated PDF lives on its own page */}
+              <div className="flex justify-center">
+                <a
+                  href="/payslip-generator"
                   className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 border border-white/15 text-white text-sm font-medium transition-all"
                 >
                   <Download className="w-4 h-4" />
-                  Download payslip (PDF)
-                </button>
+                  Make a payslip (PDF)
+                </a>
               </div>
-
-              {/* Print-only payslip sheet — portaled to <body> so @media print can hide
-                  every sibling with display:none (no leftover layout height = no blank pages). */}
-              {mounted && createPortal(
-              <div className="print-sheet" aria-hidden="true">
-                <div style={{ maxWidth: '640px', margin: '0 auto', color: '#111', fontFamily: 'Inter, system-ui, sans-serif' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', borderBottom: '2px solid #F04C40', paddingBottom: '12px', marginBottom: '20px' }}>
-                    <div>
-                      <div style={{ fontSize: '20px', fontWeight: 700 }}>Payslip estimate</div>
-                      <div style={{ fontSize: '12px', color: '#666' }}>Kenya PAYE Calculator · 2026 KRA rates</div>
-                    </div>
-                    <div style={{ fontSize: '12px', color: '#666', textAlign: 'right' }}>
-                      payecalculator.co.ke<br />{printDate}
-                    </div>
-                  </div>
-                  <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '14px' }}>
-                    <tbody>
-                      <tr><td style={{ padding: '8px 0', fontWeight: 600 }}>Gross salary</td><td style={{ padding: '8px 0', textAlign: 'right', fontWeight: 600 }}>{formatCurrency(calculations.grossSalary)}</td></tr>
-                      <tr><td style={{ padding: '6px 0', color: '#444' }}>PAYE (income tax)</td><td style={{ padding: '6px 0', textAlign: 'right' }}>− {formatCurrency(calculations.paye)}</td></tr>
-                      <tr><td style={{ padding: '6px 0', color: '#444' }}>NSSF</td><td style={{ padding: '6px 0', textAlign: 'right' }}>− {formatCurrency(calculations.nssf)}</td></tr>
-                      <tr><td style={{ padding: '6px 0', color: '#444' }}>SHIF</td><td style={{ padding: '6px 0', textAlign: 'right' }}>− {formatCurrency(calculations.shif)}</td></tr>
-                      <tr><td style={{ padding: '6px 0', color: '#444' }}>Housing Levy</td><td style={{ padding: '6px 0', textAlign: 'right' }}>− {formatCurrency(calculations.housingLevy)}</td></tr>
-                      {calculations.helbRepayment > 0 && <tr><td style={{ padding: '6px 0', color: '#444' }}>HELB</td><td style={{ padding: '6px 0', textAlign: 'right' }}>− {formatCurrency(calculations.helbRepayment)}</td></tr>}
-                      {calculations.saccoContribution > 0 && <tr><td style={{ padding: '6px 0', color: '#444' }}>SACCO</td><td style={{ padding: '6px 0', textAlign: 'right' }}>− {formatCurrency(calculations.saccoContribution)}</td></tr>}
-                      {calculations.unionDues > 0 && <tr><td style={{ padding: '6px 0', color: '#444' }}>Union dues</td><td style={{ padding: '6px 0', textAlign: 'right' }}>− {formatCurrency(calculations.unionDues)}</td></tr>}
-                      <tr><td style={{ padding: '12px 0', borderTop: '1px solid #ddd', fontWeight: 700, fontSize: '16px' }}>Net pay (take-home)</td><td style={{ padding: '12px 0', borderTop: '1px solid #ddd', textAlign: 'right', fontWeight: 700, fontSize: '16px', color: '#F04C40' }}>{formatCurrency(calculations.netSalary)}</td></tr>
-                    </tbody>
-                  </table>
-                  <p style={{ fontSize: '11px', color: '#888', marginTop: '20px' }}>
-                    Estimate only, based on 2026 KRA tax bands, NSSF (max KES 6,480), SHIF (2.75%) and Housing Levy (1.5%). Not an official payslip. Consult a qualified tax professional for advice.
-                  </p>
-                </div>
-              </div>,
-              document.body
-              )}
 
               {/* Quick Results */}
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">

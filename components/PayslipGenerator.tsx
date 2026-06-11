@@ -74,12 +74,20 @@ function PayslipSheet({
   )
   return (
     <div style={{ maxWidth: '640px', margin: '0 auto', color: '#111', fontFamily: 'Inter, system-ui, sans-serif', fontSize: '14px' }}>
+      {/* Wordmark letterhead */}
+      <div style={{ textAlign: 'center', marginBottom: '24px' }}>
+        <div style={{ fontSize: '13px', fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', color: '#F04C40' }}>
+          PAYE Calculator Kenya
+        </div>
+      </div>
+
+      {/* Employer + pay period */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', borderBottom: '2px solid #F04C40', paddingBottom: '12px', marginBottom: '18px' }}>
         <div>
-          <div style={{ fontSize: '20px', fontWeight: 700 }}>{employer || 'Employer name'}</div>
-          <div style={{ fontSize: '12px', color: '#666' }}>Payslip · {period}</div>
+          <div style={{ fontSize: '22px', fontWeight: 700, lineHeight: 1.2 }}>{employer || 'Employer name'}</div>
+          <div style={{ fontSize: '12px', color: '#666', marginTop: '3px' }}>Payslip for {period}</div>
         </div>
-        <div style={{ fontSize: '12px', color: '#666', textAlign: 'right' }}>
+        <div style={{ fontSize: '11px', color: '#999', textAlign: 'right' }}>
           payecalculator.co.ke<br />2026 KRA rates
         </div>
       </div>
@@ -309,7 +317,7 @@ export default function PayslipGenerator() {
 
       {/* ── Portaled print copy (single page) ── */}
       {mounted && createPortal(
-        <div className="print-sheet">
+        <div className="print-sheet payslip-print">
           <PayslipSheet employer={employer} employee={employee} kraPin={kraPin} period={period} basic={basic} allowances={allowances} c={c} />
         </div>,
         document.body

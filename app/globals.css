@@ -519,6 +519,12 @@ input[type="range"]::-moz-range-track {
     display: none !important;
   }
 
+  /* Payslip: drop the sheet down the page so it isn't jammed against the top
+     edge / the browser's print header. */
+  .payslip-print {
+    padding-top: 14mm;
+  }
+
   /* P9 certificate: compact everything so the full card + signatures fit one page. */
   .p9-print > div {
     padding: 0 !important;

@@ -90,18 +90,15 @@ export default function BlogPage() {
             Featured <span className="accent">articles</span>
           </h2>
           <div className="grid md:grid-cols-3 gap-5">
-            {featuredSlugs.map((slug, i) => {
+            {featuredSlugs.map((slug) => {
               const article = articleMap.get(slug)
               if (!article) return null
               return (
                 <Link
                   key={slug}
                   href={`/blog/${slug}`}
-                  className="group relative bg-white border border-[#eee] rounded-2xl p-6 hover:border-brand transition-all duration-300 hover:-translate-y-0.5 flex flex-col"
+                  className="group bg-white border border-[#eee] rounded-2xl p-6 hover:border-brand transition-all duration-300 hover:-translate-y-0.5 flex flex-col"
                 >
-                  <div className="absolute top-4 right-4 w-6 h-6 bg-brand-50 rounded-full flex items-center justify-center text-[10px] font-medium text-brand-700">
-                    {String(i + 1).padStart(2, '0')}
-                  </div>
                   <h3 className="editorial-h text-[20px] mb-3 group-hover:text-brand transition-colors">
                     {article.title}
                   </h3>
@@ -126,12 +123,9 @@ export default function BlogPage() {
           </h2>
 
           <div className="space-y-10">
-            {Object.entries(categories).map(([category, slugs], catIdx) => (
+            {Object.entries(categories).map(([category, slugs]) => (
               <div key={category}>
                 <div className="flex items-baseline gap-3 mb-4 pb-3 border-b border-brand-300">
-                  <span className="text-[10px] text-brand-700 font-medium tracking-wider">
-                    {String(catIdx + 1).padStart(2, '0')}
-                  </span>
                   <h3 className="editorial-h text-[20px] text-brand-900">{category}</h3>
                   <span className="text-[11px] text-brand-700 opacity-70 ml-auto">{slugs.length} article{slugs.length > 1 ? 's' : ''}</span>
                 </div>
