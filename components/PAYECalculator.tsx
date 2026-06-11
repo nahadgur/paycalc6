@@ -1,6 +1,8 @@
 'use client';
 
 import React, { useState, useMemo, useEffect } from 'react';
+import { createPortal } from 'react-dom';
+import Link from 'next/link';
 import { PieChart, Pie, Cell, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, Legend, AreaChart, Area, LineChart, Line, RadarChart, Radar, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ComposedChart, Treemap, FunnelChart, Funnel, LabelList } from 'recharts';
 import { Calculator, TrendingUp, Wallet, Building2, Heart, Shield, ChevronDown, ChevronUp, Info, Sparkles, ArrowRight, Minus, Plus, DollarSign, PiggyBank, Home, Briefcase, Car, Users, GraduationCap, Utensils, Gift, ArrowLeftRight, Building, Percent, Target, Zap, BarChart3, PieChartIcon, Activity, Gauge, TrendingDown, RefreshCw, CircleDollarSign, BadgePercent, Landmark, HandCoins, Download } from 'lucide-react';
 
@@ -347,7 +349,8 @@ const WaterfallChart = ({ data }) => {
               }}
             />
             <div className="absolute inset-0 flex items-center justify-end pr-3">
-              <span className="text-xs font-bold text-white/80">{formatCurrency(item.end)}</span>
+              {/* Running balance. Positive row = full red bar (white reads), deductions sit on the light track (dark reads). Inline colour bypasses the light-theme .text-white remap. */}
+              <span className="text-xs font-bold" style={{ color: item.isPositive ? '#ffffff' : '#8A2820' }}>{formatCurrency(item.end)}</span>
             </div>
           </div>
         </div>
@@ -356,9 +359,49 @@ const WaterfallChart = ({ data }) => {
   );
 };
 
+// Tool registry — each tab also lives at its own URL. On a dedicated page the
+// hero tab bar renders these as links; on the homepage they switch in place.
+const TOOLS = [
+  { key: 'calculator', href: '/', icon: Calculator, label: 'Calculator' },
+  { key: 'reverse', href: '/net-gross-calculator', icon: RefreshCw, label: 'Net → Gross' },
+  { key: 'bonus', href: '/bonus-calculator', icon: Gift, label: 'Bonus' },
+  { key: 'raise', href: '/raise-calculator', icon: TrendingUp, label: 'Raise' },
+  { key: 'employer', href: '/employer-cost-calculator', icon: Building, label: 'Employer Cost' },
+  { key: 'compare', href: '/salary-comparison', icon: BarChart3, label: 'Compare' },
+];
+
+// Per-tool hero copy used when the component is rendered as a standalone page.
+const TOOL_HERO: Record<string, { h1: string; pre: string; em: string; post: string; desc: string }> = {
+  reverse: {
+    h1: 'Net to Gross Salary Calculator Kenya 2026',
+    pre: 'Work it ', em: 'backwards', post: '.',
+    desc: 'Know the take-home you want? Find the gross salary you need to negotiate for. Enter a target net pay and this reverses the 2026 PAYE, NSSF, SHIF and Housing Levy maths to show the matching gross.',
+  },
+  bonus: {
+    h1: 'Bonus Tax Calculator Kenya 2026',
+    pre: 'Keep more of your ', em: 'bonus', post: '.',
+    desc: 'A bonus is taxed at your top marginal PAYE band, so it never lands whole. Enter your salary and bonus to see the tax, the net you actually receive, and the effective rate on the extra pay.',
+  },
+  raise: {
+    h1: 'Pay Rise Calculator Kenya 2026',
+    pre: 'See what a raise ', em: 'really', post: ' adds.',
+    desc: 'A headline percentage is not what hits your account. This works out how much of a pay rise survives PAYE, NSSF, SHIF and Housing Levy, per month and per year, so you can judge an offer properly.',
+  },
+  employer: {
+    h1: 'Employer Cost Calculator Kenya 2026',
+    pre: 'The true cost to ', em: 'employ', post: '.',
+    desc: 'Gross salary is only part of the bill. Employers also match NSSF and the Housing Levy. Enter a salary to see the full monthly cost of employment in Kenya under the 2026 rates.',
+  },
+  compare: {
+    h1: 'Salary Comparison Calculator Kenya 2026',
+    pre: 'Compare salaries ', em: 'side by side', post: '.',
+    desc: 'See how PAYE, net pay and the effective tax rate change as gross salary rises across Kenya’s 2026 bands, from entry level to executive, in one chart and table.',
+  },
+};
+
 // Main Component
-export default function PAYECalculatorV2() {
-  const [activeTab, setActiveTab] = useState('calculator');
+export default function PAYECalculatorV2({ defaultTab = 'calculator', single = false }: { defaultTab?: string; single?: boolean }) {
+  const [activeTab, setActiveTab] = useState(defaultTab);
   const [grossSalary, setGrossSalary] = useState(100000);
   const [targetNetSalary, setTargetNetSalary] = useState(75000);
   const [bonusAmount, setBonusAmount] = useState(50000);
@@ -383,10 +426,12 @@ export default function PAYECalculatorV2() {
   const [showAdvanced, setShowAdvanced] = useState(false);
   const [showBenefits, setShowBenefits] = useState(false);
   const [animated, setAnimated] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const [printDate, setPrintDate] = useState('');
 
   useEffect(() => {
     setAnimated(true);
+    setMounted(true);
     setPrintDate(new Date().toLocaleDateString('en-KE', { day: 'numeric', month: 'long', year: 'numeric' }));
   }, []);
 
@@ -509,30 +554,49 @@ export default function PAYECalculatorV2() {
                 <span className="opacity-80">Issue №01</span>
               </div>
 
-              {/* SEO H1 — keyword-rich, crawler-priority */}
+              {/* SEO H1 — keyword-rich, crawler-priority. Tool pages get their own H1. */}
               <h1 className="text-[22px] sm:text-[28px] font-medium leading-tight mb-3 max-w-3xl" style={{ fontFamily: "'Inter', sans-serif" }}>
-                Kenya PAYE Calculator 2026 — Net Salary, NSSF, SHIF &amp; Housing Levy
+                {single && TOOL_HERO[activeTab]
+                  ? TOOL_HERO[activeTab].h1
+                  : <>Kenya PAYE Calculator 2026 — Net Salary, NSSF, SHIF &amp; Housing Levy</>}
               </h1>
 
               {/* Editorial tagline — visual anchor */}
               <p className="editorial-h text-[48px] sm:text-[80px] mb-5" style={{ fontFamily: "'Fraunces', Georgia, serif", lineHeight: 1 }}>
-                Calculate your <span className="italic">take-home</span>.
+                {single && TOOL_HERO[activeTab]
+                  ? <>{TOOL_HERO[activeTab].pre}<span className="italic">{TOOL_HERO[activeTab].em}</span>{TOOL_HERO[activeTab].post}</>
+                  : <>Calculate your <span className="italic">take-home</span>.</>}
               </p>
 
               <p className="text-[13px] sm:text-[15px] opacity-90 max-w-xl leading-relaxed">
-                Free Kenya PAYE and salary calculator. Works out your monthly net pay after PAYE tax, NSSF pension, SHIF (former NHIF), Housing Levy, HELB, SACCO and benefits in kind — using 2026 KRA tax bands.
+                {single && TOOL_HERO[activeTab]
+                  ? TOOL_HERO[activeTab].desc
+                  : 'Free Kenya PAYE and salary calculator. Works out your monthly net pay after PAYE tax, NSSF pension, SHIF (former NHIF), Housing Levy, HELB, SACCO and benefits in kind — using 2026 KRA tax bands.'}
               </p>
               <div className="mt-8 h-px bg-white/40"></div>
             </div>
 
-            {/* Tab Navigation */}
+            {/* Tab Navigation — links across tool pages when standalone, in-place switch on the homepage */}
             <div className="flex flex-wrap gap-2 mt-6">
-              <TabButton active={activeTab === 'calculator'} onClick={() => setActiveTab('calculator')} icon={Calculator} label="Calculator" />
-              <TabButton active={activeTab === 'reverse'} onClick={() => setActiveTab('reverse')} icon={RefreshCw} label="Net → Gross" />
-              <TabButton active={activeTab === 'bonus'} onClick={() => setActiveTab('bonus')} icon={Gift} label="Bonus" />
-              <TabButton active={activeTab === 'raise'} onClick={() => setActiveTab('raise')} icon={TrendingUp} label="Raise" />
-              <TabButton active={activeTab === 'employer'} onClick={() => setActiveTab('employer')} icon={Building} label="Employer Cost" />
-              <TabButton active={activeTab === 'compare'} onClick={() => setActiveTab('compare')} icon={BarChart3} label="Compare" />
+              {single
+                ? TOOLS.map((t) => (
+                    <Link
+                      key={t.key}
+                      href={t.href}
+                      className={`flex items-center gap-2 px-4 py-2.5 rounded-full font-medium text-[12px] transition-all duration-200 ${
+                        activeTab === t.key
+                          ? 'bg-white text-brand hover:bg-white/95'
+                          : 'bg-transparent text-white border border-white/40 hover:bg-white/10 hover:border-white/70'
+                      }`}
+                      style={{ fontFamily: 'Inter, system-ui, sans-serif' }}
+                    >
+                      <t.icon className="w-3.5 h-3.5" />
+                      <span className="hidden sm:inline">{t.label}</span>
+                    </Link>
+                  ))
+                : TOOLS.map((t) => (
+                    <TabButton key={t.key} active={activeTab === t.key} onClick={() => setActiveTab(t.key)} icon={t.icon} label={t.label} />
+                  ))}
             </div>
           </div>
         </header>
@@ -604,8 +668,10 @@ export default function PAYECalculatorV2() {
                 </button>
               </div>
 
-              {/* Print-only payslip sheet (hidden on screen, shown when printing) */}
-              <div id="payslip-sheet" aria-hidden="true">
+              {/* Print-only payslip sheet — portaled to <body> so @media print can hide
+                  every sibling with display:none (no leftover layout height = no blank pages). */}
+              {mounted && createPortal(
+              <div id="payslip-print-root" aria-hidden="true">
                 <div style={{ maxWidth: '640px', margin: '0 auto', color: '#111', fontFamily: 'Inter, system-ui, sans-serif' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', borderBottom: '2px solid #F04C40', paddingBottom: '12px', marginBottom: '20px' }}>
                     <div>
@@ -633,7 +699,9 @@ export default function PAYECalculatorV2() {
                     Estimate only, based on 2026 KRA tax bands, NSSF (max KES 6,480), SHIF (2.75%) and Housing Levy (1.5%). Not an official payslip. Consult a qualified tax professional for advice.
                   </p>
                 </div>
-              </div>
+              </div>,
+              document.body
+              )}
 
               {/* Quick Results */}
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
@@ -1063,8 +1131,12 @@ export default function PAYECalculatorV2() {
                 <div className="grid md:grid-cols-2 gap-6 mb-6">
                   <div>
                     <label className="block text-stone-400 mb-2">Current monthly gross</label>
-                    <div className="text-3xl font-bold text-white">{formatCurrency(grossSalary)}</div>
-                    <p className="text-stone-500 text-sm">Adjust in Calculator tab</p>
+                    <input
+                      type="number"
+                      value={grossSalary}
+                      onChange={(e) => setGrossSalary(Number(e.target.value))}
+                      className="w-full text-3xl font-bold bg-transparent border-b-2 border-indigo-500 py-2 text-white focus:outline-none"
+                    />
                   </div>
                   <div>
                     <label className="block text-stone-400 mb-2">Raise (%)</label>
@@ -1121,8 +1193,12 @@ export default function PAYECalculatorV2() {
                 <div className="grid md:grid-cols-2 gap-6 mb-6">
                   <div>
                     <label className="block text-stone-400 mb-2">Your current monthly gross</label>
-                    <div className="text-3xl font-bold text-white">{formatCurrency(grossSalary)}</div>
-                    <p className="text-stone-500 text-sm">Adjust in Calculator tab</p>
+                    <input
+                      type="number"
+                      value={grossSalary}
+                      onChange={(e) => setGrossSalary(Number(e.target.value))}
+                      className="w-full text-3xl font-bold bg-transparent border-b-2 border-pink-500 py-2 text-white focus:outline-none"
+                    />
                   </div>
                   <div>
                     <label className="block text-stone-400 mb-2">Bonus amount</label>
@@ -1195,8 +1271,17 @@ export default function PAYECalculatorV2() {
                   </div>
                 </div>
 
+                <div className="max-w-xs mx-auto mb-6">
+                  <label className="block text-stone-400 mb-2 text-center text-sm">Monthly gross salary</label>
+                  <input
+                    type="number"
+                    value={grossSalary}
+                    onChange={(e) => setGrossSalary(Number(e.target.value))}
+                    className="w-full text-3xl font-bold bg-transparent border-b-2 border-blue-500 py-2 text-white text-center focus:outline-none"
+                  />
+                </div>
+
                 <div className="text-center mb-6">
-                  <p className="text-stone-400 mb-2">For gross salary of {formatCurrency(grossSalary)}</p>
                   <div className="text-5xl md:text-7xl font-black text-blue-400">{formatCurrency(calculations.totalEmployerCost)}</div>
                   <p className="text-stone-500 mt-2">Total cost to employer per month</p>
                 </div>
@@ -1353,6 +1438,9 @@ export default function PAYECalculatorV2() {
         </div>
       </main>
 
+      {/* Homepage-only marketing sections. Tool pages keep their own server-rendered content. */}
+      {!single && (
+      <>
       {/* ================= SALARY BENCHMARKS — dark contained panel ================= */}
       <div className="bg-white px-4 sm:px-6 pb-6">
         <section className="max-w-5xl mx-auto bg-[#111] text-white rounded-2xl sm:rounded-3xl overflow-hidden">
@@ -1431,6 +1519,8 @@ export default function PAYECalculatorV2() {
           </div>
         </section>
       </div>
+      </>
+      )}
     </div>
   );
 }

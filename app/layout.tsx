@@ -161,12 +161,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <p className="text-[10px] tracking-[0.15em] opacity-75 mb-3 font-medium">CALCULATORS</p>
                 <ul className="space-y-2 text-[12px]">
                   <li><Link href="/" className="opacity-90 hover:opacity-100 hover:underline">Net salary</Link></li>
+                  <li><Link href="/net-gross-calculator" className="opacity-90 hover:opacity-100 hover:underline">Net to gross</Link></li>
+                  <li><Link href="/bonus-calculator" className="opacity-90 hover:opacity-100 hover:underline">Bonus tax</Link></li>
+                  <li><Link href="/raise-calculator" className="opacity-90 hover:opacity-100 hover:underline">Pay rise</Link></li>
+                  <li><Link href="/employer-cost-calculator" className="opacity-90 hover:opacity-100 hover:underline">Employer cost</Link></li>
+                  <li><Link href="/salary-comparison" className="opacity-90 hover:opacity-100 hover:underline">Salary comparison</Link></li>
                   <li><Link href="/salary/50000" className="opacity-90 hover:opacity-100 hover:underline">Salary breakdowns</Link></li>
                   <li><Link href="/nssf-calculator" className="opacity-90 hover:opacity-100 hover:underline">NSSF calculator</Link></li>
                   <li><Link href="/mortgage-relief" className="opacity-90 hover:opacity-100 hover:underline">Mortgage relief</Link></li>
                   <li><Link href="/p9-generator" className="opacity-90 hover:opacity-100 hover:underline">P9 generator</Link></li>
-                  <li><Link href="/guides/tax-relief" className="opacity-90 hover:opacity-100 hover:underline">Tax relief</Link></li>
-                  <li><Link href="/budget-guide" className="opacity-90 hover:opacity-100 hover:underline">Budget planner</Link></li>
                 </ul>
               </div>
               <div>

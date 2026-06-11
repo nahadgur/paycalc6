@@ -446,26 +446,24 @@ input[type="range"]::-moz-range-track {
   border-width: 0;
 }
 
-/* Print-only payslip sheet (Download payslip / PDF) */
-#payslip-sheet {
+/* Print-only payslip sheet (Download payslip / PDF).
+   Portaled to <body> as #payslip-print-root so printing can hide every other
+   body child with display:none. visibility:hidden was the old approach but it
+   leaves the full page height in the flow, which printed 4-5 trailing blank
+   pages. display:none collapses that height so the payslip prints on one page. */
+#payslip-print-root {
   display: none;
 }
 @media print {
-  body * {
-    visibility: hidden !important;
+  @page {
+    margin: 14mm;
   }
-  #payslip-sheet {
+  /* Collapse the whole app so it contributes no page height */
+  body > *:not(#payslip-print-root) {
+    display: none !important;
+  }
+  #payslip-print-root {
     display: block !important;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    padding: 24px;
-    background: #fff;
-  }
-  #payslip-sheet,
-  #payslip-sheet * {
-    visibility: visible !important;
   }
   .no-print {
     display: none !important;
