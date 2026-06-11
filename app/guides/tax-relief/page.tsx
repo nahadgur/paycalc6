@@ -47,7 +47,7 @@ const RELIEFS: Relief[] = [
     mechanism: 'Deduction from taxable income (before PAYE is calculated)',
     howItWorks: 'Monthly mortgage interest payments on a qualifying home loan reduce your taxable income by up to KES 30,000 per month. At 30% PAYE rate, this saves up to KES 9,000 in tax per month.',
     requirement: 'The property must be your primary residence. The loan must be from a licenced financial institution. You must not have used this relief on another property.',
-    example: 'If you pay KES 25,000/month in mortgage interest, your taxable income is reduced by KES 25,000 — saving approximately KES 7,500 in PAYE per month at the 30% band.',
+    example: 'If you pay KES 30,000/month in mortgage interest, your taxable income is reduced by KES 30,000 — saving approximately KES 9,000 in PAYE per month at the 30% band.',
     howToClaim: [
       'Submit your mortgage statement to your employer\'s HR/payroll department',
       'Employer applies the deduction monthly from the date of submission',

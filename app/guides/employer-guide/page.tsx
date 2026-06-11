@@ -14,12 +14,14 @@ const fmt = (n: number) =>
   new Intl.NumberFormat('en-KE', { style: 'currency', currency: 'KES', minimumFractionDigits: 0 }).format(n)
 
 function calcEmployerCost(gross: number) {
-  const nssf        = Math.min(gross, 72000) * 0.06
+  // Employer statutory on-costs are the matched NSSF (6%, capped at the
+  // KES 108,000 upper limit) and the Housing Levy (1.5%). SHIF is NOT an
+  // employer cost — it is deducted from the employee only.
+  const nssf        = Math.min(gross, 108000) * 0.06
   const housing     = gross * 0.015
-  const shif        = Math.max(gross * 0.01375, 150)
-  const total       = gross + nssf + housing + shif
+  const total       = gross + nssf + housing
   const overhead    = ((total - gross) / gross) * 100
-  return { nssf, housing, shif, total, overhead }
+  return { nssf, housing, total, overhead }
 }
 
 const HIRING_COSTS = [50000, 100000, 150000, 250000].map(gross => ({
@@ -38,7 +40,7 @@ const MONTHLY_OBLIGATIONS = [
   {
     deadline: '9th',
     title: 'Remit SHIF Contributions',
-    detail: 'Social Health Insurance Fund: 1.375% employee + 1.375% employer of each employee\'s gross salary. Remit via SHA portal or through KRA payroll integration.',
+    detail: 'Social Health Insurance Fund: 2.75% of each employee\'s gross salary (minimum KES 300), deducted from the employee. There is no employer SHIF match. Remit via the SHA portal or KRA payroll integration.',
     penalty: '2% monthly on outstanding balance',
     platform: 'sha.go.ke / itax.kra.go.ke',
   },
@@ -52,7 +54,7 @@ const MONTHLY_OBLIGATIONS = [
   {
     deadline: '15th',
     title: 'Remit NSSF Contributions',
-    detail: 'Employee NSSF (6% of pensionable pay, max KES 72,000) plus matching employer contribution. File via NSSF employer portal or M-Pesa Paybill 333300.',
+    detail: 'Employee NSSF (6% of pensionable pay, max KES 108,000 from Feb 2026, so up to KES 6,480) plus a matching employer contribution. File via the NSSF employer portal or M-Pesa Paybill 333300.',
     penalty: '5% of contribution + 1% monthly interest',
     platform: 'nssf.or.ke',
   },
@@ -89,9 +91,9 @@ const COMMON_MISTAKES = [
     fix: 'File P10 by the 9th every month without exception. Set an automated reminder. Use payroll software that auto-generates the P10.',
   },
   {
-    mistake: 'Forgetting employer SHIF is now mandatory',
-    consequence: 'Unlike NHIF (employee-only), SHIF requires an equal employer contribution. Omitting this understates your payroll cost and creates a compliance liability.',
-    fix: 'Budget 1.375% of each employee\'s gross salary as an additional employer cost when hiring.',
+    mistake: 'Treating SHIF as an employer cost',
+    consequence: 'SHIF is employee-only at 2.75% of gross. Budgeting a matching employer SHIF contribution overstates your true cost of hiring.',
+    fix: 'Only NSSF (6%) and the Housing Levy (1.5%) are matched by the employer. Deduct SHIF from the employee and remit it, but do not add an employer share.',
   },
   {
     mistake: 'Not collecting E-TIMS receipts for expense claims',
@@ -100,8 +102,8 @@ const COMMON_MISTAKES = [
   },
   {
     mistake: 'NSSF contribution calculation error at upper limit',
-    consequence: 'Calculating NSSF on full salary above KES 72,000 pensionable pay ceiling results in over-deduction from employee and employer.',
-    fix: 'Cap NSSF calculation at KES 72,000 pensionable pay. Verify your payroll software applies the ceiling correctly.',
+    consequence: 'Calculating NSSF on the full salary above the KES 108,000 pensionable pay ceiling results in over-deduction from employee and employer.',
+    fix: 'Cap the NSSF calculation at KES 108,000 pensionable pay (max employee KES 6,480 from Feb 2026). Verify your payroll software applies the ceiling correctly.',
   },
 ]
 
@@ -156,7 +158,6 @@ export default function EmployerGuidePage() {
                   <th className="text-left py-3 px-4 text-stone-400">Gross Salary</th>
                   <th className="text-right py-3 px-4 text-stone-400">+Employer NSSF</th>
                   <th className="text-right py-3 px-4 text-stone-400">+Employer Housing</th>
-                  <th className="text-right py-3 px-4 text-stone-400">+Employer SHIF</th>
                   <th className="text-right py-3 px-4 text-blue-400">Total Cost</th>
                   <th className="text-right py-3 px-4 text-amber-400">Overhead %</th>
                 </tr>
@@ -167,7 +168,6 @@ export default function EmployerGuidePage() {
                     <td className="py-3 px-4 text-white font-bold">{fmt(row.gross)}</td>
                     <td className="py-3 px-4 text-right text-stone-400">{fmt(row.nssf)}</td>
                     <td className="py-3 px-4 text-right text-stone-400">{fmt(row.housing)}</td>
-                    <td className="py-3 px-4 text-right text-stone-400">{fmt(row.shif)}</td>
                     <td className="py-3 px-4 text-right text-blue-400 font-bold">{fmt(row.total)}</td>
                     <td className="py-3 px-4 text-right text-amber-400">+{row.overhead.toFixed(1)}%</td>
                   </tr>

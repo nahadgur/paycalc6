@@ -44,7 +44,7 @@ const MONTHLY_DEADLINES: Deadline[] = [
     day: 15,
     label: 'NSSF Remittance',
     type: 'employer',
-    description: 'NSSF contributions (employee 6% + employer 6%, capped at KES 72,000 pensionable pay) remitted to NSSF portal or M-Pesa Paybill 333300.',
+    description: 'NSSF contributions (employee 6% + employer 6%, capped at KES 108,000 pensionable pay from Feb 2026, max KES 6,480 each) remitted to NSSF portal or M-Pesa Paybill 333300.',
     penalty: '5% initial + 1% monthly interest',
   },
 ]

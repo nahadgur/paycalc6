@@ -506,7 +506,7 @@ input[type="range"]::-moz-range-track {
 }
 @media print {
   @page {
-    margin: 14mm;
+    margin: 11mm;
   }
   /* Collapse the whole app so it contributes no page height */
   body > *:not(.print-sheet) {
@@ -518,4 +518,24 @@ input[type="range"]::-moz-range-track {
   .no-print {
     display: none !important;
   }
+
+  /* P9 certificate: compact everything so the full card + signatures fit one page. */
+  .p9-print > div {
+    padding: 0 !important;
+    border: none !important;
+  }
+  .p9-print h2 { font-size: 15px !important; }
+  .p9-print h3 { font-size: 11px !important; }
+  .p9-print table { font-size: 8px !important; }
+  .p9-print th,
+  .p9-print td { padding-top: 1.5px !important; padding-bottom: 1.5px !important; line-height: 1.25 !important; }
+  .p9-print .mb-6 { margin-bottom: 8px !important; }
+  .p9-print .pb-4 { padding-bottom: 5px !important; }
+  .p9-print .p-4 { padding: 7px !important; }
+  .p9-print .pt-4 { padding-top: 5px !important; }
+  .p9-print .mt-6 { margin-top: 5px !important; }
+  .p9-print .gap-8 { gap: 14px !important; }
+  .p9-print .h-8 { height: 14px !important; }
+  .p9-print .space-y-2 > * + * { margin-top: 2px !important; }
+  .p9-print .space-y-1\.5 > * + * { margin-top: 1px !important; }
 }

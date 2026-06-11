@@ -15,7 +15,7 @@ const TAX_BANDS = [
 const PERSONAL_RELIEF = 2400
 
 function calcNet(gross: number) {
-  const nssf    = Math.min(gross, 72000) * 0.06
+  const nssf    = Math.min(gross, 108000) * 0.06
   const shif    = Math.max(gross * 0.0275, 300)
   const housing = gross * 0.015
   const taxable = Math.max(0, gross - nssf)

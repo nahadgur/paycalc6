@@ -14,69 +14,73 @@ const SHIF_COMPARISON = [
   { feature: 'Rate structure',       nhif: 'Fixed tiered (KES 150–1,700/month)', shif: '2.75% of gross salary' },
   { feature: 'Minimum deduction',    nhif: 'KES 150 (low earners)',              shif: 'KES 300/month' },
   { feature: 'High earner impact',   nhif: 'KES 1,700 (max)',                   shif: 'No cap — scales with salary' },
-  { feature: 'Employer share',       nhif: 'Employee only',                      shif: 'Employee + employer (equal split)' },
+  { feature: 'Who pays',             nhif: 'Employee only',                      shif: 'Employee only (2.75%, no employer match)' },
   { feature: 'Informal sector',      nhif: 'Limited coverage',                   shif: 'Voluntary KES 300 minimum' },
   { feature: 'Hospital network',     nhif: '~1,200 hospitals',                   shif: '3,000+ empaneled facilities' },
   { feature: 'Coverage',             nhif: '22% of population',                  shif: '99% target' },
   { feature: 'Tax relief',           nhif: 'Limited',                            shif: 'Up to 15% of premium on employee share' },
 ]
 
+// NSSF is 6% of pensionable pay on both tiers, so the employee deduction is
+// simply 6% of pay up to the upper limit. Only the upper limit changed (Feb 2026):
+// KES 72,000 -> 108,000, so the max employee contribution rose 4,320 -> 6,480.
+// Earners below KES 72,000 see no change.
 const NSSF_COMPARISON = [
-  { band: 'Below KES 18,000',    old2024: 'KES 400 employee + KES 400 employer', new2026: 'KES 432 + KES 432',       change: '+KES 64 total' },
-  { band: 'KES 18,001–36,000',  old2024: 'KES 800 + KES 800',                  new2026: 'KES 864 + KES 864',       change: '+KES 128 total' },
-  { band: 'KES 36,001–72,000',  old2024: 'KES 1,600 + KES 1,600',              new2026: 'KES 1,728 + KES 1,728',   change: '+KES 256 total' },
-  { band: 'Above KES 72,000',   old2024: 'Capped at KES 1,600',                new2026: 'Still capped at upper limit', change: 'No change above cap' },
+  { band: 'Up to KES 72,000',      old2024: '6% of pay (max KES 4,320)', new2026: '6% of pay (unchanged)', change: 'No change' },
+  { band: 'KES 90,000',            old2024: 'KES 4,320 (old cap)',       new2026: 'KES 5,400',            change: '+KES 1,080/mo' },
+  { band: 'KES 108,000 and above', old2024: 'KES 4,320 (old cap)',       new2026: 'KES 6,480 (new cap)',  change: '+KES 2,160/mo' },
 ]
 
+// SHIF is 2.75% of gross (employee only). NSSF figures use the 6% / tier rules:
+// at KES 50,000 the salary is below the old 72,000 cap, so NSSF is unchanged.
 const PAYROLL_EXAMPLES = [
   {
     gross: 50000,
     label: 'KES 50,000 salary',
     nhif: 1000,
     shif: 1375,
-    nssfOld: 1600,
-    nssfNew: 1728,
-    impact: '+KES 503/month more in deductions',
+    nssfOld: 3000,
+    nssfNew: 3000,
+    impact: '+KES 375/month more in deductions',
   },
   {
     gross: 100000,
     label: 'KES 100,000 salary',
     nhif: 1700,
     shif: 2750,
-    nssfOld: 1600,
-    nssfNew: 1728,
-    impact: '+KES 1,178/month more in deductions',
+    nssfOld: 4320,
+    nssfNew: 6000,
+    impact: '+KES 2,730/month more in deductions',
   },
   {
     gross: 200000,
     label: 'KES 200,000 salary',
     nhif: 1700,
     shif: 5500,
-    nssfOld: 1600,
-    nssfNew: 1728,
-    impact: '+KES 3,928/month more in deductions',
+    nssfOld: 4320,
+    nssfNew: 6480,
+    impact: '+KES 5,960/month more in deductions',
   },
 ]
 
 const EMPLOYER_CHECKLIST = [
-  'Update payroll software to use 2.75% SHIF rate instead of NHIF tiered table',
-  'Add employer SHIF contribution (1.375% of gross) — this is a new employer cost that did not exist under NHIF',
+  'Update payroll software to use the 2.75% SHIF rate instead of the old NHIF tiered table',
+  'Deduct SHIF at 2.75% of gross from each employee (employee-only — there is no matching employer SHIF contribution) and remit to SHA',
   'Register employees with SHA (Social Health Authority) if not already done via eCitizen',
   'Update monthly P10 remittance to include SHIF separately from PAYE',
   'Ensure SHIF and NSSF remittances are reconciled before the 9th (SHIF) and 15th (NSSF) monthly deadlines',
   'Issue updated payslip format showing SHIF (not NHIF) as the health deduction line item',
-  'Update employment contracts if they reference NHIF-specific amounts as a benefit',
-  'Check whether your NSSF direct debit needs updating for the revised upper contribution limit',
+  'Apply the higher NSSF upper limit of KES 108,000 from February 2026 — max employee deduction is now KES 6,480',
+  'Remember the employer still matches NSSF (6%) and the Housing Levy (1.5%), but not SHIF',
 ]
 
 const TIMELINE = [
   { date: 'Oct 2024', event: 'SHIF deductions officially begin', status: 'done' },
-  { date: 'Dec 2024', event: 'Parliamentary re-approval of SHIF framework', status: 'done' },
-  { date: 'Feb 2025', event: 'NSSF upper pensionable limit increased to KES 108,000 (then revised to KES 72,000)', status: 'done' },
+  { date: 'Dec 2024', event: 'Mortgage interest relief raised to KES 30,000/month', status: 'done' },
   { date: 'Jun 2025', event: 'Full NHIF dissolution — all records transferred to SHA', status: 'done' },
-  { date: 'Jan 2026', event: 'Full SHIF integration — 2.75% flat rate fully operational', status: 'active' },
-  { date: 'Apr 2026', event: 'NSSF rates reviewed under phased implementation schedule', status: 'active' },
-  { date: 'Jun 2026', event: 'Annual review of SHIF rates by SHA board', status: 'upcoming' },
+  { date: 'Jan 2026', event: 'SHIF 2.75% flat rate fully operational', status: 'done' },
+  { date: 'Feb 2026', event: 'NSSF upper limit raised from KES 72,000 to KES 108,000 (max employee KES 6,480)', status: 'done' },
+  { date: 'Jun 2026', event: 'Annual review of SHIF rates by the SHA board', status: 'upcoming' },
 ]
 
 const fmt = (n: number) =>
@@ -138,7 +142,7 @@ export default function StatutoryChangesPage() {
                 </tbody>
               </table>
             </div>
-            <p className="text-xs text-stone-500 mt-3">Note: SHIF figures show employee share only (1.375% of gross). Employer also pays 1.375% — a new cost that did not exist under NHIF.</p>
+            <p className="text-xs text-stone-500 mt-3">Note: SHIF is 2.75% of gross, paid entirely by the employee. Unlike NSSF and the Housing Levy, there is no matching employer SHIF contribution; the employer only deducts and remits it.</p>
           </div>
         </section>
 
@@ -177,16 +181,15 @@ export default function StatutoryChangesPage() {
               { gross: 100000, label: 'KES 100,000' },
               { gross: 300000, label: 'KES 300,000' },
             ].map(ex => {
-              const shif     = Math.max(ex.gross * 0.0275, 300)
-              const empShare = shif / 2
+              const raw  = ex.gross * 0.0275
+              const shif = Math.max(raw, 300)
               return (
                 <div key={ex.gross} className="bg-white/5 border border-white/10 rounded-xl p-4">
                   <h3 className="font-bold text-white mb-3">{ex.label} gross salary</h3>
                   <div className="space-y-1.5 text-sm">
-                    <div className="flex justify-between"><span className="text-stone-400">2.75% × {ex.label}</span><span className="text-white">{fmt(shif)}</span></div>
-                    <div className="flex justify-between"><span className="text-stone-400">Employee pays (1.375%)</span><span className="text-red-400">{fmt(empShare)}</span></div>
-                    <div className="flex justify-between"><span className="text-stone-400">Employer pays (1.375%)</span><span className="text-amber-400">{fmt(empShare)}</span></div>
-                    <div className="flex justify-between border-t border-white/10 pt-1.5 font-semibold"><span className="text-stone-300">Total remitted</span><span className="text-white">{fmt(shif)}</span></div>
+                    <div className="flex justify-between"><span className="text-stone-400">2.75% × {ex.label}</span><span className="text-white">{fmt(raw)}</span></div>
+                    <div className="flex justify-between"><span className="text-stone-400">Minimum (KES 300)</span><span className="text-stone-400">{raw < 300 ? 'applies' : 'not reached'}</span></div>
+                    <div className="flex justify-between border-t border-white/10 pt-1.5 font-semibold"><span className="text-stone-300">Employee pays (no employer match)</span><span className="text-red-400">{fmt(shif)}</span></div>
                   </div>
                 </div>
               )
@@ -198,15 +201,15 @@ export default function StatutoryChangesPage() {
         <section className="mb-10">
           <h2 className="text-xl font-bold text-white mb-2">NSSF 2026 — Rate Changes</h2>
           <p className="text-stone-400 text-sm mb-5">
-            The NSSF phased implementation continued in 2026, with the upper pensionable limit stabilised at KES 72,000 after the earlier KES 108,000 proposal was revised. Rates increased slightly from 2024 levels.
+            From 1 February 2026 the NSSF upper earnings limit rose from KES 72,000 to KES 108,000, and the lower limit from KES 8,000 to KES 9,000. The 6% rate is unchanged, so the maximum employee contribution increased from KES 4,320 to KES 6,480 a month, matched by the employer for a combined KES 12,960. Earners below KES 72,000 are unaffected.
           </p>
           <div className="bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-white/10 bg-white/5">
-                  <th className="text-left py-3 px-4 text-stone-400">Salary Band</th>
-                  <th className="text-left py-3 px-4 text-stone-500">2024 Rate</th>
-                  <th className="text-left py-3 px-4 text-emerald-400">2026 Rate</th>
+                  <th className="text-left py-3 px-4 text-stone-400">Monthly gross</th>
+                  <th className="text-left py-3 px-4 text-stone-500">Employee NSSF (until Jan 2026)</th>
+                  <th className="text-left py-3 px-4 text-emerald-400">From Feb 2026</th>
                   <th className="text-right py-3 px-4 text-amber-400">Change</th>
                 </tr>
               </thead>

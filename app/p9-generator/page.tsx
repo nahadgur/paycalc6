@@ -16,7 +16,7 @@ const TAX_BANDS = [
 ]
 const PERSONAL_RELIEF  = 2400
 const NSSF_RATE        = 0.06
-const NSSF_UPPER_LIMIT = 72000
+const NSSF_UPPER_LIMIT = 108000
 const SHIF_RATE        = 0.0275
 const SHIF_MIN         = 300
 const HOUSING_LEVY     = 0.015
@@ -92,7 +92,7 @@ function P9Sheet({
         </div>
         <div className="space-y-2">
           <div><span className="font-semibold">Personal Relief:</span> KES 2,400 per month</div>
-          <div><span className="font-semibold">NSSF Rate:</span> 6% (max pensionable KES 72,000)</div>
+          <div><span className="font-semibold">NSSF Rate:</span> 6% (max pensionable KES 108,000)</div>
           <div><span className="font-semibold">SHIF Rate:</span> 2.75% (min KES 300)</div>
           <div><span className="font-semibold">Housing Levy:</span> 1.5% of gross</div>
         </div>
@@ -228,9 +228,10 @@ export default function P9GeneratorPage() {
         desc="Create a P9 certificate for any employee. Enter monthly gross salary and all PAYE, NSSF, SHIF and Housing Levy figures are computed automatically using 2026 KRA rates, then print or save as PDF."
       />
 
-      {/* Portaled print copy — hidden on screen, the only thing that prints. */}
+      {/* Portaled print copy — hidden on screen, the only thing that prints.
+          .p9-print compacts it (see globals.css) so it fits on a single page. */}
       {mounted && createPortal(
-        <div className="print-sheet">
+        <div className="print-sheet p9-print">
           <P9Sheet taxYear={taxYear} employeeName={employeeName} employeePin={employeePin} employer={employer} employerPin={employerPin} rows={rows} totals={totals} />
         </div>,
         document.body
@@ -454,7 +455,7 @@ export default function P9GeneratorPage() {
               <h3 className="font-bold text-white text-sm mb-3">Deduction Rates</h3>
               <div className="space-y-2 text-sm">
                 {[
-                  { label: 'NSSF', rate: '6% of pensionable pay (capped at KES 72,000)', color: 'text-blue-400' },
+                  { label: 'NSSF', rate: '6% of pensionable pay (capped at KES 108,000)', color: 'text-blue-400' },
                   { label: 'SHIF', rate: '2.75% of gross salary (min KES 300/month)', color: 'text-purple-400' },
                   { label: 'Housing Levy', rate: '1.5% of gross salary', color: 'text-amber-400' },
                   { label: 'Personal Relief', rate: 'KES 2,400 per month (automatic)', color: 'text-emerald-400' },

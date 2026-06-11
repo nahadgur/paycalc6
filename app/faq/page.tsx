@@ -19,7 +19,7 @@ const FAQS: FAQ[] = [
   {
     category: 'SHIF (Social Health Insurance Fund)',
     q: 'Is SHIF mandatory for all employees in Kenya?',
-    a: 'Yes. SHIF (2.75% of gross salary) is mandatory for all formal sector employees in Kenya from 2026. The deduction is split equally between employee (1.375%) and employer (1.375%). Informal sector workers and self-employed individuals can join voluntarily at a minimum of KES 300 per month.',
+    a: 'Yes. SHIF (2.75% of gross salary) is mandatory for all formal sector employees in Kenya from 2026. The full 2.75% is deducted from the employee — there is no employer SHIF match. Informal sector workers and self-employed individuals can join voluntarily at a minimum of KES 300 per month.',
   },
   {
     category: 'SHIF (Social Health Insurance Fund)',
@@ -29,7 +29,7 @@ const FAQS: FAQ[] = [
   {
     category: 'SHIF (Social Health Insurance Fund)',
     q: 'Does my employer pay SHIF on my behalf?',
-    a: 'Yes — unlike NHIF (which was employee-only), SHIF requires an equal contribution from the employer. Your employer pays 1.375% of your gross salary and you pay 1.375%. Both amounts are remitted to SHA together by the 9th of each month.',
+    a: 'No. SHIF is an employee-only contribution of 2.75% of your gross salary (minimum KES 300). Your employer deducts it from your pay and remits it to SHA by the 9th of each month, but there is no matching employer SHIF contribution. The employer only matches NSSF (6%) and the Housing Levy (1.5%).',
   },
   {
     category: 'SHIF (Social Health Insurance Fund)',
@@ -40,7 +40,7 @@ const FAQS: FAQ[] = [
   {
     category: 'NSSF',
     q: 'What is the NSSF pensionable pay ceiling in 2026?',
-    a: 'The NSSF upper pensionable pay limit is KES 72,000 per month in 2026. Contributions are calculated on up to KES 72,000 of your pensionable pay — income above this is not subject to additional NSSF contributions.',
+    a: 'From 1 February 2026 the NSSF upper pensionable pay limit is KES 108,000 per month (up from KES 72,000). Contributions are 6% of pensionable pay up to KES 108,000, so the maximum employee deduction is KES 6,480 a month, matched by the employer. Income above KES 108,000 is not subject to additional NSSF.',
   },
   {
     category: 'NSSF',

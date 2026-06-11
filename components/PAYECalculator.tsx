@@ -712,7 +712,7 @@ export default function PAYECalculatorV2({ defaultTab = 'calculator', single = f
               {/* Statutory Deductions */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                 {[
-                  { label: 'NSSF Pension', value: calculations.nssf, icon: Shield, color: '#C73B2F', desc: '6% to 72K' },
+                  { label: 'NSSF Pension', value: calculations.nssf, icon: Shield, color: '#C73B2F', desc: '6% to 108K' },
                   { label: 'SHIF Health', value: calculations.shif, icon: Heart, color: '#2a0f0c', desc: '2.75%' },
                   { label: 'Housing Levy', value: calculations.housingLevy, icon: Home, color: '#F5B9B2', desc: '1.5%' },
                   { label: 'Taxable Income', value: calculations.taxableIncome, icon: Briefcase, color: '#F04C40', desc: 'After NSSF' },
@@ -801,7 +801,7 @@ export default function PAYECalculatorV2({ defaultTab = 'calculator', single = f
                       />
                     </div>
                     <div>
-                      <label className="block text-sm text-stone-400 mb-2">Mortgage Interest (max 25K)</label>
+                      <label className="block text-sm text-stone-400 mb-2">Mortgage Interest (max 30K)</label>
                       <input
                         type="number"
                         value={mortgageInterest}
@@ -1466,7 +1466,7 @@ export default function PAYECalculatorV2({ defaultTab = 'calculator', single = f
             <div className="grid sm:grid-cols-2 gap-3">
               {[
                 { href: '/blog/how-to-calculate-your-paye-tax-in-kenya', title: 'How to calculate your PAYE', desc: 'Step-by-step using 2026 KRA bands' },
-                { href: '/blog/the-complete-guide-to-nssf-contributions-in-kenya-for-2026', title: 'NSSF contributions 2026', desc: '6% rate, 72K cap, what changed' },
+                { href: '/blog/the-complete-guide-to-nssf-contributions-in-kenya-for-2026', title: 'NSSF contributions 2026', desc: '6% rate, 108K cap, what changed' },
                 { href: '/blog/understanding-shif-deductions-in-kenya-and-what-replaced-nhif', title: 'SHIF replaces NHIF', desc: 'The new 2.75% health deduction' },
                 { href: '/blog/everything-you-need-to-know-about-kenyas-housing-levy', title: "Kenya's Housing Levy", desc: 'Why 1.5% comes out of every salary' },
                 { href: '/blog/7-legal-ways-kenyan-employees-can-reduce-their-paye', title: '7 ways to reduce your PAYE', desc: 'Pension, mortgage, insurance relief' },

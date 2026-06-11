@@ -200,7 +200,7 @@ export default async function SalaryPage({ params }: { params: { amount: string 
             {[
               { label: 'Gross Salary',     value: c.gross,   color: 'text-white',       isGross: true, note: 'Your employer pays this' },
               { label: 'PAYE Tax',         value: -c.paye,   color: 'text-red-400',     note: `Effective rate ${c.effectiveTax.toFixed(1)}% · 2026 KRA bands` },
-              { label: 'NSSF Pension',     value: -c.nssf,   color: 'text-blue-400',    note: '6% of pensionable pay (capped KES 72,000)' },
+              { label: 'NSSF Pension',     value: -c.nssf,   color: 'text-blue-400',    note: '6% of pensionable pay (capped KES 108,000)' },
               { label: 'SHIF Health',      value: -c.shif,   color: 'text-purple-400',  note: '2.75% of gross (min KES 300)' },
               { label: 'Housing Levy',     value: -c.housing,color: 'text-amber-400',   note: '1.5% of gross salary' },
             ].map(row => (
@@ -336,7 +336,7 @@ export default async function SalaryPage({ params }: { params: { amount: string 
               },
               {
                 q: 'Can I reduce my PAYE tax on this salary?',
-                a: `Yes. You can reduce PAYE by making pension contributions (reduces taxable income by up to KES 30,000/month), paying mortgage interest (up to KES 25,000/month deductible), or having life insurance premiums (15% relief, max KES 5,000/month). Use our full calculator to see the impact of these reliefs.`,
+                a: `Yes. You can reduce PAYE by making pension contributions (reduces taxable income by up to KES 30,000/month), paying mortgage interest (up to KES 30,000/month deductible), or having life insurance premiums (15% relief, max KES 5,000/month). Use our full calculator to see the impact of these reliefs.`,
               },
             ].map((faq, i) => (
               <div key={i} className="bg-white/5 border border-white/10 rounded-xl p-5">
