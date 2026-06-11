@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'Kenya Salary Breakdowns 2026 — What You Actually Take Home',
   description:
     'See exactly what common Kenyan salaries look like after PAYE, NSSF, SHIF and the Housing Levy in 2026, from KES 50,000 to KES 200,000 and beyond, plus what you need to live comfortably in Nairobi.',
-  alternates: { canonical: 'https://payecalculator.co.ke/salary-breakdowns' },
+  alternates: { canonical: 'https://payecalculator.co.ke/guides/salary-breakdowns' },
 }
 
 export default function SalaryBreakdownsHub() {

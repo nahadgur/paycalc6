@@ -345,7 +345,7 @@ export default function BudgetGuidePage() {
 
         {/* CTA */}
         <div className="text-center">
-          <Link href="/tax-relief" className="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 text-sm font-semibold transition-colors">
+          <Link href="/guides/tax-relief" className="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 text-sm font-semibold transition-colors">
             Increase your take-home with tax reliefs <ChevronRight className="w-4 h-4" />
           </Link>
         </div>
@@ -354,7 +354,7 @@ export default function BudgetGuidePage() {
         <section className="mt-14 border-t border-white/10 pt-10">
           <h2 className="text-lg font-bold text-white mb-5">Related Tools &amp; Guides</h2>
           <div className="grid sm:grid-cols-3 gap-3">
-            <Link href="/tax-relief" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-emerald-500/40 rounded-xl p-4 transition-all group">
+            <Link href="/guides/tax-relief" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-emerald-500/40 rounded-xl p-4 transition-all group">
               <span className="text-xl">💰</span>
               <span className="font-semibold text-white text-sm group-hover:text-emerald-400 transition-colors">Tax Relief Guide</span>
               <span className="text-stone-500 text-xs">Increase take-home with reliefs</span>
@@ -381,7 +381,7 @@ export default function BudgetGuidePage() {
         <section className="mt-14 mb-6">
           <h2 className="text-lg font-semibold text-stone-800 mb-4">Increase the money you're planning with</h2>
           <div className="grid sm:grid-cols-2 gap-3">
-            <Link href="/tax-relief" className="flex items-start gap-3 bg-white/5 border border-white/10 hover:border-amber-500/30 rounded-xl p-4 transition-all group">
+            <Link href="/guides/tax-relief" className="flex items-start gap-3 bg-white/5 border border-white/10 hover:border-amber-500/30 rounded-xl p-4 transition-all group">
               <span className="text-xl shrink-0">💰</span>
               <div>
                 <p className="font-semibold text-white text-sm group-hover:text-amber-400 transition-colors">Tax Relief Guide</p>
@@ -402,7 +402,7 @@ export default function BudgetGuidePage() {
                 <p className="text-stone-500 text-xs mt-0.5">See full deductions for your specific salary</p>
               </div>
             </Link>
-            <Link href="/statutory-changes" className="flex items-start gap-3 bg-white/5 border border-white/10 hover:border-amber-500/30 rounded-xl p-4 transition-all group">
+            <Link href="/guides/statutory-changes" className="flex items-start gap-3 bg-white/5 border border-white/10 hover:border-amber-500/30 rounded-xl p-4 transition-all group">
               <span className="text-xl shrink-0">📋</span>
               <div>
                 <p className="font-semibold text-white text-sm group-hover:text-amber-400 transition-colors">What Changed in 2026</p>

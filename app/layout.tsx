@@ -113,7 +113,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               </Link>
               <div className="flex items-center gap-6">
                 <Link href="/" className="text-[#555] hover:text-brand transition-colors text-[13px] font-medium">Calculator</Link>
-                <Link href="/blog" className="text-[#555] hover:text-brand transition-colors text-[13px] font-medium">Guides</Link>
+                <Link href="/guides" className="text-[#555] hover:text-brand transition-colors text-[13px] font-medium">Guides</Link>
               </div>
             </div>
           </div>
@@ -137,7 +137,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <Link href="/" className="inline-flex items-center gap-2 px-5 py-3 bg-[#111] text-white rounded-full font-medium text-[13px] hover:bg-black transition">
                   Calculate now →
                 </Link>
-                <Link href="/blog" className="inline-flex items-center gap-2 px-5 py-3 bg-white text-brand rounded-full font-medium text-[13px] hover:bg-brand-50 transition">
+                <Link href="/guides" className="inline-flex items-center gap-2 px-5 py-3 bg-white text-brand rounded-full font-medium text-[13px] hover:bg-brand-50 transition">
                   Read the guides
                 </Link>
               </div>
@@ -164,7 +164,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   <li><Link href="/nssf-calculator" className="opacity-90 hover:opacity-100 hover:underline">NSSF calculator</Link></li>
                   <li><Link href="/mortgage-relief" className="opacity-90 hover:opacity-100 hover:underline">Mortgage relief</Link></li>
                   <li><Link href="/p9-generator" className="opacity-90 hover:opacity-100 hover:underline">P9 generator</Link></li>
-                  <li><Link href="/tax-relief" className="opacity-90 hover:opacity-100 hover:underline">Tax relief</Link></li>
+                  <li><Link href="/guides/tax-relief" className="opacity-90 hover:opacity-100 hover:underline">Tax relief</Link></li>
                   <li><Link href="/budget-guide" className="opacity-90 hover:opacity-100 hover:underline">Budget planner</Link></li>
                 </ul>
               </div>
@@ -173,18 +173,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <ul className="space-y-2 text-[12px]">
                   <li><Link href="/tax-calendar" className="opacity-90 hover:opacity-100 hover:underline">Tax calendar</Link></li>
                   <li><Link href="/itax-2026" className="opacity-90 hover:opacity-100 hover:underline">iTax 2026 guide</Link></li>
-                  <li><Link href="/statutory-changes" className="opacity-90 hover:opacity-100 hover:underline">SHIF &amp; NSSF changes</Link></li>
-                  <li><Link href="/employer-guide" className="opacity-90 hover:opacity-100 hover:underline">Employer guide</Link></li>
+                  <li><Link href="/guides/statutory-changes" className="opacity-90 hover:opacity-100 hover:underline">SHIF &amp; NSSF changes</Link></li>
+                  <li><Link href="/guides/employer-guide" className="opacity-90 hover:opacity-100 hover:underline">Employer guide</Link></li>
                   <li><Link href="/faq" className="opacity-90 hover:opacity-100 hover:underline">FAQ</Link></li>
                 </ul>
               </div>
               <div>
                 <p className="text-[10px] tracking-[0.15em] opacity-75 mb-3 font-medium">GUIDES</p>
                 <ul className="space-y-2 text-[12px]">
-                  <li><Link href="/statutory-deductions" className="opacity-90 hover:opacity-100 hover:underline">Statutory deductions</Link></li>
-                  <li><Link href="/tax-relief" className="opacity-90 hover:opacity-100 hover:underline">Tax savings &amp; reliefs</Link></li>
-                  <li><Link href="/salary-breakdowns" className="opacity-90 hover:opacity-100 hover:underline">Salary breakdowns</Link></li>
-                  <li><Link href="/employment-situations" className="opacity-90 hover:opacity-100 hover:underline">Employment situations</Link></li>
+                  <li><Link href="/guides/statutory-deductions" className="opacity-90 hover:opacity-100 hover:underline">Statutory deductions</Link></li>
+                  <li><Link href="/guides/tax-relief" className="opacity-90 hover:opacity-100 hover:underline">Tax savings &amp; reliefs</Link></li>
+                  <li><Link href="/guides/salary-breakdowns" className="opacity-90 hover:opacity-100 hover:underline">Salary breakdowns</Link></li>
+                  <li><Link href="/guides/employment-situations" className="opacity-90 hover:opacity-100 hover:underline">Employment situations</Link></li>
                   <li><Link href="/blog" className="opacity-90 hover:opacity-100 hover:underline">All guides →</Link></li>
                 </ul>
               </div>

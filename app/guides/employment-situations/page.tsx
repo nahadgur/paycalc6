@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'PAYE in Real Life — Bonuses, Freelancing, HELB & Job Changes (Kenya 2026)',
   description:
     'How PAYE actually behaves in Kenyan working life: bonuses and 13th-month pay, freelancing vs employment, HELB deductions, changing jobs, employer errors, and filing taxes as a couple.',
-  alternates: { canonical: 'https://payecalculator.co.ke/employment-situations' },
+  alternates: { canonical: 'https://payecalculator.co.ke/guides/employment-situations' },
 }
 
 export default function EmploymentSituationsHub() {

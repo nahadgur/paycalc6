@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: 'Kenya Employer Payroll Compliance Guide 2026 | PAYE, NSSF, SHIF & Housing Levy',
   description: 'Complete payroll compliance guide for Kenyan employers and HR managers 2026. True cost of hiring, P10 filing, PAYE remittance, SHIF, NSSF, and Housing Levy obligations explained.',
   keywords: ['employer PAYE Kenya','payroll compliance Kenya 2026','true cost hiring Kenya','P10 return Kenya','NSSF employer contribution'],
-  alternates: { canonical: 'https://payecalculator.co.ke/employer-guide' },
+  alternates: { canonical: 'https://payecalculator.co.ke/guides/employer-guide' },
 }
 
 const fmt = (n: number) =>
@@ -126,7 +126,7 @@ export default function EmployerGuidePage() {
     '@type': 'Article',
     headline: 'Kenya Employer Payroll Compliance Guide 2026',
     description: 'Complete payroll compliance obligations for Kenyan employers: PAYE, NSSF, SHIF, Housing Levy, P10 filing, and true cost of hiring.',
-    url: 'https://payecalculator.co.ke/employer-guide',
+    url: 'https://payecalculator.co.ke/guides/employer-guide',
     dateModified: '2026-04-06',
   }
 
@@ -312,12 +312,12 @@ export default function EmployerGuidePage() {
               <span className="font-semibold text-white text-sm group-hover:text-amber-400 transition-colors">Tax Calendar</span>
               <span className="text-stone-500 text-xs">Every employer deadline for 2026</span>
             </Link>
-            <Link href="/statutory-changes" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-blue-500/40 rounded-xl p-4 transition-all group">
+            <Link href="/guides/statutory-changes" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-blue-500/40 rounded-xl p-4 transition-all group">
               <span className="text-xl">📊</span>
               <span className="font-semibold text-white text-sm group-hover:text-blue-400 transition-colors">SHIF & NSSF Changes</span>
               <span className="text-stone-500 text-xs">Updated rate obligations</span>
             </Link>
-            <Link href="/tax-relief" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-emerald-500/40 rounded-xl p-4 transition-all group">
+            <Link href="/guides/tax-relief" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-emerald-500/40 rounded-xl p-4 transition-all group">
               <span className="text-xl">💰</span>
               <span className="font-semibold text-white text-sm group-hover:text-emerald-400 transition-colors">Tax Relief Guide</span>
               <span className="text-stone-500 text-xs">Reliefs employers must apply</span>
@@ -353,7 +353,7 @@ export default function EmployerGuidePage() {
                 <p className="text-stone-500 text-xs mt-0.5">Monthly P10, annual P9, NSSF — all deadlines</p>
               </div>
             </Link>
-            <Link href="/statutory-changes" className="flex items-start gap-3 bg-white/5 border border-white/10 hover:border-amber-500/30 rounded-xl p-4 transition-all group">
+            <Link href="/guides/statutory-changes" className="flex items-start gap-3 bg-white/5 border border-white/10 hover:border-amber-500/30 rounded-xl p-4 transition-all group">
               <span className="text-xl shrink-0">📊</span>
               <div>
                 <p className="font-semibold text-white text-sm group-hover:text-amber-400 transition-colors">SHIF & NSSF 2026 Rates</p>

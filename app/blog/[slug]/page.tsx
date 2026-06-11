@@ -40,8 +40,9 @@ export default function BlogArticle({ params }: Props) {
   const silo = siloForSpoke(params.slug)
   const crumbs = [
     { '@type': 'ListItem', position: 1, name: 'Home', item: `${BASE}/` },
-    ...(silo ? [{ '@type': 'ListItem', position: 2, name: silo.title, item: `${BASE}${silo.hubHref}` }] : []),
-    { '@type': 'ListItem', position: silo ? 3 : 2, name: article!.title, item: `${BASE}/blog/${params.slug}` },
+    { '@type': 'ListItem', position: 2, name: 'Guides', item: `${BASE}/guides` },
+    ...(silo ? [{ '@type': 'ListItem', position: 3, name: silo.title, item: `${BASE}${silo.hubHref}` }] : []),
+    { '@type': 'ListItem', position: silo ? 4 : 3, name: article!.title, item: `${BASE}/blog/${params.slug}` },
   ]
   const breadcrumb = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: crumbs }
 
@@ -63,14 +64,14 @@ export default function BlogArticle({ params }: Props) {
         <div className="max-w-3xl mx-auto px-5 sm:px-6 py-12 sm:py-16">
           <nav className="flex items-center flex-wrap gap-1.5 text-[12px] text-white/80 mb-6">
             <Link href="/" className="hover:text-white">Home</Link>
+            <ChevronRight className="w-3 h-3" />
+            <Link href="/guides" className="hover:text-white">Guides</Link>
             {silo && (
               <>
                 <ChevronRight className="w-3 h-3" />
                 <Link href={silo.hubHref} className="hover:text-white">{silo.title}</Link>
               </>
             )}
-            <ChevronRight className="w-3 h-3" />
-            <Link href="/blog" className="hover:text-white">Guides</Link>
           </nav>
           <div className="flex justify-between items-baseline mb-6 text-xs text-stone-500 font-medium">
             <span>Kenya · Tax guide</span>

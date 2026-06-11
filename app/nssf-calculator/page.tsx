@@ -183,7 +183,7 @@ export default function NSSFCalculatorPage() {
               and the lower limit, from KES 8,000 to KES 9,000. The result: the maximum employee deduction increased from KES 4,320 to KES 6,480 a month.
               NSSF is an allowable deduction for PAYE, so part of the increase is offset by slightly lower income tax.
             </p>
-            <Link href="/statutory-changes" className="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 text-sm font-semibold transition-colors">
+            <Link href="/guides/statutory-changes" className="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 text-sm font-semibold transition-colors">
               Read the full SHIF &amp; NSSF 2026 changes <ChevronRight className="w-4 h-4" />
             </Link>
           </div>
@@ -208,7 +208,7 @@ export default function NSSFCalculatorPage() {
               <span className="font-semibold text-white text-sm group-hover:text-brand-700 transition-colors">NSSF 2026 Guide</span>
               <span className="text-stone-500 text-xs">Rates, tiers, benefits &amp; rules</span>
             </Link>
-            <Link href="/statutory-changes" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-amber-500/40 rounded-xl p-4 transition-all group">
+            <Link href="/guides/statutory-changes" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-amber-500/40 rounded-xl p-4 transition-all group">
               <span className="font-semibold text-white text-sm group-hover:text-amber-400 transition-colors">Statutory Changes</span>
               <span className="text-stone-500 text-xs">All 2026 SHIF &amp; NSSF updates</span>
             </Link>

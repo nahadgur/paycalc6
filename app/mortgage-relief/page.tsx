@@ -170,7 +170,7 @@ export default function MortgageReliefPage() {
               you can claim it on your annual iTax return for a refund. Thousands of borrowers never submit the
               statement and lose up to KES 9,000 a month — if you have a home loan, send it to HR today.
             </p>
-            <Link href="/tax-relief" className="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 text-sm font-semibold transition-colors">
+            <Link href="/guides/tax-relief" className="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 text-sm font-semibold transition-colors">
               See all Kenya tax reliefs <ChevronRight className="w-4 h-4" />
             </Link>
           </div>
@@ -191,7 +191,7 @@ export default function MortgageReliefPage() {
               <span className="font-semibold text-white text-sm group-hover:text-brand-700 transition-colors flex items-center gap-2"><CheckCircle2 className="w-4 h-4" /> PAYE Calculator</span>
               <span className="text-stone-500 text-xs">Add mortgage relief and see net pay</span>
             </Link>
-            <Link href="/tax-relief" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-emerald-500/40 rounded-xl p-4 transition-all group">
+            <Link href="/guides/tax-relief" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-emerald-500/40 rounded-xl p-4 transition-all group">
               <span className="font-semibold text-white text-sm group-hover:text-brand-700 transition-colors">All Tax Reliefs</span>
               <span className="text-stone-500 text-xs">Pension, insurance, disability &amp; more</span>
             </Link>

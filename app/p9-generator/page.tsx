@@ -540,7 +540,7 @@ export default function P9GeneratorPage() {
               <span className="font-semibold text-white text-sm group-hover:text-red-400 transition-colors">PAYE Calculator</span>
               <span className="text-stone-500 text-xs">Verify the figures first</span>
             </Link>
-            <Link href="/employer-guide" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-purple-500/40 rounded-xl p-4 transition-all group">
+            <Link href="/guides/employer-guide" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-purple-500/40 rounded-xl p-4 transition-all group">
               <span className="text-xl">🏢</span>
               <span className="font-semibold text-white text-sm group-hover:text-purple-400 transition-colors">Employer Guide</span>
               <span className="text-stone-500 text-xs">Employer P9 obligations</span>

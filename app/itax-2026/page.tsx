@@ -211,12 +211,12 @@ export default function ITax2026Page() {
               <span className="font-semibold text-white text-sm group-hover:text-red-400 transition-colors">P9 Form Generator</span>
               <span className="text-stone-500 text-xs">Create annual tax certificates</span>
             </Link>
-            <Link href="/statutory-changes" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-blue-500/40 rounded-xl p-4 transition-all group">
+            <Link href="/guides/statutory-changes" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-blue-500/40 rounded-xl p-4 transition-all group">
               <span className="text-xl">📊</span>
               <span className="font-semibold text-white text-sm group-hover:text-blue-400 transition-colors">SHIF & NSSF Changes</span>
               <span className="text-stone-500 text-xs">Statutory rate changes explained</span>
             </Link>
-            <Link href="/employer-guide" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-purple-500/40 rounded-xl p-4 transition-all group">
+            <Link href="/guides/employer-guide" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-purple-500/40 rounded-xl p-4 transition-all group">
               <span className="text-xl">🏢</span>
               <span className="font-semibold text-white text-sm group-hover:text-purple-400 transition-colors">Employer Guide</span>
               <span className="text-stone-500 text-xs">P10 filing and compliance</span>
@@ -252,7 +252,7 @@ export default function ITax2026Page() {
                 <p className="text-stone-500 text-xs mt-0.5">June 30 return, 9th PAYE — all 2026 dates</p>
               </div>
             </Link>
-            <Link href="/tax-relief" className="flex items-start gap-3 bg-white/5 border border-white/10 hover:border-amber-500/30 rounded-xl p-4 transition-all group">
+            <Link href="/guides/tax-relief" className="flex items-start gap-3 bg-white/5 border border-white/10 hover:border-amber-500/30 rounded-xl p-4 transition-all group">
               <span className="text-xl shrink-0">💰</span>
               <div>
                 <p className="font-semibold text-white text-sm group-hover:text-amber-400 transition-colors">Tax Relief Guide</p>

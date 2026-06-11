@@ -35,7 +35,7 @@ export const SILOS: Silo[] = [
   {
     key: 'statutory-deductions',
     title: 'Statutory Deductions',
-    hubHref: '/statutory-deductions',
+    hubHref: '/guides/statutory-deductions',
     blurb: 'NSSF, SHIF, and the Housing Levy: the three mandatory deductions that come out of every Kenyan payslip in 2026.',
     spokes: [
       'the-complete-guide-to-nssf-contributions-in-kenya-for-2026',
@@ -46,7 +46,7 @@ export const SILOS: Silo[] = [
   {
     key: 'tax-savings',
     title: 'Tax Savings & Reliefs',
-    hubHref: '/tax-relief',
+    hubHref: '/guides/tax-relief',
     blurb: 'Legal ways to reduce your PAYE: insurance relief, mortgage interest relief, pension contributions, and disability exemptions.',
     spokes: [
       '7-legal-ways-kenyan-employees-can-reduce-their-paye',
@@ -59,7 +59,7 @@ export const SILOS: Silo[] = [
   {
     key: 'salary-breakdowns',
     title: 'Salary Breakdowns',
-    hubHref: '/salary-breakdowns',
+    hubHref: '/guides/salary-breakdowns',
     blurb: 'Exactly what common Kenyan salaries look like after PAYE, NSSF, SHIF, and the Housing Levy, from KES 50,000 to KES 200,000 and beyond.',
     spokes: [
       'what-a-kes-50000-salary-actually-looks-like-after-tax-in-kenya',
@@ -73,7 +73,7 @@ export const SILOS: Silo[] = [
   {
     key: 'employment-situations',
     title: 'Employment Situations',
-    hubHref: '/employment-situations',
+    hubHref: '/guides/employment-situations',
     blurb: 'How PAYE behaves in real working life: bonuses, freelancing, HELB, changing jobs, employer errors, and filing as a couple.',
     spokes: [
       'how-kenyan-employers-tax-your-bonus-and-13th-month-pay',
@@ -87,7 +87,7 @@ export const SILOS: Silo[] = [
   {
     key: 'for-employers',
     title: 'For Employers',
-    hubHref: '/employer-guide',
+    hubHref: '/guides/employer-guide',
     blurb: 'Payroll obligations for Kenyan employers: the true cost of hiring, NSSF and Housing Levy duties, iTax filing, and benefits in kind.',
     spokes: [
       'the-true-cost-of-hiring-an-employee-in-kenya',
@@ -99,7 +99,7 @@ export const SILOS: Silo[] = [
   {
     key: 'news-updates',
     title: 'News & Updates',
-    hubHref: '/statutory-changes',
+    hubHref: '/guides/statutory-changes',
     blurb: 'The latest changes to Kenyan payroll: the Finance Bill, KRA deadlines, and the new NSSF rates.',
     spokes: [
       'what-the-kenya-finance-bill-2025-means-for-your-salary',

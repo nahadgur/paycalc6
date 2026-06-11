@@ -309,7 +309,7 @@ export default function TaxCalendarPage() {
               <span className="font-semibold text-white text-sm group-hover:text-emerald-400 transition-colors">KRA iTax 2026</span>
               <span className="text-stone-500 text-xs">How pre-filled returns work in 2026</span>
             </Link>
-            <Link href="/employer-guide" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-purple-500/40 rounded-xl p-4 transition-all group">
+            <Link href="/guides/employer-guide" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-purple-500/40 rounded-xl p-4 transition-all group">
               <span className="text-xl">🏢</span>
               <span className="font-semibold text-white text-sm group-hover:text-purple-400 transition-colors">Employer Guide</span>
               <span className="text-stone-500 text-xs">Full remittance obligations</span>
@@ -345,7 +345,7 @@ export default function TaxCalendarPage() {
                 <p className="text-stone-500 text-xs mt-0.5">How to file your June 30 return</p>
               </div>
             </Link>
-            <Link href="/employer-guide" className="flex items-start gap-3 bg-white/5 border border-white/10 hover:border-amber-500/30 rounded-xl p-4 transition-all group">
+            <Link href="/guides/employer-guide" className="flex items-start gap-3 bg-white/5 border border-white/10 hover:border-amber-500/30 rounded-xl p-4 transition-all group">
               <span className="text-xl shrink-0">🏢</span>
               <div>
                 <p className="font-semibold text-white text-sm group-hover:text-amber-400 transition-colors">Employer Compliance</p>

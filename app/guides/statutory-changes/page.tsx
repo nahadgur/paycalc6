@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: 'SHIF & NSSF 2026 Changes Kenya | Complete Statutory Transition Guide',
   description: 'Everything you need to know about SHIF replacing NHIF and the February 2026 NSSF limit increases. Rates, deductions, payroll impact, and what changed for employers and employees.',
   keywords: ['SHIF Kenya 2026','NSSF changes 2026','NHIF replaced by SHIF','NSSF new rates Kenya','statutory deductions Kenya 2026'],
-  alternates: { canonical: 'https://payecalculator.co.ke/statutory-changes' },
+  alternates: { canonical: 'https://payecalculator.co.ke/guides/statutory-changes' },
 }
 
 const SHIF_COMPARISON = [
@@ -88,7 +88,7 @@ export default function StatutoryChangesPage() {
     '@type': 'Article',
     headline: 'SHIF and NSSF 2026 Changes — Complete Kenya Statutory Transition Guide',
     description: 'Full guide to SHIF replacing NHIF and the NSSF rate changes in 2026 for Kenyan employers and employees.',
-    url: 'https://payecalculator.co.ke/statutory-changes',
+    url: 'https://payecalculator.co.ke/guides/statutory-changes',
     dateModified: '2026-04-06',
   }
 
@@ -274,7 +274,7 @@ export default function StatutoryChangesPage() {
             </div>
             <ChevronRight className="w-5 h-5 text-amber-400" />
           </Link>
-          <Link href="/employer-guide" className="flex items-center justify-between bg-white/5 border border-white/10 hover:border-emerald-500/30 rounded-xl p-5 transition-all group">
+          <Link href="/guides/employer-guide" className="flex items-center justify-between bg-white/5 border border-white/10 hover:border-emerald-500/30 rounded-xl p-5 transition-all group">
             <div>
               <p className="font-bold text-white">Employer Compliance Guide</p>
               <p className="text-stone-400 text-xs mt-1">Full payroll compliance checklist for HR and finance</p>
@@ -294,7 +294,7 @@ export default function StatutoryChangesPage() {
               <span className="font-semibold text-white text-sm group-hover:text-red-400 transition-colors">PAYE Calculator</span>
               <span className="text-stone-500 text-xs">See your updated take-home</span>
             </Link>
-            <Link href="/tax-relief" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-emerald-500/40 rounded-xl p-4 transition-all group">
+            <Link href="/guides/tax-relief" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-emerald-500/40 rounded-xl p-4 transition-all group">
               <span className="text-xl">💰</span>
               <span className="font-semibold text-white text-sm group-hover:text-emerald-400 transition-colors">Tax Relief Guide</span>
               <span className="text-stone-500 text-xs">Legally reduce your PAYE</span>
@@ -304,7 +304,7 @@ export default function StatutoryChangesPage() {
               <span className="font-semibold text-white text-sm group-hover:text-amber-400 transition-colors">Tax Calendar</span>
               <span className="text-stone-500 text-xs">SHIF & NSSF remittance dates</span>
             </Link>
-            <Link href="/employer-guide" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-blue-500/40 rounded-xl p-4 transition-all group">
+            <Link href="/guides/employer-guide" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-blue-500/40 rounded-xl p-4 transition-all group">
               <span className="text-xl">🏢</span>
               <span className="font-semibold text-white text-sm group-hover:text-blue-400 transition-colors">Employer Guide</span>
               <span className="text-stone-500 text-xs">Payroll compliance obligations</span>
@@ -333,14 +333,14 @@ export default function StatutoryChangesPage() {
                 <p className="text-stone-500 text-xs mt-0.5">See your updated take-home with 2026 SHIF & NSSF</p>
               </div>
             </Link>
-            <Link href="/tax-relief" className="flex items-start gap-3 bg-white/5 border border-white/10 hover:border-amber-500/30 rounded-xl p-4 transition-all group">
+            <Link href="/guides/tax-relief" className="flex items-start gap-3 bg-white/5 border border-white/10 hover:border-amber-500/30 rounded-xl p-4 transition-all group">
               <span className="text-xl shrink-0">💰</span>
               <div>
                 <p className="font-semibold text-white text-sm group-hover:text-amber-400 transition-colors">Tax Relief Hub</p>
                 <p className="text-stone-500 text-xs mt-0.5">Offset higher deductions with legal reliefs</p>
               </div>
             </Link>
-            <Link href="/employer-guide" className="flex items-start gap-3 bg-white/5 border border-white/10 hover:border-amber-500/30 rounded-xl p-4 transition-all group">
+            <Link href="/guides/employer-guide" className="flex items-start gap-3 bg-white/5 border border-white/10 hover:border-amber-500/30 rounded-xl p-4 transition-all group">
               <span className="text-xl shrink-0">🏢</span>
               <div>
                 <p className="font-semibold text-white text-sm group-hover:text-amber-400 transition-colors">Employer Compliance</p>

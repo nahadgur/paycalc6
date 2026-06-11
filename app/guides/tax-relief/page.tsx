@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: 'Kenya Tax Reliefs 2026 | Reduce Your PAYE — Complete Guide',
   description: 'All available PAYE tax reliefs in Kenya 2026: personal relief, mortgage interest, pension contributions, insurance relief, and disability relief. How to claim each and how much you save.',
   keywords: ['Kenya tax relief 2026','mortgage interest relief Kenya','pension tax relief Kenya','PAYE reduction Kenya','KES 30000 mortgage relief'],
-  alternates: { canonical: 'https://payecalculator.co.ke/tax-relief' },
+  alternates: { canonical: 'https://payecalculator.co.ke/guides/tax-relief' },
 }
 
 const fmt = (n: number) =>
@@ -136,7 +136,7 @@ export default function TaxReliefPage() {
     '@type': 'Article',
     headline: 'Kenya Tax Reliefs 2026 — Complete Guide to Reducing Your PAYE',
     description: 'All PAYE tax reliefs available in Kenya 2026: personal relief, mortgage, pension, insurance, and disability relief.',
-    url: 'https://payecalculator.co.ke/tax-relief',
+    url: 'https://payecalculator.co.ke/guides/tax-relief',
     dateModified: '2026-04-06',
   }
 
@@ -296,12 +296,12 @@ export default function TaxReliefPage() {
               <span className="font-semibold text-white text-sm group-hover:text-red-400 transition-colors">PAYE Calculator</span>
               <span className="text-stone-500 text-xs">Apply reliefs and see savings</span>
             </Link>
-            <Link href="/statutory-changes" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-blue-500/40 rounded-xl p-4 transition-all group">
+            <Link href="/guides/statutory-changes" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-blue-500/40 rounded-xl p-4 transition-all group">
               <span className="text-xl">📊</span>
               <span className="font-semibold text-white text-sm group-hover:text-blue-400 transition-colors">Statutory Changes</span>
               <span className="text-stone-500 text-xs">SHIF & NSSF 2026 rates</span>
             </Link>
-            <Link href="/employer-guide" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-purple-500/40 rounded-xl p-4 transition-all group">
+            <Link href="/guides/employer-guide" className="flex flex-col gap-1 bg-white/5 border border-white/10 hover:border-purple-500/40 rounded-xl p-4 transition-all group">
               <span className="text-xl">🏢</span>
               <span className="font-semibold text-white text-sm group-hover:text-purple-400 transition-colors">Employer Guide</span>
               <span className="text-stone-500 text-xs">Applying reliefs in payroll</span>
@@ -342,7 +342,7 @@ export default function TaxReliefPage() {
                 <p className="text-stone-500 text-xs mt-0.5">Verify reliefs were applied on your P9 form</p>
               </div>
             </Link>
-            <Link href="/statutory-changes" className="flex items-start gap-3 bg-white/5 border border-white/10 hover:border-amber-500/30 rounded-xl p-4 transition-all group">
+            <Link href="/guides/statutory-changes" className="flex items-start gap-3 bg-white/5 border border-white/10 hover:border-amber-500/30 rounded-xl p-4 transition-all group">
               <span className="text-xl shrink-0">📊</span>
               <div>
                 <p className="font-semibold text-white text-sm group-hover:text-amber-400 transition-colors">SHIF & NSSF Changes</p>
