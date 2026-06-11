@@ -76,8 +76,8 @@ export async function generateMetadata({ params }: { params: { amount: string } 
   if (!SALARY_AMOUNTS.includes(gross)) return { title: 'Salary Not Found' }
   const c = calcAll(gross)
   return {
-    title: `${fmtCompact(gross)} Salary in Kenya 2026 | Net Pay, PAYE & Deductions`,
-    description: `${fmt(gross)} gross salary in Kenya 2026: take-home pay is ${fmt(c.net)} after PAYE tax of ${fmt(c.paye)}, NSSF ${fmt(c.nssf)}, SHIF ${fmt(c.shif)}, and Housing Levy ${fmt(c.housing)}. Effective tax rate: ${c.effectiveTax.toFixed(1)}%.`,
+    title: { absolute: `KES ${gross.toLocaleString()} Salary in Kenya 2026: Net Pay & Gross to Net` },
+    description: `On a KES ${gross.toLocaleString()} gross salary in Kenya you take home ${fmt(c.net)} a month (${fmt(c.net * 12)} a year). PAYE tax ${fmt(c.paye)}, NSSF ${fmt(c.nssf)}, SHIF ${fmt(c.shif)}, Housing Levy ${fmt(c.housing)} — the full 2026 gross-to-net breakdown.`,
     alternates: { canonical: `https://payecalculator.co.ke/salary/${gross}` },
   }
 }
@@ -147,7 +147,7 @@ export default async function SalaryPage({ params }: { params: { amount: string 
   }
 
   return (
-    <div className="min-h-screen py-10 px-4">
+    <div className="paye-calc-body min-h-screen py-10 px-4">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaFAQ) }} />
 
       <div className="max-w-4xl mx-auto">
@@ -174,6 +174,36 @@ export default async function SalaryPage({ params }: { params: { amount: string 
           </p>
           <p className="text-stone-500 text-sm mt-1">
             Effective tax rate: {c.effectiveTax.toFixed(1)}% · Total deductions: {c.totalRate.toFixed(1)}%
+          </p>
+        </div>
+
+        {/* Direct answer — featured-snippet target for "X gross to net" / "how much tax on X". Explicit brand colours so it reads on any theme. */}
+        <div className="rounded-2xl border border-brand-300 bg-brand-50 p-5 sm:p-6 mb-8">
+          <p className="text-[15px] sm:text-[16px] text-[#222] leading-relaxed">
+            The net (take-home) pay on a <strong>{fmt(gross)}</strong> gross salary in Kenya is{' '}
+            <strong className="text-brand">{fmt(c.net)} per month</strong> ({fmt(c.net * 12)} per year), after PAYE tax of{' '}
+            {fmt(c.paye)}, NSSF {fmt(c.nssf)}, SHIF {fmt(c.shif)} and the Housing Levy {fmt(c.housing)}. Total deductions are{' '}
+            {fmt(c.totalDeductions)} ({c.totalRate.toFixed(1)}% of gross), at an effective PAYE rate of {c.effectiveTax.toFixed(1)}%.
+          </p>
+          <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-2 text-[13px]">
+            {[
+              { k: 'Gross salary', v: fmt(c.gross), strong: true },
+              { k: 'PAYE tax', v: `− ${fmt(c.paye)}` },
+              { k: 'NSSF', v: `− ${fmt(c.nssf)}` },
+              { k: 'SHIF', v: `− ${fmt(c.shif)}` },
+              { k: 'Housing Levy', v: `− ${fmt(c.housing)}` },
+              { k: 'Net pay', v: fmt(c.net), strong: true },
+            ].map((row) => (
+              <div key={row.k} className="flex items-center justify-between border-b border-brand-300/40 pb-1.5">
+                <span className="text-[#666]">{row.k}</span>
+                <span className={row.strong ? 'font-bold text-brand' : 'text-[#222]'}>{row.v}</span>
+              </div>
+            ))}
+          </div>
+          <p className="text-[12px] text-[#888] mt-3">
+            Need it the other way round?{' '}
+            <Link href="/net-gross-calculator" className="text-brand hover:underline">Net to gross calculator</Link> ·{' '}
+            <Link href="/" className="text-brand hover:underline">try another salary</Link>
           </p>
         </div>
 
