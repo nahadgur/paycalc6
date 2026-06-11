@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { TrendingUp, CheckCircle2, ChevronRight } from 'lucide-react'
+import ToolHero from '@/components/ToolHero'
 
 export const metadata: Metadata = {
   title: 'NSSF Calculator Kenya 2026 | New Tier I & II Rates (Max KES 6,480)',
@@ -77,18 +78,17 @@ export default function NSSFCalculatorPage() {
   }
 
   return (
-    <div className="paye-calc-body min-h-screen py-10 px-4">
+    <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <ToolHero
+        h1="NSSF Calculator Kenya 2026 — Tier I & Tier II"
+        pre="Your new "
+        em="NSSF"
+        post=" deduction."
+        desc="From February 2026, NSSF is 6% of your pay up to a new upper limit of KES 108,000, a maximum of KES 6,480 a month. Find your exact Tier I and Tier II deduction below."
+      />
+      <div className="paye-calc-body min-h-screen pt-8 pb-10 px-4">
       <div className="max-w-4xl mx-auto">
-
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-3xl md:text-4xl font-bold text-white mb-3">NSSF Calculator Kenya 2026 — Tier I &amp; Tier II</h1>
-          <p className="text-stone-400 max-w-xl mx-auto text-sm leading-relaxed">
-            From February 2026, NSSF is 6% of your pay up to a new upper limit of KES 108,000 — a maximum of
-            KES 6,480 a month. Find your exact deduction below, then open the full calculator to see your net pay.
-          </p>
-        </div>
 
         {/* Key figures */}
         <section className="mb-10">
@@ -211,6 +211,7 @@ export default function NSSFCalculatorPage() {
           </div>
         </section>
       </div>
-    </div>
+      </div>
+    </>
   )
 }

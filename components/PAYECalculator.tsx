@@ -645,7 +645,7 @@ export default function PAYECalculatorV2({ defaultTab = 'calculator', single = f
               {/* Print-only payslip sheet — portaled to <body> so @media print can hide
                   every sibling with display:none (no leftover layout height = no blank pages). */}
               {mounted && createPortal(
-              <div id="payslip-print-root" aria-hidden="true">
+              <div className="print-sheet" aria-hidden="true">
                 <div style={{ maxWidth: '640px', margin: '0 auto', color: '#111', fontFamily: 'Inter, system-ui, sans-serif' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', borderBottom: '2px solid #F04C40', paddingBottom: '12px', marginBottom: '20px' }}>
                     <div>

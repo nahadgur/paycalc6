@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { CheckCircle2, AlertTriangle, ChevronRight } from 'lucide-react'
+import ToolHero from '@/components/ToolHero'
 
 export const metadata: Metadata = {
   title: 'Mortgage Relief Calculator Kenya 2026 | Save up to KES 9,000/mo',
@@ -71,19 +72,17 @@ export default function MortgageReliefPage() {
   }
 
   return (
-    <div className="paye-calc-body min-h-screen py-10 px-4">
+    <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <ToolHero
+        h1="Mortgage Relief Calculator Kenya 2026"
+        pre="A bigger "
+        em="take-home"
+        post="."
+        desc="If you have a home loan, mortgage interest relief is one of the biggest PAYE savings available. Up to KES 30,000 of interest a month comes off your taxable income, worth up to KES 9,000 in tax saved. See your saving below."
+      />
+      <div className="paye-calc-body min-h-screen pt-8 pb-10 px-4">
       <div className="max-w-4xl mx-auto">
-
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-3xl md:text-4xl font-bold text-white mb-3">Mortgage Relief Calculator Kenya 2026</h1>
-          <p className="text-stone-400 max-w-xl mx-auto text-sm leading-relaxed">
-            If you have a home loan, mortgage interest relief is one of the biggest PAYE savings available — up to
-            KES 30,000 of interest a month comes off your taxable income, worth up to KES 9,000 in tax saved.
-            See your saving below.
-          </p>
-        </div>
 
         {/* Key figures */}
         <section className="mb-10">
@@ -198,6 +197,7 @@ export default function MortgageReliefPage() {
           </div>
         </section>
       </div>
-    </div>
+      </div>
+    </>
   )
 }

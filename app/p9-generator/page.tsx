@@ -1,8 +1,10 @@
 'use client'
 
-import { useState, useMemo, useRef } from 'react'
+import { useState, useMemo, useEffect } from 'react'
+import { createPortal } from 'react-dom'
 import Link from 'next/link'
-import { FileText, Printer, ArrowLeft, ChevronDown, ChevronUp, Info } from 'lucide-react'
+import { FileText, Printer, ChevronDown, ChevronUp, Info } from 'lucide-react'
+import ToolHero from '@/components/ToolHero'
 
 // 2026 Tax constants
 const TAX_BANDS = [
@@ -54,6 +56,130 @@ type MonthData = {
 
 const defaultMonth = (): MonthData => ({ gross: 100000, pension: 0, insurance: 0 })
 
+type Row = ReturnType<typeof calcMonth>
+
+// The printable P9 certificate. Rendered once on-screen as a preview and once
+// (portaled to <body> with .print-sheet) as the print target. Uses explicit
+// black/white/gray so it is correct in print regardless of the page theme.
+function P9Sheet({
+  taxYear, employeeName, employeePin, employer, employerPin, rows, totals,
+}: {
+  taxYear: string
+  employeeName: string
+  employeePin: string
+  employer: string
+  employerPin: string
+  rows: Row[]
+  totals: { gross: number; nssf: number; shif: number; housing: number; paye: number; pension: number; taxable: number; net: number }
+}) {
+  return (
+    <div className="bg-white text-black rounded-2xl p-6 sm:p-8 border border-stone-200">
+      {/* KRA Header */}
+      <div className="text-center border-b-2 border-black pb-4 mb-6">
+        <h2 className="text-xl font-black uppercase tracking-widest">Kenya Revenue Authority</h2>
+        <h3 className="text-base font-bold mt-1">P9 TAX DEDUCTION CARD</h3>
+        <p className="text-sm mt-0.5">Employee&apos;s Certificate of Pay and Tax Deducted</p>
+        <p className="text-sm font-semibold">Year of Income: {taxYear}</p>
+      </div>
+
+      {/* Employee / Employer details */}
+      <div className="grid grid-cols-2 gap-8 mb-6 text-sm">
+        <div className="space-y-2">
+          <div><span className="font-semibold">Employee Name:</span> <span className="border-b border-gray-400 inline-block min-w-[200px] pb-0.5">{employeeName || '________________________________'}</span></div>
+          <div><span className="font-semibold">Employee PIN:</span> <span className="border-b border-gray-400 inline-block min-w-[140px] pb-0.5 font-mono">{employeePin || '_______________'}</span></div>
+          <div><span className="font-semibold">Employer Name:</span> <span className="border-b border-gray-400 inline-block min-w-[200px] pb-0.5">{employer || '________________________________'}</span></div>
+          <div><span className="font-semibold">Employer PIN:</span> <span className="border-b border-gray-400 inline-block min-w-[140px] pb-0.5 font-mono">{employerPin || '_______________'}</span></div>
+        </div>
+        <div className="space-y-2">
+          <div><span className="font-semibold">Personal Relief:</span> KES 2,400 per month</div>
+          <div><span className="font-semibold">NSSF Rate:</span> 6% (max pensionable KES 72,000)</div>
+          <div><span className="font-semibold">SHIF Rate:</span> 2.75% (min KES 300)</div>
+          <div><span className="font-semibold">Housing Levy:</span> 1.5% of gross</div>
+        </div>
+      </div>
+
+      {/* Main P9 Table */}
+      <table className="w-full text-xs border-collapse mb-6">
+        <thead>
+          <tr className="bg-gray-100">
+            <th className="border border-gray-400 px-2 py-1.5 text-left">Month</th>
+            <th className="border border-gray-400 px-2 py-1.5 text-right">Gross Pay (A)</th>
+            <th className="border border-gray-400 px-2 py-1.5 text-right">NSSF Employee (B)</th>
+            <th className="border border-gray-400 px-2 py-1.5 text-right">Pension Relief (C)</th>
+            <th className="border border-gray-400 px-2 py-1.5 text-right">Taxable Pay (D)</th>
+            <th className="border border-gray-400 px-2 py-1.5 text-right">PAYE Tax (E)</th>
+            <th className="border border-gray-400 px-2 py-1.5 text-right">SHIF (F)</th>
+            <th className="border border-gray-400 px-2 py-1.5 text-right">Housing Levy (G)</th>
+            <th className="border border-gray-400 px-2 py-1.5 text-right">Net Pay</th>
+          </tr>
+        </thead>
+        <tbody>
+          {MONTHS.map((month, i) => {
+            const r = rows[i]
+            return (
+              <tr key={month} className={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+                <td className="border border-gray-300 px-2 py-1 font-medium">{month}</td>
+                <td className="border border-gray-300 px-2 py-1 text-right">{fmt(r.gross)}</td>
+                <td className="border border-gray-300 px-2 py-1 text-right">{fmt(r.nssf)}</td>
+                <td className="border border-gray-300 px-2 py-1 text-right">{fmt(r.pension)}</td>
+                <td className="border border-gray-300 px-2 py-1 text-right">{fmt(r.taxable)}</td>
+                <td className="border border-gray-300 px-2 py-1 text-right font-semibold">{fmt(r.paye)}</td>
+                <td className="border border-gray-300 px-2 py-1 text-right">{fmt(r.shif)}</td>
+                <td className="border border-gray-300 px-2 py-1 text-right">{fmt(r.housing)}</td>
+                <td className="border border-gray-300 px-2 py-1 text-right font-semibold">{fmt(r.net)}</td>
+              </tr>
+            )
+          })}
+          <tr className="bg-gray-200 font-bold">
+            <td className="border border-gray-400 px-2 py-1.5">TOTAL</td>
+            <td className="border border-gray-400 px-2 py-1.5 text-right">{fmt(totals.gross)}</td>
+            <td className="border border-gray-400 px-2 py-1.5 text-right">{fmt(totals.nssf)}</td>
+            <td className="border border-gray-400 px-2 py-1.5 text-right">{fmt(totals.pension)}</td>
+            <td className="border border-gray-400 px-2 py-1.5 text-right">{fmt(totals.taxable)}</td>
+            <td className="border border-gray-400 px-2 py-1.5 text-right">{fmt(totals.paye)}</td>
+            <td className="border border-gray-400 px-2 py-1.5 text-right">{fmt(totals.shif)}</td>
+            <td className="border border-gray-400 px-2 py-1.5 text-right">{fmt(totals.housing)}</td>
+            <td className="border border-gray-400 px-2 py-1.5 text-right">{fmt(totals.net)}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      {/* Annual summary box */}
+      <div className="border-2 border-black p-4 mb-6">
+        <h3 className="font-black text-sm uppercase mb-3">Annual Summary — For iTax Filing</h3>
+        <div className="grid grid-cols-2 gap-4 text-sm">
+          <div className="space-y-1.5">
+            <div className="flex justify-between"><span className="font-semibold">Total Gross Pay (A):</span><span className="font-mono">KES {fmt(totals.gross)}</span></div>
+            <div className="flex justify-between"><span className="font-semibold">Total PAYE Deducted (E):</span><span className="font-mono">KES {fmt(totals.paye)}</span></div>
+            <div className="flex justify-between"><span className="font-semibold">Total NSSF (B):</span><span className="font-mono">KES {fmt(totals.nssf)}</span></div>
+          </div>
+          <div className="space-y-1.5">
+            <div className="flex justify-between"><span className="font-semibold">Total SHIF (F):</span><span className="font-mono">KES {fmt(totals.shif)}</span></div>
+            <div className="flex justify-between"><span className="font-semibold">Total Housing Levy (G):</span><span className="font-mono">KES {fmt(totals.housing)}</span></div>
+            <div className="flex justify-between border-t border-black pt-1.5 mt-1.5"><span className="font-bold">Total Net Pay:</span><span className="font-mono font-bold">KES {fmt(totals.net)}</span></div>
+          </div>
+        </div>
+      </div>
+
+      {/* Certification */}
+      <div className="text-xs text-gray-600 border-t border-gray-300 pt-4">
+        <p className="mb-4">I hereby certify that the above particulars are correct as per payroll records maintained by the employer.</p>
+        <div className="grid grid-cols-2 gap-8 mt-6">
+          <div>
+            <div className="border-b border-black mb-1 h-8"></div>
+            <p className="font-semibold">Authorised Signatory / Employer</p>
+            <p className="text-gray-500">Name, Designation &amp; Date</p>
+          </div>
+          <div>
+            <div className="border-b border-black mb-1 h-8"></div>
+            <p className="font-semibold">Employer Stamp / Company Seal</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function P9GeneratorPage() {
   const [employeeName,    setEmployeeName]    = useState('')
   const [employeePin,     setEmployeePin]     = useState('')
@@ -63,7 +189,9 @@ export default function P9GeneratorPage() {
   const [monthsData,      setMonthsData]      = useState<MonthData[]>(MONTHS.map(defaultMonth))
   const [showForm,        setShowForm]        = useState(true)
   const [showAdvanced,    setShowAdvanced]    = useState(false)
-  const printRef = useRef<HTMLDivElement>(null)
+  const [mounted,         setMounted]         = useState(false)
+
+  useEffect(() => setMounted(true), [])
 
   const rows = useMemo(() => monthsData.map(m => calcMonth(m.gross, m.pension, m.insurance)), [monthsData])
 
@@ -91,28 +219,25 @@ export default function P9GeneratorPage() {
   }
 
   return (
-    <div className="min-h-screen py-8 px-4">
-      <style>{`
-        @media print {
-          body * { visibility: hidden; }
-          #p9-printable, #p9-printable * { visibility: visible; }
-          #p9-printable { position: fixed; top: 0; left: 0; width: 100%; }
-          .no-print { display: none !important; }
-        }
-      `}</style>
+    <>
+      <ToolHero
+        h1="Annual P9 Tax Deduction Certificate Generator"
+        pre="Generate a "
+        em="P9"
+        post=" in seconds."
+        desc="Create a P9 certificate for any employee. Enter monthly gross salary and all PAYE, NSSF, SHIF and Housing Levy figures are computed automatically using 2026 KRA rates, then print or save as PDF."
+      />
 
+      {/* Portaled print copy — hidden on screen, the only thing that prints. */}
+      {mounted && createPortal(
+        <div className="print-sheet">
+          <P9Sheet taxYear={taxYear} employeeName={employeeName} employeePin={employeePin} employer={employer} employerPin={employerPin} rows={rows} totals={totals} />
+        </div>,
+        document.body
+      )}
+
+      <div className="paye-calc-body min-h-screen pt-8 pb-8 px-4">
       <div className="max-w-5xl mx-auto">
-        <Link href="/" className="no-print inline-flex items-center gap-2 text-stone-400 hover:text-white transition-colors mb-8 text-sm">
-          <ArrowLeft className="w-4 h-4" /> Back to Calculator
-        </Link>
-
-        {/* Header */}
-        <div className="no-print text-center mb-10">
-          <h1 className="text-3xl md:text-4xl font-bold text-white mb-3">Annual P9 Tax Deduction Certificate</h1>
-          <p className="text-stone-400 text-sm max-w-xl mx-auto leading-relaxed">
-            Generate a P9 certificate for any employee. Enter monthly gross salary — all PAYE, NSSF, SHIF, and Housing Levy figures are computed automatically using 2026 KRA rates.
-          </p>
-        </div>
 
         {/* Employee details */}
         <div className="no-print bg-white/5 border border-white/10 rounded-2xl p-6 mb-6">
@@ -262,114 +387,8 @@ export default function P9GeneratorPage() {
           </div>
         </div>
 
-        {/* ── PRINTABLE P9 FORM ── */}
-        <div id="p9-printable" ref={printRef}
-          className="bg-white text-black rounded-2xl p-8 border border-stone-700 no-print-border">
-          {/* KRA Header */}
-          <div className="text-center border-b-2 border-black pb-4 mb-6">
-            <h1 className="text-xl font-black uppercase tracking-widest">Kenya Revenue Authority</h1>
-            <h2 className="text-base font-bold mt-1">P9 TAX DEDUCTION CARD</h2>
-            <p className="text-sm mt-0.5">Employee&apos;s Certificate of Pay and Tax Deducted</p>
-            <p className="text-sm font-semibold">Year of Income: {taxYear}</p>
-          </div>
-
-          {/* Employee / Employer details */}
-          <div className="grid grid-cols-2 gap-8 mb-6 text-sm">
-            <div className="space-y-2">
-              <div><span className="font-semibold">Employee Name:</span> <span className="border-b border-gray-400 inline-block min-w-[200px] pb-0.5">{employeeName || '________________________________'}</span></div>
-              <div><span className="font-semibold">Employee PIN:</span> <span className="border-b border-gray-400 inline-block min-w-[140px] pb-0.5 font-mono">{employeePin || '_______________'}</span></div>
-              <div><span className="font-semibold">Employer Name:</span> <span className="border-b border-gray-400 inline-block min-w-[200px] pb-0.5">{employer || '________________________________'}</span></div>
-              <div><span className="font-semibold">Employer PIN:</span> <span className="border-b border-gray-400 inline-block min-w-[140px] pb-0.5 font-mono">{employerPin || '_______________'}</span></div>
-            </div>
-            <div className="space-y-2">
-              <div><span className="font-semibold">Personal Relief:</span> KES 2,400 per month</div>
-              <div><span className="font-semibold">NSSF Rate:</span> 6% (max pensionable KES 72,000)</div>
-              <div><span className="font-semibold">SHIF Rate:</span> 2.75% (min KES 300)</div>
-              <div><span className="font-semibold">Housing Levy:</span> 1.5% of gross</div>
-            </div>
-          </div>
-
-          {/* Main P9 Table */}
-          <table className="w-full text-xs border-collapse mb-6">
-            <thead>
-              <tr className="bg-gray-100">
-                <th className="border border-gray-400 px-2 py-1.5 text-left">Month</th>
-                <th className="border border-gray-400 px-2 py-1.5 text-right">Gross Pay (A)</th>
-                <th className="border border-gray-400 px-2 py-1.5 text-right">NSSF Employee (B)</th>
-                <th className="border border-gray-400 px-2 py-1.5 text-right">Pension Relief (C)</th>
-                <th className="border border-gray-400 px-2 py-1.5 text-right">Taxable Pay (D)</th>
-                <th className="border border-gray-400 px-2 py-1.5 text-right">PAYE Tax (E)</th>
-                <th className="border border-gray-400 px-2 py-1.5 text-right">SHIF (F)</th>
-                <th className="border border-gray-400 px-2 py-1.5 text-right">Housing Levy (G)</th>
-                <th className="border border-gray-400 px-2 py-1.5 text-right">Net Pay</th>
-              </tr>
-            </thead>
-            <tbody>
-              {MONTHS.map((month, i) => {
-                const r = rows[i]
-                return (
-                  <tr key={month} className={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-                    <td className="border border-gray-300 px-2 py-1 font-medium">{month}</td>
-                    <td className="border border-gray-300 px-2 py-1 text-right">{fmt(r.gross)}</td>
-                    <td className="border border-gray-300 px-2 py-1 text-right">{fmt(r.nssf)}</td>
-                    <td className="border border-gray-300 px-2 py-1 text-right">{fmt(r.pension)}</td>
-                    <td className="border border-gray-300 px-2 py-1 text-right">{fmt(r.taxable)}</td>
-                    <td className="border border-gray-300 px-2 py-1 text-right font-semibold">{fmt(r.paye)}</td>
-                    <td className="border border-gray-300 px-2 py-1 text-right">{fmt(r.shif)}</td>
-                    <td className="border border-gray-300 px-2 py-1 text-right">{fmt(r.housing)}</td>
-                    <td className="border border-gray-300 px-2 py-1 text-right font-semibold">{fmt(r.net)}</td>
-                  </tr>
-                )
-              })}
-              <tr className="bg-gray-200 font-bold">
-                <td className="border border-gray-400 px-2 py-1.5">TOTAL</td>
-                <td className="border border-gray-400 px-2 py-1.5 text-right">{fmt(totals.gross)}</td>
-                <td className="border border-gray-400 px-2 py-1.5 text-right">{fmt(totals.nssf)}</td>
-                <td className="border border-gray-400 px-2 py-1.5 text-right">{fmt(totals.pension)}</td>
-                <td className="border border-gray-400 px-2 py-1.5 text-right">{fmt(totals.taxable)}</td>
-                <td className="border border-gray-400 px-2 py-1.5 text-right">{fmt(totals.paye)}</td>
-                <td className="border border-gray-400 px-2 py-1.5 text-right">{fmt(totals.shif)}</td>
-                <td className="border border-gray-400 px-2 py-1.5 text-right">{fmt(totals.housing)}</td>
-                <td className="border border-gray-400 px-2 py-1.5 text-right">{fmt(totals.net)}</td>
-              </tr>
-            </tbody>
-          </table>
-
-          {/* Annual summary box */}
-          <div className="border-2 border-black p-4 mb-6">
-            <h3 className="font-black text-sm uppercase mb-3">Annual Summary — For iTax Filing</h3>
-            <div className="grid grid-cols-2 gap-4 text-sm">
-              <div className="space-y-1.5">
-                <div className="flex justify-between"><span className="font-semibold">Total Gross Pay (A):</span><span className="font-mono">KES {fmt(totals.gross)}</span></div>
-                <div className="flex justify-between"><span className="font-semibold">Total PAYE Deducted (E):</span><span className="font-mono">KES {fmt(totals.paye)}</span></div>
-                <div className="flex justify-between"><span className="font-semibold">Total NSSF (B):</span><span className="font-mono">KES {fmt(totals.nssf)}</span></div>
-              </div>
-              <div className="space-y-1.5">
-                <div className="flex justify-between"><span className="font-semibold">Total SHIF (F):</span><span className="font-mono">KES {fmt(totals.shif)}</span></div>
-                <div className="flex justify-between"><span className="font-semibold">Total Housing Levy (G):</span><span className="font-mono">KES {fmt(totals.housing)}</span></div>
-                <div className="flex justify-between border-t border-black pt-1.5 mt-1.5"><span className="font-bold">Total Net Pay:</span><span className="font-mono font-bold">KES {fmt(totals.net)}</span></div>
-              </div>
-            </div>
-          </div>
-
-          {/* Certification */}
-          <div className="text-xs text-gray-600 border-t border-gray-300 pt-4">
-            <p className="mb-4">I hereby certify that the above particulars are correct as per payroll records maintained by the employer.</p>
-            <div className="grid grid-cols-2 gap-8 mt-6">
-              <div>
-                <div className="border-b border-black mb-1 h-8"></div>
-                <p className="font-semibold">Authorised Signatory / Employer</p>
-                <p className="text-gray-500">Name, Designation & Date</p>
-              </div>
-              <div>
-                <div className="border-b border-black mb-1 h-8"></div>
-                <p className="font-semibold">Employer Stamp / Company Seal</p>
-              </div>
-            </div>
-            <p className="mt-4 text-gray-500 text-center">
-            </p>
-          </div>
-        </div>
+        {/* ── P9 PREVIEW (on screen; the print copy is portaled above) ── */}
+        <P9Sheet taxYear={taxYear} employeeName={employeeName} employeePin={employeePin} employer={employer} employerPin={employerPin} rows={rows} totals={totals} />
 
         {/* What is a P9 */}
         <section className="no-print mt-14">
@@ -549,6 +568,7 @@ export default function P9GeneratorPage() {
           </div>
         </section>
       </div>
-    </div>
+      </div>
+    </>
   )
 }
