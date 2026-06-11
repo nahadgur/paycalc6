@@ -66,69 +66,78 @@ function PayslipSheet({
   allowances: number
   c: Calc
 }) {
+  // Force background colours to print (browsers strip them by default).
+  const printColor: React.CSSProperties = { WebkitPrintColorAdjust: 'exact', printColorAdjust: 'exact' }
+  const sectionLabel: React.CSSProperties = { fontSize: '11px', fontWeight: 700, color: '#F04C40', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '6px' }
   const Row = ({ label, value, strong = false }: { label: string; value: string; strong?: boolean }) => (
     <div style={{ display: 'flex', justifyContent: 'space-between', padding: '5px 0', fontWeight: strong ? 700 : 400 }}>
-      <span style={{ color: strong ? '#111' : '#444' }}>{label}</span>
-      <span>{value}</span>
+      <span style={{ color: strong ? '#111' : '#555' }}>{label}</span>
+      <span style={{ color: '#111' }}>{value}</span>
     </div>
   )
   return (
     <div style={{ maxWidth: '640px', margin: '0 auto', color: '#111', fontFamily: 'Inter, system-ui, sans-serif', fontSize: '14px' }}>
-      {/* Wordmark letterhead */}
-      <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-        <div style={{ fontSize: '13px', fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', color: '#F04C40' }}>
+      {/* Wordmark letterhead + accent bar */}
+      <div style={{ textAlign: 'center', marginBottom: '6px' }}>
+        <div style={{ fontSize: '13px', fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: '#F04C40' }}>
           PAYE Calculator Kenya
         </div>
       </div>
+      <div style={{ height: '3px', background: '#F04C40', borderRadius: '2px', marginBottom: '22px', ...printColor }} />
 
-      {/* Employer + pay period */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', borderBottom: '2px solid #F04C40', paddingBottom: '12px', marginBottom: '18px' }}>
+      {/* Employer + PAYSLIP */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '18px' }}>
         <div>
           <div style={{ fontSize: '22px', fontWeight: 700, lineHeight: 1.2 }}>{employer || 'Employer name'}</div>
-          <div style={{ fontSize: '12px', color: '#666', marginTop: '3px' }}>Payslip for {period}</div>
-        </div>
-        <div style={{ fontSize: '11px', color: '#999', textAlign: 'right' }}>
-          payecalculator.co.ke<br />2026 KRA rates
-        </div>
-      </div>
-
-      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '18px', fontSize: '13px' }}>
-        <div>
-          <div style={{ color: '#666' }}>Employee</div>
-          <div style={{ fontWeight: 600 }}>{employee || '—'}</div>
+          <div style={{ fontSize: '12px', color: '#666', marginTop: '4px' }}>Pay period: {period}</div>
         </div>
         <div style={{ textAlign: 'right' }}>
-          <div style={{ color: '#666' }}>KRA PIN</div>
-          <div style={{ fontWeight: 600, fontFamily: 'monospace' }}>{kraPin || '—'}</div>
+          <div style={{ fontSize: '12px', fontWeight: 700, letterSpacing: '0.14em', color: '#aaa', textTransform: 'uppercase' }}>Payslip</div>
+          <div style={{ fontSize: '11px', color: '#bbb', marginTop: '2px' }}>payecalculator.co.ke</div>
         </div>
       </div>
 
-      <div style={{ borderTop: '1px solid #eee', paddingTop: '10px' }}>
-        <div style={{ fontSize: '12px', fontWeight: 700, color: '#F04C40', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '4px' }}>Earnings</div>
+      {/* Employee / KRA PIN — only when provided */}
+      {(employee || kraPin) && (
+        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px', padding: '11px 14px', background: '#fafafa', borderRadius: '8px', marginBottom: '16px', ...printColor }}>
+          <div><span style={{ color: '#888' }}>Employee&nbsp;&nbsp;</span><span style={{ fontWeight: 600 }}>{employee || '—'}</span></div>
+          <div><span style={{ color: '#888' }}>KRA PIN&nbsp;&nbsp;</span><span style={{ fontWeight: 600, fontFamily: 'monospace' }}>{kraPin || '—'}</span></div>
+        </div>
+      )}
+
+      {/* Earnings card */}
+      <div style={{ background: '#FFF5F2', border: '1px solid #FFD9D3', borderRadius: '10px', padding: '14px 16px', marginBottom: '12px', ...printColor }}>
+        <div style={sectionLabel}>Earnings</div>
         <Row label="Basic salary" value={fmt(basic)} />
         {allowances > 0 && <Row label="Allowances" value={fmt(allowances)} />}
+        <div style={{ borderTop: '1px solid #FFD9D3', margin: '3px 0' }} />
         <Row label="Gross pay" value={fmt(c.gross)} strong />
       </div>
 
-      <div style={{ borderTop: '1px solid #eee', paddingTop: '10px', marginTop: '10px' }}>
-        <div style={{ fontSize: '12px', fontWeight: 700, color: '#F04C40', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '4px' }}>Deductions</div>
+      {/* Deductions card */}
+      <div style={{ background: '#fafafa', border: '1px solid #eee', borderRadius: '10px', padding: '14px 16px', marginBottom: '16px', ...printColor }}>
+        <div style={sectionLabel}>Deductions</div>
         <Row label="PAYE (income tax)" value={`− ${fmt(c.paye)}`} />
         <Row label="NSSF" value={`− ${fmt(c.nssf)}`} />
         <Row label="SHIF" value={`− ${fmt(c.shif)}`} />
         <Row label="Housing Levy" value={`− ${fmt(c.housing)}`} />
         {c.helb > 0 && <Row label="HELB" value={`− ${fmt(c.helb)}`} />}
         {c.sacco > 0 && <Row label="SACCO" value={`− ${fmt(c.sacco)}`} />}
+        <div style={{ borderTop: '1px solid #eee', margin: '3px 0' }} />
         <Row label="Total deductions" value={`− ${fmt(c.totalDeductions)}`} strong />
       </div>
 
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '2px solid #111', marginTop: '12px', paddingTop: '12px' }}>
-        <span style={{ fontWeight: 700, fontSize: '16px' }}>Net pay (take-home)</span>
-        <span style={{ fontWeight: 700, fontSize: '18px', color: '#F04C40' }}>KES {fmt(c.net)}</span>
+      {/* Net pay — filled brand box (the hero) */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: '#F04C40', color: '#fff', borderRadius: '10px', padding: '16px 20px', ...printColor }}>
+        <span style={{ fontWeight: 700, fontSize: '14px', letterSpacing: '0.06em', textTransform: 'uppercase' }}>Net pay (take-home)</span>
+        <span style={{ fontWeight: 800, fontSize: '21px' }}>KES {fmt(c.net)}</span>
       </div>
 
-      <p style={{ fontSize: '11px', color: '#888', marginTop: '18px' }}>
-        Estimate generated on payecalculator.co.ke using 2026 KRA tax bands, NSSF (max KES 6,480), SHIF (2.75%) and the Housing Levy (1.5%). Not an official payslip; figures depend on your exact payroll setup.
+      {/* Footer */}
+      <p style={{ fontSize: '10.5px', color: '#999', marginTop: '18px', lineHeight: 1.5 }}>
+        Generated on payecalculator.co.ke using 2026 KRA tax bands, NSSF (max KES 6,480), SHIF (2.75%) and the Housing Levy (1.5%). This is an estimate, not an official payslip; figures depend on your exact payroll setup.
       </p>
+      <div style={{ height: '2px', background: '#FFD9D3', borderRadius: '2px', marginTop: '10px', ...printColor }} />
     </div>
   )
 }
