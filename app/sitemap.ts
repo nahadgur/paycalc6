@@ -39,6 +39,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/budget-guide`, changeFrequency: 'monthly' as const, priority: 0.7 },
     { url: `${baseUrl}/p9-generator`, changeFrequency: 'monthly' as const, priority: 0.7 },
     { url: `${baseUrl}/kra-offices`, changeFrequency: 'monthly' as const, priority: 0.6 },
+    { url: `${baseUrl}/privacy`, changeFrequency: 'yearly' as const, priority: 0.3 },
   ].map((p) => ({ ...p, lastModified: currentDate }))
 
   // Programmatic salary pages
