@@ -3,8 +3,9 @@
 import { useState, useMemo, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import Link from 'next/link'
-import { FileText, Printer, ChevronDown, ChevronUp, Info } from 'lucide-react'
+import { FileText, Printer, ChevronDown, ChevronUp, Info, Lock } from 'lucide-react'
 import Hero from '@/components/Hero'
+import LeadGate from '@/components/LeadGate'
 
 // 2026 Tax constants
 const TAX_BANDS = [
@@ -190,6 +191,8 @@ export default function P9GeneratorPage() {
   const [showForm,        setShowForm]        = useState(true)
   const [showAdvanced,    setShowAdvanced]    = useState(false)
   const [mounted,         setMounted]         = useState(false)
+  const [unlocked,        setUnlocked]        = useState(false)
+  const [gateOpen,        setGateOpen]        = useState(false)
 
   useEffect(() => setMounted(true), [])
 
@@ -215,7 +218,17 @@ export default function P9GeneratorPage() {
   }
 
   function handlePrint() {
-    window.print()
+    if (unlocked) {
+      window.print()
+      return
+    }
+    setGateOpen(true)
+  }
+
+  function onUnlocked() {
+    setUnlocked(true)
+    setGateOpen(false)
+    setTimeout(() => window.print(), 350)
   }
 
   return (
@@ -236,6 +249,16 @@ export default function P9GeneratorPage() {
           <P9Sheet taxYear={taxYear} employeeName={employeeName} employeePin={employeePin} employer={employer} employerPin={employerPin} rows={rows} totals={totals} />
         </div>,
         document.body
+      )}
+
+      {/* Lead gate — the P9 PDF unlocks after the form */}
+      {gateOpen && (
+        <LeadGate
+          source="p9-generator"
+          notes={`P9 ${taxYear} · annual gross KES ${totals.gross.toFixed(0)}`}
+          onSuccess={onUnlocked}
+          onClose={() => setGateOpen(false)}
+        />
       )}
 
       <div className="paye-calc-body min-h-screen pt-8 pb-8 px-4">
@@ -381,7 +404,7 @@ export default function P9GeneratorPage() {
         <div className="no-print flex flex-wrap gap-3 mb-10">
           <button onClick={handlePrint}
             className="flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-red-500 to-amber-500 text-white font-semibold rounded-xl text-sm transition-all hover:opacity-90">
-            <Printer className="w-4 h-4" /> Print / Save as PDF
+            {unlocked ? <Printer className="w-4 h-4" /> : <Lock className="w-4 h-4" />} {unlocked ? 'Print / Save as PDF' : 'Download P9 (PDF) — free'}
           </button>
           <div className="flex items-start gap-2 text-xs text-stone-500 items-center">
             <Info className="w-3.5 h-3.5 shrink-0" />
