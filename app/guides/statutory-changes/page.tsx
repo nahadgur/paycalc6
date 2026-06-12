@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { SpokeGrid } from '@/components/SpokeGrid'
 import Link from 'next/link'
 import { AlertTriangle, CheckCircle2, ChevronRight } from 'lucide-react'
+import Hero from '@/components/Hero'
 
 export const metadata: Metadata = {
   title: 'SHIF & NSSF 2026 Changes Kenya | Complete Statutory Transition Guide',
@@ -97,17 +98,17 @@ export default function StatutoryChangesPage() {
   }
 
   return (
-    <div className="min-h-screen py-10 px-4">
+    <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      <div className="max-w-4xl mx-auto">
 
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-3xl md:text-4xl font-bold text-white mb-3">SHIF &amp; NSSF 2026 — What Changed and What It Costs You</h1>
-          <p className="text-stone-400 max-w-xl mx-auto text-sm leading-relaxed">
-            The biggest overhaul to Kenyan statutory deductions in a decade. NHIF is gone, SHIF is here, and NSSF rates have increased. Here is the definitive guide for employees and employers.
-          </p>
-        </div>
+      <Hero
+        h1="SHIF & NSSF 2026 — What Changed and What It Costs You"
+        desc="The biggest overhaul to Kenyan statutory deductions in a decade. NHIF is gone, SHIF is here, and the NSSF limits have risen. Here is the definitive guide for employees and employers."
+        cta={{ href: '/nssf-calculator', label: 'NSSF calculator →' }}
+      />
+
+      <div className="paye-calc-body min-h-screen pt-8 pb-10 px-4">
+      <div className="max-w-4xl mx-auto">
 
         {/* Quick impact summary */}
         <section className="mb-10">
@@ -356,6 +357,7 @@ export default function StatutoryChangesPage() {
           </div>
         </section>
       </div>
-    </div>
+      </div>
+    </>
   )
 }

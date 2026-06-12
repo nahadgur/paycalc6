@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { SpokeGrid } from '@/components/SpokeGrid'
 import Link from 'next/link'
 import { CheckCircle2, AlertTriangle, Clock, FileText } from 'lucide-react'
+import Hero from '@/components/Hero'
 
 export const metadata: Metadata = {
   title: 'Kenya Employer Payroll Compliance Guide 2026 | PAYE, NSSF, SHIF & Housing Levy',
@@ -133,17 +134,17 @@ export default function EmployerGuidePage() {
   }
 
   return (
-    <div className="min-h-screen py-10 px-4">
+    <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      <div className="max-w-4xl mx-auto">
 
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-3xl md:text-4xl font-bold text-white mb-3">Kenya Employer Payroll Compliance 2026</h1>
-          <p className="text-stone-400 max-w-xl mx-auto text-sm leading-relaxed">
-            For HR managers, SME owners, and finance teams. Everything you need to know about PAYE, NSSF, SHIF, Housing Levy obligations, the true cost of hiring, and the 2026 changes that affect your payroll.
-          </p>
-        </div>
+      <Hero
+        h1="Kenya Employer Payroll Compliance 2026"
+        desc="For HR managers, SME owners and finance teams. Everything you need on PAYE, NSSF, SHIF and Housing Levy obligations, the true cost of hiring, and the 2026 changes that affect your payroll."
+        cta={{ href: '/employer-cost-calculator', label: 'Employer cost calculator →' }}
+      />
+
+      <div className="paye-calc-body min-h-screen pt-8 pb-10 px-4">
+      <div className="max-w-4xl mx-auto">
 
         {/* True cost of hiring */}
         <section className="mb-10">
@@ -366,6 +367,7 @@ export default function EmployerGuidePage() {
           </div>
         </section>
       </div>
-    </div>
+      </div>
+    </>
   )
 }

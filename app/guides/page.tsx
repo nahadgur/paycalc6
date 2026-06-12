@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowRight, ChevronRight } from 'lucide-react'
 import { SILOS, spokeTitle } from '@/lib/silos'
+import Hero from '@/components/Hero'
 
 export const metadata: Metadata = {
   title: 'Kenya PAYE & Salary Guides 2026 — by Topic',
@@ -24,22 +25,22 @@ export default function GuidesIndex() {
   }
 
   return (
-    <div className="paye-calc-body min-h-screen py-10 px-4">
+    <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
+
+      <Hero
+        h1="Kenya Payroll Guides"
+        desc="Everything about Kenyan PAYE, deductions and take-home pay, organised by topic. Each guide pulls together the articles on that subject, with the latest 2026 figures."
+        cta={{ href: '/', label: 'Open the PAYE calculator →' }}
+      />
+
+      <div className="paye-calc-body min-h-screen pt-8 pb-10 px-4">
       <div className="max-w-4xl mx-auto">
-        <nav className="flex items-center gap-1.5 text-xs text-stone-500 mb-6">
+        <nav className="flex items-center gap-1.5 text-xs text-stone-500 mb-8">
           <Link href="/" className="hover:text-brand-700">Home</Link>
           <ChevronRight className="w-3 h-3" />
           <span className="text-stone-700 font-medium">Guides</span>
         </nav>
-
-        <header className="mb-10">
-          <h1 className="text-3xl md:text-4xl font-bold text-white mb-3">Kenya Payroll Guides</h1>
-          <p className="text-lg text-stone-600 leading-relaxed">
-            Everything about Kenyan PAYE, deductions and take-home pay, organised by topic. Each
-            guide pulls together the articles on that subject, with the latest 2026 figures.
-          </p>
-        </header>
 
         <div className="space-y-5">
           {HUBS.map((hub) => (
@@ -71,6 +72,7 @@ export default function GuidesIndex() {
           </Link>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   )
 }

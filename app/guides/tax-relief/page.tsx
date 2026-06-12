@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { SpokeGrid } from '@/components/SpokeGrid'
 import Link from 'next/link'
 import { PiggyBank, Home, Shield, GraduationCap, AlertTriangle, ChevronRight } from 'lucide-react'
+import Hero from '@/components/Hero'
 
 export const metadata: Metadata = {
   title: 'Kenya Tax Reliefs 2026 | Reduce Your PAYE — Complete Guide',
@@ -141,17 +142,17 @@ export default function TaxReliefPage() {
   }
 
   return (
-    <div className="min-h-screen py-10 px-4">
+    <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      <div className="max-w-4xl mx-auto">
 
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-3xl md:text-4xl font-bold text-white mb-3">Kenya Tax Reliefs 2026 — Reduce Your PAYE Legally</h1>
-          <p className="text-stone-400 max-w-xl mx-auto text-sm leading-relaxed">
-            Most Kenyan employees pay more tax than they need to. There are six legal reliefs that can reduce your monthly PAYE — some by up to KES 20,000 per month. Here is every one, explained clearly.
-          </p>
-        </div>
+      <Hero
+        h1="Kenya Tax Reliefs 2026 — Reduce Your PAYE Legally"
+        desc="Most Kenyan employees pay more tax than they need to. There are six legal reliefs that can cut your monthly PAYE, some by up to KES 20,000 a month. Here is every one, explained clearly."
+        cta={{ href: '/', label: 'Open the PAYE calculator →' }}
+      />
+
+      <div className="paye-calc-body min-h-screen pt-8 pb-10 px-4">
+      <div className="max-w-4xl mx-auto">
 
         {/* Relief summary cards */}
         <section className="mb-10">
@@ -355,6 +356,7 @@ export default function TaxReliefPage() {
           </div>
         </section>
       </div>
-    </div>
+      </div>
+    </>
   )
 }

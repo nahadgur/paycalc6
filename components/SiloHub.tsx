@@ -5,6 +5,7 @@
 import Link from 'next/link'
 import { ArrowRight, ChevronRight } from 'lucide-react'
 import { siloByKey, spokeTitle } from '@/lib/silos'
+import Hero from './Hero'
 
 const BASE = 'https://payecalculator.co.ke'
 
@@ -43,24 +44,24 @@ export function SiloHub({
     : null
 
   return (
-    <div className="paye-calc-body min-h-screen py-10 px-4">
+    <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
       {faqSchema && (
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       )}
+
+      <Hero h1={heading} desc={silo.blurb} cta={{ href: '/', label: 'Open the PAYE calculator →' }} />
+
+      <div className="paye-calc-body min-h-screen pt-8 pb-10 px-4">
       <div className="max-w-4xl mx-auto">
         {/* Breadcrumb */}
-        <nav className="flex items-center gap-1.5 text-xs text-stone-500 mb-6">
+        <nav className="flex items-center gap-1.5 text-xs text-stone-500 mb-8">
           <Link href="/" className="hover:text-brand-700">Home</Link>
+          <ChevronRight className="w-3 h-3" />
+          <Link href="/guides" className="hover:text-brand-700">Guides</Link>
           <ChevronRight className="w-3 h-3" />
           <span className="text-stone-700 font-medium">{silo.title}</span>
         </nav>
-
-        {/* Hero */}
-        <header className="mb-10">
-          <h1 className="text-3xl md:text-4xl font-bold text-white mb-3">{heading}</h1>
-          <p className="text-lg text-stone-600 leading-relaxed">{silo.blurb}</p>
-        </header>
 
         {/* Intro */}
         <section className="mb-10 text-stone-700 leading-relaxed space-y-4 [&_a]:text-brand-700 [&_a]:underline [&_strong]:text-stone-900">
@@ -115,6 +116,7 @@ export function SiloHub({
           </section>
         )}
       </div>
-    </div>
+      </div>
+    </>
   )
 }
