@@ -23,3 +23,9 @@ yarn-error.log*
 
 # lockfile is resolved on Vercel from package.json (committing a local one broke npm install)
 package-lock.json
+private/
+
+# kit: paid master at root (dup of private/), source art, one-off build handoff — local only
+/Broke_After_Payday_Kenya_Kit_2026.pdf
+kit-images/
+HANDOFF-CLAUDE-CODE.md
