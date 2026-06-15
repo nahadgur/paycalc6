@@ -47,6 +47,7 @@ export default function BlogArticle({ params }: Props) {
   // The calculator hub itself is reached via the CTA, completing blog -> guide
   // + blog -> calculator.
   const parentHref = silo ? (silo.guideHref ?? silo.hubHref) : undefined
+  const guideHref = silo?.guideHref
 
   const crumbs = [
     { '@type': 'ListItem', position: 1, name: 'Home', item: `${BASE}/` },
@@ -122,19 +123,21 @@ export default function BlogArticle({ params }: Props) {
             href={cta.href}
             className="inline-flex items-center gap-2 px-5 py-3 bg-brand text-white rounded-full font-medium text-[13px] hover:bg-brand-600 transition whitespace-nowrap"
           >
-            {cta.label} →
+            {card.action} →
           </Link>
         </div>
 
         {/* Content */}
         <div className="blog-content" dangerouslySetInnerHTML={{ __html: cleanContent }} />
 
-        {/* Share */}
+        {/* Read deeper — points to the silo's pillar guide, not back to the
+            calculator (the top card already covers that), so the two CTAs
+            never share a destination. */}
         <div className="mt-12 pt-8 border-t border-[#eee]">
           <div className="flex items-center justify-between">
-            <span className="text-[#666] text-[13px]">Was this helpful?</span>
-            <Link href={cta.href} className="inline-flex items-center gap-2 px-4 py-2 bg-brand-50 text-brand-700 rounded-full text-[12px] font-medium hover:bg-brand-100 transition">
-              {cta.label} →
+            <span className="text-[#666] text-[13px]">Want the full picture?</span>
+            <Link href={guideHref ?? '/guides'} className="inline-flex items-center gap-2 px-4 py-2 bg-brand-50 text-brand-700 rounded-full text-[12px] font-medium hover:bg-brand-100 transition">
+              {guideHref ? 'Read the full guide' : 'Browse all guides'} →
             </Link>
           </div>
         </div>

@@ -182,25 +182,28 @@ export function ctaForSpoke(slug: string): Cta {
 export interface CtaCard {
   title: string
   note: string
+  // Short button trigger, deliberately decoupled from the title so the card
+  // heading and the button do not echo each other.
+  action: string
 }
 
 const CTA_CARDS: Record<string, CtaCard> = {
-  '/': { title: 'Your exact take-home', note: '2026 KRA rates, instant' },
-  '/nssf-calculator': { title: 'Your NSSF deduction', note: 'Tier I + II, 2026 rates' },
-  '/mortgage-relief': { title: 'Your mortgage relief', note: 'Up to KES 9,000/mo saved' },
-  '/salary-comparison': { title: 'Compare two salaries', note: 'Side by side, 2026 rates' },
-  '/bonus-calculator': { title: 'Tax on your bonus', note: '13th-month + bonus, instant' },
-  '/employer-cost-calculator': { title: 'True cost to employ', note: 'Gross plus employer NSSF and levy' },
-  '/tax-calendar': { title: 'KRA tax calendar', note: '2026 filing deadlines' },
-  '/net-gross-calculator': { title: 'Net to gross', note: 'Work back to gross pay' },
-  '/p9-generator': { title: 'Generate your P9', note: 'Year-end tax certificate' },
+  '/': { title: 'Your exact take-home', note: '2026 KRA rates, instant', action: 'Open calculator' },
+  '/nssf-calculator': { title: 'Your NSSF deduction', note: 'Tier I + II, 2026 rates', action: 'Open calculator' },
+  '/mortgage-relief': { title: 'Your mortgage relief', note: 'Up to KES 9,000/mo saved', action: 'Open calculator' },
+  '/salary-comparison': { title: 'Compare two salaries', note: 'Side by side, 2026 rates', action: 'Open comparison' },
+  '/bonus-calculator': { title: 'Tax on your bonus', note: '13th-month + bonus, instant', action: 'Open calculator' },
+  '/employer-cost-calculator': { title: 'True cost to employ', note: 'Gross plus employer NSSF and levy', action: 'Open calculator' },
+  '/tax-calendar': { title: 'KRA tax calendar', note: '2026 filing deadlines', action: 'View calendar' },
+  '/net-gross-calculator': { title: 'Net to gross', note: 'Work back to gross pay', action: 'Open calculator' },
+  '/p9-generator': { title: 'Generate your P9', note: 'Year-end tax certificate', action: 'Open generator' },
 }
 
 export function ctaCard(href: string): CtaCard {
   const salary = href.match(/^\/salary\/(\d+)$/)
   if (salary) {
     const amount = Number(salary[1]).toLocaleString('en-KE')
-    return { title: `KES ${amount} take-home`, note: 'Full 2026 breakdown' }
+    return { title: `KES ${amount} take-home`, note: 'Full 2026 breakdown', action: 'See breakdown' }
   }
-  return CTA_CARDS[href] ?? { title: 'Your exact take-home', note: '2026 KRA rates, instant' }
+  return CTA_CARDS[href] ?? { title: 'Your exact take-home', note: '2026 KRA rates, instant', action: 'Open calculator' }
 }
