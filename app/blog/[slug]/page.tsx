@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import articles from '@/lib/articles.json'
-import { siloForSpoke } from '@/lib/silos'
+import { siloForSpoke, ctaForSpoke } from '@/lib/silos'
 import { ChevronRight } from 'lucide-react'
 
 type Props = { params: { slug: string } }
@@ -38,6 +38,7 @@ export default function BlogArticle({ params }: Props) {
   if (!article) notFound()
 
   const silo = siloForSpoke(params.slug)
+  const cta = ctaForSpoke(params.slug)
   const crumbs = [
     { '@type': 'ListItem', position: 1, name: 'Home', item: `${BASE}/` },
     { '@type': 'ListItem', position: 2, name: 'Guides', item: `${BASE}/guides` },
@@ -46,10 +47,12 @@ export default function BlogArticle({ params }: Props) {
   ]
   const breadcrumb = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: crumbs }
 
-  const relatedArticles = articles
-    .filter((a) => a.slug !== params.slug)
-    .sort(() => Math.random() - 0.5)
-    .slice(0, 3)
+  // Prefer same-silo posts (tightens internal linking), then top up with
+  // others in stable order to keep the build deterministic.
+  const siloSlugs = new Set(silo?.spokes ?? [])
+  const sameSilo = articles.filter((a) => a.slug !== params.slug && siloSlugs.has(a.slug))
+  const otherArticles = articles.filter((a) => a.slug !== params.slug && !siloSlugs.has(a.slug))
+  const relatedArticles = [...sameSilo, ...otherArticles].slice(0, 3)
 
   const cleanContent = article!.content
     .replace(/\"\"/g, '"')
@@ -97,10 +100,10 @@ export default function BlogArticle({ params }: Props) {
             <p className="text-brand-700 text-[12px]">2026 KRA rates · instant</p>
           </div>
           <Link
-            href="/"
+            href={cta.href}
             className="inline-flex items-center gap-2 px-5 py-3 bg-brand text-white rounded-full font-medium text-[13px] hover:bg-brand-600 transition whitespace-nowrap"
           >
-            Open calculator →
+            {cta.label} →
           </Link>
         </div>
 
@@ -111,8 +114,8 @@ export default function BlogArticle({ params }: Props) {
         <div className="mt-12 pt-8 border-t border-[#eee]">
           <div className="flex items-center justify-between">
             <span className="text-[#666] text-[13px]">Was this helpful?</span>
-            <Link href="/" className="inline-flex items-center gap-2 px-4 py-2 bg-brand-50 text-brand-700 rounded-full text-[12px] font-medium hover:bg-brand-100 transition">
-              Try the calculator →
+            <Link href={cta.href} className="inline-flex items-center gap-2 px-4 py-2 bg-brand-50 text-brand-700 rounded-full text-[12px] font-medium hover:bg-brand-100 transition">
+              {cta.label} →
             </Link>
           </div>
         </div>
