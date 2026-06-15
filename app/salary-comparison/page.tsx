@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import PAYECalculator from '@/components/PAYECalculator'
 import ToolNav from '@/components/ToolNav'
+import { SpokeGrid } from '@/components/SpokeGrid'
 
 export const metadata: Metadata = {
   title: 'Salary Comparison Calculator Kenya 2026 | PAYE & Net by Band',
@@ -86,6 +87,8 @@ export default function SalaryComparisonPage() {
               ))}
             </div>
           </div>
+
+          <SpokeGrid siloKey="salary-breakdowns" light heading="Salary breakdown guides" />
 
           <ToolNav current="/salary-comparison" />
         </div>

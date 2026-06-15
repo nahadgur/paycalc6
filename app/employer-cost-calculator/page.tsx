@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import PAYECalculator from '@/components/PAYECalculator'
 import ToolNav from '@/components/ToolNav'
+import { SpokeGrid } from '@/components/SpokeGrid'
 
 export const metadata: Metadata = {
   title: 'Employer Cost Calculator Kenya 2026 | True Cost to Employ',
@@ -87,6 +88,8 @@ export default function EmployerCostCalculatorPage() {
               ))}
             </div>
           </div>
+
+          <SpokeGrid siloKey="for-employers" light heading="Employer payroll guides" />
 
           <ToolNav current="/employer-cost-calculator" />
         </div>

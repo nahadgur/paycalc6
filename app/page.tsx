@@ -1,4 +1,5 @@
 import PAYECalculator from '@/components/PAYECalculator'
+import { SpokeGrid } from '@/components/SpokeGrid'
 
 // Homepage structured data — helps win rich results and feeds AI answer engines.
 // This is the #1 commercial page ("PAYE calculator Kenya") and previously had no schema.
@@ -112,6 +113,8 @@ export default function Home() {
               <a href="https://sha.go.ke" target="_blank" rel="noopener noreferrer" className="hover:underline">SHA (SHIF)</a>
             </span>
           </div>
+
+          <SpokeGrid siloKey="how-paye-works" light heading="Learn how PAYE works" />
         </div>
       </section>
     </>

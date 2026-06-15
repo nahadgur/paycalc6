@@ -169,6 +169,15 @@ export default function TaxReliefPage() {
               </div>
             ))}
           </div>
+
+          <Link
+            href="/mortgage-relief"
+            className="group flex items-center justify-between gap-4 rounded-2xl bg-brand px-6 py-4 text-white transition-all hover:opacity-90"
+            style={{ background: 'linear-gradient(to right, #ef4444, #f59e0b)' }}
+          >
+            <span className="font-semibold">Calculate your mortgage relief</span>
+            <ChevronRight className="w-5 h-5 flex-shrink-0 group-hover:translate-x-0.5 transition-transform" />
+          </Link>
         </section>
 
         {/* Individual reliefs */}
@@ -269,7 +278,7 @@ export default function TaxReliefPage() {
               The mortgage interest relief is the single biggest tax-saving opportunity for most middle-income Kenyans — worth up to <strong className="text-white">KES 9,000 per month</strong> in PAYE savings — yet thousands fail to claim it.
               From 2026, employers must apply it automatically once you submit your mortgage statement. Many still do not know this. If you have a home loan, submit your bank statement to HR today.
             </p>
-            <Link href="/" className="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 text-sm font-semibold transition-colors">
+            <Link href="/mortgage-relief" className="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 text-sm font-semibold transition-colors">
               Calculate your savings with mortgage relief <ChevronRight className="w-4 h-4" />
             </Link>
           </div>

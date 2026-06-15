@@ -50,7 +50,7 @@ export function SiloHub({
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       )}
 
-      <Hero h1={heading} desc={silo.blurb} cta={{ href: '/', label: 'Open the PAYE calculator →' }} />
+      <Hero h1={heading} desc={silo.blurb} cta={{ href: silo.cta.href, label: `${silo.cta.label} →` }} />
 
       <div className="paye-calc-body min-h-screen pt-8 pb-10 px-4">
       <div className="max-w-4xl mx-auto">
@@ -62,6 +62,18 @@ export function SiloHub({
           <ChevronRight className="w-3 h-3" />
           <span className="text-stone-700 font-medium">{silo.title}</span>
         </nav>
+
+        {/* Guide-hub primary CTA — links prominently to the silo's calculator */}
+        {silo.hubType === 'guide' && (
+          <Link
+            href={silo.cta.href}
+            className="group mb-8 flex items-center justify-between gap-4 rounded-2xl bg-brand px-6 py-4 text-white transition-colors hover:bg-brand-600"
+            style={{ backgroundColor: '#F04C40' }}
+          >
+            <span className="font-semibold">{silo.cta.label}</span>
+            <ArrowRight className="w-5 h-5 flex-shrink-0 group-hover:translate-x-0.5 transition-transform" />
+          </Link>
+        )}
 
         {/* Intro */}
         <section className="mb-10 text-stone-700 leading-relaxed space-y-4 [&_a]:text-brand-700 [&_a]:underline [&_strong]:text-stone-900">
@@ -89,14 +101,14 @@ export function SiloHub({
         <section className="mb-12 rounded-2xl bg-brand-50 border border-brand-200 p-7 text-center">
           <h2 className="text-xl font-bold text-stone-900 mb-2">See it on your own salary</h2>
           <p className="text-stone-600 max-w-xl mx-auto mb-5">
-            Enter your gross pay and the calculator shows your exact PAYE, NSSF, SHIF, Housing Levy and net take-home for 2026.
+            Run your own figures and get an exact 2026 breakdown for PAYE, NSSF, SHIF, the Housing Levy and your net take-home.
           </p>
           <Link
-            href="/"
+            href={silo.cta.href}
             className="inline-flex items-center gap-2 rounded-full bg-brand px-7 py-3.5 font-semibold text-white hover:bg-brand-600 transition-colors"
             style={{ backgroundColor: '#F04C40' }}
           >
-            Open the PAYE calculator
+            {silo.cta.label}
             <ArrowRight className="w-4 h-4" />
           </Link>
         </section>

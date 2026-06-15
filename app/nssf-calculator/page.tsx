@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { TrendingUp, CheckCircle2, ChevronRight } from 'lucide-react'
 import Hero from '@/components/Hero'
+import { SpokeGrid } from '@/components/SpokeGrid'
 
 export const metadata: Metadata = {
   title: 'NSSF Calculator Kenya 2026 | New Tier I & II Rates (Max KES 6,480)',
@@ -211,6 +212,8 @@ export default function NSSFCalculatorPage() {
             </Link>
           </div>
         </section>
+
+        <SpokeGrid siloKey="statutory-deductions" heading="More on statutory deductions" />
       </div>
       </div>
     </>

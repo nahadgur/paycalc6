@@ -6,12 +6,20 @@ import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { siloByKey, spokeTitle } from '@/lib/silos'
 
-export function SpokeGrid({ siloKey, heading = 'Guides in this topic' }: { siloKey: string; heading?: string }) {
+export function SpokeGrid({
+  siloKey,
+  heading = 'Guides in this topic',
+  light = false,
+}: {
+  siloKey: string
+  heading?: string
+  light?: boolean
+}) {
   const silo = siloByKey(siloKey)
   if (!silo) return null
   return (
-    <section className="mt-14 border-t border-white/10 pt-10">
-      <h2 className="text-lg font-bold text-white mb-5">{heading}</h2>
+    <section className={`mt-14 border-t pt-10 ${light ? 'border-stone-200' : 'border-white/10'}`}>
+      <h2 className={`text-lg font-bold mb-5 ${light ? 'text-stone-900' : 'text-white'}`}>{heading}</h2>
       <div className="grid sm:grid-cols-2 gap-3">
         {silo.spokes.map((slug) => (
           <Link

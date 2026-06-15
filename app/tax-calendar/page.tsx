@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Calendar, Clock, AlertTriangle, FileText } from 'lucide-react'
+import { SpokeGrid } from '@/components/SpokeGrid'
 
 export const metadata: Metadata = {
   title: 'KRA Tax Calendar 2026 | PAYE, NSSF, SHIF & iTax Filing Deadlines Kenya',
@@ -357,6 +358,8 @@ export default function TaxCalendarPage() {
             </Link>
           </div>
         </section>
+
+        <SpokeGrid siloKey="news-updates" heading="Payroll news & updates" />
       </div>
     </div>
   )

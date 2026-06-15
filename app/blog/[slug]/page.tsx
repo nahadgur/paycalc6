@@ -2,12 +2,14 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import articles from '@/lib/articles.json'
-import { siloForSpoke, ctaForSpoke } from '@/lib/silos'
+import { siloForSpoke, ctaForSpoke, ctaCard } from '@/lib/silos'
 import { ChevronRight } from 'lucide-react'
 
 type Props = { params: { slug: string } }
 
 const BASE = 'https://payecalculator.co.ke'
+const PUBLISHED = '2026-01-15'
+const MODIFIED = '2026-06-15'
 
 export async function generateStaticParams() {
   return articles.map((article) => ({ slug: article.slug }))
@@ -39,13 +41,28 @@ export default function BlogArticle({ params }: Props) {
 
   const silo = siloForSpoke(params.slug)
   const cta = ctaForSpoke(params.slug)
+  const card = ctaCard(cta.href)
+
+  // Breadcrumb points up to the silo hub (its calculator or guide pillar),
+  // concentrating internal-link authority on one page per silo.
   const crumbs = [
     { '@type': 'ListItem', position: 1, name: 'Home', item: `${BASE}/` },
-    { '@type': 'ListItem', position: 2, name: 'Guides', item: `${BASE}/guides` },
-    ...(silo ? [{ '@type': 'ListItem', position: 3, name: silo.title, item: `${BASE}${silo.hubHref}` }] : []),
-    { '@type': 'ListItem', position: silo ? 4 : 3, name: article!.title, item: `${BASE}/blog/${params.slug}` },
+    ...(silo ? [{ '@type': 'ListItem', position: 2, name: silo.title, item: `${BASE}${silo.hubHref}` }] : []),
+    { '@type': 'ListItem', position: silo ? 3 : 2, name: article!.title, item: `${BASE}/blog/${params.slug}` },
   ]
   const breadcrumb = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: crumbs }
+
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: article!.title,
+    description: article!.metaDescription,
+    datePublished: PUBLISHED,
+    dateModified: MODIFIED,
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `${BASE}/blog/${params.slug}` },
+    author: { '@type': 'Organization', name: 'PayeCalculator', url: BASE },
+    publisher: { '@type': 'Organization', name: 'PayeCalculator', url: BASE },
+  }
 
   // Prefer same-silo posts (tightens internal linking), then top up with
   // others in stable order to keep the build deterministic.
@@ -62,13 +79,12 @@ export default function BlogArticle({ params }: Props) {
   return (
     <div className="bg-white">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       {/* Hero — red band with title */}
       <section className="bg-brand text-white">
         <div className="max-w-3xl mx-auto px-5 sm:px-6 py-12 sm:py-16">
           <nav className="flex items-center flex-wrap gap-1.5 text-[12px] text-white/80 mb-6">
             <Link href="/" className="hover:text-white">Home</Link>
-            <ChevronRight className="w-3 h-3" />
-            <Link href="/guides" className="hover:text-white">Guides</Link>
             {silo && (
               <>
                 <ChevronRight className="w-3 h-3" />
@@ -85,7 +101,7 @@ export default function BlogArticle({ params }: Props) {
           <div className="flex items-center gap-4 mt-6 text-[11px] opacity-80">
             <span>10 min read</span>
             <span className="w-1 h-1 bg-white/60 rounded-full"></span>
-            <span>Updated January 2026</span>
+            <span>Updated June 2026</span>
           </div>
         </div>
       </section>
@@ -96,8 +112,8 @@ export default function BlogArticle({ params }: Props) {
         {/* Calculator CTA card */}
         <div className="bg-brand-50 border border-brand-300 rounded-2xl p-5 mb-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
-            <h3 className="editorial-h text-[18px] text-brand-900 mb-1">Your exact take-home</h3>
-            <p className="text-brand-700 text-[12px]">2026 KRA rates · instant</p>
+            <h3 className="editorial-h text-[18px] text-brand-900 mb-1">{card.title}</h3>
+            <p className="text-brand-700 text-[12px]">{card.note}</p>
           </div>
           <Link
             href={cta.href}
