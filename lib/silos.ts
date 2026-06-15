@@ -20,8 +20,11 @@ export interface Cta {
 export interface Silo {
   key: string
   title: string
+  // hubHref is the silo's hub: always a calculator. Authority concentrates here.
   hubHref: string
-  hubType: 'calculator' | 'guide'
+  // guideHref is the silo's pillar guide page, the natural parent of its blog
+  // spokes. Omitted for how-paye-works (the homepage calculator is its own hub).
+  guideHref?: string
   blurb: string
   spokes: string[]
   cta: Cta
@@ -32,7 +35,6 @@ export const SILOS: Silo[] = [
     key: 'how-paye-works',
     title: 'How PAYE Works',
     hubHref: '/',
-    hubType: 'calculator',
     blurb: 'The fundamentals of calculating PAYE, net salary, and working backwards from net to gross in Kenya.',
     spokes: [
       'how-to-calculate-your-paye-tax-in-kenya',
@@ -45,7 +47,7 @@ export const SILOS: Silo[] = [
     key: 'statutory-deductions',
     title: 'Statutory Deductions',
     hubHref: '/nssf-calculator',
-    hubType: 'calculator',
+    guideHref: '/guides/statutory-deductions',
     blurb: 'NSSF, SHIF, and the Housing Levy: the three mandatory deductions that come out of every Kenyan payslip in 2026.',
     spokes: [
       'the-complete-guide-to-nssf-contributions-in-kenya',
@@ -57,8 +59,8 @@ export const SILOS: Silo[] = [
   {
     key: 'tax-savings',
     title: 'Tax Savings & Reliefs',
-    hubHref: '/guides/tax-relief',
-    hubType: 'guide',
+    hubHref: '/mortgage-relief',
+    guideHref: '/guides/tax-relief',
     blurb: 'Legal ways to reduce your PAYE: insurance relief, mortgage interest relief, pension contributions, and disability exemptions.',
     spokes: [
       'legal-ways-to-reduce-paye-in-kenya',
@@ -73,7 +75,7 @@ export const SILOS: Silo[] = [
     key: 'salary-breakdowns',
     title: 'Salary Breakdowns',
     hubHref: '/salary-comparison',
-    hubType: 'calculator',
+    guideHref: '/guides/salary-breakdowns',
     blurb: 'Exactly what common Kenyan salaries look like after PAYE, NSSF, SHIF, and the Housing Levy, from KES 50,000 to KES 200,000 and beyond.',
     spokes: [
       'what-a-kes-50000-salary-actually-looks-like-after-tax-in-kenya',
@@ -88,8 +90,8 @@ export const SILOS: Silo[] = [
   {
     key: 'employment-situations',
     title: 'Employment Situations',
-    hubHref: '/guides/employment-situations',
-    hubType: 'guide',
+    hubHref: '/bonus-calculator',
+    guideHref: '/guides/employment-situations',
     blurb: 'How PAYE behaves in real working life: bonuses, freelancing, HELB, changing jobs, employer errors, and filing as a couple.',
     spokes: [
       'how-kenyan-employers-tax-your-bonus-and-13th-month-pay',
@@ -105,7 +107,7 @@ export const SILOS: Silo[] = [
     key: 'for-employers',
     title: 'For Employers',
     hubHref: '/employer-cost-calculator',
-    hubType: 'calculator',
+    guideHref: '/guides/employer-guide',
     blurb: 'Payroll obligations for Kenyan employers: the true cost of hiring, NSSF and Housing Levy duties, iTax filing, and benefits in kind.',
     spokes: [
       'the-true-cost-of-hiring-an-employee-in-kenya',
@@ -119,7 +121,7 @@ export const SILOS: Silo[] = [
     key: 'news-updates',
     title: 'News & Updates',
     hubHref: '/tax-calendar',
-    hubType: 'calculator',
+    guideHref: '/guides/statutory-changes',
     blurb: 'The latest changes to Kenyan payroll: the Finance Bill, KRA deadlines, and the new NSSF rates.',
     spokes: [
       'what-the-kenya-finance-bill-2025-means-for-your-salary',

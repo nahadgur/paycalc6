@@ -42,12 +42,15 @@ export default function BlogArticle({ params }: Props) {
   const silo = siloForSpoke(params.slug)
   const cta = ctaForSpoke(params.slug)
   const card = ctaCard(cta.href)
+  // Breadcrumb parent is the silo's pillar guide (the natural content parent);
+  // for how-paye-works, which has no guide, it falls back to the calculator hub.
+  // The calculator hub itself is reached via the CTA, completing blog -> guide
+  // + blog -> calculator.
+  const parentHref = silo ? (silo.guideHref ?? silo.hubHref) : undefined
 
-  // Breadcrumb points up to the silo hub (its calculator or guide pillar),
-  // concentrating internal-link authority on one page per silo.
   const crumbs = [
     { '@type': 'ListItem', position: 1, name: 'Home', item: `${BASE}/` },
-    ...(silo ? [{ '@type': 'ListItem', position: 2, name: silo.title, item: `${BASE}${silo.hubHref}` }] : []),
+    ...(silo ? [{ '@type': 'ListItem', position: 2, name: silo.title, item: `${BASE}${parentHref}` }] : []),
     { '@type': 'ListItem', position: silo ? 3 : 2, name: article!.title, item: `${BASE}/blog/${params.slug}` },
   ]
   const breadcrumb = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: crumbs }
@@ -85,10 +88,10 @@ export default function BlogArticle({ params }: Props) {
         <div className="max-w-3xl mx-auto px-5 sm:px-6 py-12 sm:py-16">
           <nav className="flex items-center flex-wrap gap-1.5 text-[12px] text-white/80 mb-6">
             <Link href="/" className="hover:text-white">Home</Link>
-            {silo && (
+            {silo && parentHref && (
               <>
                 <ChevronRight className="w-3 h-3" />
-                <Link href={silo.hubHref} className="hover:text-white">{silo.title}</Link>
+                <Link href={parentHref} className="hover:text-white">{silo.title}</Link>
               </>
             )}
           </nav>

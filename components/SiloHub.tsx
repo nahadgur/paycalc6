@@ -63,18 +63,6 @@ export function SiloHub({
           <span className="text-stone-700 font-medium">{silo.title}</span>
         </nav>
 
-        {/* Guide-hub primary CTA — links prominently to the silo's calculator */}
-        {silo.hubType === 'guide' && (
-          <Link
-            href={silo.cta.href}
-            className="group mb-8 flex items-center justify-between gap-4 rounded-2xl bg-brand px-6 py-4 text-white transition-colors hover:bg-brand-600"
-            style={{ backgroundColor: '#F04C40' }}
-          >
-            <span className="font-semibold">{silo.cta.label}</span>
-            <ArrowRight className="w-5 h-5 flex-shrink-0 group-hover:translate-x-0.5 transition-transform" />
-          </Link>
-        )}
-
         {/* Intro */}
         <section className="mb-10 text-stone-700 leading-relaxed space-y-4 [&_a]:text-brand-700 [&_a]:underline [&_strong]:text-stone-900">
           {intro}
