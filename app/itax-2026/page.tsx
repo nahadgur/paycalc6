@@ -3,8 +3,8 @@ import Link from 'next/link'
 import { CheckCircle2, AlertTriangle, Clock, ChevronRight } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'KRA iTax 2026 Guide | Pre-Filled Returns, How to File & New Features',
-  description: 'Complete guide to KRA iTax 2026 changes. Learn how pre-filled tax returns work, how salaried employees can file in minutes using just their KRA PIN, and what changed for employers.',
+  title: { absolute: 'KRA iTax 2026 Guide | Pre-Filled Returns & Filing' },
+  description: 'A guide to KRA iTax in 2026: how pre-filled returns work, how employees file in minutes with a KRA PIN, and what changed for employers.',
   keywords: ['KRA iTax 2026','iTax pre-filled returns Kenya','KRA tax return 2026','how to file iTax Kenya','KRA PIN tax filing'],
   alternates: { canonical: 'https://payecalculator.co.ke/itax-2026' },
 }

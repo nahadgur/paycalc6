@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { MapPin, Phone, Clock, ExternalLink } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'KRA Tax Offices Kenya 2026 | Nairobi, Mombasa, Kisumu, Nakuru, Eldoret',
+  title: { absolute: 'KRA Tax Offices in Kenya 2026 | Find Your Branch' },
   description: 'Find your nearest Kenya Revenue Authority (KRA) tax office. Addresses, phone numbers, and opening hours for all KRA regional service centres across Kenya.',
   keywords: ['KRA office Nairobi','KRA office Mombasa','KRA office Kisumu','KRA Nakuru','KRA Eldoret','Kenya Revenue Authority offices'],
   alternates: { canonical: 'https://payecalculator.co.ke/kra-offices' },

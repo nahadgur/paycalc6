@@ -3,9 +3,9 @@ import PAYECalculator from '@/components/PAYECalculator'
 import ToolNav from '@/components/ToolNav'
 
 export const metadata: Metadata = {
-  title: 'Bonus Tax Calculator Kenya 2026 | Tax on Bonus & 13th Month',
+  title: { absolute: 'Bonus Tax Calculator Kenya 2026 | Tax on Bonus & 13th Month' },
   description:
-    'How much tax will you pay on your bonus in Kenya? Free bonus tax calculator showing the PAYE on a bonus or 13th-month pay and the net you actually receive, using 2026 KRA rates.',
+    'How much tax will you pay on a bonus in Kenya? Free calculator showing the PAYE on a bonus or 13th-month pay and the net you receive, on 2026 rates.',
   keywords: [
     'bonus tax calculator Kenya', 'how is bonus taxed in Kenya', 'tax on bonus Kenya 2026',
     '13th month pay tax Kenya', 'net bonus calculator Kenya',

@@ -4,7 +4,7 @@ import ToolNav from '@/components/ToolNav'
 import { SpokeGrid } from '@/components/SpokeGrid'
 
 export const metadata: Metadata = {
-  title: 'Salary Comparison Calculator Kenya 2026 | PAYE & Net by Band',
+  title: { absolute: 'Salary Comparison Calculator Kenya 2026 | PAYE & Net' },
   description:
     'Compare salaries side by side in Kenya. See how PAYE, net pay and the effective tax rate change from KES 30,000 to KES 1,000,000 under the 2026 KRA bands.',
   keywords: [

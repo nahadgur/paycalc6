@@ -4,9 +4,9 @@ import ToolNav from '@/components/ToolNav'
 import { SpokeGrid } from '@/components/SpokeGrid'
 
 export const metadata: Metadata = {
-  title: 'Employer Cost Calculator Kenya 2026 | True Cost to Employ',
+  title: { absolute: 'Employer Cost Calculator Kenya 2026 | True Cost to Employ' },
   description:
-    'Work out the full monthly cost of employing someone in Kenya. Free employer cost calculator covering gross salary plus the matched NSSF and Housing Levy, on 2026 rates.',
+    'Work out the full monthly cost of employing someone in Kenya. Gross pay plus the matched NSSF and Housing Levy, in one free 2026 calculator.',
   keywords: [
     'employer cost calculator Kenya', 'cost of employing staff Kenya', 'employer NSSF Housing Levy Kenya',
     'true cost to employ Kenya 2026', 'payroll cost calculator Kenya',

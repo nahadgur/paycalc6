@@ -4,9 +4,9 @@ import { CheckCircle2, AlertTriangle, ChevronRight } from 'lucide-react'
 import Hero from '@/components/Hero'
 
 export const metadata: Metadata = {
-  title: 'Mortgage Relief Calculator Kenya 2026 | Save up to KES 9,000/mo',
+  title: { absolute: 'Mortgage Relief Calculator Kenya 2026 | PAYE Saving' },
   description:
-    'How much can mortgage interest relief save you in Kenya? See the KES 30,000/month deduction, your PAYE saving by salary band, who qualifies, and how to claim it — updated for 2026.',
+    'How much can mortgage interest relief save you in Kenya? The KES 30,000 monthly deduction, your PAYE saving by salary, who qualifies and how to claim.',
   keywords: [
     'mortgage relief calculator Kenya', 'mortgage relief Kenya', 'mortgage interest relief Kenya 2026',
     'mortgage relief in Kenya', 'KES 30000 mortgage relief', 'home loan tax relief Kenya',

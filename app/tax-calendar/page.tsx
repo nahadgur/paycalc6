@@ -4,8 +4,8 @@ import { Calendar, Clock, AlertTriangle, FileText } from 'lucide-react'
 import { SpokeGrid } from '@/components/SpokeGrid'
 
 export const metadata: Metadata = {
-  title: 'KRA Tax Calendar 2026 | PAYE, NSSF, SHIF & iTax Filing Deadlines Kenya',
-  description: 'Complete KRA tax deadline calendar for 2026. Monthly PAYE, NSSF, SHIF, and Housing Levy remittance dates plus annual iTax return deadlines for Kenyan employers and employees.',
+  title: { absolute: 'KRA Tax Calendar 2026 | PAYE, NSSF, SHIF & iTax Dates' },
+  description: 'The 2026 KRA tax calendar for Kenya: monthly PAYE, NSSF, SHIF and Housing Levy dates plus annual iTax return deadlines for employers and staff.',
   alternates: { canonical: 'https://payecalculator.co.ke/tax-calendar' },
 }
 

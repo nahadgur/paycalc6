@@ -2,9 +2,9 @@ import type { Metadata } from 'next'
 import { SiloHub } from '@/components/SiloHub'
 
 export const metadata: Metadata = {
-  title: 'PAYE in Real Life — Bonuses, Freelancing, HELB & Job Changes (Kenya 2026)',
+  title: { absolute: 'PAYE in Real Life: Bonuses, Freelancing, HELB & Job Changes' },
   description:
-    'How PAYE actually behaves in Kenyan working life: bonuses and 13th-month pay, freelancing vs employment, HELB deductions, changing jobs, employer errors, and filing taxes as a couple.',
+    'How PAYE works in real Kenyan working life: bonuses and 13th-month pay, freelancing, HELB, changing jobs, employer errors and filing as a couple.',
   alternates: { canonical: 'https://payecalculator.co.ke/guides/employment-situations' },
 }
 

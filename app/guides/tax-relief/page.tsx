@@ -5,8 +5,8 @@ import { PiggyBank, Home, Shield, GraduationCap, AlertTriangle, ChevronRight } f
 import Hero from '@/components/Hero'
 
 export const metadata: Metadata = {
-  title: 'Kenya Tax Reliefs 2026 | Reduce Your PAYE — Complete Guide',
-  description: 'All available PAYE tax reliefs in Kenya 2026: personal relief, mortgage interest, pension contributions, insurance relief, and disability relief. How to claim each and how much you save.',
+  title: { absolute: 'Kenya Tax Reliefs 2026 | How to Reduce Your PAYE' },
+  description: 'Every PAYE tax relief in Kenya for 2026: personal, mortgage interest, pension, insurance and disability relief. How to claim each and what you save.',
   keywords: ['Kenya tax relief 2026','mortgage interest relief Kenya','pension tax relief Kenya','PAYE reduction Kenya','KES 30000 mortgage relief'],
   alternates: { canonical: 'https://payecalculator.co.ke/guides/tax-relief' },
 }

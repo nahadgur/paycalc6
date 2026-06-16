@@ -5,9 +5,9 @@ import { CheckCircle2, BookOpen, ShieldCheck, RefreshCw, FileText } from 'lucide
 import KitCheckout from '@/components/KitCheckout'
 
 export const metadata: Metadata = {
-  title: 'Broke After Payday — Kenya Salary Survival & Side Hustle Kit 2026 (PDF)',
+  title: { absolute: 'Broke After Payday: Kenya Salary Survival Kit 2026 (PDF)' },
   description:
-    'The practical 53-page kit for Kenyan workers: understand your payslip, stop money leaks, dodge scams and test one realistic side hustle in 30 days. KES 299, instant M-Pesa checkout.',
+    'A practical 53-page kit for Kenyan workers: understand your payslip, plug money leaks, dodge scams and test a side hustle in 30 days. KES 299 via M-Pesa.',
   alternates: { canonical: 'https://payecalculator.co.ke/kit' },
 }
 

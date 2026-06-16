@@ -5,8 +5,8 @@ import { AlertTriangle, CheckCircle2, ChevronRight } from 'lucide-react'
 import Hero from '@/components/Hero'
 
 export const metadata: Metadata = {
-  title: 'SHIF & NSSF 2026 Changes Kenya | Complete Statutory Transition Guide',
-  description: 'Everything you need to know about SHIF replacing NHIF and the February 2026 NSSF limit increases. Rates, deductions, payroll impact, and what changed for employers and employees.',
+  title: { absolute: 'SHIF & NSSF 2026 Changes in Kenya | Transition Guide' },
+  description: 'What changed in 2026: SHIF replacing NHIF and the February NSSF limit increases. Rates, payroll impact and what it means for employers and staff.',
   keywords: ['SHIF Kenya 2026','NSSF changes 2026','NHIF replaced by SHIF','NSSF new rates Kenya','statutory deductions Kenya 2026'],
   alternates: { canonical: 'https://payecalculator.co.ke/guides/statutory-changes' },
 }

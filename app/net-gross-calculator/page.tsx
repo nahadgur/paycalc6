@@ -3,9 +3,9 @@ import PAYECalculator from '@/components/PAYECalculator'
 import ToolNav from '@/components/ToolNav'
 
 export const metadata: Metadata = {
-  title: 'Net to Gross Salary Calculator Kenya 2026 | Reverse PAYE',
+  title: { absolute: 'Net to Gross Salary Calculator Kenya 2026 | Reverse PAYE' },
   description:
-    'Enter the take-home you want and see the gross salary you need in Kenya. Free net-to-gross calculator using 2026 KRA PAYE bands, NSSF, SHIF and Housing Levy.',
+    'Enter the take-home you want and see the gross salary you need in Kenya. Free net to gross calculator on 2026 PAYE, NSSF, SHIF and Housing Levy.',
   keywords: [
     'net to gross calculator Kenya', 'gross from net salary Kenya', 'reverse PAYE calculator Kenya',
     'gross salary calculator Kenya 2026', 'what gross for net salary Kenya',

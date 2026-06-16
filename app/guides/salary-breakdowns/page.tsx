@@ -2,9 +2,9 @@ import type { Metadata } from 'next'
 import { SiloHub } from '@/components/SiloHub'
 
 export const metadata: Metadata = {
-  title: 'Kenya Salary Breakdowns 2026 — What You Actually Take Home',
+  title: { absolute: 'Kenya Salary Breakdowns 2026: What You Take Home' },
   description:
-    'See exactly what common Kenyan salaries look like after PAYE, NSSF, SHIF and the Housing Levy in 2026, from KES 50,000 to KES 200,000 and beyond, plus what you need to live comfortably in Nairobi.',
+    'See what common Kenyan salaries look like after PAYE, NSSF, SHIF and the Housing Levy in 2026, from KES 50,000 to KES 200,000 and above.',
   alternates: { canonical: 'https://payecalculator.co.ke/guides/salary-breakdowns' },
 }
 

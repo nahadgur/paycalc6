@@ -5,9 +5,9 @@ import { SILOS, spokeTitle } from '@/lib/silos'
 import Hero from '@/components/Hero'
 
 export const metadata: Metadata = {
-  title: 'Kenya PAYE & Salary Guides 2026 — by Topic',
+  title: { absolute: 'Kenya PAYE & Salary Guides 2026, by Topic' },
   description:
-    'Every Kenya payroll guide, organised by topic: statutory deductions (NSSF, SHIF, Housing Levy), tax savings, salary breakdowns, employment situations, employer obligations and the latest changes.',
+    'Every Kenya payroll guide by topic: statutory deductions, tax savings, salary breakdowns, employment situations and employer obligations.',
   alternates: { canonical: 'https://payecalculator.co.ke/guides' },
 }
 

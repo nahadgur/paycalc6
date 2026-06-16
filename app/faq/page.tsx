@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Kenya PAYE FAQ 2026 | Tax Questions Answered — KRA, SHIF, NSSF',
+  title: { absolute: 'Kenya PAYE FAQ 2026 | KRA, SHIF, NSSF & iTax Answers' },
   description: 'Answers to the most common Kenya PAYE tax questions in 2026: SHIF, NSSF, Housing Levy, P9 forms, iTax filing, mortgage relief, freelancer tax, and more.',
   keywords: ['Kenya PAYE FAQ','KRA tax questions Kenya','is SHIF mandatory','NSSF Kenya FAQ','iTax Kenya help'],
   alternates: { canonical: 'https://payecalculator.co.ke/faq' },

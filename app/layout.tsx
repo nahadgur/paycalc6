@@ -6,10 +6,10 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: {
-    default: 'PAYE & Take-Home Pay Calculator Kenya 2026 | Net Salary & Tax',
+    default: 'Kenya PAYE & Take-Home Pay Calculator 2026 | Net Salary',
     template: '%s | Kenya PAYE Calculator'
   },
-  description: 'Work out your exact take-home pay in seconds. Free Kenya PAYE and take-home pay calculator with the latest 2026 KRA tax bands, NSSF, SHIF and Housing Levy - plus net-to-gross and employer cost.',
+  description: 'Work out your exact Kenya take-home pay in seconds. Free PAYE calculator on the 2026 KRA bands with NSSF, SHIF, Housing Levy and net to gross.',
   keywords: ['PAYE calculator Kenya', 'take home pay calculator Kenya', 'take home pay calculator', 'net pay calculator Kenya', 'net salary calculator Kenya', 'Kenya tax calculator', 'NSSF calculator', 'SHIF calculator', 'KRA tax bands 2026'],
   authors: [{ name: 'PAYE Calculator Kenya' }],
   creator: 'PAYE Calculator Kenya',

@@ -3,9 +3,9 @@ import Hero from '@/components/Hero'
 import PayslipGenerator from '@/components/PayslipGenerator'
 
 export const metadata: Metadata = {
-  title: 'Payslip Generator Kenya 2026 | Free Payslip Maker (PDF)',
+  title: { absolute: 'Payslip Generator Kenya 2026 | Free Payslip Maker (PDF)' },
   description:
-    'Create a professional payslip in Kenya for free. Enter salary and allowances and download a PDF payslip with PAYE, NSSF, SHIF and Housing Levy worked out on 2026 KRA rates.',
+    'Create a professional Kenyan payslip free. Enter pay and allowances and download a PDF with PAYE, NSSF, SHIF and Housing Levy on 2026 KRA rates.',
   keywords: [
     'payslip generator Kenya', 'free payslip generator', 'payslip maker Kenya',
     'create payslip Kenya', 'payslip template Kenya', 'payslip PDF Kenya 2026',

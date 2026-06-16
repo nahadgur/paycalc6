@@ -4,7 +4,7 @@ import articles from '@/lib/articles.json'
 
 export const metadata: Metadata = {
   title: 'Kenya Tax & PAYE Articles',
-  description: 'Comprehensive articles on Kenya PAYE tax, NSSF contributions, SHIF deductions, Housing Levy, and more. Learn how to calculate your salary and reduce your tax legally.',
+  description: 'Articles on Kenya PAYE tax, NSSF, SHIF, the Housing Levy and more. How to work out your salary and reduce your tax legally, updated for 2026.',
   alternates: { canonical: 'https://payecalculator.co.ke/blog' },
   openGraph: {
     title: 'Kenya Tax & PAYE Articles | PAYE Calculator Kenya',

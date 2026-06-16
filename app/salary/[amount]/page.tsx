@@ -77,7 +77,7 @@ export async function generateMetadata({ params }: { params: { amount: string } 
   const c = calcAll(gross)
   return {
     title: { absolute: `KES ${gross.toLocaleString()} Salary in Kenya 2026: Net Pay & Gross to Net` },
-    description: `On a KES ${gross.toLocaleString()} gross salary in Kenya you take home ${fmt(c.net)} a month (${fmt(c.net * 12)} a year). PAYE tax ${fmt(c.paye)}, NSSF ${fmt(c.nssf)}, SHIF ${fmt(c.shif)}, Housing Levy ${fmt(c.housing)} — the full 2026 gross-to-net breakdown.`,
+    description: `KES ${gross.toLocaleString()} salary in Kenya: take home ${fmt(c.net)} a month after PAYE, NSSF, SHIF and the Housing Levy. Full 2026 gross-to-net breakdown.`,
     alternates: { canonical: `https://payecalculator.co.ke/salary/${gross}` },
   }
 }

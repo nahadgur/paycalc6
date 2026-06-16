@@ -5,9 +5,9 @@ import Hero from '@/components/Hero'
 import { SpokeGrid } from '@/components/SpokeGrid'
 
 export const metadata: Metadata = {
-  title: 'NSSF Calculator Kenya 2026 | New Tier I & II Rates (Max KES 6,480)',
+  title: { absolute: 'NSSF Calculator Kenya 2026 | New Tier I & II Rates' },
   description:
-    'Free NSSF calculator for Kenya 2026. See your new Tier I and Tier II deduction at any salary under the February 2026 rates — 6% up to the KES 108,000 upper limit, max KES 6,480/month.',
+    'Free NSSF calculator for Kenya 2026. See your Tier I and Tier II deduction at any salary under the February 2026 rates, up to KES 6,480 a month.',
   keywords: [
     'NSSF calculator Kenya', 'new NSSF rates calculator 2026', 'NSSF Tier 1 Tier 2 calculator',
     'NSSF 2026 Kenya', 'NSSF deduction calculator', 'NSSF upper limit 108000',

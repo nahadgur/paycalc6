@@ -5,8 +5,8 @@ import { CheckCircle2, AlertTriangle, Clock, FileText } from 'lucide-react'
 import Hero from '@/components/Hero'
 
 export const metadata: Metadata = {
-  title: 'Kenya Employer Payroll Compliance Guide 2026 | PAYE, NSSF, SHIF & Housing Levy',
-  description: 'Complete payroll compliance guide for Kenyan employers and HR managers 2026. True cost of hiring, P10 filing, PAYE remittance, SHIF, NSSF, and Housing Levy obligations explained.',
+  title: { absolute: 'Kenya Employer Payroll Compliance Guide 2026' },
+  description: 'A payroll compliance guide for Kenyan employers in 2026: the true cost of hiring, P10 filing, PAYE remittance, SHIF, NSSF and Housing Levy duties.',
   keywords: ['employer PAYE Kenya','payroll compliance Kenya 2026','true cost hiring Kenya','P10 return Kenya','NSSF employer contribution'],
   alternates: { canonical: 'https://payecalculator.co.ke/guides/employer-guide' },
 }

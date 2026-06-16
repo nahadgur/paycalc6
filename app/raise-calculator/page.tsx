@@ -3,9 +3,9 @@ import PAYECalculator from '@/components/PAYECalculator'
 import ToolNav from '@/components/ToolNav'
 
 export const metadata: Metadata = {
-  title: 'Pay Rise Calculator Kenya 2026 | How Much of a Raise You Keep',
+  title: { absolute: 'Pay Rise Calculator Kenya 2026 | How Much You Keep' },
   description:
-    'See how much of a pay rise you actually take home in Kenya after PAYE, NSSF, SHIF and the Housing Levy. Free 2026 raise calculator with monthly and annual net gain.',
+    'See how much of a pay rise you keep in Kenya after PAYE, NSSF, SHIF and the Housing Levy. Free 2026 calculator with monthly and annual net gain.',
   keywords: [
     'pay rise calculator Kenya', 'salary increase calculator Kenya', 'how much of a raise do I keep Kenya',
     'raise after tax Kenya 2026', 'net pay increase calculator Kenya',
