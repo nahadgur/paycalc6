@@ -9,7 +9,7 @@ type Props = { params: { slug: string } }
 
 const BASE = 'https://payecalculator.co.ke'
 const PUBLISHED = '2026-01-15'
-const MODIFIED = '2026-06-15'
+const MODIFIED = '2026-06-16'
 
 export async function generateStaticParams() {
   return articles.map((article) => ({ slug: article.slug }))

@@ -37,6 +37,24 @@ const nextConfig = {
         destination: '/blog/key-kra-tax-deadlines-every-kenyan-should-know',
         permanent: true,
       },
+      // Orphaned/duplicate slugs picking up impressions in Search Console but
+      // never published in the nav. 301 each to its topical equivalent so the
+      // impressions land on a real page instead of a 404.
+      {
+        source: '/blog/how-to-calculate-your-shif-contribution-at-275-percent-without-errors',
+        destination: '/blog/understanding-shif-deductions-in-kenya-and-what-replaced-nhif',
+        permanent: true,
+      },
+      {
+        source: '/blog/finance-act-2025-highlights-every-salaried-kenyan-should-understand',
+        destination: '/blog/what-the-kenya-finance-bill-2025-means-for-your-salary',
+        permanent: true,
+      },
+      {
+        source: '/blog/mortgage-interest-relief-and-how-your-home-loan-can-lower-monthly-paye',
+        destination: '/blog/claiming-mortgage-interest-relief-on-your-kenyan-tax-return',
+        permanent: true,
+      },
     ]
 
     return [...guideRedirects, ...blogRedirects]
