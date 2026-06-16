@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import { SALARY_DESCRIPTIONS } from '@/lib/salaryDescriptions'
 
 // ── Salary amounts that get their own page ────────────────────────────────
 const SALARY_AMOUNTS = [
@@ -77,7 +78,7 @@ export async function generateMetadata({ params }: { params: { amount: string } 
   const c = calcAll(gross)
   return {
     title: { absolute: `KES ${gross.toLocaleString()} Salary in Kenya 2026: Net Pay & Gross to Net` },
-    description: `KES ${gross.toLocaleString()} salary in Kenya: take home ${fmt(c.net)} a month after PAYE, NSSF, SHIF and the Housing Levy. Full 2026 gross-to-net breakdown.`,
+    description: SALARY_DESCRIPTIONS[gross] ?? `KES ${gross.toLocaleString()} salary in Kenya: take home ${fmt(c.net)} a month after PAYE, NSSF, SHIF and the Housing Levy. Full 2026 gross-to-net breakdown.`,
     alternates: { canonical: `https://payecalculator.co.ke/salary/${gross}` },
   }
 }
