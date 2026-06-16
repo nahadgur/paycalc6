@@ -21,11 +21,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: article.metaTitle || article.title,
     description: article.metaDescription,
+    alternates: { canonical: `${BASE}/blog/${article.slug}` },
     openGraph: {
       title: article.metaTitle || article.title,
       description: article.metaDescription,
       type: 'article',
-      url: `https://payecalculator.co.ke/blog/${article.slug}`,
+      url: `${BASE}/blog/${article.slug}`,
     },
     twitter: {
       card: 'summary_large_image',

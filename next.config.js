@@ -57,7 +57,47 @@ const nextConfig = {
       },
     ]
 
-    return [...guideRedirects, ...blogRedirects]
+    // Force the canonical host: www serves live 200s today, so 301 every www
+    // request to the bare apex (which metadataBase, the sitemap and all
+    // canonicals already use). Belt-and-braces alongside the Vercel domain
+    // redirect so the host is enforced in code too.
+    const hostRedirect = {
+      source: '/:path*',
+      has: [{ type: 'host', value: 'www.payecalculator.co.ke' }],
+      destination: 'https://payecalculator.co.ke/:path*',
+      permanent: true,
+    }
+
+    return [hostRedirect, ...guideRedirects, ...blogRedirects]
+  },
+  async headers() {
+    // Security response headers (clears the Screaming Frog "missing header"
+    // warnings). CSP is permissive enough to keep GA4, the Apps Script lead
+    // webhook and inline JSON-LD working; tighten later if needed.
+    const csp = [
+      "default-src 'self'",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com",
+      "style-src 'self' 'unsafe-inline'",
+      "img-src 'self' data: https://www.googletagmanager.com https://www.google-analytics.com",
+      "font-src 'self'",
+      "connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://region1.google-analytics.com https://script.google.com https://script.googleusercontent.com",
+      "form-action 'self' https://script.google.com https://script.googleusercontent.com",
+      "frame-ancestors 'self'",
+      "base-uri 'self'",
+      "object-src 'none'",
+    ].join('; ')
+
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          { key: 'Content-Security-Policy', value: csp },
+          { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+        ],
+      },
+    ]
   },
 }
 

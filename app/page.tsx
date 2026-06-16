@@ -1,5 +1,10 @@
+import type { Metadata } from 'next'
 import PAYECalculator from '@/components/PAYECalculator'
 import { SpokeGrid } from '@/components/SpokeGrid'
+
+export const metadata: Metadata = {
+  alternates: { canonical: 'https://payecalculator.co.ke' },
+}
 
 // Homepage structured data — helps win rich results and feeds AI answer engines.
 // This is the #1 commercial page ("PAYE calculator Kenya") and previously had no schema.

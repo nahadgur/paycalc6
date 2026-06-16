@@ -8,7 +8,7 @@ export const KIT = {
   pdfPath: 'private/Broke_After_Payday_Kenya_Kit_2026.pdf',
   downloadValidDays: 7,
   fromEmail: process.env.KIT_FROM_EMAIL ?? 'PAYE Calculator Kenya <kit@payecalculator.co.ke>',
-  siteUrl: process.env.SITE_URL ?? 'https://www.payecalculator.co.ke',
+  siteUrl: process.env.SITE_URL ?? 'https://payecalculator.co.ke',
 }
 
 export type Provider = 'intasend' | 'pesapal'
