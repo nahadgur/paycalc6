@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: { absolute: 'PAYE in Real Life: Bonuses, Freelancing, HELB & Job Changes' },
   description:
     'How PAYE works in real Kenyan working life: bonuses and 13th-month pay, freelancing, HELB, changing jobs, employer errors and filing as a couple.',
-  alternates: { canonical: 'https://payecalculator.co.ke/guides/employment-situations' },
+  alternates: { canonical: 'https://www.payecalculator.co.ke/guides/employment-situations' },
 }
 
 export default function EmploymentSituationsHub() {

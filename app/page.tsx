@@ -3,7 +3,7 @@ import PAYECalculator from '@/components/PAYECalculator'
 import { SpokeGrid } from '@/components/SpokeGrid'
 
 export const metadata: Metadata = {
-  alternates: { canonical: 'https://payecalculator.co.ke' },
+  alternates: { canonical: 'https://www.payecalculator.co.ke' },
 }
 
 // Homepage structured data — helps win rich results and feeds AI answer engines.
@@ -14,7 +14,7 @@ const jsonLd = {
     {
       '@type': 'WebApplication',
       name: 'Kenya PAYE Calculator 2026',
-      url: 'https://payecalculator.co.ke',
+      url: 'https://www.payecalculator.co.ke',
       applicationCategory: 'FinanceApplication',
       operatingSystem: 'Any',
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'KES' },
@@ -66,7 +66,7 @@ const jsonLd = {
           '@type': 'ListItem',
           position: 1,
           name: 'PAYE Calculator',
-          item: 'https://payecalculator.co.ke',
+          item: 'https://www.payecalculator.co.ke',
         },
       ],
     },

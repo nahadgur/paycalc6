@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: { absolute: 'Kenya PAYE & Salary Guides 2026, by Topic' },
   description:
     'Every Kenya payroll guide by topic: statutory deductions, tax savings, salary breakdowns, employment situations and employer obligations.',
-  alternates: { canonical: 'https://payecalculator.co.ke/guides' },
+  alternates: { canonical: 'https://www.payecalculator.co.ke/guides' },
 }
 
 // Topical pillar hubs (the how-paye-works set lives on the homepage calculator).
@@ -19,8 +19,8 @@ export default function GuidesIndex() {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://payecalculator.co.ke/' },
-      { '@type': 'ListItem', position: 2, name: 'Guides', item: 'https://payecalculator.co.ke/guides' },
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.payecalculator.co.ke/' },
+      { '@type': 'ListItem', position: 2, name: 'Guides', item: 'https://www.payecalculator.co.ke/guides' },
     ],
   }
 

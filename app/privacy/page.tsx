@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Privacy Policy',
   description: 'How payecalculator.co.ke collects, uses and protects your personal data under the Kenya Data Protection Act, 2019.',
-  alternates: { canonical: 'https://payecalculator.co.ke/privacy' },
+  alternates: { canonical: 'https://www.payecalculator.co.ke/privacy' },
   robots: { index: true, follow: true },
 }
 

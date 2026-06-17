@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: { absolute: 'SHIF & NSSF 2026 Changes in Kenya | Transition Guide' },
   description: 'What changed in 2026: SHIF replacing NHIF and the February NSSF limit increases. Rates, payroll impact and what it means for employers and staff.',
   keywords: ['SHIF Kenya 2026','NSSF changes 2026','NHIF replaced by SHIF','NSSF new rates Kenya','statutory deductions Kenya 2026'],
-  alternates: { canonical: 'https://payecalculator.co.ke/guides/statutory-changes' },
+  alternates: { canonical: 'https://www.payecalculator.co.ke/guides/statutory-changes' },
 }
 
 const SHIF_COMPARISON = [
@@ -93,7 +93,7 @@ export default function StatutoryChangesPage() {
     '@type': 'Article',
     headline: 'SHIF and NSSF 2026 Changes — Complete Kenya Statutory Transition Guide',
     description: 'Full guide to SHIF replacing NHIF and the NSSF rate changes in 2026 for Kenyan employers and employees.',
-    url: 'https://payecalculator.co.ke/guides/statutory-changes',
+    url: 'https://www.payecalculator.co.ke/guides/statutory-changes',
     dateModified: '2026-04-06',
   }
 

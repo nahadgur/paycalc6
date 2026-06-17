@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     'mortgage relief calculator Kenya', 'mortgage relief Kenya', 'mortgage interest relief Kenya 2026',
     'mortgage relief in Kenya', 'KES 30000 mortgage relief', 'home loan tax relief Kenya',
   ],
-  alternates: { canonical: 'https://payecalculator.co.ke/mortgage-relief' },
+  alternates: { canonical: 'https://www.payecalculator.co.ke/mortgage-relief' },
 }
 
 const fmt = (n: number) =>
@@ -32,7 +32,7 @@ export default function MortgageReliefPage() {
       {
         '@type': 'WebApplication',
         name: 'Mortgage Relief Calculator Kenya 2026',
-        url: 'https://payecalculator.co.ke/mortgage-relief',
+        url: 'https://www.payecalculator.co.ke/mortgage-relief',
         applicationCategory: 'FinanceApplication',
         operatingSystem: 'Any',
         offers: { '@type': 'Offer', price: '0', priceCurrency: 'KES' },

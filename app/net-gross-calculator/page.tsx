@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     'net to gross calculator Kenya', 'gross from net salary Kenya', 'reverse PAYE calculator Kenya',
     'gross salary calculator Kenya 2026', 'what gross for net salary Kenya',
   ],
-  alternates: { canonical: 'https://payecalculator.co.ke/net-gross-calculator' },
+  alternates: { canonical: 'https://www.payecalculator.co.ke/net-gross-calculator' },
 }
 
 const FAQ = [
@@ -35,7 +35,7 @@ export default function NetGrossCalculatorPage() {
       {
         '@type': 'WebApplication',
         name: 'Net to Gross Salary Calculator Kenya 2026',
-        url: 'https://payecalculator.co.ke/net-gross-calculator',
+        url: 'https://www.payecalculator.co.ke/net-gross-calculator',
         applicationCategory: 'FinanceApplication',
         operatingSystem: 'Any',
         offers: { '@type': 'Offer', price: '0', priceCurrency: 'KES' },

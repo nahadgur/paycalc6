@@ -7,7 +7,7 @@ import { ChevronRight } from 'lucide-react'
 
 type Props = { params: { slug: string } }
 
-const BASE = 'https://payecalculator.co.ke'
+const BASE = 'https://www.payecalculator.co.ke'
 const PUBLISHED = '2026-01-15'
 const MODIFIED = '2026-06-16'
 

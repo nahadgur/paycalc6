@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     'employer cost calculator Kenya', 'cost of employing staff Kenya', 'employer NSSF Housing Levy Kenya',
     'true cost to employ Kenya 2026', 'payroll cost calculator Kenya',
   ],
-  alternates: { canonical: 'https://payecalculator.co.ke/employer-cost-calculator' },
+  alternates: { canonical: 'https://www.payecalculator.co.ke/employer-cost-calculator' },
 }
 
 const FAQ = [
@@ -36,7 +36,7 @@ export default function EmployerCostCalculatorPage() {
       {
         '@type': 'WebApplication',
         name: 'Employer Cost Calculator Kenya 2026',
-        url: 'https://payecalculator.co.ke/employer-cost-calculator',
+        url: 'https://www.payecalculator.co.ke/employer-cost-calculator',
         applicationCategory: 'FinanceApplication',
         operatingSystem: 'Any',
         offers: { '@type': 'Offer', price: '0', priceCurrency: 'KES' },

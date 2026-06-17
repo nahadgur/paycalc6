@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     'pay rise calculator Kenya', 'salary increase calculator Kenya', 'how much of a raise do I keep Kenya',
     'raise after tax Kenya 2026', 'net pay increase calculator Kenya',
   ],
-  alternates: { canonical: 'https://payecalculator.co.ke/raise-calculator' },
+  alternates: { canonical: 'https://www.payecalculator.co.ke/raise-calculator' },
 }
 
 const FAQ = [
@@ -35,7 +35,7 @@ export default function RaiseCalculatorPage() {
       {
         '@type': 'WebApplication',
         name: 'Pay Rise Calculator Kenya 2026',
-        url: 'https://payecalculator.co.ke/raise-calculator',
+        url: 'https://www.payecalculator.co.ke/raise-calculator',
         applicationCategory: 'FinanceApplication',
         operatingSystem: 'Any',
         offers: { '@type': 'Offer', price: '0', priceCurrency: 'KES' },

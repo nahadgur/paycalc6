@@ -14,11 +14,11 @@ export const metadata: Metadata = {
   authors: [{ name: 'PAYE Calculator Kenya' }],
   creator: 'PAYE Calculator Kenya',
   publisher: 'PAYE Calculator Kenya',
-  metadataBase: new URL('https://payecalculator.co.ke'),
+  metadataBase: new URL('https://www.payecalculator.co.ke'),
   openGraph: {
     type: 'website',
     locale: 'en_KE',
-    url: 'https://payecalculator.co.ke',
+    url: 'https://www.payecalculator.co.ke',
     siteName: 'Kenya PAYE Calculator',
     title: 'Kenya PAYE Calculator 2026 | Calculate Net Salary & Tax',
     description: 'Free Kenya PAYE calculator for 2026. Calculate your net salary, PAYE tax, NSSF, SHIF, and Housing Levy instantly.',
@@ -74,22 +74,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               '@graph': [
                 {
                   '@type': 'Organization',
-                  '@id': 'https://payecalculator.co.ke/#organization',
+                  '@id': 'https://www.payecalculator.co.ke/#organization',
                   name: 'Kenya PAYE Calculator',
-                  url: 'https://payecalculator.co.ke',
-                  logo: 'https://payecalculator.co.ke/logo-512.png',
+                  url: 'https://www.payecalculator.co.ke',
+                  logo: 'https://www.payecalculator.co.ke/logo-512.png',
                 },
                 {
                   '@type': 'WebSite',
-                  '@id': 'https://payecalculator.co.ke/#website',
-                  url: 'https://payecalculator.co.ke',
+                  '@id': 'https://www.payecalculator.co.ke/#website',
+                  url: 'https://www.payecalculator.co.ke',
                   name: 'Kenya PAYE Calculator',
-                  publisher: { '@id': 'https://payecalculator.co.ke/#organization' },
+                  publisher: { '@id': 'https://www.payecalculator.co.ke/#organization' },
                   potentialAction: {
                     '@type': 'SearchAction',
                     target: {
                       '@type': 'EntryPoint',
-                      urlTemplate: 'https://payecalculator.co.ke/salary/{search_term_string}',
+                      urlTemplate: 'https://www.payecalculator.co.ke/salary/{search_term_string}',
                     },
                     'query-input': 'required name=search_term_string',
                   },

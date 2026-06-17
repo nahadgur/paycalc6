@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     'payslip generator Kenya', 'free payslip generator', 'payslip maker Kenya',
     'create payslip Kenya', 'payslip template Kenya', 'payslip PDF Kenya 2026',
   ],
-  alternates: { canonical: 'https://payecalculator.co.ke/payslip-generator' },
+  alternates: { canonical: 'https://www.payecalculator.co.ke/payslip-generator' },
 }
 
 const FAQ = [
@@ -39,7 +39,7 @@ export default function PayslipGeneratorPage() {
       {
         '@type': 'WebApplication',
         name: 'Payslip Generator Kenya 2026',
-        url: 'https://payecalculator.co.ke/payslip-generator',
+        url: 'https://www.payecalculator.co.ke/payslip-generator',
         applicationCategory: 'FinanceApplication',
         operatingSystem: 'Any',
         offers: { '@type': 'Offer', price: '0', priceCurrency: 'KES' },

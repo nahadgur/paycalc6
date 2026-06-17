@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: { absolute: 'KRA iTax 2026 Guide | Pre-Filled Returns & Filing' },
   description: 'A guide to KRA iTax in 2026: how pre-filled returns work, how employees file in minutes with a KRA PIN, and what changed for employers.',
   keywords: ['KRA iTax 2026','iTax pre-filled returns Kenya','KRA tax return 2026','how to file iTax Kenya','KRA PIN tax filing'],
-  alternates: { canonical: 'https://payecalculator.co.ke/itax-2026' },
+  alternates: { canonical: 'https://www.payecalculator.co.ke/itax-2026' },
 }
 
 const STEPS_EMPLOYEE = [
@@ -48,7 +48,7 @@ export default function ITax2026Page() {
     '@type': 'Article',
     headline: 'KRA iTax 2026 Guide — Pre-Filled Returns and New Filing Features',
     description: 'How KRA\'s iTax 2026 changes affect salaried employees and employers in Kenya.',
-    url: 'https://payecalculator.co.ke/itax-2026',
+    url: 'https://www.payecalculator.co.ke/itax-2026',
     dateModified: '2026-04-06',
   }
 

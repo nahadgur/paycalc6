@@ -6,7 +6,7 @@ import { SpokeGrid } from '@/components/SpokeGrid'
 export const metadata: Metadata = {
   title: { absolute: 'KRA Tax Calendar 2026 | PAYE, NSSF, SHIF & iTax Dates' },
   description: 'The 2026 KRA tax calendar for Kenya: monthly PAYE, NSSF, SHIF and Housing Levy dates plus annual iTax return deadlines for employers and staff.',
-  alternates: { canonical: 'https://payecalculator.co.ke/tax-calendar' },
+  alternates: { canonical: 'https://www.payecalculator.co.ke/tax-calendar' },
 }
 
 const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December']
@@ -83,7 +83,7 @@ export default function TaxCalendarPage() {
     '@type': 'Article',
     headline: 'KRA Tax Calendar 2026 — All PAYE, NSSF, SHIF & iTax Deadlines',
     description: 'Complete calendar of KRA tax deadlines for 2026 including monthly PAYE remittance, NSSF, SHIF, and annual iTax filing dates.',
-    url: 'https://payecalculator.co.ke/tax-calendar',
+    url: 'https://www.payecalculator.co.ke/tax-calendar',
     dateModified: '2026-04-06',
   }
 

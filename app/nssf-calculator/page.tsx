@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     'NSSF calculator Kenya', 'new NSSF rates calculator 2026', 'NSSF Tier 1 Tier 2 calculator',
     'NSSF 2026 Kenya', 'NSSF deduction calculator', 'NSSF upper limit 108000',
   ],
-  alternates: { canonical: 'https://payecalculator.co.ke/nssf-calculator' },
+  alternates: { canonical: 'https://www.payecalculator.co.ke/nssf-calculator' },
 }
 
 const fmt = (n: number) =>
@@ -39,7 +39,7 @@ export default function NSSFCalculatorPage() {
       {
         '@type': 'WebApplication',
         name: 'NSSF Calculator Kenya 2026',
-        url: 'https://payecalculator.co.ke/nssf-calculator',
+        url: 'https://www.payecalculator.co.ke/nssf-calculator',
         applicationCategory: 'FinanceApplication',
         operatingSystem: 'Any',
         offers: { '@type': 'Offer', price: '0', priceCurrency: 'KES' },

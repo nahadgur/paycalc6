@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next'
 import articles from '@/lib/articles.json'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://payecalculator.co.ke'
+  const baseUrl = 'https://www.payecalculator.co.ke'
   const currentDate = new Date().toISOString()
 
   // Programmatic salary breakdown pages - keep in sync with

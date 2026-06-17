@@ -5,7 +5,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Kenya Salary Budget Planner',
   description: 'Plan your monthly budget around your Kenyan take-home pay. See how PAYE, NSSF, SHIF and the Housing Levy shape what you can spend, save and invest.',
-  alternates: { canonical: 'https://payecalculator.co.ke/budget-guide' },
+  alternates: { canonical: 'https://www.payecalculator.co.ke/budget-guide' },
 }
 
 export default function BudgetGuideLayout({ children }: { children: React.ReactNode }) {

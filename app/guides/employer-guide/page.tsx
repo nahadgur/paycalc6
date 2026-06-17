@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: { absolute: 'Kenya Employer Payroll Compliance Guide 2026' },
   description: 'A payroll compliance guide for Kenyan employers in 2026: the true cost of hiring, P10 filing, PAYE remittance, SHIF, NSSF and Housing Levy duties.',
   keywords: ['employer PAYE Kenya','payroll compliance Kenya 2026','true cost hiring Kenya','P10 return Kenya','NSSF employer contribution'],
-  alternates: { canonical: 'https://payecalculator.co.ke/guides/employer-guide' },
+  alternates: { canonical: 'https://www.payecalculator.co.ke/guides/employer-guide' },
 }
 
 const fmt = (n: number) =>
@@ -129,7 +129,7 @@ export default function EmployerGuidePage() {
     '@type': 'Article',
     headline: 'Kenya Employer Payroll Compliance Guide 2026',
     description: 'Complete payroll compliance obligations for Kenyan employers: PAYE, NSSF, SHIF, Housing Levy, P10 filing, and true cost of hiring.',
-    url: 'https://payecalculator.co.ke/guides/employer-guide',
+    url: 'https://www.payecalculator.co.ke/guides/employer-guide',
     dateModified: '2026-04-06',
   }
 

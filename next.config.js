@@ -57,18 +57,7 @@ const nextConfig = {
       },
     ]
 
-    // Force the canonical host: www serves live 200s today, so 301 every www
-    // request to the bare apex (which metadataBase, the sitemap and all
-    // canonicals already use). Belt-and-braces alongside the Vercel domain
-    // redirect so the host is enforced in code too.
-    const hostRedirect = {
-      source: '/:path*',
-      has: [{ type: 'host', value: 'www.payecalculator.co.ke' }],
-      destination: 'https://payecalculator.co.ke/:path*',
-      permanent: true,
-    }
-
-    return [hostRedirect, ...guideRedirects, ...blogRedirects]
+    return [...guideRedirects, ...blogRedirects]
   },
   async headers() {
     // Security response headers (clears the Screaming Frog "missing header"

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     'bonus tax calculator Kenya', 'how is bonus taxed in Kenya', 'tax on bonus Kenya 2026',
     '13th month pay tax Kenya', 'net bonus calculator Kenya',
   ],
-  alternates: { canonical: 'https://payecalculator.co.ke/bonus-calculator' },
+  alternates: { canonical: 'https://www.payecalculator.co.ke/bonus-calculator' },
 }
 
 const FAQ = [
@@ -35,7 +35,7 @@ export default function BonusCalculatorPage() {
       {
         '@type': 'WebApplication',
         name: 'Bonus Tax Calculator Kenya 2026',
-        url: 'https://payecalculator.co.ke/bonus-calculator',
+        url: 'https://www.payecalculator.co.ke/bonus-calculator',
         applicationCategory: 'FinanceApplication',
         operatingSystem: 'Any',
         offers: { '@type': 'Offer', price: '0', priceCurrency: 'KES' },

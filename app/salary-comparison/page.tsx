@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     'salary comparison Kenya', 'net salary by band Kenya', 'effective tax rate Kenya 2026',
     'salary comparison calculator Kenya', 'take home by salary Kenya',
   ],
-  alternates: { canonical: 'https://payecalculator.co.ke/salary-comparison' },
+  alternates: { canonical: 'https://www.payecalculator.co.ke/salary-comparison' },
 }
 
 const FAQ = [
@@ -36,7 +36,7 @@ export default function SalaryComparisonPage() {
       {
         '@type': 'WebApplication',
         name: 'Salary Comparison Calculator Kenya 2026',
-        url: 'https://payecalculator.co.ke/salary-comparison',
+        url: 'https://www.payecalculator.co.ke/salary-comparison',
         applicationCategory: 'FinanceApplication',
         operatingSystem: 'Any',
         offers: { '@type': 'Offer', price: '0', priceCurrency: 'KES' },

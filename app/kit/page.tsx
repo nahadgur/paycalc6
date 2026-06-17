@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: { absolute: 'Broke After Payday: Kenya Salary Survival Kit 2026 (PDF)' },
   description:
     'A practical 53-page kit for Kenyan workers: understand your payslip, plug money leaks, dodge scams and test a side hustle in 30 days. KES 299 via M-Pesa.',
-  alternates: { canonical: 'https://payecalculator.co.ke/kit' },
+  alternates: { canonical: 'https://www.payecalculator.co.ke/kit' },
 }
 
 const CHAPTERS = [

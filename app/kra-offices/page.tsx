@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: { absolute: 'KRA Tax Offices in Kenya 2026 | Find Your Branch' },
   description: 'Find your nearest Kenya Revenue Authority (KRA) tax office. Addresses, phone numbers, and opening hours for all KRA regional service centres across Kenya.',
   keywords: ['KRA office Nairobi','KRA office Mombasa','KRA office Kisumu','KRA Nakuru','KRA Eldoret','Kenya Revenue Authority offices'],
-  alternates: { canonical: 'https://payecalculator.co.ke/kra-offices' },
+  alternates: { canonical: 'https://www.payecalculator.co.ke/kra-offices' },
 }
 
 type Office = {
@@ -176,7 +176,7 @@ export default function KRAOfficesPage() {
     '@type': 'ItemList',
     name: 'KRA Tax Offices Kenya 2026',
     description: 'Addresses and contact details for Kenya Revenue Authority offices across Kenya.',
-    url: 'https://payecalculator.co.ke/kra-offices',
+    url: 'https://www.payecalculator.co.ke/kra-offices',
     itemListElement: OFFICES.map((office, i) => ({
       '@type': 'ListItem',
       position: i + 1,

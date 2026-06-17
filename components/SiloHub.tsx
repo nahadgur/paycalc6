@@ -7,7 +7,7 @@ import { ArrowRight, ChevronRight } from 'lucide-react'
 import { siloByKey, spokeTitle } from '@/lib/silos'
 import Hero from './Hero'
 
-const BASE = 'https://payecalculator.co.ke'
+const BASE = 'https://www.payecalculator.co.ke'
 
 export function SiloHub({
   siloKey,

@@ -5,7 +5,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Annual P9 Certificate Generator',
   description: 'Generate your annual P9 tax deduction certificate for Kenya. Enter your monthly pay and deductions to produce a P9 summary for your KRA return.',
-  alternates: { canonical: 'https://payecalculator.co.ke/p9-generator' },
+  alternates: { canonical: 'https://www.payecalculator.co.ke/p9-generator' },
 }
 
 export default function P9GeneratorLayout({ children }: { children: React.ReactNode }) {

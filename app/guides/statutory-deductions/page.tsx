@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: { absolute: 'Statutory Deductions in Kenya 2026: NSSF, SHIF, Levy' },
   description:
     'The three mandatory payroll deductions in Kenya for 2026: NSSF (max KES 6,480), SHIF (2.75%) and the Housing Levy (1.5%). Rates, limits and maths.',
-  alternates: { canonical: 'https://payecalculator.co.ke/guides/statutory-deductions' },
+  alternates: { canonical: 'https://www.payecalculator.co.ke/guides/statutory-deductions' },
 }
 
 export default function StatutoryDeductionsHub() {

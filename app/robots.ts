@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://payecalculator.co.ke/sitemap.xml',
+    sitemap: 'https://www.payecalculator.co.ke/sitemap.xml',
   }
 }

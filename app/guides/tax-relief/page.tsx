@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: { absolute: 'Kenya Tax Reliefs 2026 | How to Reduce Your PAYE' },
   description: 'Every PAYE tax relief in Kenya for 2026: personal, mortgage interest, pension, insurance and disability relief. How to claim each and what you save.',
   keywords: ['Kenya tax relief 2026','mortgage interest relief Kenya','pension tax relief Kenya','PAYE reduction Kenya','KES 30000 mortgage relief'],
-  alternates: { canonical: 'https://payecalculator.co.ke/guides/tax-relief' },
+  alternates: { canonical: 'https://www.payecalculator.co.ke/guides/tax-relief' },
 }
 
 const fmt = (n: number) =>
@@ -137,7 +137,7 @@ export default function TaxReliefPage() {
     '@type': 'Article',
     headline: 'Kenya Tax Reliefs 2026 — Complete Guide to Reducing Your PAYE',
     description: 'All PAYE tax reliefs available in Kenya 2026: personal relief, mortgage, pension, insurance, and disability relief.',
-    url: 'https://payecalculator.co.ke/guides/tax-relief',
+    url: 'https://www.payecalculator.co.ke/guides/tax-relief',
     dateModified: '2026-04-06',
   }
 
