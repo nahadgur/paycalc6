@@ -8,7 +8,7 @@ import { Download } from 'lucide-react'
 // /kit landing page, which converts to Selar.
 export default function KitBanner({ className = '' }: { className?: string }) {
   return (
-    <div className={`relative overflow-hidden rounded-2xl bg-[#1a1412] text-white px-6 py-10 sm:px-10 sm:py-14 ${className}`}>
+    <div className={`banner-shine relative overflow-hidden rounded-2xl bg-[#1a1412] text-[#fff] px-6 py-10 sm:px-10 sm:py-14 ${className}`}>
       <svg
         aria-hidden="true"
         className="pointer-events-none absolute -right-10 -top-16 h-auto w-[260px] text-white/[0.06]"
@@ -22,7 +22,7 @@ export default function KitBanner({ className = '' }: { className?: string }) {
 
       <div className="relative z-10 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between sm:gap-8">
         <div className="max-w-xl">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-brand px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-white">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-brand px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[#fff]">
             Free for now
           </span>
           <h3 className="editorial-h mt-4 mb-3 text-[26px] sm:text-[34px] leading-tight">
@@ -35,7 +35,7 @@ export default function KitBanner({ className = '' }: { className?: string }) {
         </div>
         <Link
           href="/kit"
-          className="inline-flex w-fit shrink-0 items-center gap-2 rounded-full bg-brand px-6 py-3.5 font-bold text-white transition-colors hover:bg-brand-600"
+          className="relative z-10 inline-flex w-fit shrink-0 items-center gap-2 rounded-full bg-brand px-6 py-3.5 font-bold text-[#fff] transition-colors hover:bg-brand-600"
         >
           <Download className="h-4 w-4" /> Get the kit free
         </Link>

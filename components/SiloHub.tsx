@@ -86,22 +86,6 @@ export function SiloHub({
           </div>
         </section>
 
-        {/* Calculator CTA */}
-        <section className="mb-12 rounded-2xl bg-brand-50 border border-brand-200 p-7 text-center">
-          <h2 className="text-xl font-bold text-stone-900 mb-2">See it on your own salary</h2>
-          <p className="text-stone-600 max-w-xl mx-auto mb-5">
-            Run your own figures and get an exact 2026 breakdown for PAYE, NSSF, SHIF, the Housing Levy and your net take-home.
-          </p>
-          <Link
-            href={silo.cta.href}
-            className="inline-flex items-center gap-2 rounded-full bg-brand px-7 py-3.5 font-semibold text-white hover:bg-brand-600 transition-colors"
-            style={{ backgroundColor: '#F04C40' }}
-          >
-            {silo.cta.label}
-            <ArrowRight className="w-4 h-4" />
-          </Link>
-        </section>
-
         {/* Kit promo */}
         <KitBanner className="mb-12" />
 
@@ -119,6 +103,22 @@ export function SiloHub({
             </div>
           </section>
         )}
+
+        {/* Calculator CTA — below the guide content, after a section */}
+        <section className="mb-6 rounded-2xl bg-brand-50 border border-brand-200 p-7 text-center">
+          <h2 className="text-xl font-bold text-stone-900 mb-2">See it on your own salary</h2>
+          <p className="text-stone-600 max-w-xl mx-auto mb-5">
+            Run your own figures and get an exact 2026 breakdown for PAYE, NSSF, SHIF, the Housing Levy and your net take-home.
+          </p>
+          <Link
+            href={silo.cta.href}
+            className="inline-flex items-center gap-2 rounded-full bg-brand px-7 py-3.5 font-semibold text-[#fff] hover:bg-brand-600 transition-colors"
+            style={{ backgroundColor: '#F04C40' }}
+          >
+            {silo.cta.label}
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </section>
       </div>
       </div>
     </>
