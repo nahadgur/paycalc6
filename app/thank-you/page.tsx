@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { CheckCircle2, Mail, Calculator, BookOpen } from 'lucide-react'
-import ThankYouLead from '@/components/ThankYouLead'
 
 export const metadata: Metadata = {
   title: { absolute: 'Thank you for your purchase | Kenya PAYE Calculator' },
@@ -35,11 +34,6 @@ export default function ThankYouPage() {
           couple of minutes. If you do not see it, check your spam or promotions folder and search for
           <strong> Selar</strong> or <strong>PAYE Calculator</strong>. The PDF is yours to keep and reread every payday.
         </p>
-      </div>
-
-      {/* Lead capture */}
-      <div className="mt-8">
-        <ThankYouLead />
       </div>
 
       {/* Keep them on site */}
