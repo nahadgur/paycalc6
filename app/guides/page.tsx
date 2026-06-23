@@ -14,6 +14,7 @@ import {
 } from 'lucide-react'
 import { SILOS, spokeTitle, type Silo } from '@/lib/silos'
 import Hero from '@/components/Hero'
+import KitBanner from '@/components/KitBanner'
 
 export const metadata: Metadata = {
   title: { absolute: 'Kenya PAYE & Salary Guides 2026, by Topic' },
@@ -111,6 +112,8 @@ export default function GuidesIndex() {
               )
             })}
           </div>
+
+          <KitBanner className="mt-12" />
 
           <div className="mt-12 text-center">
             <Link

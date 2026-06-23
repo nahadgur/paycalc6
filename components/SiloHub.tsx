@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { ArrowRight, ChevronRight } from 'lucide-react'
 import { siloByKey, spokeTitle } from '@/lib/silos'
 import Hero from './Hero'
+import KitBanner from './KitBanner'
 
 const BASE = 'https://www.payecalculator.co.ke'
 
@@ -100,6 +101,9 @@ export function SiloHub({
             <ArrowRight className="w-4 h-4" />
           </Link>
         </section>
+
+        {/* Kit promo */}
+        <KitBanner className="mb-12" />
 
         {/* FAQ */}
         {faqs.length > 0 && (

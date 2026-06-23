@@ -13,6 +13,7 @@ import {
   type LucideIcon,
 } from 'lucide-react'
 import articles from '@/lib/articles.json'
+import KitBanner from '@/components/KitBanner'
 
 export const metadata: Metadata = {
   title: 'Kenya Tax & PAYE Articles',
@@ -167,6 +168,13 @@ export default function BlogPage() {
               )
             })}
           </div>
+        </div>
+      </section>
+
+      {/* Kit promo */}
+      <section className="bg-white">
+        <div className="max-w-5xl mx-auto px-5 sm:px-6 pb-4">
+          <KitBanner />
         </div>
       </section>
 

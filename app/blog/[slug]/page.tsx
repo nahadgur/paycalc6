@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation'
 import articles from '@/lib/articles.json'
 import { siloForSpoke, ctaForSpoke, ctaCard } from '@/lib/silos'
 import { ChevronRight } from 'lucide-react'
+import KitBanner from '@/components/KitBanner'
 
 type Props = { params: { slug: string } }
 
@@ -130,6 +131,9 @@ export default function BlogArticle({ params }: Props) {
 
         {/* Content */}
         <div className="blog-content" dangerouslySetInnerHTML={{ __html: cleanContent }} />
+
+        {/* Kit promo */}
+        <KitBanner className="mt-12" />
 
         {/* Read deeper — points to the silo's pillar guide, not back to the
             calculator (the top card already covers that), so the two CTAs
