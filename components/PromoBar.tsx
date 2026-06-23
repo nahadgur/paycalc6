@@ -7,7 +7,7 @@ import { X } from 'lucide-react'
 // localStorage so returning visitors are not nagged. Bump the key version to
 // re-show the bar after a change. Starts hidden on the server and appears after
 // mount, which avoids a hydration mismatch for visitors who already dismissed it.
-const DISMISS_KEY = 'paye_kit_promo_v1'
+const DISMISS_KEY = 'paye_kit_promo_v2'
 const SELAR_URL = 'https://selar.com/366117d092'
 
 export default function PromoBar() {
@@ -31,9 +31,9 @@ export default function PromoBar() {
         rel="noopener noreferrer"
         className="block px-10 py-2 text-center text-[12px] sm:text-[13px] font-medium transition-colors hover:bg-brand-600"
       >
-        <span className="opacity-90">New for 2026 ·</span>{' '}
-        <span className="font-semibold">Broke After Payday</span>, the Kenya salary survival kit.{' '}
-        <span className="underline underline-offset-2">Get the PDF →</span>
+        <span className="opacity-90">Free for now ·</span>{' '}
+        <span className="font-semibold">Broke After Payday</span>, the 2026 Kenya salary survival kit.{' '}
+        <span className="underline underline-offset-2">Download free →</span>
       </a>
       <button
         type="button"

@@ -1,13 +1,14 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { CheckCircle2, BookOpen, ShieldCheck, RefreshCw, FileText } from 'lucide-react'
-import KitCheckout from '@/components/KitCheckout'
+import { CheckCircle2, BookOpen, ShieldCheck, RefreshCw, FileText, ArrowRight } from 'lucide-react'
+
+const SELAR_URL = 'https://selar.com/366117d092'
 
 export const metadata: Metadata = {
   title: { absolute: 'Broke After Payday: Kenya Salary Survival Kit 2026 (PDF)' },
   description:
-    'A practical 53-page kit for Kenyan workers: understand your payslip, plug money leaks, dodge scams and test a side hustle in 30 days. KES 299 via M-Pesa.',
+    'A practical kit for Kenyan workers: understand your payslip, plug money leaks, dodge scams and test a side hustle in 30 days. Free to download for now.',
   alternates: { canonical: 'https://www.payecalculator.co.ke/kit' },
 }
 
@@ -29,9 +30,9 @@ const CHAPTERS = [
 const FAQS = [
   ['Is this financial advice?', 'No. It is practical education and planning built around the 2026 statutory rates. For decisions about your specific situation, talk to a qualified professional.'],
   ['What format is it?', 'A 53-page PDF, sized for phone and desktop reading, with clickable contents and links. Your copy is licensed to your email address.'],
-  ['What happens after I pay?', 'The download starts on this page the moment your M-Pesa payment confirms, and we also email you the link. The link works for 7 days; the PDF is yours forever.'],
+  ['What happens after I get it?', 'You grab it on Selar and the download link is emailed to you straight away. The PDF is yours to keep and reread any time.'],
   ['Rates change. Will my copy go stale?', 'No. Buyers get every updated edition free. When PAYE, NSSF, SHIF or Housing Levy rates change, we ship a new edition and email you.'],
-  ['Can I get a refund?', 'If the kit is not what you expected, reply to your purchase email within 7 days and we will sort you out.'],
+  ['What if I have a problem with it?', 'Reply to your download email any time and we will sort you out.'],
 ]
 
 export default function KitPage() {
@@ -75,15 +76,33 @@ export default function KitPage() {
         </div>
       </section>
 
-      {/* Checkout */}
+      {/* Checkout — free for now, delivered through Selar */}
       <section id="buy" className="mx-auto mt-12 max-w-md scroll-mt-24">
-        <KitCheckout />
+        <div className="rounded-2xl border border-stone-200 bg-white p-6 text-center shadow-sm">
+          <p className="text-sm font-medium text-stone-500">Launch offer</p>
+          <p className="mt-1 flex items-baseline justify-center gap-3">
+            <span className="editorial-h text-4xl text-stone-900">Free</span>
+            <span className="text-lg text-stone-400 line-through">KES 299</span>
+          </p>
+          <p className="mt-2 text-sm text-stone-600">
+            Download the full kit at no cost while we are in launch.
+          </p>
+          <a
+            href={SELAR_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand px-6 py-3.5 font-bold text-white transition-colors hover:bg-brand-600"
+          >
+            Get the kit free <ArrowRight className="h-5 w-5" />
+          </a>
+          <p className="mt-3 text-xs text-stone-400">Instant download on Selar, delivered to your email.</p>
+        </div>
       </section>
 
       {/* Trust strip */}
       <section className="mt-10 grid gap-4 text-center sm:grid-cols-3">
         {[
-          { Icon: ShieldCheck, text: 'M-Pesa STK push checkout — no card needed' },
+          { Icon: ShieldCheck, text: 'Free download, no payment needed' },
           { Icon: RefreshCw, text: 'Free updated editions when rates change' },
           { Icon: FileText, text: 'Instant download + email delivery' },
         ].map(({ Icon, text }) => (
@@ -124,10 +143,15 @@ export default function KitPage() {
           ))}
         </div>
         <div className="mt-8 text-center">
-          <a href="#buy" className="inline-block rounded-lg bg-brand px-8 py-3.5 font-bold text-white hover:bg-brand-600">
-            Get the kit — KES 299
+          <a
+            href={SELAR_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block rounded-lg bg-brand px-8 py-3.5 font-bold text-white hover:bg-brand-600"
+          >
+            Get the kit free
           </a>
-          <p className="mt-2 text-xs text-gray-400">Less than one weekend out. Pays for itself the first time it stops a Fuliza cycle.</p>
+          <p className="mt-2 text-xs text-gray-400">Free while we are in launch. Download it before that changes.</p>
         </div>
       </section>
     </main>
