@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowRight, ChevronRight } from 'lucide-react'
-import { SILOS, spokeTitle } from '@/lib/silos'
+import { SILOS, spokeTitle, type Silo } from '@/lib/silos'
 import Hero from '@/components/Hero'
 
 export const metadata: Metadata = {
@@ -11,8 +11,12 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://www.payecalculator.co.ke/guides' },
 }
 
-// Topical pillar hubs (the how-paye-works set lives on the homepage calculator).
-const HUBS = SILOS.filter((s) => s.hubHref.startsWith('/guides/'))
+// Topical pillar hubs. The pillar page is the silo's guideHref (a /guides/ page),
+// not hubHref (which is always a calculator). how-paye-works has no guideHref —
+// its hub is the homepage calculator — so it is correctly excluded here.
+const HUBS = SILOS.filter(
+  (s): s is Silo & { guideHref: string } => !!s.guideHref?.startsWith('/guides/'),
+)
 
 export default function GuidesIndex() {
   const breadcrumb = {
@@ -46,7 +50,7 @@ export default function GuidesIndex() {
           {HUBS.map((hub) => (
             <Link
               key={hub.key}
-              href={hub.hubHref}
+              href={hub.guideHref}
               className="group block rounded-2xl bg-white border border-stone-200 hover:border-brand-300 p-6 transition-colors"
             >
               <div className="flex items-start justify-between gap-4">
