@@ -126,7 +126,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         {/* Footer — Bold Poster red block, contained */}
         <div className="bg-white px-4 sm:px-6 pb-6">
-          <footer className="max-w-5xl mx-auto bg-brand text-white rounded-2xl sm:rounded-3xl overflow-hidden px-5 sm:px-8 md:px-10 py-12 sm:py-14">
+          <footer className="max-w-5xl mx-auto bg-[#1a1412] text-white rounded-2xl sm:rounded-3xl overflow-hidden px-5 sm:px-8 md:px-10 py-12 sm:py-14">
             {/* CTA band */}
             <div className="text-center mb-14">
               <h2 className="editorial-h text-[34px] sm:text-[44px] mb-3">
@@ -136,10 +136,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 Free Kenya PAYE calculator with the latest 2026 KRA rates.
               </p>
               <div className="flex flex-wrap gap-2 justify-center">
-                <Link href="/" className="inline-flex items-center gap-2 px-5 py-3 bg-[#111] text-white rounded-full font-medium text-[13px] hover:bg-black transition">
+                <Link href="/" className="inline-flex items-center gap-2 px-5 py-3 bg-brand text-white rounded-full font-medium text-[13px] hover:bg-brand-600 transition">
                   Calculate now →
                 </Link>
-                <Link href="/guides" className="inline-flex items-center gap-2 px-5 py-3 bg-white text-brand rounded-full font-medium text-[13px] hover:bg-brand-50 transition">
+                <Link href="/guides" className="inline-flex items-center gap-2 px-5 py-3 bg-white text-[#1a1412] rounded-full font-medium text-[13px] hover:bg-brand-50 transition">
                   Read the guides
                 </Link>
               </div>
