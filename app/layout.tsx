@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Script from 'next/script'
 import Link from 'next/link'
 import NavCalculators from '@/components/NavCalculators'
+import PromoBar from '@/components/PromoBar'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -100,6 +101,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className="min-h-screen bg-white text-[#111]">
+        {/* Promo bar — Selar PDF, dismissible. Scrolls away above the sticky nav. */}
+        <PromoBar />
+
         {/* Nav */}
         <nav className="sticky top-0 z-50 bg-white border-b border-[#eee]">
           <div className="max-w-5xl mx-auto px-5 sm:px-6">
