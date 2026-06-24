@@ -28,7 +28,7 @@ export default function PromoBar() {
     <div className="banner-shine relative overflow-hidden bg-[#1a1412] text-white">
       <Link
         href="/kit"
-        className="relative z-10 flex items-center justify-center gap-2.5 px-10 py-2.5 text-center text-[12px] font-medium transition-colors hover:bg-black sm:gap-3 sm:py-4 sm:text-[15px]"
+        className="relative z-10 flex items-center justify-center gap-2.5 px-10 py-2.5 text-center text-[12px] font-medium transition-colors hover:bg-black sm:gap-3.5 sm:py-7 sm:text-[18px]"
       >
         {/* Pulsing dot */}
         <span className="relative flex h-2 w-2 shrink-0">
