@@ -40,7 +40,7 @@ export default function PromoBar() {
           <span className="opacity-80">Free for now ·</span>{' '}
           <span className="font-semibold">Broke After Payday</span>
           <span className="hidden sm:inline">, the 2026 Kenya salary survival kit</span>.{' '}
-          <span className="whitespace-nowrap font-semibold text-brand-300 underline underline-offset-2">Download free →</span>
+          <span className="whitespace-nowrap font-semibold text-brand-300 underline underline-offset-2">Download →</span>
         </span>
       </a>
       <button

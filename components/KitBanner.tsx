@@ -37,7 +37,7 @@ export default function KitBanner({ className = '' }: { className?: string }) {
           href="/kit"
           className="relative z-10 inline-flex w-fit shrink-0 items-center gap-2 rounded-full bg-brand px-6 py-3.5 font-bold text-[#fff] transition-colors hover:bg-brand-600"
         >
-          <Download className="h-4 w-4" /> Get the kit free
+          <Download className="h-4 w-4" /> Get the kit
         </Link>
       </div>
     </div>
