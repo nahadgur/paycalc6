@@ -4,6 +4,7 @@ import Link from 'next/link'
 import NavCalculators from '@/components/NavCalculators'
 import MobileNav from '@/components/MobileNav'
 import PromoBar from '@/components/PromoBar'
+import KitPopup from '@/components/KitPopup'
 import { Download } from 'lucide-react'
 import './globals.css'
 
@@ -230,6 +231,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
           </footer>
         </div>
+
+        <KitPopup />
       </body>
     </html>
   )

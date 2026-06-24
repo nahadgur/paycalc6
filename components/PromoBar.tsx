@@ -1,14 +1,15 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
 import { X } from 'lucide-react'
 
-// Slim site-wide promo for the Selar PDF. Dismissible, remembered in
-// localStorage so returning visitors are not nagged. Bump the key version to
-// re-show the bar after a change. Starts hidden on the server and appears after
-// mount, which avoids a hydration mismatch for visitors who already dismissed it.
+// Slim site-wide promo for the kit. Links to /kit (the landing sells, then
+// converts to Selar). Dismissible, remembered in localStorage so returning
+// visitors are not nagged. Bump the key version to re-show the bar after a
+// change. Starts hidden on the server and appears after mount, which avoids a
+// hydration mismatch for visitors who already dismissed it.
 const DISMISS_KEY = 'paye_kit_promo_v3'
-const SELAR_URL = 'https://selar.com/366117d092'
 
 export default function PromoBar() {
   const [show, setShow] = useState(false)
@@ -25,10 +26,8 @@ export default function PromoBar() {
 
   return (
     <div className="banner-shine relative overflow-hidden bg-[#1a1412] text-white">
-      <a
-        href={SELAR_URL}
-        target="_blank"
-        rel="noopener noreferrer"
+      <Link
+        href="/kit"
         className="relative z-10 flex items-center justify-center gap-2.5 px-10 py-2.5 text-center text-[12px] font-medium transition-colors hover:bg-black sm:gap-3 sm:py-4 sm:text-[15px]"
       >
         {/* Pulsing dot */}
@@ -42,7 +41,7 @@ export default function PromoBar() {
           <span className="hidden sm:inline">, the 2026 Kenya salary survival kit</span>.{' '}
           <span className="whitespace-nowrap font-semibold text-brand-300 underline underline-offset-2">Download →</span>
         </span>
-      </a>
+      </Link>
       <button
         type="button"
         aria-label="Dismiss"
