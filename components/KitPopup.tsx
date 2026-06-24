@@ -16,7 +16,11 @@ export default function KitPopup() {
 
   useEffect(() => {
     const path = (pathname || '').replace(/\/$/, '')
-    if (path === '/kit' || path === '/thank-you') return
+    // Fire on engagement pages where people read and click (guides, blog,
+    // calculator sub-pages, FAQ, etc.). Skip the homepage landing, the kit and
+    // thank-you pages, and privacy, where it is redundant or unwelcome.
+    const SKIP = ['', '/kit', '/thank-you', '/privacy']
+    if (SKIP.includes(path)) return
     try {
       if (localStorage.getItem(DISMISS_KEY)) return
     } catch {
