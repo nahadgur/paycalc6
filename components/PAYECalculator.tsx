@@ -321,19 +321,19 @@ const WaterfallChart = ({ data }) => {
               {item.isPositive ? '+' : ''}{formatCurrency(item.value)}
             </span>
           </div>
-          <div className="h-8 bg-stone-800/50 rounded-lg relative overflow-hidden">
-            <div 
-              className={`absolute h-full rounded-lg transition-all duration-700 ${
-                item.isPositive ? 'bg-brand' : 'bg-[#8A2820]'
-              }`}
-              style={{ 
-                left: `${(item.start / waterfallData[0].value) * 100}%`,
-                width: `${(Math.abs(item.value) / waterfallData[0].value) * 100}%`
+          <div className="h-8 bg-stone-800/50 rounded-lg overflow-hidden">
+            {/* Bar length = running balance after this row, anchored left so each
+                deduction visibly shrinks the bar. The balance label sits at the
+                right end of the fill, so it never collides with the bar. min-w-fit
+                keeps the label readable; inline colour bypasses the .text-white remap. */}
+            <div
+              className="h-full rounded-lg transition-all duration-700 flex items-center justify-end pr-3 min-w-fit"
+              style={{
+                width: `${Math.max((item.end / waterfallData[0].value) * 100, 0)}%`,
+                backgroundColor: '#F04C40',
               }}
-            />
-            <div className="absolute inset-0 flex items-center justify-end pr-3">
-              {/* Running balance. Positive row = full red bar (white reads), deductions sit on the light track (dark reads). Inline colour bypasses the light-theme .text-white remap. */}
-              <span className="text-xs font-bold" style={{ color: item.isPositive ? '#ffffff' : '#8A2820' }}>{formatCurrency(item.end)}</span>
+            >
+              <span className="text-[11px] font-bold whitespace-nowrap" style={{ color: '#ffffff' }}>{formatCurrency(item.end)}</span>
             </div>
           </div>
         </div>

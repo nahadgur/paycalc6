@@ -116,8 +116,8 @@ export default function NSSFCalculatorPage() {
             Your contribution is split into two tiers, both charged at 6%. Tier I covers the first KES 9,000 of
             pensionable pay; Tier II covers the rest up to the KES 108,000 ceiling.
           </p>
-          <div className="bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
-            <table className="w-full text-sm">
+          <div className="bg-white/5 border border-white/10 rounded-2xl overflow-x-auto">
+            <table className="w-full min-w-[440px] text-sm">
               <thead>
                 <tr className="bg-white/5 border-b border-white/10">
                   <th className="text-left py-3 px-4 text-stone-400">Tier</th>
@@ -139,8 +139,8 @@ export default function NSSFCalculatorPage() {
         <section className="mb-10">
           <h2 className="text-xl font-bold text-white mb-3">Your NSSF deduction by salary (2026)</h2>
           <p className="text-stone-400 text-sm mb-5">Monthly employee deduction at common salary levels, with the Tier I / Tier II split.</p>
-          <div className="bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
-            <table className="w-full text-sm">
+          <div className="bg-white/5 border border-white/10 rounded-2xl overflow-x-auto">
+            <table className="w-full min-w-[520px] text-sm">
               <thead>
                 <tr className="bg-white/5 border-b border-white/10">
                   <th className="text-left py-3 px-4 text-stone-400">Monthly gross</th>
