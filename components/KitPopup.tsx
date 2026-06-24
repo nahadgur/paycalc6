@@ -2,13 +2,13 @@
 
 import { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
-import Link from 'next/link'
 import { X, Download } from 'lucide-react'
 
 // Scroll-triggered promo for the kit. Slides in once after the visitor scrolls
-// past a threshold, once per visitor (localStorage). Skipped on /kit and
-// /thank-you, where it would be redundant. Links to /kit.
+// past a threshold, once per visitor (localStorage). Goes straight to the Selar
+// download.
 const DISMISS_KEY = 'paye_kit_popup_v1'
+const SELAR_URL = 'https://selar.com/366117d092'
 
 export default function KitPopup() {
   const pathname = usePathname()
@@ -73,13 +73,15 @@ export default function KitPopup() {
         <p className="mt-1.5 text-[13px] leading-relaxed text-white/70 sm:mt-2 sm:text-[14px]">
           A 53-page PDF to decode your payslip and stop the money leaks. Free while we are in launch.
         </p>
-        <Link
-          href="/kit"
+        <a
+          href={SELAR_URL}
+          target="_blank"
+          rel="noopener noreferrer"
           onClick={dismiss}
           className="relative z-10 mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand px-5 py-3 text-sm font-bold text-[#fff] transition-colors hover:bg-brand-600 sm:mt-5 sm:py-3.5 sm:text-[15px]"
         >
           <Download className="h-4 w-4" /> Get the kit
-        </Link>
+        </a>
       </div>
     </div>
   )

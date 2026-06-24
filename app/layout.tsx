@@ -123,13 +123,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <NavCalculators />
                 <Link href="/guides" className="text-[#555] hover:text-brand transition-colors text-[13px] font-medium">Guides</Link>
                 <Link href="/blog" className="text-[#555] hover:text-brand transition-colors text-[13px] font-medium">Blog</Link>
-                <Link
-                  href="/kit"
+                <a
+                  href="https://selar.com/366117d092"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-full bg-brand px-3.5 py-1.5 text-[13px] font-semibold text-white shadow-sm transition-colors hover:bg-brand-600"
                 >
                   <Download className="h-3.5 w-3.5" />
                   Get the kit
-                </Link>
+                </a>
               </div>
 
               {/* Mobile menu */}
