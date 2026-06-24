@@ -1121,24 +1121,54 @@ export default function PAYECalculatorV2({ defaultTab = 'calculator', single = f
                 </div>
               </div>
 
-              {/* Bonus comparison chart */}
+              {/* Bonus split — one bold stacked bar: what you keep vs the taxman.
+                  Inline colours bypass the light-theme .text-white / bg remap. */}
               <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-2xl border border-white/10 p-5">
-                <h3 className="text-lg font-bold mb-4">Bonus Net vs Tax</h3>
-                <div className="h-64">
-                  <ResponsiveContainer width="100%" height="100%">
-                    <BarChart data={[
-                      { name: 'Gross Bonus', gross: bonusAmount, net: 0, tax: 0 },
-                      { name: 'Breakdown', gross: 0, net: bonusCalc.netBonus, tax: bonusCalc.bonusTax }
-                    ]}>
-                      <XAxis dataKey="name" stroke="#888" />
-                      <YAxis tickFormatter={(v) => formatCompact(v)} stroke="#888" />
-                      <Tooltip formatter={(v) => formatCurrency(v)} contentStyle={{ backgroundColor: '#1F2937', border: '1px solid #374151', borderRadius: '8px' }} />
-                      <Bar dataKey="gross" name="Gross" fill="#888" radius={[4, 4, 0, 0]} />
-                      <Bar dataKey="net" name="Net" fill="#F04C40" radius={[4, 4, 0, 0]} />
-                      <Bar dataKey="tax" name="Tax" fill="#8A2820" radius={[4, 4, 0, 0]} />
-                    </BarChart>
-                  </ResponsiveContainer>
-                </div>
+                <h3 className="text-lg font-bold mb-1">Where your bonus goes</h3>
+                <p className="text-sm text-stone-400 mb-4">Splitting your {formatCurrency(bonusAmount)} bonus</p>
+                {(() => {
+                  const net = bonusCalc.netBonus
+                  const tax = bonusCalc.bonusTax
+                  const total = net + tax || 1
+                  const netPct = Math.round((net / total) * 100)
+                  const taxPct = 100 - netPct
+                  return (
+                    <>
+                      <div className="flex h-16 w-full overflow-hidden rounded-xl shadow-sm">
+                        <div
+                          className="flex flex-col items-center justify-center transition-all duration-700"
+                          style={{ width: `${netPct}%`, backgroundColor: '#F04C40' }}
+                        >
+                          <span className="text-base font-extrabold leading-none" style={{ color: '#fff' }}>{netPct}%</span>
+                          <span className="mt-0.5 text-[10px] font-medium" style={{ color: 'rgba(255,255,255,0.85)' }}>You keep</span>
+                        </div>
+                        <div
+                          className="flex flex-col items-center justify-center transition-all duration-700"
+                          style={{ width: `${taxPct}%`, backgroundColor: '#8A2820' }}
+                        >
+                          <span className="text-base font-extrabold leading-none" style={{ color: '#fff' }}>{taxPct}%</span>
+                          <span className="mt-0.5 text-[10px] font-medium" style={{ color: 'rgba(255,255,255,0.85)' }}>Tax</span>
+                        </div>
+                      </div>
+                      <div className="mt-4 grid grid-cols-2 gap-3">
+                        <div className="rounded-xl border border-stone-200 p-3">
+                          <div className="mb-1 flex items-center gap-2">
+                            <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: '#F04C40' }} />
+                            <span className="text-xs text-stone-500">Net you keep</span>
+                          </div>
+                          <p className="text-xl font-bold" style={{ fontFamily: 'Fraunces, Georgia, serif' }}>{formatCurrency(net)}</p>
+                        </div>
+                        <div className="rounded-xl border border-stone-200 p-3">
+                          <div className="mb-1 flex items-center gap-2">
+                            <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: '#8A2820' }} />
+                            <span className="text-xs text-stone-500">Lost to tax</span>
+                          </div>
+                          <p className="text-xl font-bold" style={{ fontFamily: 'Fraunces, Georgia, serif' }}>{formatCurrency(tax)}</p>
+                        </div>
+                      </div>
+                    </>
+                  )
+                })()}
               </div>
             </div>
           )}

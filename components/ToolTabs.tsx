@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
-import { Calculator, RefreshCw, Gift, TrendingUp, Building, BarChart3, Landmark, Home, FileText, Receipt, ChevronRight } from 'lucide-react'
+import { Calculator, RefreshCw, Gift, TrendingUp, Building, BarChart3, Landmark, Home, FileText, Receipt } from 'lucide-react'
 
 // Every calculator on the site, shown as the pill bar in each hero. `key` is
 // matched against the current page so the active pill is highlighted.
@@ -21,15 +21,22 @@ export const TOOLS = [
 
 export default function ToolTabs({ active }: { active: string }) {
   const scrollRef = useRef<HTMLDivElement>(null)
-  // Edge state drives the fade hints. Default: more to the right (mobile overflows).
   const [edges, setEdges] = useState({ left: false, right: true })
+  // Scroll-progress thumb (mobile only): width = visible fraction, pos = travel.
+  const [bar, setBar] = useState({ show: true, thumb: 30, pos: 0 })
 
   const update = () => {
     const el = scrollRef.current
     if (!el) return
-    setEdges({
-      left: el.scrollLeft > 4,
-      right: el.scrollLeft + el.clientWidth < el.scrollWidth - 4,
+    const { scrollLeft, scrollWidth, clientWidth } = el
+    const thumbFrac = clientWidth / scrollWidth
+    const max = scrollWidth - clientWidth
+    const posFrac = max > 4 ? scrollLeft / max : 0
+    setEdges({ left: scrollLeft > 4, right: scrollLeft < max - 4 })
+    setBar({
+      show: scrollWidth > clientWidth + 4,
+      thumb: thumbFrac * 100,
+      pos: posFrac * (1 - thumbFrac) * 100,
     })
   }
 
@@ -41,7 +48,7 @@ export default function ToolTabs({ active }: { active: string }) {
 
   return (
     <div className="relative -mx-5 sm:mx-0">
-      {/* Scroll row. Mobile: one swipeable line. Desktop: wraps, no fades. */}
+      {/* Scroll row. Mobile: one swipeable line. Desktop: wraps, no indicators. */}
       <div
         ref={scrollRef}
         onScroll={update}
@@ -64,21 +71,27 @@ export default function ToolTabs({ active }: { active: string }) {
         ))}
       </div>
 
-      {/* Left fade — appears once scrolled away from the start. */}
+      {/* Edge fades hint there is more either side (mobile only). */}
       <div
-        className={`pointer-events-none absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-brand to-transparent transition-opacity duration-200 sm:hidden ${
+        className={`pointer-events-none absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-brand to-transparent transition-opacity duration-200 sm:hidden ${
           edges.left ? 'opacity-100' : 'opacity-0'
         }`}
       />
-
-      {/* Right fade + nudging chevron — signals there is more to swipe. */}
       <div
-        className={`pointer-events-none absolute inset-y-0 right-0 flex items-center justify-end pr-1.5 w-14 bg-gradient-to-l from-brand to-transparent transition-opacity duration-200 sm:hidden ${
+        className={`pointer-events-none absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-brand to-transparent transition-opacity duration-200 sm:hidden ${
           edges.right ? 'opacity-100' : 'opacity-0'
         }`}
-      >
-        <ChevronRight className="h-5 w-5 animate-pulse text-white" />
-      </div>
+      />
+
+      {/* Scroll-progress track below the row — clear, never overlaps the pills. */}
+      {bar.show && (
+        <div className="mx-5 mt-3 h-1 rounded-full bg-white/25 sm:hidden">
+          <div
+            className="h-full rounded-full bg-white transition-[margin,width] duration-150"
+            style={{ width: `${bar.thumb}%`, marginLeft: `${bar.pos}%` }}
+          />
+        </div>
+      )}
     </div>
   )
 }
