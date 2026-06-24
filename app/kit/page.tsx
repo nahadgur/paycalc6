@@ -142,17 +142,6 @@ export default function KitPage() {
             </details>
           ))}
         </div>
-        <div className="mt-8 text-center">
-          <a
-            href={SELAR_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block rounded-lg bg-brand px-8 py-3.5 font-bold text-white hover:bg-brand-600"
-          >
-            Get the kit free
-          </a>
-          <p className="mt-2 text-xs text-gray-400">Free while we are in launch. Download it before that changes.</p>
-        </div>
       </section>
     </main>
   )
