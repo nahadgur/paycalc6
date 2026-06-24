@@ -29,7 +29,7 @@ export default function PromoBar() {
         href={SELAR_URL}
         target="_blank"
         rel="noopener noreferrer"
-        className="relative z-10 flex items-center justify-center gap-2.5 px-10 py-2.5 text-center text-[12px] font-medium transition-colors hover:bg-black sm:text-[13px]"
+        className="relative z-10 flex items-center justify-center gap-2.5 px-10 py-2.5 text-center text-[12px] font-medium transition-colors hover:bg-black sm:gap-3 sm:py-4 sm:text-[15px]"
       >
         {/* Pulsing dot */}
         <span className="relative flex h-2 w-2 shrink-0">
