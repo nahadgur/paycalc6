@@ -9,7 +9,7 @@ import { X } from 'lucide-react'
 // visitors are not nagged. Bump the key version to re-show the bar after a
 // change. Starts hidden on the server and appears after mount, which avoids a
 // hydration mismatch for visitors who already dismissed it.
-const DISMISS_KEY = 'paye_kit_promo_v3'
+const DISMISS_KEY = 'paye_kit_promo_v4'
 
 export default function PromoBar() {
   const [show, setShow] = useState(false)
@@ -36,10 +36,8 @@ export default function PromoBar() {
           <span className="relative inline-flex h-2 w-2 rounded-full bg-brand" />
         </span>
         <span>
-          <span className="opacity-80">Free for now ·</span>{' '}
-          <span className="font-semibold">Broke After Payday</span>
-          <span className="hidden sm:inline">, the 2026 Kenya salary survival kit</span>.{' '}
-          <span className="whitespace-nowrap font-semibold text-brand-300 underline underline-offset-2">Download →</span>
+          Download Our Free eBook:{' '}
+          <span className="font-semibold text-brand-300 underline underline-offset-2">Best Side Hustles in Kenya →</span>
         </span>
       </Link>
       <button
