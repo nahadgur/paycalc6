@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Script from 'next/script'
 import Link from 'next/link'
 import NavCalculators from '@/components/NavCalculators'
+import MobileNav from '@/components/MobileNav'
 import PromoBar from '@/components/PromoBar'
 import { Download } from 'lucide-react'
 import './globals.css'
@@ -106,7 +107,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <PromoBar />
 
         {/* Nav */}
-        <nav className="sticky top-0 z-50 bg-white border-b border-[#eee]">
+        <nav className="sticky top-0 z-50 relative bg-white border-b border-[#eee]">
           <div className="max-w-5xl mx-auto px-5 sm:px-6">
             <div className="flex items-center justify-between h-14">
               <Link href="/" className="flex items-center gap-2.5 group">
@@ -117,18 +118,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   2026
                 </span>
               </Link>
-              <div className="flex items-center gap-5 sm:gap-6">
+              <div className="hidden sm:flex items-center gap-5 sm:gap-6">
                 <NavCalculators />
                 <Link href="/guides" className="text-[#555] hover:text-brand transition-colors text-[13px] font-medium">Guides</Link>
                 <Link href="/blog" className="text-[#555] hover:text-brand transition-colors text-[13px] font-medium">Blog</Link>
                 <Link
                   href="/kit"
-                  className="hidden sm:inline-flex items-center gap-1.5 whitespace-nowrap rounded-full bg-brand px-3.5 py-1.5 text-[13px] font-semibold text-white shadow-sm transition-colors hover:bg-brand-600"
+                  className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-full bg-brand px-3.5 py-1.5 text-[13px] font-semibold text-white shadow-sm transition-colors hover:bg-brand-600"
                 >
                   <Download className="h-3.5 w-3.5" />
                   Get the kit
                 </Link>
               </div>
+
+              {/* Mobile menu */}
+              <MobileNav />
             </div>
           </div>
         </nav>

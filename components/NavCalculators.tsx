@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import { ChevronDown } from 'lucide-react'
 
-const ITEMS = [
+export const CALC_ITEMS = [
   { href: '/', label: 'PAYE / net salary', desc: 'Full take-home breakdown' },
   { href: '/net-gross-calculator', label: 'Net to gross', desc: 'Gross for a target take-home' },
   { href: '/bonus-calculator', label: 'Bonus tax', desc: 'Tax and net on a bonus' },
@@ -60,7 +60,7 @@ export default function NavCalculators() {
         // top-full + pt-2 keeps a continuous hover bridge from the button to the menu.
         <div className="absolute right-0 sm:left-0 top-full pt-2 w-72 z-50">
           <div className="bg-white border border-[#eee] rounded-2xl shadow-lg shadow-black/5 p-2">
-            {ITEMS.map((it) => (
+            {CALC_ITEMS.map((it) => (
               <Link
                 key={it.href}
                 href={it.href}
