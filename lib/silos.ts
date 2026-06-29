@@ -100,6 +100,7 @@ export const SILOS: Silo[] = [
       'what-happens-to-your-paye-when-you-change-jobs-in-kenya',
       'what-to-do-if-your-kenyan-employer-is-deducting-wrong-paye',
       'how-kenyan-couples-can-file-taxes-together-or-separately',
+      'how-a-second-job-is-taxed-in-kenya',
     ],
     cta: { href: '/bonus-calculator', label: 'Calculate tax on your bonus' },
   },
@@ -167,6 +168,8 @@ const CTA_OVERRIDES: Record<string, Cta> = {
     { href: '/nssf-calculator', label: 'Calculate the new NSSF' },
   'filing-paye-returns-on-itax-in-kenya-without-getting-penalised':
     { href: '/p9-generator', label: 'Generate your P9' },
+  'how-a-second-job-is-taxed-in-kenya':
+    { href: '/', label: 'Open the PAYE calculator' },
 }
 
 const DEFAULT_CTA: Cta = { href: '/', label: 'Open calculator' }

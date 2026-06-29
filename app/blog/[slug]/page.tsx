@@ -49,7 +49,6 @@ export default function BlogArticle({ params }: Props) {
   // The calculator hub itself is reached via the CTA, completing blog -> guide
   // + blog -> calculator.
   const parentHref = silo ? (silo.guideHref ?? silo.hubHref) : undefined
-  const guideHref = silo?.guideHref
 
   const crumbs = [
     { '@type': 'ListItem', position: 1, name: 'Home', item: `${BASE}/` },
@@ -69,13 +68,6 @@ export default function BlogArticle({ params }: Props) {
     author: { '@type': 'Organization', name: 'PayeCalculator', url: BASE },
     publisher: { '@type': 'Organization', name: 'PayeCalculator', url: BASE },
   }
-
-  // Prefer same-silo posts (tightens internal linking), then top up with
-  // others in stable order to keep the build deterministic.
-  const siloSlugs = new Set(silo?.spokes ?? [])
-  const sameSilo = articles.filter((a) => a.slug !== params.slug && siloSlugs.has(a.slug))
-  const otherArticles = articles.filter((a) => a.slug !== params.slug && !siloSlugs.has(a.slug))
-  const relatedArticles = [...sameSilo, ...otherArticles].slice(0, 3)
 
   const cleanContent = article!.content
     .replace(/\"\"/g, '"')
@@ -134,44 +126,7 @@ export default function BlogArticle({ params }: Props) {
 
         {/* Kit promo */}
         <KitBanner className="mt-12" />
-
-        {/* Read deeper — points to the silo's pillar guide, not back to the
-            calculator (the top card already covers that), so the two CTAs
-            never share a destination. */}
-        <div className="mt-12 pt-8 border-t border-[#eee]">
-          <div className="flex items-center justify-between">
-            <span className="text-[#666] text-[13px]">Want the full picture?</span>
-            <Link href={guideHref ?? '/guides'} className="inline-flex items-center gap-2 px-4 py-2 bg-brand-50 text-brand-700 rounded-full text-[12px] font-medium hover:bg-brand-100 transition">
-              {guideHref ? 'Read the full guide' : 'Browse all guides'} →
-            </Link>
-          </div>
-        </div>
       </article>
-
-      {/* Related — cream section */}
-      <section className="bg-brand-50">
-        <div className="max-w-5xl mx-auto px-5 sm:px-6 py-14">
-          <h2 className="editorial-h text-[26px] sm:text-[32px] mb-8 text-brand-900">
-            Keep <span className="accent">reading</span>
-          </h2>
-          <div className="grid md:grid-cols-3 gap-4">
-            {relatedArticles.map((related) => (
-              <Link
-                key={related.slug}
-                href={`/blog/${related.slug}`}
-                className="group bg-white rounded-xl p-5 border border-brand-300/50 hover:border-brand transition-all duration-200 hover:-translate-y-0.5"
-              >
-                <h3 className="editorial-h text-[17px] text-[#111] mb-2 group-hover:text-brand transition-colors leading-snug">
-                  {related.title}
-                </h3>
-                <p className="text-[#666] text-[12px] line-clamp-2 leading-relaxed">
-                  {related.metaDescription}
-                </p>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
     </div>
   )
 }
