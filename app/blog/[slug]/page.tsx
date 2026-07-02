@@ -13,7 +13,9 @@ const PUBLISHED = '2026-01-15'
 const MODIFIED = '2026-06-16'
 
 export async function generateStaticParams() {
-  return articles.map((article) => ({ slug: article.slug }))
+  // Draft articles are excluded from the build so they 404 in production and
+  // stay out of the sitemap until the `draft` flag is removed.
+  return articles.filter((article) => !('draft' in article && article.draft)).map((article) => ({ slug: article.slug }))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -39,7 +41,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default function BlogArticle({ params }: Props) {
   const article = articles.find((a) => a.slug === params.slug)
-  if (!article) notFound()
+  // Draft articles 404 in both dev and prod until the `draft` flag is removed.
+  if (!article || ('draft' in article && article.draft)) notFound()
 
   const silo = siloForSpoke(params.slug)
   const cta = ctaForSpoke(params.slug)
