@@ -88,6 +88,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   '@id': 'https://www.payecalculator.co.ke/#website',
                   url: 'https://www.payecalculator.co.ke',
                   name: 'Kenya PAYE Calculator',
+                  alternateName: ['KenyaPAYECalculator'],
                   publisher: { '@id': 'https://www.payecalculator.co.ke/#organization' },
                   potentialAction: {
                     '@type': 'SearchAction',
