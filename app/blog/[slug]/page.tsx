@@ -10,7 +10,6 @@ type Props = { params: { slug: string } }
 
 const BASE = 'https://www.payecalculator.co.ke'
 const PUBLISHED = '2026-01-15'
-const MODIFIED = '2026-06-16'
 
 export async function generateStaticParams() {
   // Draft articles are excluded from the build so they 404 in production and
@@ -20,7 +19,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const article = articles.find((a) => a.slug === params.slug)
-  if (!article) return { title: 'Article not found' }
+  if (!article || ('draft' in article && article.draft)) notFound()
   return {
     title: { absolute: article.metaTitle || article.title },
     description: article.metaDescription,
@@ -66,7 +65,7 @@ export default function BlogArticle({ params }: Props) {
     headline: article!.title,
     description: article!.metaDescription,
     datePublished: PUBLISHED,
-    dateModified: MODIFIED,
+    dateModified: article!.reviewedAt,
     mainEntityOfPage: { '@type': 'WebPage', '@id': `${BASE}/blog/${params.slug}` },
     author: { '@type': 'Organization', name: 'PayeCalculator', url: BASE },
     publisher: { '@type': 'Organization', name: 'PayeCalculator', url: BASE },
@@ -100,9 +99,9 @@ export default function BlogArticle({ params }: Props) {
             {article!.metaDescription}
           </p>
           <div className="flex items-center gap-4 mt-6 text-[11px] opacity-80">
-            <span>10 min read</span>
+            <span>{Math.max(1, Math.ceil(article!.content.replace(/<[^>]*>/g, ' ').split(/\s+/).length / 200))} min read</span>
             <span className="w-1 h-1 bg-white/60 rounded-full"></span>
-            <span>Updated June 2026</span>
+            <span>Reviewed {new Date(article!.reviewedAt + 'T12:00:00Z').toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })}</span>
           </div>
         </div>
       </section>

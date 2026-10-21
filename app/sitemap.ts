@@ -56,7 +56,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     .filter((article) => !('draft' in article && article.draft))
     .map((article) => ({
     url: `${baseUrl}/blog/${article.slug}`,
-    lastModified: currentDate,
+    lastModified: article.reviewedAt,
     changeFrequency: 'monthly' as const,
     priority: 0.6,
   }))

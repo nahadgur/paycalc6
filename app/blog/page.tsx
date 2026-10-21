@@ -28,7 +28,6 @@ export const metadata: Metadata = {
 const categories: Record<string, string[]> = {
   'How-to guides': [
     'how-to-calculate-your-paye-tax-in-kenya',
-    'how-kenyan-employees-can-calculate-their-net-salary',
     'working-backwards-from-net-to-gross-salary-in-kenya',
   ],
   'Statutory deductions': [
@@ -48,7 +47,6 @@ const categories: Record<string, string[]> = {
     'take-home-pay-on-a-kes-100000-salary-in-kenya',
     'how-much-tax-do-you-pay-on-kes-150000-in-kenya',
     'the-real-cost-of-earning-kes-200000-in-kenya',
-    'paye-rates-for-high-earners-in-kenya-explained',
   ],
   'Employment situations': [
     'how-kenyan-employers-tax-your-bonus-and-13th-month-pay',
@@ -56,18 +54,17 @@ const categories: Record<string, string[]> = {
     'how-helb-loan-repayments-are-deducted-from-kenyan-salaries',
     'what-happens-to-your-paye-when-you-change-jobs-in-kenya',
     'what-to-do-if-your-kenyan-employer-is-deducting-wrong-paye',
-    'how-kenyan-couples-can-file-taxes-together-or-separately',
+    'how-terminal-dues-are-taxed-when-you-leave-a-job-in-kenya',
+    'how-a-second-job-is-taxed-in-kenya',
   ],
   'For employers': [
     'the-true-cost-of-hiring-an-employee-in-kenya',
-    'a-kenyan-employers-guide-to-nssf-and-housing-levy-obligations',
     'filing-paye-returns-on-itax-in-kenya-without-getting-penalised',
     'taxable-benefits-in-kind-that-kenyan-employers-must-declare',
   ],
   'News & updates': [
     'what-the-kenya-finance-bill-2025-means-for-your-salary',
     'key-kra-tax-deadlines-every-kenyan-should-know',
-    'how-the-new-nssf-rates-affect-kenyan-workers',
   ],
   'Lifestyle': [
     'what-salary-do-you-need-to-live-comfortably-in-nairobi',
@@ -89,7 +86,7 @@ const catId = (name: string) =>
   name.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
 
 export default function BlogPage() {
-  const articleMap = new Map(articles.map(a => [a.slug, a]))
+  const articleMap = new Map(articles.filter(a => !('draft' in a && a.draft)).map(a => [a.slug, a]))
   const featuredSlugs = [
     'how-to-calculate-your-paye-tax-in-kenya',
     'the-complete-guide-to-nssf-contributions-in-kenya',
@@ -117,7 +114,7 @@ export default function BlogPage() {
               Kenya tax, <span className="italic">explained</span>.
             </h1>
             <p className="text-[14px] sm:text-[16px] opacity-90 max-w-xl leading-relaxed">
-              {total} in-depth articles on PAYE, NSSF, SHIF, the Housing Levy, and every legal way to reduce your tax in Kenya.
+              {total} in-depth articles on PAYE, NSSF, SHIF, the Housing Levy, and legitimate tax deductions in Kenya.
             </p>
 
             {/* Category quick-nav */}

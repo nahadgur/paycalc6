@@ -38,7 +38,6 @@ export const SILOS: Silo[] = [
     blurb: 'The fundamentals of calculating PAYE, net salary, and working backwards from net to gross in Kenya.',
     spokes: [
       'how-to-calculate-your-paye-tax-in-kenya',
-      'how-kenyan-employees-can-calculate-their-net-salary',
       'working-backwards-from-net-to-gross-salary-in-kenya',
     ],
     cta: { href: '/', label: 'Calculate your exact take-home' },
@@ -82,7 +81,6 @@ export const SILOS: Silo[] = [
       'take-home-pay-on-a-kes-100000-salary-in-kenya',
       'how-much-tax-do-you-pay-on-kes-150000-in-kenya',
       'the-real-cost-of-earning-kes-200000-in-kenya',
-      'paye-rates-for-high-earners-in-kenya-explained',
       'what-salary-do-you-need-to-live-comfortably-in-nairobi',
     ],
     cta: { href: '/salary-comparison', label: 'Compare salaries side by side' },
@@ -99,7 +97,7 @@ export const SILOS: Silo[] = [
       'how-helb-loan-repayments-are-deducted-from-kenyan-salaries',
       'what-happens-to-your-paye-when-you-change-jobs-in-kenya',
       'what-to-do-if-your-kenyan-employer-is-deducting-wrong-paye',
-      'how-kenyan-couples-can-file-taxes-together-or-separately',
+      'how-terminal-dues-are-taxed-when-you-leave-a-job-in-kenya',
       'how-a-second-job-is-taxed-in-kenya',
     ],
     cta: { href: '/bonus-calculator', label: 'Calculate tax on your bonus' },
@@ -112,7 +110,6 @@ export const SILOS: Silo[] = [
     blurb: 'Payroll obligations for Kenyan employers: the true cost of hiring, NSSF and Housing Levy duties, iTax filing, and benefits in kind.',
     spokes: [
       'the-true-cost-of-hiring-an-employee-in-kenya',
-      'a-kenyan-employers-guide-to-nssf-and-housing-levy-obligations',
       'filing-paye-returns-on-itax-in-kenya-without-getting-penalised',
       'taxable-benefits-in-kind-that-kenyan-employers-must-declare',
     ],
@@ -127,7 +124,6 @@ export const SILOS: Silo[] = [
     spokes: [
       'what-the-kenya-finance-bill-2025-means-for-your-salary',
       'key-kra-tax-deadlines-every-kenyan-should-know',
-      'how-the-new-nssf-rates-affect-kenyan-workers',
     ],
     cta: { href: '/tax-calendar', label: 'See the KRA tax calendar' },
   },

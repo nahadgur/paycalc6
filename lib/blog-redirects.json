@@ -1,0 +1,27 @@
+[
+  {
+    "source": "/blog/how-kenyan-employees-can-calculate-their-net-salary",
+    "destination": "/blog/how-to-calculate-your-paye-tax-in-kenya",
+    "permanent": true
+  },
+  {
+    "source": "/blog/paye-rates-for-high-earners-in-kenya-explained",
+    "destination": "/blog/how-to-calculate-your-paye-tax-in-kenya",
+    "permanent": true
+  },
+  {
+    "source": "/blog/how-kenyan-couples-can-file-taxes-together-or-separately",
+    "destination": "/blog/legal-ways-to-reduce-paye-in-kenya",
+    "permanent": true
+  },
+  {
+    "source": "/blog/a-kenyan-employers-guide-to-nssf-and-housing-levy-obligations",
+    "destination": "/blog/the-true-cost-of-hiring-an-employee-in-kenya",
+    "permanent": true
+  },
+  {
+    "source": "/blog/how-the-new-nssf-rates-affect-kenyan-workers",
+    "destination": "/blog/the-complete-guide-to-nssf-contributions-in-kenya",
+    "permanent": true
+  }
+]

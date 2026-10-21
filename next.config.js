@@ -57,7 +57,7 @@ const nextConfig = {
       },
     ]
 
-    return [...guideRedirects, ...blogRedirects]
+    return [...guideRedirects, ...blogRedirects, ...require('./lib/blog-redirects.json')]
   },
   async headers() {
     // Security response headers (clears the Screaming Frog "missing header"
