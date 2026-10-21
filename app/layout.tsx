@@ -6,6 +6,7 @@ import MobileNav from '@/components/MobileNav'
 import PromoBar from '@/components/PromoBar'
 import KitPopup from '@/components/KitPopup'
 import { Download } from 'lucide-react'
+import BrandLogo from '@/components/BrandLogo'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
     default: 'Kenya PAYE & Take-Home Pay Calculator 2026 | Net Salary',
     template: '%s | Kenya PAYE Calculator'
   },
-  description: 'Work out your exact Kenya take-home pay in seconds. Free PAYE calculator on the 2026 KRA bands with NSSF, SHIF, Housing Levy and net to gross.',
+  description: 'Estimate your Kenya take-home pay in seconds. Free PAYE calculator on the 2026 KRA bands with NSSF, SHIF, Housing Levy and net to gross.',
   keywords: ['PAYE calculator Kenya', 'take home pay calculator Kenya', 'take home pay calculator', 'net pay calculator Kenya', 'net salary calculator Kenya', 'Kenya tax calculator', 'NSSF calculator', 'SHIF calculator', 'KRA tax bands 2026'],
   authors: [{ name: 'PAYE Calculator Kenya' }],
   creator: 'PAYE Calculator Kenya',
@@ -46,10 +47,10 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/logo-256.png', sizes: '256x256', type: 'image/png' },
+      { url: '/brand/paye-icon.svg', type: 'image/svg+xml' },
     ],
-    shortcut: '/logo-256.png',
-    apple: '/logo-256.png',
+    shortcut: '/brand/paye-icon.svg',
+    apple: '/brand/paye-icon.png',
   },
   verification: {
     google: [
@@ -81,7 +82,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   '@id': 'https://www.payecalculator.co.ke/#organization',
                   name: 'Kenya PAYE Calculator',
                   url: 'https://www.payecalculator.co.ke',
-                  logo: 'https://www.payecalculator.co.ke/logo-512.png',
+                  logo: 'https://www.payecalculator.co.ke/brand/paye-icon.png',
                 },
                 {
                   '@type': 'WebSite',
@@ -109,20 +110,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <PromoBar />
 
         {/* Nav */}
-        <nav className="sticky top-0 z-50 relative bg-white border-b border-[#eee]">
+        <nav aria-label="Main navigation" className="site-navigation sticky top-0 z-50 relative bg-white border-b border-[#eee]">
           <div className="max-w-5xl mx-auto px-5 sm:px-6">
-            <div className="flex items-center justify-between h-14">
+            <div className="flex items-center justify-between h-20">
               <Link href="/" className="flex items-center gap-2.5 group">
-                <img src="/logo-256.png" alt="PAYE Calculator Kenya logo" className="w-7 h-7 rounded-md object-contain" width="28" height="28" />
-                <span className="font-medium text-[13px] tracking-wide">PAYE.CALC</span>
-                <span className="hidden sm:inline-flex items-center gap-1.5 ml-2 px-2 py-0.5 bg-brand-50 text-brand-700 rounded-full text-[10px] font-medium tracking-wider">
-                  <span className="w-1.5 h-1.5 bg-brand rounded-full pulse-dot" style={{ color: '#F04C40' }}></span>
-                  2026
-                </span>
+                <BrandLogo />
               </Link>
               <div className="hidden sm:flex items-center gap-5 sm:gap-6">
                 <NavCalculators />
-                <Link href="/guides" className="text-[#555] hover:text-brand transition-colors text-[13px] font-medium">Guides</Link>
+                <Link href="/guides" className="text-[#555] hover:text-brand transition-colors text-[13px] font-medium">Money guides</Link>
                 <Link href="/blog" className="text-[#555] hover:text-brand transition-colors text-[13px] font-medium">Blog</Link>
                 <a
                   href="https://selar.com/366117d092"
@@ -150,7 +146,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             {/* CTA band */}
             <div className="text-center mb-14">
               <h2 className="editorial-h text-[34px] sm:text-[44px] mb-3">
-                Know your <span className="italic">exact</span> take-home.
+                Know your take-home.
               </h2>
               <p className="text-[13px] sm:text-sm opacity-90 mb-6 max-w-md mx-auto">
                 Free Kenya PAYE calculator with the latest 2026 KRA rates.
@@ -168,12 +164,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             {/* Footer columns */}
             <div className="border-t border-white/25 pt-10 grid grid-cols-2 md:grid-cols-5 gap-8">
               <div className="col-span-2 md:col-span-1">
-                <div className="flex items-center gap-2 mb-3">
-                  <div className="w-7 h-7 bg-white rounded-md flex items-center justify-center p-1">
-                    <img src="/logo-256.png" alt="PAYE Calculator Kenya logo" className="w-full h-full object-contain" width="20" height="20" />
-                  </div>
-                  <span className="font-medium text-[13px] tracking-wide">PAYE.CALC</span>
-                </div>
+                <div className="mb-4"><BrandLogo /></div>
                 <p className="text-[11px] opacity-85 leading-relaxed max-w-xs">
                   The most comprehensive PAYE calculator for Kenya. Net salary, NSSF, SHIF and Housing Levy, with 2026 KRA rates.
                 </p>

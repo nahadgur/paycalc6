@@ -571,3 +571,70 @@ input[type="range"]::-moz-range-track {
   .p9-print .space-y-2 > * + * { margin-top: 2px !important; }
   .p9-print .space-y-1\.5 > * + * { margin-top: 1px !important; }
 }
+
+/* PAYE Calculator / approved paper-and-coral editorial identity. */
+@font-face{font-family:'PAYE Display';src:url('/brand/paye-display.ttf') format('truetype');font-style:normal;font-weight:400;font-display:swap}
+.paye-brand{display:inline-flex;align-items:center;gap:10px;color:inherit;line-height:1}
+.paye-brand svg{width:39px;height:47px;flex:none}
+.paye-brand-words{display:flex;flex-direction:column;gap:1px}
+.paye-brand-words strong{font-family:'PAYE Display','Arial Narrow',Impact,sans-serif;font-size:36px;font-weight:400;letter-spacing:.5px;line-height:.9}
+.paye-brand-words>span{font-size:15px;letter-spacing:-.65px;font-weight:800}
+.site-navigation{background:#f6f2e8;border-color:#c8c3b8}
+.site-navigation>div{max-width:1240px}
+.editorial-home{background:#f6f2e8!important;color:#141411}
+.editorial-hero{max-width:1240px;margin:auto;display:grid;grid-template-columns:1fr 1fr;align-items:center;border-bottom:1px solid #25251f;position:relative}
+.editorial-hero-copy{padding:40px 0 38px 32px;position:relative;z-index:1}
+.editorial-kicker{text-transform:uppercase;font-size:11px;font-weight:700;letter-spacing:1.8px}
+.editorial-hero h1{font-family:'PAYE Display','Arial Narrow',Impact,sans-serif;text-transform:uppercase;font-weight:400;font-size:clamp(72px,8.2vw,112px);letter-spacing:-1px;line-height:.97;margin:22px -50px 22px 0}
+.editorial-deck{font-family:Georgia,serif;font-size:clamp(19px,2vw,25px);line-height:1.35;max-width:400px}
+.editorial-jump{display:inline-flex;align-items:center;gap:25px;margin-top:25px;font-size:13px;font-weight:700;border-bottom:5px solid #eee833;padding-bottom:6px}
+.editorial-jump:hover{border-color:#f04c40}
+.editorial-art{align-self:stretch;display:flex;align-items:center;overflow:hidden}
+.editorial-art img{width:100%;height:auto;object-fit:contain;mix-blend-mode:multiply}
+.editorial-home .paye-calc-body{background:#f6f2e8;padding-top:0}
+.editorial-home .paye-calc-body>div{max-width:1176px}
+.salary-desk{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #26241f;border-bottom:1px solid #26241f;scroll-margin-top:100px;background:#f6f2e8;color:#141411}
+.editorial-home .salary-desk{border-top:0}
+.salary-desk-input{padding:28px 32px 24px 0}
+.salary-desk-input label{display:block;font-size:14px;font-weight:600;margin-bottom:12px}
+.salary-desk-input label span{color:#625e56;font-weight:400}
+.salary-entry{display:flex;align-items:center;border:1px solid #28251e;padding:8px 14px;gap:10px;background:#fcfaf5}
+.salary-entry>span{font-size:21px}
+.salary-entry input{width:100%;min-width:0;color:#141411;background:transparent;font-size:clamp(28px,3.3vw,40px);font-weight:600;letter-spacing:-1px;border:0;padding:0}
+.salary-presets{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.salary-presets button{border:1px solid #b8b2a4;background:transparent;padding:7px 14px;font-size:12px;min-height:36px}
+.salary-presets button[aria-pressed=true],.salary-presets button:hover{background:#151511;color:#fff;border-color:#151511}
+.salary-desk-input>p{font-size:11px;line-height:1.5;color:#635e53;margin-top:12px}
+.salary-desk-result{background:#f04c40;padding:28px 30px;display:flex;flex-direction:column;justify-content:center;color:#141411}
+.salary-desk-result>span{font-size:14px;font-weight:600}
+.salary-desk-result strong{font-family:'PAYE Display','Arial Narrow',Impact,sans-serif;font-size:clamp(40px,5.5vw,72px);font-weight:400;line-height:1.05;white-space:nowrap;display:block;margin:12px 0;letter-spacing:-.5px}
+.salary-desk-result p{font-size:12px}
+.salary-desk-result a{font-size:12px;text-decoration:underline;text-underline-offset:5px;margin-top:18px;align-self:flex-start}
+.editorial-guides{padding:30px 0 36px;border-bottom:1px solid #aaa496}
+.editorial-section-top{display:flex;justify-content:space-between;align-items:end;gap:18px;margin-bottom:30px}
+.editorial-section-top h2,.payroll-detail-heading h2{font-family:'PAYE Display','Arial Narrow',Impact,sans-serif;font-weight:400;font-size:clamp(36px,4.3vw,54px);line-height:1;text-transform:uppercase;letter-spacing:-.4px}
+.editorial-section-top>a{font-size:12px;text-decoration:underline;text-underline-offset:5px;white-space:nowrap}
+.editorial-guide-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.editorial-guide{display:flex;align-items:start;gap:15px}
+.editorial-guide+.editorial-guide{border-left:1px solid #bcb5a6;padding-left:24px}
+.editorial-guide h3{font-family:'PAYE Display','Arial Narrow',Impact,sans-serif;font-size:25px;line-height:1.05;font-weight:400;max-width:200px}
+.editorial-guide p{font-family:Georgia,serif;font-size:14px;line-height:1.45;margin-top:10px;color:#48453b}
+.guide-read{display:inline-block;font-size:12px;margin-top:13px;border-bottom:2px solid #f04c40;padding-bottom:4px}
+.guide-cutout{position:relative;display:grid;place-items:center;width:76px;height:98px;flex:none;background:#f04c40;transform:rotate(-6deg);clip-path:polygon(5% 4%,90% 0,100% 88%,0 100%)}
+.guide-cutout span{font-family:'PAYE Display',Impact,sans-serif;font-size:30px;line-height:1;background:#f6f2e8;transform:rotate(9deg);padding:12px 5px;color:#111;box-shadow:3px 4px 0 #24241b}
+.cutout-1{background:#181813;transform:rotate(5deg)}
+.cutout-1 span{background:#eeeb39;font-size:45px;transform:rotate(-13deg)}
+.cutout-2{background:#f04c40;transform:rotate(-3deg)}
+.cutout-2 span{background:#181813;color:#f6f2e8;font-size:24px}
+.editorial-guide:hover .guide-read{border-color:#141411}
+.payroll-detail-heading{padding:24px 0 4px;scroll-margin-top:100px}
+.payroll-detail-heading h2{margin-top:10px}
+.editorial-home .paye-calc-body [class*="rounded-2xl"],.editorial-home .paye-calc-body [class*="rounded-3xl"]{border-radius:3px}
+.editorial-home .paye-calc-body [class*="from-white/10"][class*="to-white/5"]{background-color:#fcfaf5!important;border-color:#d5cec0!important}
+.editorial-home .paye-calc-body .bg-white\/5{background-color:#fcfaf5!important;border-color:#d5cec0!important}
+@media(min-width:1250px){.editorial-hero h1{font-size:112px}}
+@media(max-width:850px){.editorial-guide-grid{gap:16px}.editorial-guide{flex-direction:column}.editorial-guide+.editorial-guide{padding-left:16px}.editorial-hero h1{font-size:76px}.salary-desk-result strong{font-size:52px}}
+@media(max-width:640px){.editorial-hero{grid-template-columns:1fr}.editorial-hero-copy{padding:28px 20px 0}.editorial-hero h1{font-size:clamp(54px,13vw,82px);margin:18px 0}.editorial-deck{font-size:20px}.editorial-art{height:230px;justify-content:flex-end;margin-top:-15px;pointer-events:none}.editorial-art img{width:290px;height:290px;object-fit:contain}.editorial-jump{margin-top:18px}.salary-desk{grid-template-columns:1fr}.salary-desk-input{padding:24px 0}.salary-desk-result{padding:25px 22px}.salary-desk-result strong{font-size:clamp(40px,10vw,64px)}.salary-presets button{min-height:44px}.editorial-guide-grid{grid-template-columns:1fr;gap:22px}.editorial-guide{flex-direction:row;gap:22px}.editorial-guide+.editorial-guide{border-left:0;border-top:1px solid #c9c1b1;padding-left:0;padding-top:22px}.editorial-guide h3{max-width:none;font-size:27px}.editorial-section-top{align-items:center}.editorial-section-top h2{font-size:38px}.guide-cutout{width:76px;height:95px}.editorial-kicker{font-size:10px}.salary-entry input{font-size:32px}.paye-brand svg{width:33px;height:42px}.paye-brand-words strong{font-size:32px}.paye-brand-words>span{font-size:13px}}
+@media(prefers-reduced-motion:reduce){.editorial-home *{animation:none!important;transition:none!important}}
+
+.editorial-hero h1>span{font-size:.8em;white-space:nowrap}

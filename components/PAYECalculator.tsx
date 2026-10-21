@@ -2,6 +2,8 @@
 
 import React, { useState, useMemo, useEffect } from 'react';
 import Hero from './Hero';
+import EditorialHero from './EditorialHero';
+import EditorialGuides from './EditorialGuides';
 import { PieChart, Pie, Cell, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, Legend, AreaChart, Area, LineChart, Line, RadarChart, Radar, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ComposedChart, Treemap, FunnelChart, Funnel, LabelList } from 'recharts';
 import { Calculator, TrendingUp, Wallet, Building2, Heart, Shield, ChevronDown, ChevronUp, Info, Sparkles, ArrowRight, Minus, Plus, DollarSign, PiggyBank, Home, Briefcase, Car, Users, GraduationCap, Utensils, Gift, ArrowLeftRight, Building, Percent, Target, Zap, BarChart3, PieChartIcon, Activity, Gauge, TrendingDown, RefreshCw, CircleDollarSign, BadgePercent, Landmark, HandCoins, Download } from 'lucide-react';
 
@@ -62,26 +64,26 @@ const calculateHousingLevy = (grossSalary) => {
 const calculatePAYE = (taxableIncome, hasDisability = false) => {
   let tax = 0;
   let remainingIncome = Math.max(0, taxableIncome - (hasDisability ? DISABILITY_RELIEF : 0));
-  
+
   for (const band of TAX_BANDS) {
     if (remainingIncome <= 0) break;
     const taxableInBand = Math.min(remainingIncome, band.max - band.min);
     tax += taxableInBand * band.rate;
     remainingIncome -= taxableInBand;
   }
-  
+
   // Apply personal relief
   let relief = PERSONAL_RELIEF;
   // Disability exemption reduces income before bands, not the tax bill.
   tax = Math.max(0, tax - relief);
-  
+
   return tax;
 };
 
 const getTaxBandBreakdown = (taxableIncome) => {
   const breakdown: any[] = [];
   let remainingIncome = taxableIncome;
-  
+
   for (const band of TAX_BANDS) {
     if (remainingIncome <= 0) {
       breakdown.push({ ...band, amount: 0, tax: 0 });
@@ -92,7 +94,7 @@ const getTaxBandBreakdown = (taxableIncome) => {
     breakdown.push({ ...band, amount: taxableInBand, tax });
     remainingIncome -= taxableInBand;
   }
-  
+
   return breakdown;
 };
 
@@ -100,22 +102,22 @@ const getTaxBandBreakdown = (taxableIncome) => {
 const calculateGrossFromNet = (targetNet, deductions) => {
   let low = targetNet;
   let high = targetNet * 3;
-  
+
   for (let i = 0; i < 50; i++) {
     const mid = (low + high) / 2;
     const calc = fullCalculation(mid, deductions);
-    
+
     if (Math.abs(calc.netSalary - targetNet) < 1) {
       return mid;
     }
-    
+
     if (calc.netSalary > targetNet) {
       high = mid;
     } else {
       low = mid;
     }
   }
-  
+
   return (low + high) / 2;
 };
 
@@ -138,42 +140,42 @@ const fullCalculation = (grossSalary, options: any = {}) => {
   const carBenefitAmount = Math.max(0, Number(carBenefit) || 0);
   const housingBenefitTaxable = Math.max(0, housingBenefit);
   const totalBenefits = carBenefitAmount + housingBenefitTaxable + otherTaxableBenefits;
-  
+
   // Adjusted gross for tax purposes
   const adjustedGross = grossSalary + totalBenefits;
-  
+
   const nssf = calculateNSSF(grossSalary);
   const shif = calculateSHIF(grossSalary);
   const housingLevy = calculateHousingLevy(grossSalary);
-  
+
   // Calculate allowable deductions
   const pensionLimit = Math.min(grossSalary * 0.30, MAX_PENSION_DEDUCTION);
   const maxPension = Math.min(Math.max(0, pensionContribution), Math.max(0, pensionLimit - nssf));
   const maxMortgage = Math.min(mortgageInterest, MAX_MORTGAGE_DEDUCTION);
   const insuranceRelief = Math.min(insurancePremium * 0.15, MAX_INSURANCE_RELIEF);
-  
+
   // Taxable income
   const taxableIncome = adjustedGross - nssf - shif - housingLevy - maxPension - maxMortgage;
   const paye = calculatePAYE(Math.max(0, taxableIncome), hasDisability);
   const finalPAYE = Math.max(0, paye - insuranceRelief);
-  
+
   // Statutory deductions
   const statutoryDeductions = finalPAYE + nssf + shif + housingLevy;
-  
+
   // Voluntary deductions (after tax)
   const voluntaryDeductions = helbRepayment + saccoContribution + unionDues + pensionContribution;
-  
+
   const totalDeductions = statutoryDeductions + voluntaryDeductions;
   const netSalary = grossSalary - totalDeductions;
-  
+
   const effectiveTaxRate = grossSalary > 0 ? (finalPAYE / grossSalary) * 100 : 0;
   const totalDeductionRate = grossSalary > 0 ? (totalDeductions / grossSalary) * 100 : 0;
-  
+
   // Employer costs
   const employerNSSF = nssf; // Employer matches NSSF
   const employerHousingLevy = housingLevy; // Employer matches housing levy
   const totalEmployerCost = grossSalary + employerNSSF + employerHousingLevy;
-  
+
   return {
     grossSalary,
     adjustedGross,
@@ -213,7 +215,7 @@ const AnimatedValue = ({ value, prefix = '', suffix = '' }) => (
 const GaugeChart = ({ value, max = 50, label, color = '#8A2820' }) => {
   const percentage = Math.min((value / max) * 100, 100);
   const rotation = (percentage / 100) * 180;
-  
+
   return (
     <div className="relative w-40 h-24 mx-auto">
       <svg viewBox="0 0 200 100" className="w-full h-full">
@@ -250,7 +252,7 @@ const GaugeChart = ({ value, max = 50, label, color = '#8A2820' }) => {
 // Progress Bar Component
 const ProgressBar = ({ label, value, max, color, icon: Icon }) => {
   const percentage = (value / max) * 100;
-  
+
   return (
     <div className="mb-4">
       <div className="flex items-center justify-between mb-2">
@@ -261,7 +263,7 @@ const ProgressBar = ({ label, value, max, color, icon: Icon }) => {
         <span className="text-sm font-medium text-white">{formatCurrency(value)}</span>
       </div>
       <div className="h-2 bg-stone-800 rounded-full overflow-hidden">
-        <div 
+        <div
           className="h-full rounded-full transition-all duration-1000 ease-out"
           style={{ width: `${Math.min(percentage, 100)}%`, backgroundColor: color }}
         />
@@ -353,23 +355,23 @@ export default function PAYECalculatorV2({ defaultTab = 'calculator', single = f
   const [targetNetSalary, setTargetNetSalary] = useState(75000);
   const [bonusAmount, setBonusAmount] = useState(50000);
   const [raisePercent, setRaisePercent] = useState(10);
-  
+
   // Deductions & Reliefs
   const [pensionContribution, setPensionContribution] = useState(0);
   const [mortgageInterest, setMortgageInterest] = useState(0);
   const [insurancePremium, setInsurancePremium] = useState(0);
   const [hasDisability, setHasDisability] = useState(false);
-  
+
   // Voluntary Deductions
   const [helbRepayment, setHelbRepayment] = useState(0);
   const [saccoContribution, setSaccoContribution] = useState(0);
   const [unionDues, setUnionDues] = useState(0);
-  
+
   // Benefits in Kind
   const [carBenefit, setCarBenefit] = useState(0);
   const [housingBenefit, setHousingBenefit] = useState(0);
   const [otherBenefits, setOtherBenefits] = useState(0);
-  
+
   const [showAdvanced, setShowAdvanced] = useState(false);
   const [showBenefits, setShowBenefits] = useState(false);
   const [animated, setAnimated] = useState(false);
@@ -391,8 +393,8 @@ export default function PAYECalculatorV2({ defaultTab = 'calculator', single = f
     otherTaxableBenefits: otherBenefits
   };
 
-  const calculations = useMemo(() => fullCalculation(grossSalary, deductionOptions), 
-    [grossSalary, pensionContribution, mortgageInterest, insurancePremium, hasDisability, 
+  const calculations = useMemo(() => fullCalculation(grossSalary, deductionOptions),
+    [grossSalary, pensionContribution, mortgageInterest, insurancePremium, hasDisability,
      helbRepayment, saccoContribution, unionDues, carBenefit, housingBenefit, otherBenefits]);
 
   // Net to Gross calculation
@@ -487,72 +489,41 @@ export default function PAYECalculatorV2({ defaultTab = 'calculator', single = f
   ].filter(d => d.value > 0);
 
   return (
-    <div className="paye-app min-h-screen bg-white overflow-x-hidden">
+    <div className={`paye-app min-h-screen bg-white overflow-x-hidden ${!single ? 'editorial-home' : ''}`}>
 
       {/* Hero — the single shared component, identical on every calculator page */}
-      <Hero
+      {!single ? <EditorialHero /> : <Hero
         h1={single && TOOL_HERO[activeTab] ? TOOL_HERO[activeTab].h1 : 'PAYE Calculator Kenya 2026 — Net Salary'}
         pre={single && TOOL_HERO[activeTab] ? TOOL_HERO[activeTab].pre : 'Calculate your '}
         em={single && TOOL_HERO[activeTab] ? TOOL_HERO[activeTab].em : 'take-home'}
         post={single && TOOL_HERO[activeTab] ? TOOL_HERO[activeTab].post : '.'}
         desc={single && TOOL_HERO[activeTab] ? TOOL_HERO[activeTab].desc : 'Free Kenya PAYE and salary calculator. Works out your monthly net pay after PAYE tax, NSSF pension, SHIF (former NHIF), Housing Levy, HELB, SACCO and benefits in kind, using 2026 KRA tax bands.'}
         active={activeTab}
-      />
+      />}
 
-      <main className="paye-calc-body relative z-10 px-4 md:px-6 pt-8 pb-16 bg-white">
+      <div className="paye-calc-body relative z-10 px-4 md:px-6 pt-8 pb-16 bg-white">
         <div className="max-w-5xl mx-auto">
 
           {/* Main Calculator Tab */}
           {activeTab === 'calculator' && (
             <div className={`space-y-6 transition-all duration-500 ${animated ? 'opacity-100' : 'opacity-0'}`}>
-              
-              {/* Salary Input */}
-              <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-3xl border border-white/10 p-6 md:p-8">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="p-3 bg-gradient-to-br from-red-500 to-amber-500 rounded-2xl">
-                    <Wallet className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h2 className="text-xl font-bold">Monthly Gross Salary</h2>
-                    <p className="text-stone-400 text-sm">Slide or enter your salary</p>
-                  </div>
-                </div>
 
-                <div className="text-center mb-6">
-                  <div className="text-5xl md:text-7xl font-black text-white mb-1 tabular-nums">
-                    {formatCurrency(grossSalary)}
-                  </div>
+              <section id="salary-calculator" className="salary-desk" aria-label="Salary calculator">
+                <div className="salary-desk-input">
+                  <label htmlFor="gross-monthly-salary">Monthly gross salary <span>· KES</span></label>
+                  <div className="salary-entry"><span aria-hidden="true">KES</span><input id="gross-monthly-salary" type="number" inputMode="numeric" min="0" max="100000000" step="1000" value={grossSalary} onChange={(e) => setGrossSalary(Math.min(100000000, Math.max(0, Number(e.target.value) || 0)))} /></div>
+                  <div className="salary-presets">{[50000, 100000, 150000, 250000].map(amount => <button type="button" key={amount} aria-pressed={grossSalary === amount} onClick={() => setGrossSalary(amount)}>{formatCompact(amount)}</button>)}</div>
+                  <p>Updates instantly as you type. Add reliefs and deductions below.</p>
                 </div>
-
-                <input
-                  type="range"
-                  min="15000"
-                  max="2000000"
-                  step="5000"
-                  value={grossSalary}
-                  onChange={(e) => setGrossSalary(Number(e.target.value))}
-                  className="w-full h-3 bg-stone-800 rounded-full appearance-none cursor-pointer mb-4"
-                  style={{
-                    background: `linear-gradient(to right, #DC2626 0%, #F59E0B ${(grossSalary - 15000) / (2000000 - 15000) * 100}%, #374151 ${(grossSalary - 15000) / (2000000 - 15000) * 100}%, #374151 100%)`
-                  }}
-                />
-
-                <div className="flex flex-wrap gap-2 justify-center">
-                  {[50000, 100000, 150000, 250000, 500000].map((amount) => (
-                    <button
-                      key={amount}
-                      onClick={() => setGrossSalary(amount)}
-                      className={`px-4 py-2 rounded-xl font-semibold text-sm transition-all ${
-                        grossSalary === amount 
-                          ? 'bg-gradient-to-r from-red-500 to-amber-500 text-white' 
-                          : 'bg-white/5 text-stone-300 hover:bg-white/10'
-                      }`}
-                    >
-                      {formatCompact(amount)}
-                    </button>
-                  ))}
+                <div className="salary-desk-result" aria-live="polite" aria-atomic="true">
+                  <span>Your take-home pay</span>
+                  <strong>{formatCurrency(calculations.netSalary)}</strong>
+                  <p>Estimated per month · {(100 - calculations.totalDeductionRate).toFixed(1)}% of gross</p>
+                  <a href="#payroll-details">See your deductions <span aria-hidden="true">↓</span></a>
                 </div>
-              </div>
+              </section>
+              {!single && <EditorialGuides />}
+              <div id="payroll-details" className="payroll-detail-heading"><span className="editorial-kicker">The numbers behind your salary</span><h2>Your pay. Broken down.</h2></div>
 
               {/* Payslip — the polished, gated PDF lives on its own page */}
               <div className="flex justify-center">
@@ -617,7 +588,7 @@ export default function PAYECalculatorV2({ defaultTab = 'calculator', single = f
               </div>
 
               {/* Voluntary Deductions */}
-              <button 
+              <button
                 onClick={() => setShowAdvanced(!showAdvanced)}
                 className="w-full bg-white/5 backdrop-blur-xl rounded-xl border border-white/10 p-4 flex items-center justify-between hover:bg-white/10 transition-all"
               >
@@ -664,7 +635,7 @@ export default function PAYECalculatorV2({ defaultTab = 'calculator', single = f
               )}
 
               {/* Tax Reliefs */}
-              <button 
+              <button
                 onClick={() => setShowBenefits(!showBenefits)}
                 className="w-full bg-white/5 backdrop-blur-xl rounded-xl border border-white/10 p-4 flex items-center justify-between hover:bg-white/10 transition-all"
               >
@@ -1084,7 +1055,7 @@ export default function PAYECalculatorV2({ defaultTab = 'calculator', single = f
                 <div className="mt-6 p-4 bg-white/5 rounded-xl">
                   <p className="text-stone-400 text-sm">
                     <Info className="w-4 h-4 inline mr-2" />
-                    Bonuses are taxed at your marginal tax rate (the rate of your highest tax band). 
+                    Bonuses are taxed at your marginal tax rate (the rate of your highest tax band).
                     Based on your salary of {formatCurrency(grossSalary)}, your bonus is taxed at approximately {bonusCalc.bonusTaxRate.toFixed(0)}%.
                   </p>
                 </div>
@@ -1219,8 +1190,8 @@ export default function PAYECalculatorV2({ defaultTab = 'calculator', single = f
               <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl">
                 <p className="text-blue-300 text-sm">
                   <Info className="w-4 h-4 inline mr-2" />
-                  Employers must match employee NSSF and Housing Levy contributions. 
-                  This adds {formatCurrency(calculations.employerNSSF + calculations.employerHousingLevy)} ({((calculations.employerNSSF + calculations.employerHousingLevy) / grossSalary * 100).toFixed(1)}%) 
+                  Employers must match employee NSSF and Housing Levy contributions.
+                  This adds {formatCurrency(calculations.employerNSSF + calculations.employerHousingLevy)} ({((calculations.employerNSSF + calculations.employerHousingLevy) / grossSalary * 100).toFixed(1)}%)
                   to the cost of employment beyond gross salary.
                 </p>
               </div>
@@ -1303,8 +1274,8 @@ export default function PAYECalculatorV2({ defaultTab = 'calculator', single = f
                   {TAX_BANDS.map((band, i) => (
                     <tr key={i} className="border-b border-white/5">
                       <td className="py-2 px-3">
-                        {band.max === Infinity 
-                          ? `Above ${formatCurrency(band.min)}` 
+                        {band.max === Infinity
+                          ? `Above ${formatCurrency(band.min)}`
                           : `${formatCurrency(band.min)} - ${formatCurrency(band.max)}`}
                       </td>
                       <td className="py-2 px-3 text-center">
@@ -1321,7 +1292,7 @@ export default function PAYECalculatorV2({ defaultTab = 'calculator', single = f
           </div>
 
         </div>
-      </main>
+      </div>
 
       {/* Homepage-only marketing sections. Tool pages keep their own server-rendered content. */}
       {!single && (
