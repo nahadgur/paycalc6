@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { SALARY_DESCRIPTIONS } from '@/lib/salaryDescriptions'
 
 // ── Salary amounts that get their own page ────────────────────────────────
 const SALARY_AMOUNTS = [
@@ -30,7 +29,7 @@ function calcAll(gross: number) {
   const nssf    = Math.min(gross, NSSF_CAP) * NSSF_RATE
   const shif    = Math.max(gross * SHIF_RATE, SHIF_MIN)
   const housing = gross * HOUSING
-  const taxable = Math.max(0, gross - nssf)
+  const taxable = Math.max(0, gross - nssf - shif - housing)
 
   let paye = 0, rem = taxable
   for (const b of TAX_BANDS) {
@@ -77,8 +76,8 @@ export async function generateMetadata({ params }: { params: { amount: string } 
   if (!SALARY_AMOUNTS.includes(gross)) return { title: 'Salary Not Found' }
   const c = calcAll(gross)
   return {
-    title: { absolute: `KES ${gross.toLocaleString()} Salary in Kenya 2026: Net Pay & Gross to Net` },
-    description: SALARY_DESCRIPTIONS[gross] ?? `KES ${gross.toLocaleString()} salary in Kenya: take home ${fmt(c.net)} a month after PAYE, NSSF, SHIF and the Housing Levy. Full 2026 gross-to-net breakdown.`,
+    title: { absolute: `KES ${gross.toLocaleString()} Salary After Tax in Kenya (2026)` },
+    description: `KES ${gross.toLocaleString()} salary in Kenya: take home ${fmt(c.net)} a month after PAYE, NSSF, SHIF and the Housing Levy. Full 2026 gross-to-net breakdown.`,
     alternates: { canonical: `https://www.payecalculator.co.ke/salary/${gross}` },
   }
 }
@@ -259,7 +258,7 @@ export default async function SalaryPage({ params }: { params: { amount: string 
         <div className="bg-white/5 border border-white/10 rounded-2xl p-6 mb-8">
           <h2 className="text-lg font-bold text-white mb-4">How PAYE is Calculated — Tax Band Breakdown</h2>
           <p className="text-stone-400 text-sm mb-5">
-            Your taxable income is <strong className="text-white">{fmt(c.taxable)}</strong> (gross minus NSSF of {fmt(c.nssf)}).
+            Your taxable income is <strong className="text-white">{fmt(c.taxable)}</strong> (gross less NSSF of {fmt(c.nssf)}, SHIF of {fmt(c.shif)} and Housing Levy of {fmt(c.housing)}).
             Kenya uses a progressive tax system — different portions are taxed at different rates.
           </p>
           <div className="space-y-3">
@@ -367,7 +366,7 @@ export default async function SalaryPage({ params }: { params: { amount: string 
               },
               {
                 q: 'Can I reduce my PAYE tax on this salary?',
-                a: `Yes. You can reduce PAYE by making pension contributions (reduces taxable income by up to KES 30,000/month), paying mortgage interest (up to KES 30,000/month deductible), or having life insurance premiums (15% relief, max KES 5,000/month). Use our full calculator to see the impact of these reliefs.`,
+                a: `Yes. You can reduce PAYE by making qualifying pension contributions (NSSF shares the limit: actual contributions, 30% of pensionable pay or KES 30,000/month, whichever is lowest), paying mortgage interest (up to KES 30,000/month deductible), or having life insurance premiums (15% relief, max KES 5,000/month). Use our full calculator to see the impact of these reliefs.`,
               },
             ].map((faq, i) => (
               <div key={i} className="bg-white/5 border border-white/10 rounded-xl p-5">

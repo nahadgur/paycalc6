@@ -90,7 +90,7 @@ export const SILOS: Silo[] = [
     title: 'Employment Situations',
     hubHref: '/bonus-calculator',
     guideHref: '/guides/employment-situations',
-    blurb: 'How PAYE behaves in real working life: bonuses, freelancing, HELB, changing jobs, employer errors, and filing as a couple.',
+    blurb: 'How PAYE behaves in real working life: bonuses, freelancing, HELB, changing jobs, employer errors, second jobs and terminal dues.',
     spokes: [
       'how-kenyan-employers-tax-your-bonus-and-13th-month-pay',
       'freelancing-vs-employment-in-kenya-and-which-pays-less-tax',
@@ -189,7 +189,7 @@ export interface CtaCard {
 const CTA_CARDS: Record<string, CtaCard> = {
   '/': { title: 'Your exact take-home', note: '2026 KRA rates, instant', action: 'Open calculator' },
   '/nssf-calculator': { title: 'Your NSSF deduction', note: 'Tier I + II, 2026 rates', action: 'Open calculator' },
-  '/mortgage-relief': { title: 'Your mortgage relief', note: 'Up to KES 9,000/mo saved', action: 'Open calculator' },
+  '/mortgage-relief': { title: 'Your mortgage relief', note: 'Qualifying interest; saving depends on tax band', action: 'Open calculator' },
   '/salary-comparison': { title: 'Compare two salaries', note: 'Side by side, 2026 rates', action: 'Open comparison' },
   '/bonus-calculator': { title: 'Tax on your bonus', note: '13th-month + bonus, instant', action: 'Open calculator' },
   '/employer-cost-calculator': { title: 'True cost to employ', note: 'Gross plus employer NSSF and levy', action: 'Open calculator' },

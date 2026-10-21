@@ -1,50 +1,18 @@
-import type { Metadata } from 'next'
-import { SiloHub } from '@/components/SiloHub'
-
+import type { Metadata } from 'next';
+import { SiloHub } from '@/components/SiloHub';
 export const metadata: Metadata = {
-  title: { absolute: 'Statutory Deductions in Kenya 2026: NSSF, SHIF, Levy' },
-  description:
-    'The three mandatory payroll deductions in Kenya for 2026: NSSF (max KES 6,480), SHIF (2.75%) and the Housing Levy (1.5%). Rates, limits and maths.',
-  alternates: { canonical: 'https://www.payecalculator.co.ke/guides/statutory-deductions' },
-}
-
-export default function StatutoryDeductionsHub() {
-  return (
-    <SiloHub
-      siloKey="statutory-deductions"
-      heading="Statutory Deductions in Kenya (2026)"
-      intro={
-        <>
-          <p>
-            Before PAYE is even worked out, three deductions are taken from almost every Kenyan
-            payslip by law. They are <strong>NSSF</strong> (your pension), <strong>SHIF</strong>{' '}
-            (health, which replaced NHIF), and the <strong>Affordable Housing Levy</strong>. Together
-            they can take a meaningful slice of gross pay, and two of them (NSSF and the housing levy)
-            also reduce the income your PAYE is charged on.
-          </p>
-          <p>
-            For 2026 the headline figures are: NSSF at 6% of pensionable pay up to an upper limit of
-            KES 108,000, so a maximum of <strong>KES 6,480</strong> a month; SHIF at{' '}
-            <strong>2.75% of gross pay</strong> with no cap; and the Housing Levy at{' '}
-            <strong>1.5% of gross</strong>, matched by your employer. The guides below break each one
-            down in full, with worked examples.
-          </p>
-        </>
-      }
-      faqs={[
-        {
-          q: 'What are the statutory deductions in Kenya for 2026?',
-          a: 'NSSF (6% of pensionable pay, maximum KES 6,480/month), SHIF (2.75% of gross pay, replaced NHIF), and the Affordable Housing Levy (1.5% of gross, matched by the employer). PAYE is then calculated on the balance after NSSF and the housing levy are deducted.',
-        },
-        {
-          q: 'Which deductions reduce my PAYE?',
-          a: 'NSSF contributions and the Housing Levy are deductible before PAYE is calculated, so they lower your taxable income. SHIF is not deducted before PAYE, but it does attract a 15% insurance relief that reduces the tax due.',
-        },
-        {
-          q: 'Is SHIF really 2.75% of my whole salary?',
-          a: 'Yes. SHIF replaced NHIF in 2024 and is charged at a flat 2.75% of gross pay with no upper limit, unlike the old banded NHIF table. Someone earning KES 100,000 pays KES 2,750 a month.',
-        },
-      ]}
-    />
-  )
+    "title": {
+        "absolute": "Salary Deductions in Kenya | 2026 Guide"
+    },
+    "description": "NSSF, SHIF and Housing Levy rates, their tax treatment and how to check your payslip.",
+    "alternates": {
+        "canonical": "https://www.payecalculator.co.ke/guides/statutory-deductions"
+    }
+};
+export default function GuidePage() {
+    return <SiloHub siloKey="statutory-deductions" heading="Salary Deductions in Kenya" intro={<><p className="text-sm text-stone-500">Reviewed 21 October 2026. Figures relate to the stated payroll period.</p><section><h2 className="text-xl font-semibold text-stone-900 mb-2">{"Start with four separate lines"}</h2><p>{"A typical employee pays NSSF, SHIF, the employee Housing Levy and PAYE. Under current rules, employee NSSF, SHIF and Housing Levy reduce taxable employment income before PAYE. They are still cash deductions from gross salary. Employer contributions are additional employer costs and must not be deducted from the employee again."}</p></section>
+        <section><h2 className="text-xl font-semibold text-stone-900 mb-2">{"NSSF from February 2026"}</h2><p>{"Employee NSSF is 6% of pensionable earnings up to KES 108,000, giving a maximum KES 6,480 monthly, with an employer match. The lower earnings limit is KES 9,000: Tier I is up to KES 540 and Tier II up to KES 5,940 per side. January 2026 used the earlier KES 72,000 upper limit and KES 4,320 maximum. Use the correct period when checking old payslips."}</p></section>
+        <section><h2 className="text-xl font-semibold text-stone-900 mb-2">{"SHIF health contributions"}</h2><p>{"For salaried employment, SHIF is 2.75% of gross salary or wages, with a KES 300 monthly minimum and no upper cap. A salary of KES 100,000 therefore gives KES 2,750. There is no general matching employer contribution. Current SHIF payments reduce taxable pay; the older insurance-credit treatment must not be applied alongside that deduction."}</p></section>
+        <section><h2 className="text-xl font-semibold text-stone-900 mb-2">{"Affordable Housing Levy"}</h2><p>{"The employee and employer each contribute 1.5% of gross monthly salary under the applicable pay definition. Regular cash allowances and irregular payments can have different treatment: do not assume every bonus or non-cash benefit belongs in the levy base. The employee share is deductible before PAYE. Remittance is due within nine working days after month-end."}</p></section>
+        <section><h2 className="text-xl font-semibold text-stone-900 mb-2">{"Reconcile your salary"}</h2><p>{"For KES 100,000 regular monthly salary, NSSF of KES 6,000, SHIF of KES 2,750 and Housing Levy of KES 1,500 leave KES 89,750 taxable pay. A resident employee with standard personal relief pays KES 19,308.35 PAYE and takes home KES 70,441.65 before personal deductions. This assumes pensionable pay equals gross pay and no additional benefits, reliefs or exemptions. Check both the payslip deduction and the receiving agency statement."}</p></section><section><h2 className="text-xl font-semibold text-stone-900 mb-2">Sources and further checks</h2><ul className="list-disc pl-5"><li><a href="https://www.kra.go.ke/individual/filing-paying/types-of-taxes/paye">KRA PAYE rates and deductions</a></li><li><a href="https://www.kra.go.ke/news-center/public-notices/2157-amendments-to-paye-computation-pursuant-to-the-tax-laws-amendment-act%2C-2024">KRA December 2024 PAYE amendments</a></li><li><a href="https://www.kra.go.ke/news-center/public-notices/2307-guidance-on-employer-obligations-in-applying-income-tax-deductions%2C-reliefs-and-exemptions">KRA employer guidance</a></li><li><a href="https://gaa.go.ke/sites/default/files/2026-02/Notice%20To%20Employers%20%E2%80%94%20Year%204%20%282026%29%20NSSF%20Contribution%20Rates%20.pdf">NSSF Year 4 contribution notice</a></li></ul><p className="mt-3">Use the linked topic articles below for detailed examples and eligibility checks.</p></section></>} faqs={[]}/>;
 }

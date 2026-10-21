@@ -27,14 +27,6 @@ const MAX_PENSION_DEDUCTION = 30000;
 const MAX_MORTGAGE_DEDUCTION = 30000; // raised to KES 30,000/mo (360,000/yr) by Tax Laws (Amendment) Act 2024
 const MAX_INSURANCE_RELIEF = 5000;
 
-// Car benefit rates based on CC
-const CAR_BENEFIT_RATES = {
-  'none': 0,
-  'below1500': 3600,
-  '1500to2000': 4800,
-  '2000to3000': 7200,
-  'above3000': 12000
-};
 
 // Helper functions
 const formatCurrency = (amount) => {
@@ -58,6 +50,7 @@ const calculateNSSF = (grossSalary) => {
 };
 
 const calculateSHIF = (grossSalary) => {
+  if (grossSalary <= 0) return 0;
   const shif = grossSalary * SHIF_RATE;
   return Math.max(shif, SHIF_MIN);
 };
@@ -68,7 +61,7 @@ const calculateHousingLevy = (grossSalary) => {
 
 const calculatePAYE = (taxableIncome, hasDisability = false) => {
   let tax = 0;
-  let remainingIncome = taxableIncome;
+  let remainingIncome = Math.max(0, taxableIncome - (hasDisability ? DISABILITY_RELIEF : 0));
   
   for (const band of TAX_BANDS) {
     if (remainingIncome <= 0) break;
@@ -79,7 +72,7 @@ const calculatePAYE = (taxableIncome, hasDisability = false) => {
   
   // Apply personal relief
   let relief = PERSONAL_RELIEF;
-  if (hasDisability) relief += DISABILITY_RELIEF;
+  // Disability exemption reduces income before bands, not the tax bill.
   tax = Math.max(0, tax - relief);
   
   return tax;
@@ -136,14 +129,14 @@ const fullCalculation = (grossSalary, options: any = {}) => {
     helbRepayment = 0,
     saccoContribution = 0,
     unionDues = 0,
-    carBenefit = 'none',
+    carBenefit = 0,
     housingBenefit = 0,
     otherTaxableBenefits = 0
   } = options;
 
   // Calculate benefits in kind
-  const carBenefitAmount = CAR_BENEFIT_RATES[carBenefit] || 0;
-  const housingBenefitTaxable = Math.min(housingBenefit, grossSalary * 0.15);
+  const carBenefitAmount = Math.max(0, Number(carBenefit) || 0);
+  const housingBenefitTaxable = Math.max(0, housingBenefit);
   const totalBenefits = carBenefitAmount + housingBenefitTaxable + otherTaxableBenefits;
   
   // Adjusted gross for tax purposes
@@ -154,12 +147,13 @@ const fullCalculation = (grossSalary, options: any = {}) => {
   const housingLevy = calculateHousingLevy(grossSalary);
   
   // Calculate allowable deductions
-  const maxPension = Math.min(pensionContribution, MAX_PENSION_DEDUCTION);
+  const pensionLimit = Math.min(grossSalary * 0.30, MAX_PENSION_DEDUCTION);
+  const maxPension = Math.min(Math.max(0, pensionContribution), Math.max(0, pensionLimit - nssf));
   const maxMortgage = Math.min(mortgageInterest, MAX_MORTGAGE_DEDUCTION);
   const insuranceRelief = Math.min(insurancePremium * 0.15, MAX_INSURANCE_RELIEF);
   
   // Taxable income
-  const taxableIncome = adjustedGross - nssf - maxPension - maxMortgage;
+  const taxableIncome = adjustedGross - nssf - shif - housingLevy - maxPension - maxMortgage;
   const paye = calculatePAYE(Math.max(0, taxableIncome), hasDisability);
   const finalPAYE = Math.max(0, paye - insuranceRelief);
   
@@ -167,13 +161,13 @@ const fullCalculation = (grossSalary, options: any = {}) => {
   const statutoryDeductions = finalPAYE + nssf + shif + housingLevy;
   
   // Voluntary deductions (after tax)
-  const voluntaryDeductions = helbRepayment + saccoContribution + unionDues;
+  const voluntaryDeductions = helbRepayment + saccoContribution + unionDues + pensionContribution;
   
   const totalDeductions = statutoryDeductions + voluntaryDeductions;
   const netSalary = grossSalary - totalDeductions;
   
-  const effectiveTaxRate = (finalPAYE / grossSalary) * 100;
-  const totalDeductionRate = (totalDeductions / grossSalary) * 100;
+  const effectiveTaxRate = grossSalary > 0 ? (finalPAYE / grossSalary) * 100 : 0;
+  const totalDeductionRate = grossSalary > 0 ? (totalDeductions / grossSalary) * 100 : 0;
   
   // Employer costs
   const employerNSSF = nssf; // Employer matches NSSF
@@ -194,7 +188,7 @@ const fullCalculation = (grossSalary, options: any = {}) => {
     netSalary,
     effectiveTaxRate,
     totalDeductionRate,
-    taxBandBreakdown: getTaxBandBreakdown(Math.max(0, taxableIncome)),
+    taxBandBreakdown: getTaxBandBreakdown(Math.max(0, taxableIncome - (hasDisability ? DISABILITY_RELIEF : 0))),
     insuranceRelief,
     helbRepayment,
     saccoContribution,
@@ -211,30 +205,9 @@ const fullCalculation = (grossSalary, options: any = {}) => {
 };
 
 // Animated Counter Component
-const AnimatedValue = ({ value, prefix = '', suffix = '' }) => {
-  const [displayValue, setDisplayValue] = useState(0);
-  
-  useEffect(() => {
-    const duration = 500;
-    const steps = 20;
-    const increment = value / steps;
-    let current = 0;
-    
-    const timer = setInterval(() => {
-      current += increment;
-      if (current >= value) {
-        setDisplayValue(value);
-        clearInterval(timer);
-      } else {
-        setDisplayValue(current);
-      }
-    }, duration / steps);
-    
-    return () => clearInterval(timer);
-  }, [value]);
-  
-  return <span>{prefix}{formatCurrency(Math.round(displayValue))}{suffix}</span>;
-};
+const AnimatedValue = ({ value, prefix = '', suffix = '' }) => (
+  <span>{prefix}{formatCurrency(Math.round(value))}{suffix}</span>
+);
 
 // Gauge Component
 const GaugeChart = ({ value, max = 50, label, color = '#8A2820' }) => {
@@ -393,7 +366,7 @@ export default function PAYECalculatorV2({ defaultTab = 'calculator', single = f
   const [unionDues, setUnionDues] = useState(0);
   
   // Benefits in Kind
-  const [carBenefit, setCarBenefit] = useState('none');
+  const [carBenefit, setCarBenefit] = useState(0);
   const [housingBenefit, setHousingBenefit] = useState(0);
   const [otherBenefits, setOtherBenefits] = useState(0);
   
@@ -454,6 +427,8 @@ export default function PAYECalculatorV2({ defaultTab = 'calculator', single = f
     { name: 'Housing Levy', value: calculations.housingLevy, color: '#F5B9B2' },
     ...(calculations.helbRepayment > 0 ? [{ name: 'HELB', value: calculations.helbRepayment, color: '#F04C40' }] : []),
     ...(calculations.saccoContribution > 0 ? [{ name: 'SACCO', value: calculations.saccoContribution, color: '#06B6D4' }] : []),
+    ...(pensionContribution > 0 ? [{ name: 'Extra Pension', value: pensionContribution, color: '#059669' }] : []),
+    ...(calculations.unionDues > 0 ? [{ name: 'Union Dues', value: calculations.unionDues, color: '#78716c' }] : []),
   ].filter(d => d.value > 0);
 
   const waterfallData = [
@@ -465,6 +440,7 @@ export default function PAYECalculatorV2({ defaultTab = 'calculator', single = f
     ...(calculations.helbRepayment > 0 ? [{ name: 'HELB', value: -calculations.helbRepayment }] : []),
     ...(calculations.saccoContribution > 0 ? [{ name: 'SACCO', value: -calculations.saccoContribution }] : []),
     ...(calculations.unionDues > 0 ? [{ name: 'Union Dues', value: -calculations.unionDues }] : []),
+    ...(pensionContribution > 0 ? [{ name: 'Extra Pension', value: -pensionContribution }] : []),
   ];
 
   const salaryProgression = [30000, 50000, 75000, 100000, 150000, 200000, 300000, 500000, 800000, 1000000].map(salary => {
@@ -515,7 +491,7 @@ export default function PAYECalculatorV2({ defaultTab = 'calculator', single = f
 
       {/* Hero — the single shared component, identical on every calculator page */}
       <Hero
-        h1={single && TOOL_HERO[activeTab] ? TOOL_HERO[activeTab].h1 : 'Kenya PAYE & Take-Home Pay Calculator 2026 — Net Salary, NSSF & SHIF'}
+        h1={single && TOOL_HERO[activeTab] ? TOOL_HERO[activeTab].h1 : 'PAYE Calculator Kenya 2026 — Net Salary'}
         pre={single && TOOL_HERO[activeTab] ? TOOL_HERO[activeTab].pre : 'Calculate your '}
         em={single && TOOL_HERO[activeTab] ? TOOL_HERO[activeTab].em : 'take-home'}
         post={single && TOOL_HERO[activeTab] ? TOOL_HERO[activeTab].post : '.'}
@@ -627,7 +603,7 @@ export default function PAYECalculatorV2({ defaultTab = 'calculator', single = f
                   { label: 'NSSF Pension', value: calculations.nssf, icon: Shield, color: '#C73B2F', desc: '6% to 108K' },
                   { label: 'SHIF Health', value: calculations.shif, icon: Heart, color: '#2a0f0c', desc: '2.75%' },
                   { label: 'Housing Levy', value: calculations.housingLevy, icon: Home, color: '#F5B9B2', desc: '1.5%' },
-                  { label: 'Taxable Income', value: calculations.taxableIncome, icon: Briefcase, color: '#F04C40', desc: 'After NSSF' },
+                  { label: 'Taxable Income', value: calculations.taxableIncome, icon: Briefcase, color: '#F04C40', desc: 'After allowable deductions' },
                 ].map((item, i) => (
                   <div key={i} className="bg-white/5 backdrop-blur-xl rounded-xl border border-white/10 p-4 hover:bg-white/10 transition-all">
                     <div className="flex items-center gap-2 mb-2">
@@ -647,7 +623,7 @@ export default function PAYECalculatorV2({ defaultTab = 'calculator', single = f
               >
                 <div className="flex items-center gap-3">
                   <GraduationCap className="w-5 h-5 text-pink-400" />
-                  <span className="font-medium">HELB, SACCO & Voluntary Deductions</span>
+                  <span className="font-medium">HELB, SACCO & Other Deductions</span>
                 </div>
                 {showAdvanced ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
               </button>
@@ -703,7 +679,7 @@ export default function PAYECalculatorV2({ defaultTab = 'calculator', single = f
                 <div className="bg-white/5 backdrop-blur-xl rounded-xl border border-white/10 p-5 space-y-4">
                   <div className="grid md:grid-cols-3 gap-4">
                     <div>
-                      <label className="block text-sm text-stone-400 mb-2">Extra Pension (max 30K)</label>
+                      <label className="block text-sm text-stone-400 mb-2">Extra Pension (NSSF shares tax limit)</label>
                       <input
                         type="number"
                         value={pensionContribution}
@@ -738,21 +714,14 @@ export default function PAYECalculatorV2({ defaultTab = 'calculator', single = f
                     <h4 className="text-sm font-medium text-stone-300 mb-3">Benefits in Kind (Taxable)</h4>
                     <div className="grid md:grid-cols-3 gap-4">
                       <div>
-                        <label className="block text-sm text-stone-400 mb-2">Company Car</label>
-                        <select
-                          value={carBenefit}
-                          onChange={(e) => setCarBenefit(e.target.value)}
-                          className="w-full bg-stone-800/50 border border-stone-700 rounded-lg py-2.5 px-3 text-white"
-                        >
-                          <option value="none">No car benefit</option>
-                          <option value="below1500">Below 1500cc (KES 3,600)</option>
-                          <option value="1500to2000">1500-2000cc (KES 4,800)</option>
-                          <option value="2000to3000">2000-3000cc (KES 7,200)</option>
-                          <option value="above3000">Above 3000cc (KES 12,000)</option>
-                        </select>
+                        <label htmlFor="car-benefit" className="block text-sm text-stone-400 mb-2">Taxable car benefit (monthly KES)</label>
+                        <input id="car-benefit" type="number" min="0" value={carBenefit}
+                          onChange={(e) => setCarBenefit(Math.max(0, Number(e.target.value)))}
+                          className="w-full bg-stone-800/50 border border-stone-700 rounded-lg py-2.5 px-3 text-white" />
+                        <p className="text-xs text-stone-400 mt-2">Enter the taxable value confirmed by payroll, not the car cost. <a href="/blog/taxable-benefits-in-kind-that-kenyan-employers-must-declare" className="underline">Benefit valuation guide</a>.</p>
                       </div>
                       <div>
-                        <label className="block text-sm text-stone-400 mb-2">Housing Benefit</label>
+                        <label className="block text-sm text-stone-400 mb-2">Taxable Housing Benefit (monthly KES)</label>
                         <input
                           type="number"
                           value={housingBenefit}
@@ -762,7 +731,7 @@ export default function PAYECalculatorV2({ defaultTab = 'calculator', single = f
                         />
                       </div>
                       <div>
-                        <label className="block text-sm text-stone-400 mb-2">Other Benefits</label>
+                        <label className="block text-sm text-stone-400 mb-2">Other Taxable Benefits (monthly KES)</label>
                         <input
                           type="number"
                           value={otherBenefits}
@@ -783,7 +752,7 @@ export default function PAYECalculatorV2({ defaultTab = 'calculator', single = f
                       className="w-4 h-4 rounded bg-stone-800 border-stone-700"
                     />
                     <label htmlFor="disability" className="text-sm text-stone-300">
-                      Registered Person with Disability (NCPWD) - KES 150,000 relief
+                      Valid KRA disability exemption certificate — KES 150,000 income exemption
                     </label>
                   </div>
                 </div>
@@ -1368,24 +1337,24 @@ export default function PAYECalculatorV2({ defaultTab = 'calculator', single = f
             </h2>
             <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3">
               {[
-                { gross: 50000, net: 39128, label: 'Entry level' },
-                { gross: 75000, net: 55436, label: 'Mid level' },
-                { gross: 100000, net: 70343, label: 'Senior' },
-                { gross: 150000, net: 102843, label: 'Lead' },
-                { gross: 200000, net: 135343, label: 'Exec' },
-                { gross: 300000, net: 200343, label: 'Executive' },
+                { gross: 50000 },
+                { gross: 75000 },
+                { gross: 100000 },
+                { gross: 150000 },
+                { gross: 200000 },
+                { gross: 300000 },
               ].map((row) => (
                 <a
                   key={row.gross}
-                  href={`/blog/take-home-pay-on-a-kes-${row.gross}-salary-in-kenya`}
+                  href={`/salary/${row.gross}`}
                   className="group flex items-center justify-between p-4 bg-white/5 hover:bg-white/10 rounded-xl border border-white/10 hover:border-[#F04C40]/50 transition-all"
                 >
                   <div>
                     <p className="text-[14px] font-medium m-0 text-white">Ksh {row.gross.toLocaleString()}</p>
-                    <p className="text-[10px] text-white/60 m-0 tracking-wider uppercase">{row.label}</p>
+                    <p className="text-[10px] text-white/60 m-0 tracking-wider uppercase">Monthly gross</p>
                   </div>
                   <div className="text-right">
-                    <p className="text-[14px] font-medium m-0" style={{ color: '#F04C40' }}>{row.net.toLocaleString()}</p>
+                    <p className="text-[14px] font-medium m-0" style={{ color: '#F04C40' }}>{Math.round(fullCalculation(row.gross).netSalary).toLocaleString()}</p>
                     <p className="text-[10px] text-white/60 m-0">take-home</p>
                   </div>
                 </a>

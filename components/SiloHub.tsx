@@ -29,7 +29,8 @@ export function SiloHub({
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Home', item: `${BASE}/` },
-      { '@type': 'ListItem', position: 2, name: silo.title, item: `${BASE}${silo.hubHref}` },
+      { '@type': 'ListItem', position: 2, name: 'Guides', item: `${BASE}/guides` },
+      { '@type': 'ListItem', position: 3, name: silo.title, item: `${BASE}${silo.guideHref ?? silo.hubHref}` },
     ],
   }
   const faqSchema = faqs.length
@@ -71,7 +72,7 @@ export function SiloHub({
 
         {/* Guides in this topic — the spokes */}
         <section className="mb-12">
-          <h2 className="text-xl font-bold text-white mb-5">Guides in this topic</h2>
+          <h2 className="text-xl font-bold text-stone-900 mb-5">Guides in this topic</h2>
           <div className="grid sm:grid-cols-2 gap-3">
             {silo.spokes.map((slug) => (
               <Link
@@ -92,7 +93,7 @@ export function SiloHub({
         {/* FAQ */}
         {faqs.length > 0 && (
           <section className="mb-6">
-            <h2 className="text-xl font-bold text-white mb-5">Common questions</h2>
+            <h2 className="text-xl font-bold text-stone-900 mb-5">Common questions</h2>
             <div className="space-y-4">
               {faqs.map((f) => (
                 <div key={f.q} className="rounded-2xl bg-white border border-stone-200 p-5">
@@ -108,7 +109,7 @@ export function SiloHub({
         <section className="mb-6 rounded-2xl bg-brand-50 border border-brand-200 p-7 text-center">
           <h2 className="text-xl font-bold text-stone-900 mb-2">See it on your own salary</h2>
           <p className="text-stone-600 max-w-xl mx-auto mb-5">
-            Run your own figures and get an exact 2026 breakdown for PAYE, NSSF, SHIF, the Housing Levy and your net take-home.
+            Run your own figures for an estimated 2026 breakdown for PAYE, NSSF, SHIF, the Housing Levy and your net take-home.
           </p>
           <Link
             href={silo.cta.href}

@@ -1,48 +1,18 @@
-import type { Metadata } from 'next'
-import { SiloHub } from '@/components/SiloHub'
-
+import type { Metadata } from 'next';
+import { SiloHub } from '@/components/SiloHub';
 export const metadata: Metadata = {
-  title: { absolute: 'PAYE in Real Life: Bonuses, Freelancing, HELB & Job Changes' },
-  description:
-    'How PAYE works in real Kenyan working life: bonuses and 13th-month pay, freelancing, HELB, changing jobs, employer errors and filing as a couple.',
-  alternates: { canonical: 'https://www.payecalculator.co.ke/guides/employment-situations' },
-}
-
-export default function EmploymentSituationsHub() {
-  return (
-    <SiloHub
-      siloKey="employment-situations"
-      heading="PAYE in Real Working Life (Kenya 2026)"
-      intro={
-        <>
-          <p>
-            The textbook PAYE calculation assumes a steady monthly salary, but real working life is
-            messier. A bonus lands and pushes you into a higher band for one month. You pick up
-            freelance work on the side. HELB starts deducting. You change jobs halfway through the
-            year and suddenly your tax looks wrong. These guides cover the situations the basic
-            calculator does not.
-          </p>
-          <p>
-            Each one explains what KRA expects, how the deduction or adjustment is worked out, and
-            what to do if something looks off on your payslip, including the common case of an
-            employer deducting the wrong PAYE.
-          </p>
-        </>
-      }
-      faqs={[
-        {
-          q: 'Is my bonus taxed more than my salary in Kenya?',
-          a: 'A bonus is taxed as part of that month\'s income, so it can be taxed at your highest PAYE band (up to 35%) for that month, which makes it feel like it is taxed more. It is not a separate higher rate. The bonus guide shows how the one-month spike works.',
-        },
-        {
-          q: 'Do I pay PAYE on freelance income in Kenya?',
-          a: 'PAYE applies to employment income. Freelance or self-employed income is taxed under different rules and you account for it yourself on your annual return. The freelancing vs employment guide compares the total tax on each.',
-        },
-        {
-          q: 'My employer is deducting the wrong PAYE — what do I do?',
-          a: 'First confirm the correct figure with the calculator, then raise it with payroll in writing. If it is not fixed, you can reconcile it on your annual iTax return and claim back any overpayment. The dedicated guide walks through the steps.',
-        },
-      ]}
-    />
-  )
+    "title": {
+        "absolute": "Employment and Tax in Kenya | 2026 Guide"
+    },
+    "description": "Understand bonuses, second jobs, changing employers, HELB and final pay.",
+    "alternates": {
+        "canonical": "https://www.payecalculator.co.ke/guides/employment-situations"
+    }
+};
+export default function GuidePage() {
+    return <SiloHub siloKey="employment-situations" heading="Employment and Tax in Kenya" intro={<><p className="text-sm text-stone-500">Reviewed 21 October 2026. Figures relate to the stated payroll period.</p><section><h2 className="text-xl font-semibold text-stone-900 mb-2">{"Bonuses and irregular pay"}</h2><p>{"Employment bonuses are generally taxable, but there is no separate universal bonus tax rate. The appropriate treatment depends on the payment and the period to which it relates. A simple same-period bonus estimate compares PAYE with and without the extra taxable income. Arrears and lump sums can require allocation to earlier periods; a standard monthly calculator is not a substitute for that reconciliation."}</p></section>
+        <section><h2 className="text-xl font-semibold text-stone-900 mb-2">{"Changing jobs or working two jobs"}</h2><p>{"Keep the P9 and payslips from each employer. Check overlapping pay periods, personal relief and the total income reported in your return. A second employer should not simply duplicate relief already used elsewhere. Changing jobs does not erase earlier taxable income or tax paid during the year."}</p></section>
+        <section><h2 className="text-xl font-semibold text-stone-900 mb-2">{"Freelance income is different"}</h2><p>{"PAYE is withholding on employment income. Independent business receipts can involve annual income tax, withholding credits, turnover tax or VAT depending on eligibility and circumstances. A payment described as freelance is not automatically outside employment rules. Keep records and do not apply the salary calculator to business revenue as though it were wages."}</p></section>
+        <section><h2 className="text-xl font-semibold text-stone-900 mb-2">{"Leaving employment"}</h2><p>{"Request an itemised final settlement separating salary, unused leave, notice pay, gratuity and any pension payments. These items can have different tax treatment and attribution periods. Ask payroll for its working and the applicable exemption conditions rather than assuming the entire settlement is tax-free or taxed in a single month."}</p></section>
+        <section><h2 className="text-xl font-semibold text-stone-900 mb-2">{"Deductions or PAYE look wrong?"}</h2><p>{"HELB repayments usually reduce take-home cash rather than taxable income. Compare deductions with the repayment instructions and account statement. For suspected PAYE errors, check salary inputs and the relevant rates, ask payroll for a written reconciliation and retain the evidence. A return correction or refund claim may be necessary; neither a calculator discrepancy nor a submitted claim guarantees a refund."}</p></section><section><h2 className="text-xl font-semibold text-stone-900 mb-2">Sources and further checks</h2><ul className="list-disc pl-5"><li><a href="https://www.kra.go.ke/individual/filing-paying/types-of-taxes/paye">KRA PAYE rates and deductions</a></li><li><a href="https://www.kra.go.ke/news-center/public-notices/2157-amendments-to-paye-computation-pursuant-to-the-tax-laws-amendment-act%2C-2024">KRA December 2024 PAYE amendments</a></li><li><a href="https://www.kra.go.ke/news-center/public-notices/2307-guidance-on-employer-obligations-in-applying-income-tax-deductions%2C-reliefs-and-exemptions">KRA employer guidance</a></li></ul><p className="mt-3">Use the linked topic articles below for detailed examples and eligibility checks.</p></section></>} faqs={[]}/>;
 }

@@ -1,47 +1,18 @@
-import type { Metadata } from 'next'
-import { SiloHub } from '@/components/SiloHub'
-
+import type { Metadata } from 'next';
+import { SiloHub } from '@/components/SiloHub';
 export const metadata: Metadata = {
-  title: { absolute: 'Kenya Salary Breakdowns 2026: What You Take Home' },
-  description:
-    'See what common Kenyan salaries look like after PAYE, NSSF, SHIF and the Housing Levy in 2026, from KES 50,000 to KES 200,000 and above.',
-  alternates: { canonical: 'https://www.payecalculator.co.ke/guides/salary-breakdowns' },
-}
-
-export default function SalaryBreakdownsHub() {
-  return (
-    <SiloHub
-      siloKey="salary-breakdowns"
-      heading="Kenya Salary Breakdowns (2026)"
-      intro={
-        <>
-          <p>
-            A gross salary and a take-home salary are two very different numbers in Kenya. Between
-            them sit PAYE, NSSF, SHIF and the Housing Levy, and the gap widens as you earn more
-            because PAYE is banded up to 35%. These breakdowns show, salary by salary, exactly what
-            lands in your account and where every shilling goes.
-          </p>
-          <p>
-            Each guide below takes a real salary level and walks through the full deduction stack,
-            so you can find the figure closest to yours. For your own exact number, the calculator
-            does the same maths on any salary in seconds.
-          </p>
-        </>
-      }
-      faqs={[
-        {
-          q: 'How much is deducted from a KES 100,000 salary in Kenya?',
-          a: 'On KES 100,000 gross in 2026 you lose PAYE, NSSF (KES 6,000 at that level), SHIF (KES 2,750) and the Housing Levy (KES 1,500), leaving a net take-home in the region of KES 73,000–75,000 depending on reliefs. The dedicated guide shows the full breakdown.',
-        },
-        {
-          q: 'Why does my take-home not rise much when I get a raise?',
-          a: 'Kenya PAYE is progressive, so higher slices of income are taxed at 30% and 35%. Once you pass roughly KES 100,000 a month, a large part of every extra shilling goes to PAYE plus the uncapped SHIF and housing levy, so net pay rises slowly. The high-earners guide explains the bands.',
-        },
-        {
-          q: 'What salary do you need to live comfortably in Nairobi?',
-          a: 'It depends on rent and lifestyle, but the comfort-in-Nairobi guide works through a realistic monthly budget and back-solves the gross salary you would need after all deductions.',
-        },
-      ]}
-    />
-  )
+    "title": {
+        "absolute": "Salary After Tax in Kenya | 2026 Guide"
+    },
+    "description": "Compare gross salary and take-home pay using the same assumptions and current payroll deductions.",
+    "alternates": {
+        "canonical": "https://www.payecalculator.co.ke/guides/salary-breakdowns"
+    }
+};
+export default function GuidePage() {
+    return <SiloHub siloKey="salary-breakdowns" heading="Salary After Tax in Kenya" intro={<><p className="text-sm text-stone-500">Reviewed 21 October 2026. Figures relate to the stated payroll period.</p><section><h2 className="text-xl font-semibold text-stone-900 mb-2">{"Compare like with like"}</h2><p>{"Gross cash salary is your pay before deductions. Taxable pay is the amount used for PAYE; net pay is the cash left after tax and other deductions. A non-cash benefit may increase taxable pay without increasing the cash you receive. The salary pages use regular monthly pay and assume pensionable earnings equal gross pay."}</p></section>
+        <section><h2 className="text-xl font-semibold text-stone-900 mb-2">{"Standard monthly examples"}</h2><p>{"For a resident employee using February 2026 NSSF limits and personal relief, KES 50,000 gross gives KES 39,029.15 net; KES 100,000 gives KES 70,441.65; KES 150,000 gives KES 103,618.15; and KES 200,000 gives KES 137,130.65. These exclude voluntary pension payments, mortgage deductions, insurance relief, disability exemptions, benefits in kind and personal deductions. Payroll rounding can produce small differences."}</p></section>
+        <section><h2 className="text-xl font-semibold text-stone-900 mb-2">{"Why your payslip may differ"}</h2><p>{"HELB repayments, SACCO savings, union dues, salary advances and voluntary pension contributions change cash received. Qualifying deductions and reliefs can reduce PAYE. Check the payroll period too: January 2026 used a lower NSSF ceiling. Use the main calculator for personal inputs rather than treating a standard example as a promise."}</p></section>
+        <section><h2 className="text-xl font-semibold text-stone-900 mb-2">{"Evaluate a pay rise"}</h2><p>{"Only the part of taxable pay in each band receives that rate. Moving into a higher band does not tax your entire salary at the higher percentage. NSSF stops increasing at its earnings ceiling, while SHIF and Housing Levy remain uncapped. Compare the extra net cash with any changes in benefits, commuting or pension contributions."}</p></section>
+        <section><h2 className="text-xl font-semibold text-stone-900 mb-2">{"Choose a useful next step"}</h2><p>{"Use the salary comparison tool for two offers, the raise calculator for an increase and the net-to-gross calculator for a desired take-home figure. Budget examples are illustrations, not surveys of what every household spends. Rent, household size, dependants and debt repayments materially change the gross salary you need."}</p></section><section><h2 className="text-xl font-semibold text-stone-900 mb-2">Sources and further checks</h2><ul className="list-disc pl-5"><li><a href="https://www.kra.go.ke/individual/filing-paying/types-of-taxes/paye">KRA PAYE rates and deductions</a></li><li><a href="https://www.kra.go.ke/news-center/public-notices/2157-amendments-to-paye-computation-pursuant-to-the-tax-laws-amendment-act%2C-2024">KRA December 2024 PAYE amendments</a></li><li><a href="https://www.kra.go.ke/news-center/public-notices/2307-guidance-on-employer-obligations-in-applying-income-tax-deductions%2C-reliefs-and-exemptions">KRA employer guidance</a></li></ul><p className="mt-3">Use the linked topic articles below for detailed examples and eligibility checks.</p></section></>} faqs={[]}/>;
 }
