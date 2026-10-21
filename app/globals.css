@@ -638,3 +638,71 @@ input[type="range"]::-moz-range-track {
 @media(prefers-reduced-motion:reduce){.editorial-home *{animation:none!important;transition:none!important}}
 
 .editorial-hero h1>span{font-size:.8em;white-space:nowrap}
+
+/* Editorial salary graphics: ink, paper and a single coral data accent. */
+.salary-story{--story-ink:#191914;--story-paper:#f6f2e8;--story-coral:#f04c40;color:var(--story-ink);padding:32px 0 0}
+.story-heading{display:grid;grid-template-columns:1fr auto;align-items:end;border-top:1px solid #a8a18f;padding-top:26px;margin-bottom:28px;gap:12px}
+.story-eyebrow{display:block;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase}
+.story-heading>.story-eyebrow{grid-column:1/-1}
+.story-heading h2{font-family:'PAYE Display',Impact,sans-serif;font-size:clamp(44px,5.5vw,72px);font-weight:400;line-height:.98;text-transform:uppercase;letter-spacing:-.6px}
+.story-heading p{font-family:Georgia,serif;font-size:18px;line-height:1.4;max-width:190px}
+.story-split{display:grid;grid-template-columns:1.05fr 1fr;gap:0;border-bottom:1px solid #aaa18f}
+.story-kept{background:var(--story-coral);padding:34px;position:relative;display:flex;flex-direction:column;align-items:flex-start}
+.story-big-number{font-family:'PAYE Display',Impact,sans-serif;font-size:clamp(80px,12vw,155px);line-height:1.1;letter-spacing:-4px;margin:18px 0 6px}
+.story-big-number>span{font-size:.48em;letter-spacing:-1px;margin-left:3px}
+.story-kept>p{font-family:Georgia,serif;font-size:21px;line-height:1.35;max-width:270px}
+.story-net{display:flex;flex-direction:column;gap:5px;margin:25px 0;width:100%;border-top:1px solid #a62e24;padding-top:16px}
+.story-net>span{font-size:11px;text-transform:uppercase;letter-spacing:1px}
+.story-net>strong{font-size:24px;letter-spacing:-.5px;font-variant-numeric:tabular-nums}
+.story-ratio{width:100%;height:34px;display:flex;background:#e6d8be}
+.story-ratio>span{transition:width .4s ease,opacity .2s ease;min-width:0}
+.story-ratio>span:first-child{background-color:#f6f2e8!important}
+.story-ratio-labels{width:100%;display:flex;flex-wrap:wrap;justify-content:space-between;gap:7px;font-size:10px;margin-top:9px;line-height:1.5}
+.story-selection{margin-top:auto;padding-top:28px;display:flex;justify-content:space-between;gap:12px;width:100%;font-size:13px;align-items:center}
+.story-selection strong{font-variant-numeric:tabular-nums}
+.story-reset{font:inherit;font-size:11px;border-bottom:1px solid currentColor;padding:5px 0;margin-top:12px;min-height:36px}
+.story-deductions{background:#fbf8f1;padding:30px 34px}
+.story-ledger-head{display:flex;align-items:end;justify-content:space-between;gap:10px}
+.story-ledger-head h3{font-family:'PAYE Display',Impact,sans-serif;font-weight:400;font-size:31px;line-height:1.1;max-width:240px}
+.story-ledger-head>span{font-size:10px;white-space:nowrap}
+.story-ledger-hint{font-size:11px;color:#625c50;margin:12px 0 15px}
+.story-deduction{width:100%;text-align:left;display:block;padding:16px 0 12px;border-top:1px solid #d4cbbc;min-height:75px}
+.story-row-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:13px}
+.story-row-top>span{display:flex;gap:10px;align-items:baseline}
+.story-row-top small{font-size:10px;color:#766c59}
+.story-row-top strong{font-size:21px;font-variant-numeric:tabular-nums;letter-spacing:-.7px;font-weight:600}
+.story-row-track{height:5px;display:block;margin:10px 0 6px;background:#e9e2d4}
+.story-row-track>span{display:block;height:100%;background:#191914;transition:width .4s ease,background-color .2s ease}
+.story-deduction:hover .story-row-track>span,.story-deduction[aria-pressed=true] .story-row-track>span{background:#f04c40}
+.story-row-share{font-size:10px;color:#655c4b}
+.story-ledger-total{display:flex;justify-content:space-between;gap:12px;align-items:center;border-top:2px solid #191914;padding-top:15px;margin-top:6px;font-size:12px}
+.story-ledger-total strong{font-size:24px;font-variant-numeric:tabular-nums}
+.story-empty{padding:36px 0;color:#625c50}
+.salary-story .story-shortfall{font-family:inherit;font-size:13px;margin-top:16px;max-width:none}
+.story-year{margin-top:30px;background:#191914;color:#f6f2e8;padding:32px 34px 25px}
+.story-year-head{display:flex;justify-content:space-between;align-items:end;gap:20px}
+.story-year h3{font-family:'PAYE Display',Impact,sans-serif;font-size:clamp(30px,4vw,48px);font-weight:400;line-height:1.05;margin-top:12px;text-transform:uppercase}
+.story-year-total{display:flex;flex-direction:column;gap:8px;text-align:right}
+.story-year-total>span{font-size:11px;color:#cdc6b8}
+.story-year-total>strong{font-family:'PAYE Display',Impact,sans-serif;font-weight:400;font-size:clamp(27px,3.8vw,43px);line-height:1;white-space:nowrap}
+.story-chart-key{display:flex;gap:19px;flex-wrap:wrap;align-items:center;margin:30px 0 18px;font-size:11px}
+.story-chart-key>span{display:flex;align-items:center;gap:7px}
+.story-chart-key>span:last-child{margin-left:auto;color:#c0b7a6}
+.story-chart-key i{width:9px;height:9px;display:inline-block}
+.story-key-net{background:#f04c40}.story-key-deductions{background:#777365}
+.story-year-chart{display:flex;height:235px;gap:12px;padding-bottom:28px}
+.story-y-axis{width:44px;flex:none;display:flex;flex-direction:column;justify-content:space-between;text-align:right;font-size:10px;color:#c0b7a6}
+.story-year-bars{flex:1;min-width:0;display:flex;gap:10px;align-items:flex-end;position:relative;background:linear-gradient(to top,transparent calc(50% - .5px),#49473d calc(50% - .5px),#49473d calc(50% + .5px),transparent calc(50% + .5px));border-bottom:1px solid #777365}
+.story-month{flex:1;height:100%;min-width:0;display:flex;align-items:flex-end;position:relative;padding:0 3px;background:transparent;border:0}
+.story-month-stack{width:100%;display:flex;flex-direction:column;transition:height .4s ease;opacity:.6}
+.story-month[aria-pressed=true] .story-month-stack,.story-month:hover .story-month-stack,.story-month:focus-visible .story-month-stack{opacity:1}
+.story-month-deductions{background:#777365;min-height:0}
+.story-month-net{background:#f04c40;min-height:0}
+.story-month-label{position:absolute;top:calc(100% + 9px);left:0;right:0;text-align:center;font-size:10px;color:#bbb2a0}
+.story-month[aria-pressed=true] .story-month-label{color:#fff;font-weight:700;text-decoration:underline;text-underline-offset:5px}
+.story-year-caption{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:10px;line-height:1.5;padding-top:5px;color:#d6cebd}
+.story-assumption{font-size:10px;line-height:1.5;color:#b9af9c;border-top:1px solid #49473d;padding-top:17px;margin-top:22px;max-width:760px}
+@media(max-width:760px){.story-split{grid-template-columns:1fr}.story-kept{padding:26px}.story-big-number{font-size:116px}.story-deductions{padding:25px}.story-heading{grid-template-columns:1fr}.story-heading p{max-width:none;font-size:16px}.story-year{padding:25px 20px}.story-year-head{align-items:start;flex-direction:column}.story-year-total{text-align:left}.story-year-bars{gap:3px}.story-month{padding:0 1px}.story-year-chart{height:200px;gap:8px}.story-chart-key{gap:12px}.story-chart-key>span:last-child{width:100%;margin-left:0}.story-y-axis{width:34px}.story-month-label{font-size:9px}.story-year-total>strong{font-size:38px}.story-heading h2{font-size:49px}}
+@media(prefers-reduced-motion:reduce){.salary-story *{transition:none!important}}
+
+.story-payday-control{display:flex;align-items:center;gap:12px;font-size:11px;margin:14px 0 10px}.story-payday-control strong{font-variant-numeric:tabular-nums}.story-payday-control input{flex:1;min-width:0;min-height:44px}.story-payday-control input[type="range"]::-webkit-slider-runnable-track{background:#777365}.story-payday-control input[type="range"]::-moz-range-track{background:#777365}

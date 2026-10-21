@@ -4,8 +4,9 @@ import React, { useState, useMemo, useEffect } from 'react';
 import Hero from './Hero';
 import EditorialHero from './EditorialHero';
 import EditorialGuides from './EditorialGuides';
-import { PieChart, Pie, Cell, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, Legend, AreaChart, Area, LineChart, Line, RadarChart, Radar, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ComposedChart, Treemap, FunnelChart, Funnel, LabelList } from 'recharts';
-import { Calculator, TrendingUp, Wallet, Building2, Heart, Shield, ChevronDown, ChevronUp, Info, Sparkles, ArrowRight, Minus, Plus, DollarSign, PiggyBank, Home, Briefcase, Car, Users, GraduationCap, Utensils, Gift, ArrowLeftRight, Building, Percent, Target, Zap, BarChart3, PieChartIcon, Activity, Gauge, TrendingDown, RefreshCw, CircleDollarSign, BadgePercent, Landmark, HandCoins, Download } from 'lucide-react';
+import SalaryStory from './SalaryStory';
+import { PieChart, Pie, Cell, ResponsiveContainer, Bar, XAxis, YAxis, Tooltip, Legend, Line, ComposedChart } from 'recharts';
+import { Calculator, TrendingUp, Wallet, Heart, Shield, ChevronDown, ChevronUp, Info, Minus, PiggyBank, Home, Briefcase, GraduationCap, Gift, Building, BarChart3, RefreshCw, Download } from 'lucide-react';
 
 // 2026 Kenya Tax Constants
 const TAX_BANDS = [
@@ -211,44 +212,6 @@ const AnimatedValue = ({ value, prefix = '', suffix = '' }) => (
   <span>{prefix}{formatCurrency(Math.round(value))}{suffix}</span>
 );
 
-// Gauge Component
-const GaugeChart = ({ value, max = 50, label, color = '#8A2820' }) => {
-  const percentage = Math.min((value / max) * 100, 100);
-  const rotation = (percentage / 100) * 180;
-
-  return (
-    <div className="relative w-40 h-24 mx-auto">
-      <svg viewBox="0 0 200 100" className="w-full h-full">
-        {/* Background arc */}
-        <path
-          d="M 20 100 A 80 80 0 0 1 180 100"
-          fill="none"
-          stroke="#ececec"
-          strokeWidth="16"
-          strokeLinecap="round"
-        />
-        {/* Colored arc */}
-        <path
-          d="M 20 100 A 80 80 0 0 1 180 100"
-          fill="none"
-          stroke={color}
-          strokeWidth="16"
-          strokeLinecap="round"
-          strokeDasharray={`${percentage * 2.51} 251`}
-          style={{ transition: 'stroke-dasharray 1s ease-out' }}
-        />
-        {/* Center text */}
-        <text x="100" y="85" textAnchor="middle" className="fill-white text-2xl font-bold">
-          {value.toFixed(1)}%
-        </text>
-        <text x="100" y="100" textAnchor="middle" className="fill-stone-400 text-xs">
-          {label}
-        </text>
-      </svg>
-    </div>
-  );
-};
-
 // Progress Bar Component
 const ProgressBar = ({ label, value, max, color, icon: Icon }) => {
   const percentage = (value / max) * 100;
@@ -272,54 +235,6 @@ const ProgressBar = ({ label, value, max, color, icon: Icon }) => {
   );
 };
 
-// Waterfall Chart Component
-const WaterfallChart = ({ data }) => {
-  let cumulative = 0;
-  const waterfallData = data.map((item, index) => {
-    const start = cumulative;
-    cumulative += item.value;
-    return {
-      ...item,
-      start,
-      end: cumulative,
-      isPositive: item.value >= 0
-    };
-  });
-
-  return (
-    <div className="space-y-2">
-      {waterfallData.map((item, index) => (
-        <div key={index} className="relative">
-          <div className="flex items-center justify-between mb-1">
-            <span className="text-sm text-stone-400">{item.name}</span>
-            <span className={`text-sm font-medium ${item.isPositive ? 'text-emerald-400' : 'text-red-400'}`}>
-              {item.isPositive ? '+' : ''}{formatCurrency(item.value)}
-            </span>
-          </div>
-          <div className="h-8 bg-stone-800/50 rounded-lg overflow-hidden">
-            {/* Bar length = running balance after this row, anchored left so each
-                deduction visibly shrinks the bar. The balance label sits at the
-                right end of the fill, so it never collides with the bar. min-w-fit
-                keeps the label readable; inline colour bypasses the .text-white remap. */}
-            <div
-              className="h-full rounded-lg transition-all duration-700 flex items-center justify-end pr-3 min-w-fit"
-              style={{
-                width: `${Math.max((item.end / waterfallData[0].value) * 100, 0)}%`,
-                backgroundColor: '#F04C40',
-              }}
-            >
-              <span className="text-[11px] font-bold whitespace-nowrap" style={{ color: '#ffffff' }}>{formatCurrency(item.end)}</span>
-            </div>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-};
-
-// Tool registry — each tab also lives at its own URL. On a dedicated page the
-// hero tab bar renders these as links; on the homepage they switch in place.
-// Per-tool hero copy used when the component is rendered as a standalone page.
 const TOOL_HERO: Record<string, { h1: string; pre: string; em: string; post: string; desc: string }> = {
   reverse: {
     h1: 'Net to Gross Salary Calculator Kenya 2026',
@@ -420,31 +335,6 @@ export default function PAYECalculatorV2({ defaultTab = 'calculator', single = f
     return { newGross, newNet: newCalc.netSalary, grossIncrease, monthlyNetGain, annualNetGain: monthlyNetGain * 12, keptPercent };
   }, [grossSalary, raisePercent, calculations.netSalary, deductionOptions]);
 
-  // Chart Data
-  const pieData = [
-    { name: 'Net Salary', value: calculations.netSalary, color: '#F04C40' },
-    { name: 'PAYE Tax', value: calculations.paye, color: '#8A2820' },
-    { name: 'NSSF', value: calculations.nssf, color: '#C73B2F' },
-    { name: 'SHIF', value: calculations.shif, color: '#2a0f0c' },
-    { name: 'Housing Levy', value: calculations.housingLevy, color: '#F5B9B2' },
-    ...(calculations.helbRepayment > 0 ? [{ name: 'HELB', value: calculations.helbRepayment, color: '#F04C40' }] : []),
-    ...(calculations.saccoContribution > 0 ? [{ name: 'SACCO', value: calculations.saccoContribution, color: '#06B6D4' }] : []),
-    ...(pensionContribution > 0 ? [{ name: 'Extra Pension', value: pensionContribution, color: '#059669' }] : []),
-    ...(calculations.unionDues > 0 ? [{ name: 'Union Dues', value: calculations.unionDues, color: '#78716c' }] : []),
-  ].filter(d => d.value > 0);
-
-  const waterfallData = [
-    { name: 'Gross Salary', value: calculations.grossSalary },
-    { name: 'PAYE Tax', value: -calculations.paye },
-    { name: 'NSSF', value: -calculations.nssf },
-    { name: 'SHIF', value: -calculations.shif },
-    { name: 'Housing Levy', value: -calculations.housingLevy },
-    ...(calculations.helbRepayment > 0 ? [{ name: 'HELB', value: -calculations.helbRepayment }] : []),
-    ...(calculations.saccoContribution > 0 ? [{ name: 'SACCO', value: -calculations.saccoContribution }] : []),
-    ...(calculations.unionDues > 0 ? [{ name: 'Union Dues', value: -calculations.unionDues }] : []),
-    ...(pensionContribution > 0 ? [{ name: 'Extra Pension', value: -pensionContribution }] : []),
-  ];
-
   const salaryProgression = [30000, 50000, 75000, 100000, 150000, 200000, 300000, 500000, 800000, 1000000].map(salary => {
     const calc = fullCalculation(salary, {});
     return {
@@ -456,37 +346,11 @@ export default function PAYECalculatorV2({ defaultTab = 'calculator', single = f
     };
   });
 
-  const taxEfficiencyData = [
-    { subject: 'Take Home', A: 100 - calculations.totalDeductionRate, fullMark: 100 },
-    { subject: 'Tax Efficiency', A: 100 - calculations.effectiveTaxRate, fullMark: 100 },
-    { subject: 'NSSF Max', A: calculations.nssf >= calculateNSSF(NSSF_UPPER_LIMIT) ? 100 : (calculations.nssf / calculateNSSF(NSSF_UPPER_LIMIT)) * 100, fullMark: 100 },
-    { subject: 'Relief Used', A: ((calculations.insuranceRelief + calculations.maxPension + calculations.maxMortgage) / (MAX_INSURANCE_RELIEF + MAX_PENSION_DEDUCTION + MAX_MORTGAGE_DEDUCTION)) * 100, fullMark: 100 },
-  ];
-
   const employerCostData = [
     { name: 'Gross Salary', value: calculations.grossSalary, color: '#C73B2F' },
     { name: 'Employer NSSF', value: calculations.employerNSSF, color: '#F04C40' },
     { name: 'Employer Housing', value: calculations.employerHousingLevy, color: '#F5B9B2' },
   ];
-
-  const monthlyTrend = Array.from({ length: 12 }, (_, i) => ({
-    month: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][i],
-    net: calculations.netSalary,
-    gross: calculations.grossSalary,
-    cumNet: calculations.netSalary * (i + 1),
-    cumGross: calculations.grossSalary * (i + 1),
-    cumTax: calculations.paye * (i + 1)
-  }));
-
-  const deductionBreakdown = [
-    { name: 'PAYE', value: calculations.paye, fill: '#8A2820' },
-    { name: 'NSSF', value: calculations.nssf, fill: '#C73B2F' },
-    { name: 'SHIF', value: calculations.shif, fill: '#2a0f0c' },
-    { name: 'Housing', value: calculations.housingLevy, fill: '#F5B9B2' },
-    { name: 'HELB', value: calculations.helbRepayment, fill: '#F04C40' },
-    { name: 'SACCO', value: calculations.saccoContribution, fill: '#06B6D4' },
-    { name: 'Union', value: calculations.unionDues, fill: '#84CC16' },
-  ].filter(d => d.value > 0);
 
   return (
     <div className={`paye-app min-h-screen bg-white overflow-x-hidden ${!single ? 'editorial-home' : ''}`}>
@@ -729,147 +593,8 @@ export default function PAYECalculatorV2({ defaultTab = 'calculator', single = f
                 </div>
               )}
 
-              {/* Charts Section */}
-              <div className="grid lg:grid-cols-2 gap-6">
-                {/* Pie Chart */}
-                <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-2xl border border-white/10 p-5">
-                  <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
-                    <PieChartIcon className="w-5 h-5 text-amber-400" />
-                    Salary Distribution
-                  </h3>
-                  <div className="h-64">
-                    <ResponsiveContainer width="100%" height="100%">
-                      <PieChart>
-                        <Pie
-                          data={pieData}
-                          cx="50%"
-                          cy="50%"
-                          innerRadius={50}
-                          outerRadius={80}
-                          paddingAngle={3}
-                          dataKey="value"
-                        >
-                          {pieData.map((entry, index) => (
-                            <Cell key={index} fill={entry.color} />
-                          ))}
-                        </Pie>
-                        <Tooltip formatter={(v) => formatCurrency(v)} contentStyle={{ backgroundColor: '#1F2937', border: '1px solid #374151', borderRadius: '8px' }} />
-                        <Legend formatter={(v) => <span className="text-stone-300 text-xs">{v}</span>} />
-                      </PieChart>
-                    </ResponsiveContainer>
-                  </div>
-                </div>
+              <SalaryStory pay={calculations} pension={pensionContribution} />
 
-                {/* Waterfall Chart */}
-                <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-2xl border border-white/10 p-5">
-                  <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
-                    <Activity className="w-5 h-5 text-emerald-400" />
-                    Gross → Net Breakdown
-                  </h3>
-                  <WaterfallChart data={waterfallData} />
-                </div>
-              </div>
-
-              {/* More Charts Row */}
-              <div className="grid lg:grid-cols-3 gap-6">
-                {/* Gauges */}
-                <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-2xl border border-white/10 p-5">
-                  <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
-                    <Gauge className="w-5 h-5 text-red-400" />
-                    Tax Rates
-                  </h3>
-                  <div className="grid grid-cols-2 gap-4">
-                    <GaugeChart value={calculations.effectiveTaxRate} max={40} label="Effective Tax" color="#8A2820" />
-                    <GaugeChart value={calculations.totalDeductionRate} max={50} label="Total Deductions" color="#F5B9B2" />
-                  </div>
-                </div>
-
-                {/* Radar Chart */}
-                <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-2xl border border-white/10 p-5">
-                  <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
-                    <Target className="w-5 h-5 text-blue-400" />
-                    Tax Efficiency
-                  </h3>
-                  <div className="h-52">
-                    <ResponsiveContainer width="100%" height="100%">
-                      <RadarChart data={taxEfficiencyData}>
-                        <PolarGrid stroke="#ececec" />
-                        <PolarAngleAxis dataKey="subject" tick={{ fill: '#9CA3AF', fontSize: 10 }} />
-                        <Radar name="Score" dataKey="A" stroke="#C73B2F" fill="#C73B2F" fillOpacity={0.3} />
-                      </RadarChart>
-                    </ResponsiveContainer>
-                  </div>
-                </div>
-
-                {/* Deduction Breakdown Bar */}
-                <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-2xl border border-white/10 p-5">
-                  <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
-                    <BarChart3 className="w-5 h-5 text-purple-400" />
-                    Deduction Split
-                  </h3>
-                  <div className="h-52">
-                    <ResponsiveContainer width="100%" height="100%">
-                      <BarChart data={deductionBreakdown} layout="vertical">
-                        <XAxis type="number" tickFormatter={(v) => formatCompact(v)} stroke="#888" />
-                        <YAxis type="category" dataKey="name" width={60} stroke="#888" tick={{ fontSize: 11 }} />
-                        <Tooltip formatter={(v) => formatCurrency(v)} contentStyle={{ backgroundColor: '#1F2937', border: '1px solid #374151', borderRadius: '8px' }} />
-                        <Bar dataKey="value" radius={[0, 4, 4, 0]}>
-                          {deductionBreakdown.map((entry, index) => (
-                            <Cell key={index} fill={entry.fill} />
-                          ))}
-                        </Bar>
-                      </BarChart>
-                    </ResponsiveContainer>
-                  </div>
-                </div>
-              </div>
-
-              {/* Annual Projection */}
-              <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-2xl border border-white/10 p-5">
-                <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
-                  <TrendingUp className="w-5 h-5 text-emerald-400" />
-                  Annual Projection
-                </h3>
-                <div className="h-64">
-                  <ResponsiveContainer width="100%" height="100%">
-                    <AreaChart data={monthlyTrend}>
-                      <defs>
-                        <linearGradient id="colorNet" x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="5%" stopColor="#F04C40" stopOpacity={0.3}/>
-                          <stop offset="95%" stopColor="#F04C40" stopOpacity={0}/>
-                        </linearGradient>
-                        <linearGradient id="colorTax" x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="5%" stopColor="#8A2820" stopOpacity={0.3}/>
-                          <stop offset="95%" stopColor="#8A2820" stopOpacity={0}/>
-                        </linearGradient>
-                      </defs>
-                      <XAxis dataKey="month" stroke="#888" />
-                      <YAxis tickFormatter={(v) => formatCompact(v)} stroke="#888" />
-                      <Tooltip formatter={(v) => formatCurrency(v)} contentStyle={{ backgroundColor: '#1F2937', border: '1px solid #374151', borderRadius: '8px' }} />
-                      <Area type="monotone" dataKey="cumNet" name="Cumulative Net" stroke="#F04C40" fill="url(#colorNet)" />
-                      <Area type="monotone" dataKey="cumTax" name="Cumulative Tax" stroke="#8A2820" fill="url(#colorTax)" />
-                    </AreaChart>
-                  </ResponsiveContainer>
-                </div>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4 pt-4 border-t border-white/10">
-                  <div className="text-center">
-                    <p className="text-stone-400 text-xs">Annual Gross</p>
-                    <p className="text-lg font-bold">{formatCurrency(calculations.grossSalary * 12)}</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-stone-400 text-xs">Annual Net</p>
-                    <p className="text-lg font-bold text-emerald-400">{formatCurrency(calculations.netSalary * 12)}</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-stone-400 text-xs">Annual Tax</p>
-                    <p className="text-lg font-bold text-red-400">{formatCurrency(calculations.paye * 12)}</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-stone-400 text-xs">Annual NSSF</p>
-                    <p className="text-lg font-bold text-blue-400">{formatCurrency(calculations.nssf * 12)}</p>
-                  </div>
-                </div>
-              </div>
             </div>
           )}
 
