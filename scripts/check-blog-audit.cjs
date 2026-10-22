@@ -4,17 +4,21 @@ const fs = require('node:fs');
 const articles = require('../lib/articles.json');
 const redirects = require('../lib/blog-redirects.json');
 const published = articles.filter(a => !a.draft);
-assert.equal(published.length, 27);
+assert.equal(published.length, 30);
 assert.equal(articles.filter(a => a.draft).length, 4);
 assert.equal(new Set(articles.map(a => a.slug)).size, articles.length);
+function sitemapForCheck() { return fs.readFileSync('.next/server/app/sitemap.xml.body', 'utf8'); }
 const slugs = new Set(published.map(a => a.slug));
 for (const a of published) {
-  assert.equal(a.reviewedAt, '2026-10-21');
+  assert.match(a.reviewedAt, /^\d{4}-\d{2}-\d{2}$/);
+  assert.equal(a.reviewedAt, a.publishedAt || '2026-10-21');
   assert(a.content.includes('Sources and review date'));
   for (const [, target] of a.content.matchAll(/href="\/blog\/([^"#?]+)/g)) assert(slugs.has(target), target);
   const rendered = fs.readFileSync(`.next/server/app/blog/${a.slug}.html`, 'utf8');
-  assert(rendered.includes('21 October 2026'));
-  assert(rendered.includes('2026-10-21'));
+  assert(rendered.includes(new Date(a.reviewedAt + 'T12:00:00Z').toLocaleDateString('en-GB', {day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC'})));
+  assert(rendered.includes(a.reviewedAt));
+  if (a.publishedAt) assert(rendered.includes('\"datePublished\":\"' + a.publishedAt + '\"'));
+  assert(sitemapForCheck().includes('/blog/' + a.slug + '</loc>'));
 }
 const sitemap = fs.readFileSync('.next/server/app/sitemap.xml.body', 'utf8');
 for (const r of redirects) {
@@ -35,4 +39,4 @@ for (const [slug, tax, net] of expected) {
   assert(content.includes(`<td>PAYE after personal relief</td><td>${tax}</td>`));
   assert(content.includes(`<td>Take-home pay</td><td>${net}</td>`));
 }
-console.log('PASS: 27 rendered articles, 5 redirects, 4 excluded drafts, metadata dates, internal links and salary examples.');
+console.log('PASS: 30 rendered articles, 5 redirects, 4 excluded drafts, metadata dates, internal links and salary examples.');

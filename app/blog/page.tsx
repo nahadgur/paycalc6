@@ -43,6 +43,9 @@ const categories: Record<string, string[]> = {
     'tax-benefits-for-persons-with-disability-in-kenya',
   ],
   'Salary breakdowns': [
+    'gross-vs-net-salary-in-kenya',
+    'how-to-read-your-kenyan-payslip',
+    'taxable-pay-vs-gross-pay-in-kenya',
     'what-a-kes-50000-salary-actually-looks-like-after-tax-in-kenya',
     'take-home-pay-on-a-kes-100000-salary-in-kenya',
     'how-much-tax-do-you-pay-on-kes-150000-in-kenya',

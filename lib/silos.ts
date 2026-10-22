@@ -77,6 +77,9 @@ export const SILOS: Silo[] = [
     guideHref: '/guides/salary-breakdowns',
     blurb: 'Exactly what common Kenyan salaries look like after PAYE, NSSF, SHIF, and the Housing Levy, from KES 50,000 to KES 200,000 and beyond.',
     spokes: [
+      'gross-vs-net-salary-in-kenya',
+      'how-to-read-your-kenyan-payslip',
+      'taxable-pay-vs-gross-pay-in-kenya',
       'what-a-kes-50000-salary-actually-looks-like-after-tax-in-kenya',
       'take-home-pay-on-a-kes-100000-salary-in-kenya',
       'how-much-tax-do-you-pay-on-kes-150000-in-kenya',

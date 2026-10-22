@@ -64,7 +64,7 @@ export default function BlogArticle({ params }: Props) {
     '@type': 'Article',
     headline: article!.title,
     description: article!.metaDescription,
-    datePublished: PUBLISHED,
+    datePublished: ('publishedAt' in article && article.publishedAt) || PUBLISHED,
     dateModified: article!.reviewedAt,
     mainEntityOfPage: { '@type': 'WebPage', '@id': `${BASE}/blog/${params.slug}` },
     author: { '@type': 'Organization', name: 'PayeCalculator', url: BASE },

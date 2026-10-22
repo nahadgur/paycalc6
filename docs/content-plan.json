@@ -1,0 +1,39 @@
+{
+  "dailyTarget": 3,
+  "timezone": "Europe/London",
+  "approximateRunTime": "08:00",
+  "batches": [
+    {
+      "date": "2026-10-22",
+      "articles": [
+        {
+          "title": "Gross vs Net Salary in Kenya",
+          "slug": "gross-vs-net-salary-in-kenya",
+          "hub": "/guides/salary-breakdowns"
+        },
+        {
+          "title": "How to Read Your Kenyan Payslip",
+          "slug": "how-to-read-your-kenyan-payslip",
+          "hub": "/guides/salary-breakdowns"
+        },
+        {
+          "title": "Taxable Pay vs Gross Pay in Kenya",
+          "slug": "taxable-pay-vs-gross-pay-in-kenya",
+          "hub": "/guides/salary-breakdowns"
+        }
+      ]
+    }
+  ],
+  "nextBatch": [
+    "How to Check Your NSSF Contributions",
+    "How to Check Your SHA Contributions",
+    "Missing NSSF Contributions: What to Do"
+  ],
+  "rules": [
+    "Check latest main and existing content to avoid duplicate publishing.",
+    "Official-source fact checks, worked examples where useful, contextual inbound and outbound links.",
+    "Preserve historical dates; use real publication and review dates.",
+    "Build, check internal links and examples, push main with lease and verify production.",
+    "Continue without requiring user replies."
+  ]
+}
