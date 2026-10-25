@@ -15,6 +15,30 @@ import {
 import articles from '@/lib/articles.json'
 import KitBanner from '@/components/KitBanner'
 
+type FeaturedArticle = (typeof articles)[number] & {
+  featuredImage?: string
+  featuredImageAlt?: string
+  featuredImageWidth?: number
+  featuredImageHeight?: number
+}
+
+const articleList = articles as FeaturedArticle[]
+
+function ArticleCardImage({ article }: { article: FeaturedArticle }) {
+  if (!article.featuredImage) return null
+  return (
+    <img
+      src={article.featuredImage}
+      alt={article.featuredImageAlt || article.title}
+      width={article.featuredImageWidth ?? 1200}
+      height={article.featuredImageHeight ?? 630}
+      loading="lazy"
+      decoding="async"
+      className="mb-4 block aspect-[40/21] w-full rounded-lg object-cover"
+    />
+  )
+}
+
 export const metadata: Metadata = {
   title: 'Kenya Tax & PAYE Articles',
   description: 'Articles on Kenya PAYE tax, NSSF, SHIF, the Housing Levy and more. How to work out your salary and reduce your tax legally, updated for 2026.',
@@ -92,7 +116,7 @@ const catId = (name: string) =>
   name.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
 
 export default function BlogPage() {
-  const articleMap = new Map(articles.filter(a => !('draft' in a && a.draft)).map(a => [a.slug, a]))
+  const articleMap = new Map(articleList.filter(a => !('draft' in a && a.draft)).map(a => [a.slug, a]))
   const featuredSlugs = [
     'how-to-calculate-your-paye-tax-in-kenya',
     'the-complete-guide-to-nssf-contributions-in-kenya',
@@ -155,6 +179,7 @@ export default function BlogPage() {
                   href={`/blog/${slug}`}
                   className="group relative flex flex-col rounded-2xl border border-stone-200/80 bg-white p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-[0_8px_30px_rgba(240,76,64,0.10)]"
                 >
+                  <ArticleCardImage article={article} />
                   <span className="mb-4 inline-flex w-fit items-center gap-1.5 rounded-full bg-brand-50 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-brand">
                     <Sparkles className="h-3 w-3" /> Featured
                   </span>
@@ -212,6 +237,7 @@ export default function BlogPage() {
                           href={`/blog/${slug}`}
                           className="group flex flex-col rounded-xl border border-brand-300/40 bg-white p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-brand hover:shadow-[0_6px_24px_rgba(240,76,64,0.10)]"
                         >
+                          <ArticleCardImage article={article} />
                           <h4 className="mb-2 text-[14px] font-medium leading-snug text-[#111] transition-colors group-hover:text-brand">
                             {article.title}
                           </h4>

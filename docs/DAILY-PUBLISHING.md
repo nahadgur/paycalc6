@@ -20,14 +20,26 @@ The owner's explicit instruction is that the site's various calculators are the 
 - Put useful contextual calculator links in the article body. Add a direct reciprocal link from the calculator page in the same release. `SpokeGrid` supports `hubHref` to derive this automatically; guide grids can continue using `siloKey`.
 - Add supporting guide and relevant sibling links, then update the appropriate blog category. Record the actual primary calculator URL in the release plan's `hub` field.
 
+## Featured images are required
+
+Every new article published on or after **25 October 2026** must have a relevant original or properly licensed featured image. Record its provenance in the research brief. Create or obtain the actual asset before publishing the article; a filename or an unrendered metadata reference does not complete this work.
+
+- Store the optimised image in `public/blog-images/`, normally as `<slug>-featured.jpg`. The default social and editorial size is **1200 × 630 pixels**. JPEG, PNG and WebP are supported by the verification gate; use an appropriate format and optimise the file size without damaging the image.
+- Set `featuredImage` to the public path, such as `/blog-images/<slug>-featured.jpg`; set `featuredImageAlt` to a meaningful description of what is visible, and set `featuredImageWidth` / `featuredImageHeight` to the actual positive intrinsic dimensions. Do not use a placeholder or repeat the article title as the alt text.
+- Render the image and its alt text on the article and its blog-index card. Supply the same main image to Open Graph, the Twitter large-image card and Article structured data. Open Graph must include its width, height and alt; Twitter must include the alt too.
+- Inspect the rendered article and index at desktop and mobile sizes. Check the image loads, the crop remains relevant, the aspect ratio is appropriate and text or important details are not cut off. Automated URL and signature checks do not replace this visual inspection.
+- The build check verifies the local asset and rendered pages. The production check additionally fetches the self-hosted image and requires HTTP 200, a matching image MIME type and nonempty JPEG/PNG/WebP bytes. An HTML error page at an image URL is a failure.
+
+Older releases retain their original dates and are not newly subject to this image gate. For a new release, missing images, alt text, dimensions, social metadata or schema images mean **PUBLISHING INCOMPLETE**, even when the article text is already accessible.
+
 ## Release gate
 
-1. Write complete original articles, current official source links, metadata, genuine publication/review dates and appropriate contextual examples. Do not invent expertise, contacts, account screens, policy rules or statistics. Use the existing organisation attribution honestly.
-2. Add all three articles, their hub/category wiring and research briefs atomically. Keep unrelated drafts unpublished. Update contextual inbound links from relevant existing articles without changing their original publication dates.
+1. Write complete original articles, current official source links, metadata, genuine publication/review dates and appropriate contextual examples. Produce the relevant featured images and all required image fields above. Do not invent expertise, contacts, account screens, policy rules or statistics. Use the existing organisation attribution honestly.
+2. Add all three articles, their image assets, hub/category wiring and research briefs atomically. Keep unrelated drafts unpublished. Update contextual inbound links from relevant existing articles without changing their original publication dates.
 3. Run `npm run build`, `node scripts/check-blog-audit.cjs`, and `node scripts/check-daily-publishing.cjs --date=YYYY-MM-DD`.
 4. Read the latest remote `main` before publishing. Push directly under the owner's standing authorisation with a matching-head lease; never overwrite intervening changes or bypass permissions.
-5. Check Vercel's GitHub status for the exact commit. After deployment, run `node scripts/check-daily-publishing.cjs --live --date=YYYY-MM-DD`. This verifies actual production content, canonical and publication metadata, sitemap/index inclusion, and links in both directions between the articles and their calculator hubs.
-6. Report the three verified live URLs, calculator assignments, release commit and production outcome. A scheduled trigger, completed run, saved draft or pushed commit alone does not prove publication.
+5. Check Vercel's GitHub status for the exact commit. After deployment, run `node scripts/check-daily-publishing.cjs --live --date=YYYY-MM-DD`. This verifies actual production content, canonical and publication metadata, sitemap/index inclusion, links in both directions between the articles and their calculator hubs, and the featured images, alt text, social metadata, schema and actual image responses.
+6. Report the three verified live URLs, calculator assignments, release commit and production outcome only after the full release gate passes. A scheduled trigger, completed run, saved draft, pushed commit or text-only page alone does not prove a complete publication.
 
 ## Failure and recovery
 

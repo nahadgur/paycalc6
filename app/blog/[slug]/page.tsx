@@ -7,19 +7,39 @@ import { ChevronRight } from 'lucide-react'
 import KitBanner from '@/components/KitBanner'
 
 type Props = { params: { slug: string } }
+type FeaturedArticle = (typeof articles)[number] & {
+  featuredImage?: string
+  featuredImageAlt?: string
+  featuredImageWidth?: number
+  featuredImageHeight?: number
+}
+
+const articleList = articles as FeaturedArticle[]
 
 const BASE = 'https://www.payecalculator.co.ke'
 const PUBLISHED = '2026-01-15'
 
+function featuredImageFor(article: FeaturedArticle) {
+  if (!article.featuredImage) return undefined
+  return {
+    src: article.featuredImage,
+    url: new URL(article.featuredImage, BASE).toString(),
+    alt: article.featuredImageAlt || article.title,
+    width: article.featuredImageWidth ?? 1200,
+    height: article.featuredImageHeight ?? 630,
+  }
+}
+
 export async function generateStaticParams() {
   // Draft articles are excluded from the build so they 404 in production and
   // stay out of the sitemap until the `draft` flag is removed.
-  return articles.filter((article) => !('draft' in article && article.draft)).map((article) => ({ slug: article.slug }))
+  return articleList.filter((article) => !('draft' in article && article.draft)).map((article) => ({ slug: article.slug }))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const article = articles.find((a) => a.slug === params.slug)
+  const article = articleList.find((a) => a.slug === params.slug)
   if (!article || ('draft' in article && article.draft)) notFound()
+  const featuredImage = featuredImageFor(article)
   return {
     title: { absolute: article.metaTitle || article.title },
     description: article.metaDescription,
@@ -29,20 +49,32 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: article.metaDescription,
       type: 'article',
       url: `${BASE}/blog/${article.slug}`,
+      ...(featuredImage ? {
+        images: [{
+          url: featuredImage.url,
+          width: featuredImage.width,
+          height: featuredImage.height,
+          alt: featuredImage.alt,
+        }],
+      } : {}),
     },
     twitter: {
       card: 'summary_large_image',
       title: article.metaTitle || article.title,
       description: article.metaDescription,
+      ...(featuredImage ? {
+        images: [{ url: featuredImage.url, alt: featuredImage.alt }],
+      } : {}),
     },
   }
 }
 
 export default function BlogArticle({ params }: Props) {
-  const article = articles.find((a) => a.slug === params.slug)
+  const article = articleList.find((a) => a.slug === params.slug)
   // Draft articles 404 in both dev and prod until the `draft` flag is removed.
   if (!article || ('draft' in article && article.draft)) notFound()
 
+  const featuredImage = featuredImageFor(article)
   const hub = calculatorHubForSpoke(params.slug)
   const cta = ctaForSpoke(params.slug)
   const card = ctaCard(cta.href)
@@ -61,6 +93,7 @@ export default function BlogArticle({ params }: Props) {
     '@type': 'Article',
     headline: article!.title,
     description: article!.metaDescription,
+    ...(featuredImage ? { image: [featuredImage.url] } : {}),
     datePublished: ('publishedAt' in article && article.publishedAt) || PUBLISHED,
     dateModified: article!.reviewedAt,
     mainEntityOfPage: { '@type': 'WebPage', '@id': `${BASE}/blog/${params.slug}` },
@@ -105,6 +138,20 @@ export default function BlogArticle({ params }: Props) {
 
       {/* Article body */}
       <article className="max-w-3xl mx-auto px-5 sm:px-6 py-12">
+
+        {featuredImage ? (
+          <figure className="mb-10 overflow-hidden rounded-2xl border border-stone-200 bg-brand-50">
+            <img
+              src={featuredImage.src}
+              alt={featuredImage.alt}
+              width={featuredImage.width}
+              height={featuredImage.height}
+              loading="eager"
+              decoding="async"
+              className="block h-auto w-full"
+            />
+          </figure>
+        ) : null}
 
         {/* Calculator CTA card */}
         <div className="bg-brand-50 border border-brand-300 rounded-2xl p-5 mb-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
