@@ -82,7 +82,22 @@ async function main() {
   console.log(JSON.stringify({ status: 'PASS', mode: live ? 'production' : 'built', date, count: results.length, articles: results }, null, 2));
 }
 
-main().catch(error => {
-  console.error('PUBLISHING INCOMPLETE:', error.message);
-  process.exitCode = 1;
-});
+// Agent environments may require their configured outbound proxy. Node's
+// fetch does not use it automatically unless this supported option is enabled.
+const hasProxy = ['HTTPS_PROXY', 'HTTP_PROXY', 'https_proxy', 'http_proxy']
+  .some(name => Boolean(process.env[name]));
+if (live && hasProxy && process.allowedNodeEnvironmentFlags.has('--use-env-proxy')
+  && !process.execArgv.includes('--use-env-proxy')) {
+  const { spawnSync } = require('node:child_process');
+  const child = spawnSync(process.execPath,
+    [...process.execArgv, '--use-env-proxy', __filename, ...process.argv.slice(2)],
+    { stdio: 'inherit' });
+  if (child.error) console.error('PUBLISHING INCOMPLETE:', child.error.message);
+  process.exitCode = child.status ?? 1;
+} else {
+  main().catch(error => {
+    const cause = error.cause?.message ? ` (${error.cause.message})` : '';
+    console.error('PUBLISHING INCOMPLETE:', error.message + cause);
+    process.exitCode = 1;
+  });
+}
