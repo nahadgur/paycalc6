@@ -31,6 +31,9 @@ const categories: Record<string, string[]> = {
     'working-backwards-from-net-to-gross-salary-in-kenya',
   ],
   'Statutory deductions': [
+    'how-to-check-your-nssf-contributions',
+    'how-to-check-your-sha-contributions',
+    'missing-nssf-contributions-what-to-do',
     'the-complete-guide-to-nssf-contributions-in-kenya',
     'understanding-shif-deductions-in-kenya-and-what-replaced-nhif',
     'everything-you-need-to-know-about-kenyas-housing-levy',

@@ -4,24 +4,28 @@
 // articles, completing the hub-and-spoke loop.
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
-import { siloByKey, spokeTitle } from '@/lib/silos'
+import { siloByKey, spokeTitle, spokesForCalculator } from '@/lib/silos'
 
 export function SpokeGrid({
   siloKey,
+  hubHref,
   heading = 'Guides in this topic',
   light = false,
 }: {
-  siloKey: string
+  siloKey?: string
+  hubHref?: string
   heading?: string
   light?: boolean
 }) {
-  const silo = siloByKey(siloKey)
-  if (!silo) return null
+  const spokes = hubHref
+    ? spokesForCalculator(hubHref)
+    : (siloKey ? siloByKey(siloKey)?.spokes : undefined)
+  if (!spokes?.length) return null
   return (
     <section className={`mt-14 border-t pt-10 ${light ? 'border-stone-200' : 'border-white/10'}`}>
       <h2 className={`text-lg font-bold mb-5 ${light ? 'text-stone-900' : 'text-white'}`}>{heading}</h2>
       <div className="grid sm:grid-cols-2 gap-3">
-        {silo.spokes.map((slug) => (
+        {spokes.map((slug) => (
           <Link
             key={slug}
             href={`/blog/${slug}`}

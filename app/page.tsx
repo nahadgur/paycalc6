@@ -136,7 +136,7 @@ export default function Home() {
               {SILOS.filter(s => s.guideHref).map(s => <a key={s.key} href={s.guideHref} className="rounded-xl border border-stone-200 p-4 text-brand hover:underline">{s.title}</a>)}
             </div>
           </section>
-          <SpokeGrid siloKey="how-paye-works" light heading="Learn how PAYE works" />
+          <SpokeGrid hubHref="/" light heading="Understand your salary and deductions" />
         </div>
       </section>
     </>

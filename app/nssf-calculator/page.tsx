@@ -213,7 +213,7 @@ export default function NSSFCalculatorPage() {
           </div>
         </section>
 
-        <SpokeGrid siloKey="statutory-deductions" heading="More on statutory deductions" />
+        <SpokeGrid hubHref="/nssf-calculator" heading="Check and understand your NSSF contributions" />
       </div>
       </div>
     </>

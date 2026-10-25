@@ -9,31 +9,67 @@
         {
           "title": "Gross vs Net Salary in Kenya",
           "slug": "gross-vs-net-salary-in-kenya",
-          "hub": "/guides/salary-breakdowns"
+          "hub": "/salary-comparison",
+          "supportingGuide": "/guides/salary-breakdowns"
         },
         {
           "title": "How to Read Your Kenyan Payslip",
           "slug": "how-to-read-your-kenyan-payslip",
-          "hub": "/guides/salary-breakdowns"
+          "hub": "/salary-comparison",
+          "supportingGuide": "/guides/salary-breakdowns"
         },
         {
           "title": "Taxable Pay vs Gross Pay in Kenya",
           "slug": "taxable-pay-vs-gross-pay-in-kenya",
-          "hub": "/guides/salary-breakdowns"
+          "hub": "/salary-comparison",
+          "supportingGuide": "/guides/salary-breakdowns"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-25",
+      "articles": [
+        {
+          "title": "How to Check Your NSSF Contributions",
+          "slug": "how-to-check-your-nssf-contributions",
+          "hub": "/nssf-calculator",
+          "supportingGuide": "/guides/statutory-deductions"
+        },
+        {
+          "title": "How to Check Your SHA Contributions",
+          "slug": "how-to-check-your-sha-contributions",
+          "hub": "/",
+          "supportingGuide": "/guides/statutory-deductions"
+        },
+        {
+          "title": "Missing NSSF Contributions: What to Do",
+          "slug": "missing-nssf-contributions-what-to-do",
+          "hub": "/nssf-calculator",
+          "supportingGuide": "/guides/statutory-deductions"
         }
       ]
     }
   ],
   "nextBatch": [
-    "How to Check Your NSSF Contributions",
-    "How to Check Your SHA Contributions",
-    "Missing NSSF Contributions: What to Do"
+    "Personal Relief in Kenya Explained",
+    "How to Claim Tax Relief Through Payroll",
+    "Documents Needed for PAYE Tax Relief"
   ],
   "rules": [
     "Check latest main and existing content to avoid duplicate publishing.",
     "Official-source fact checks, worked examples where useful, contextual inbound and outbound links.",
     "Preserve historical dates; use real publication and review dates.",
     "Build, check internal links and examples, push main with lease and verify production.",
-    "Continue without requiring user replies."
-  ]
+    "Continue without requiring user replies.",
+    "Calculators are the primary hubs; use the closest relevant calculator for each article, and keep guide pages as supporting content.",
+    "Every article must link to its calculator in the body and CTA/breadcrumb; the calculator must link directly back in the same release.",
+    "Run node scripts/check-daily-publishing.cjs --date=YYYY-MM-DD after build and repeat with --live after deployment.",
+    "Report three verified live URLs, hub assignments, commit and deployment evidence; a trigger or completed task is not proof of publication.",
+    "A separate daily check verifies the output and attempts one recovery of a stopped publisher, reporting every unresolved shortfall."
+  ],
+  "publisherAutomationId": "6ad892d512b88191a11afca387e591f2",
+  "verificationAutomationId": "6ade5ac3cfb0819183da38a646ef7731",
+  "approximateVerificationTime": "10:00",
+  "resumedFrom": "2026-10-26",
+  "historicalPublishedCount": 27
 }

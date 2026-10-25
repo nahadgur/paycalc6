@@ -3,15 +3,18 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const articles = require('../lib/articles.json');
 const redirects = require('../lib/blog-redirects.json');
+const plan = require('../docs/content-plan.json');
 const published = articles.filter(a => !a.draft);
-assert.equal(published.length, 30);
+const planned = plan.batches.flatMap(batch => batch.articles.map(article => article.slug));
+assert.equal(new Set(planned).size, planned.length, 'A publishing batch repeats an article');
+assert.equal(published.length, 27 + planned.length, 'Historical inventory plus released batches must match');
 assert.equal(articles.filter(a => a.draft).length, 4);
 assert.equal(new Set(articles.map(a => a.slug)).size, articles.length);
 function sitemapForCheck() { return fs.readFileSync('.next/server/app/sitemap.xml.body', 'utf8'); }
 const slugs = new Set(published.map(a => a.slug));
 for (const a of published) {
   assert.match(a.reviewedAt, /^\d{4}-\d{2}-\d{2}$/);
-  assert.equal(a.reviewedAt, a.publishedAt || '2026-10-21');
+  assert(a.reviewedAt >= (a.publishedAt || '2026-01-15'), 'Review must not precede publication');
   assert(a.content.includes('Sources and review date'));
   for (const [, target] of a.content.matchAll(/href="\/blog\/([^"#?]+)/g)) assert(slugs.has(target), target);
   const rendered = fs.readFileSync(`.next/server/app/blog/${a.slug}.html`, 'utf8');
@@ -39,4 +42,4 @@ for (const [slug, tax, net] of expected) {
   assert(content.includes(`<td>PAYE after personal relief</td><td>${tax}</td>`));
   assert(content.includes(`<td>Take-home pay</td><td>${net}</td>`));
 }
-console.log('PASS: 30 rendered articles, 5 redirects, 4 excluded drafts, metadata dates, internal links and salary examples.');
+console.log(`PASS: ${published.length} rendered articles, ${redirects.length} redirects, 4 excluded drafts, metadata dates, internal links and salary examples.`);

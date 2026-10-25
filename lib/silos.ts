@@ -5,7 +5,7 @@
 // components/SiloHub.tsx and app/blog/[slug]/page.tsx).
 import articlesData from '@/lib/articles.json'
 
-const articles = articlesData as { slug: string; title: string }[]
+const articles = articlesData as { slug: string; title: string; draft?: boolean }[]
 const titleMap = new Map(articles.map((a) => [a.slug, a.title]))
 
 export function spokeTitle(slug: string): string {
@@ -49,6 +49,9 @@ export const SILOS: Silo[] = [
     guideHref: '/guides/statutory-deductions',
     blurb: 'NSSF, SHIF, and the Housing Levy: the three mandatory deductions that come out of every Kenyan payslip in 2026.',
     spokes: [
+      'how-to-check-your-nssf-contributions',
+      'how-to-check-your-sha-contributions',
+      'missing-nssf-contributions-what-to-do',
       'the-complete-guide-to-nssf-contributions-in-kenya',
       'understanding-shif-deductions-in-kenya-and-what-replaced-nhif',
       'everything-you-need-to-know-about-kenyas-housing-levy',
@@ -145,6 +148,12 @@ export function siloByKey(key: string): Silo | undefined {
 // Per-article CTA overrides: where an individual post matches a specific
 // tool more tightly than its silo default. Takes precedence over the silo cta.
 const CTA_OVERRIDES: Record<string, Cta> = {
+  'how-to-check-your-sha-contributions':
+    { href: '/', label: 'Calculate your salary deductions' },
+  'understanding-shif-deductions-in-kenya-and-what-replaced-nhif':
+    { href: '/', label: 'Calculate your salary deductions' },
+  'everything-you-need-to-know-about-kenyas-housing-levy':
+    { href: '/', label: 'Calculate your salary deductions' },
   'working-backwards-from-net-to-gross-salary-in-kenya':
     { href: '/net-gross-calculator', label: 'Convert net to gross' },
   'the-complete-guide-to-nssf-contributions-in-kenya':
@@ -177,6 +186,36 @@ const DEFAULT_CTA: Cta = { href: '/', label: 'Open calculator' }
 // default, then the main calculator as a fallback.
 export function ctaForSpoke(slug: string): Cta {
   return CTA_OVERRIDES[slug] ?? siloForSpoke(slug)?.cta ?? DEFAULT_CTA
+}
+
+const CALCULATOR_TITLES: Record<string, string> = {
+  '/': 'PAYE Calculator',
+  '/nssf-calculator': 'NSSF Calculator',
+  '/mortgage-relief': 'Mortgage Relief Calculator',
+  '/salary-comparison': 'Salary Comparison Calculator',
+  '/bonus-calculator': 'Bonus Tax Calculator',
+  '/employer-cost-calculator': 'Employer Cost Calculator',
+  '/net-gross-calculator': 'Net to Gross Calculator',
+  '/raise-calculator': 'Pay Rise Calculator',
+  '/p9-generator': 'P9 Generator',
+  '/tax-calendar': 'Tax Calendar',
+}
+
+// Calculators are the primary hubs. The same destination powers the article
+// breadcrumb, CTA and reciprocal article list on its calculator page.
+export function calculatorHubForSpoke(slug: string): Cta {
+  const cta = ctaForSpoke(slug)
+  const salary = cta.href.match(/^\/salary\/(\d+)$/)
+  const label = salary
+    ? `KES ${Number(salary[1]).toLocaleString('en-KE')} Salary Breakdown`
+    : CALCULATOR_TITLES[cta.href] ?? 'PAYE Calculator'
+  return { href: cta.href, label }
+}
+
+export function spokesForCalculator(href: string): string[] {
+  return articles
+    .filter(article => !article.draft && calculatorHubForSpoke(article.slug).href === href)
+    .map(article => article.slug)
 }
 
 // Heading + note for the in-article CTA card, matched to the destination
