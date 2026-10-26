@@ -65,6 +65,9 @@ export const SILOS: Silo[] = [
     guideHref: '/guides/tax-relief',
     blurb: 'Legal ways to reduce your PAYE: insurance relief, mortgage interest relief, pension contributions, and disability exemptions.',
     spokes: [
+      'personal-relief-in-kenya',
+      'claim-tax-relief-through-payroll',
+      'documents-for-paye-tax-relief',
       'legal-ways-to-reduce-paye-in-kenya',
       'how-insurance-relief-works-for-kenyan-taxpayers',
       'claiming-mortgage-interest-relief-on-your-kenyan-tax-return',
@@ -148,6 +151,10 @@ export function siloByKey(key: string): Silo | undefined {
 // Per-article CTA overrides: where an individual post matches a specific
 // tool more tightly than its silo default. Takes precedence over the silo cta.
 const CTA_OVERRIDES: Record<string, Cta> = {
+  'personal-relief-in-kenya': { href: '/', label: 'Estimate your PAYE' },
+  'claim-tax-relief-through-payroll': { href: '/', label: 'Estimate your PAYE' },
+  'documents-for-paye-tax-relief': { href: '/', label: 'Estimate your PAYE' },
+
   'how-to-check-your-sha-contributions':
     { href: '/', label: 'Calculate your salary deductions' },
   'understanding-shif-deductions-in-kenya-and-what-replaced-nhif':

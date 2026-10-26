@@ -63,6 +63,9 @@ const categories: Record<string, string[]> = {
     'everything-you-need-to-know-about-kenyas-housing-levy',
   ],
   'Tax savings': [
+    'personal-relief-in-kenya',
+    'claim-tax-relief-through-payroll',
+    'documents-for-paye-tax-relief',
     'legal-ways-to-reduce-paye-in-kenya',
     'how-insurance-relief-works-for-kenyan-taxpayers',
     'claiming-mortgage-interest-relief-on-your-kenyan-tax-return',

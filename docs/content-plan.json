@@ -48,12 +48,35 @@
           "supportingGuide": "/guides/statutory-deductions"
         }
       ]
+    },
+    {
+      "date": "2026-10-26",
+      "articles": [
+        {
+          "title": "Personal Relief in Kenya Explained",
+          "slug": "personal-relief-in-kenya",
+          "hub": "/",
+          "supportingGuide": "/guides/tax-relief"
+        },
+        {
+          "title": "How to Claim Tax Relief Through Payroll",
+          "slug": "claim-tax-relief-through-payroll",
+          "hub": "/",
+          "supportingGuide": "/guides/tax-relief"
+        },
+        {
+          "title": "Documents Needed for PAYE Tax Relief",
+          "slug": "documents-for-paye-tax-relief",
+          "hub": "/",
+          "supportingGuide": "/guides/tax-relief"
+        }
+      ]
     }
   ],
   "nextBatch": [
-    "Personal Relief in Kenya Explained",
-    "How to Claim Tax Relief Through Payroll",
-    "Documents Needed for PAYE Tax Relief"
+    "Is Overtime Taxable in Kenya?",
+    "Are Salary Allowances Taxable in Kenya?",
+    "Salary Arrears and PAYE in Kenya"
   ],
   "rules": [
     "Check latest main and existing content to avoid duplicate publishing.",
