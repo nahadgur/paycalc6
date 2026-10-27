@@ -82,6 +82,10 @@ const categories: Record<string, string[]> = {
     'the-real-cost-of-earning-kes-200000-in-kenya',
   ],
   'Employment situations': [
+    'is-overtime-taxable-in-kenya',
+    'are-salary-allowances-taxable-in-kenya',
+    'salary-arrears-and-paye-in-kenya',
+
     'how-kenyan-employers-tax-your-bonus-and-13th-month-pay',
     'freelancing-vs-employment-in-kenya-and-which-pays-less-tax',
     'how-helb-loan-repayments-are-deducted-from-kenyan-salaries',

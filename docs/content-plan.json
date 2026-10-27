@@ -71,12 +71,35 @@
           "supportingGuide": "/guides/tax-relief"
         }
       ]
+    },
+    {
+      "date": "2026-10-27",
+      "articles": [
+        {
+          "title": "Is Overtime Taxable in Kenya?",
+          "slug": "is-overtime-taxable-in-kenya",
+          "hub": "/",
+          "supportingGuide": "/guides/employment-situations"
+        },
+        {
+          "title": "Are Salary Allowances Taxable in Kenya?",
+          "slug": "are-salary-allowances-taxable-in-kenya",
+          "hub": "/",
+          "supportingGuide": "/guides/employment-situations"
+        },
+        {
+          "title": "Salary Arrears and PAYE in Kenya",
+          "slug": "salary-arrears-and-paye-in-kenya",
+          "hub": "/",
+          "supportingGuide": "/guides/employment-situations"
+        }
+      ]
     }
   ],
   "nextBatch": [
-    "Is Overtime Taxable in Kenya?",
-    "Are Salary Allowances Taxable in Kenya?",
-    "Salary Arrears and PAYE in Kenya"
+    "How to Set Up Payroll in Kenya",
+    "New Employee Payroll Checklist: Kenya",
+    "Payroll Records Kenyan Employers Need"
   ],
   "rules": [
     "Check latest main and existing content to avoid duplicate publishing.",
