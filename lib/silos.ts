@@ -121,6 +121,9 @@ export const SILOS: Silo[] = [
     guideHref: '/guides/employer-guide',
     blurb: 'Payroll obligations for Kenyan employers: the true cost of hiring, NSSF and Housing Levy duties, iTax filing, and benefits in kind.',
     spokes: [
+      'how-to-set-up-payroll-in-kenya',
+      'new-employee-payroll-checklist-kenya',
+      'payroll-records-kenyan-employers-need',
       'the-true-cost-of-hiring-an-employee-in-kenya',
       'filing-paye-returns-on-itax-in-kenya-without-getting-penalised',
       'taxable-benefits-in-kind-that-kenyan-employers-must-declare',

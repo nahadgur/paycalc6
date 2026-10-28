@@ -95,6 +95,10 @@ const categories: Record<string, string[]> = {
     'how-a-second-job-is-taxed-in-kenya',
   ],
   'For employers': [
+    'how-to-set-up-payroll-in-kenya',
+    'new-employee-payroll-checklist-kenya',
+    'payroll-records-kenyan-employers-need',
+
     'the-true-cost-of-hiring-an-employee-in-kenya',
     'filing-paye-returns-on-itax-in-kenya-without-getting-penalised',
     'taxable-benefits-in-kind-that-kenyan-employers-must-declare',

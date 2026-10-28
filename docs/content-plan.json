@@ -94,12 +94,35 @@
           "supportingGuide": "/guides/employment-situations"
         }
       ]
+    },
+    {
+      "date": "2026-10-28",
+      "articles": [
+        {
+          "title": "How to Set Up Payroll in Kenya",
+          "slug": "how-to-set-up-payroll-in-kenya",
+          "hub": "/employer-cost-calculator",
+          "supportingGuide": "/guides/employer-guide"
+        },
+        {
+          "title": "New Employee Payroll Checklist: Kenya",
+          "slug": "new-employee-payroll-checklist-kenya",
+          "hub": "/employer-cost-calculator",
+          "supportingGuide": "/guides/employer-guide"
+        },
+        {
+          "title": "Payroll Records Kenyan Employers Need",
+          "slug": "payroll-records-kenyan-employers-need",
+          "hub": "/employer-cost-calculator",
+          "supportingGuide": "/guides/employer-guide"
+        }
+      ]
     }
   ],
   "nextBatch": [
-    "How to Set Up Payroll in Kenya",
-    "New Employee Payroll Checklist: Kenya",
-    "Payroll Records Kenyan Employers Need"
+    "Is Notice Pay Taxable in Kenya?",
+    "Is Unused Leave Pay Taxable in Kenya?",
+    "Redundancy Pay and Tax in Kenya"
   ],
   "rules": [
     "Check latest main and existing content to avoid duplicate publishing.",
