@@ -101,6 +101,9 @@ export const SILOS: Silo[] = [
     guideHref: '/guides/employment-situations',
     blurb: 'How PAYE behaves in real working life: bonuses, freelancing, HELB, changing jobs, employer errors, second jobs and terminal dues.',
     spokes: [
+      'is-notice-pay-taxable-in-kenya',
+      'is-unused-leave-pay-taxable-in-kenya',
+      'redundancy-pay-and-tax-in-kenya',
       'is-overtime-taxable-in-kenya',
       'are-salary-allowances-taxable-in-kenya',
       'salary-arrears-and-paye-in-kenya',
@@ -157,6 +160,10 @@ export function siloByKey(key: string): Silo | undefined {
 // Per-article CTA overrides: where an individual post matches a specific
 // tool more tightly than its silo default. Takes precedence over the silo cta.
 const CTA_OVERRIDES: Record<string, Cta> = {
+  'is-notice-pay-taxable-in-kenya': { href: '/', label: 'Understand your PAYE' },
+  'is-unused-leave-pay-taxable-in-kenya': { href: '/', label: 'Understand your PAYE' },
+  'redundancy-pay-and-tax-in-kenya': { href: '/', label: 'Understand your PAYE' },
+
   'is-overtime-taxable-in-kenya': { href: '/', label: 'Estimate your PAYE' },
   'are-salary-allowances-taxable-in-kenya': { href: '/', label: 'Estimate your PAYE' },
   'salary-arrears-and-paye-in-kenya': { href: '/', label: 'Estimate your PAYE' },

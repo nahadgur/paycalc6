@@ -82,6 +82,10 @@ const categories: Record<string, string[]> = {
     'the-real-cost-of-earning-kes-200000-in-kenya',
   ],
   'Employment situations': [
+    'is-notice-pay-taxable-in-kenya',
+    'is-unused-leave-pay-taxable-in-kenya',
+    'redundancy-pay-and-tax-in-kenya',
+
     'is-overtime-taxable-in-kenya',
     'are-salary-allowances-taxable-in-kenya',
     'salary-arrears-and-paye-in-kenya',

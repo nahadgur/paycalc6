@@ -117,12 +117,35 @@
           "supportingGuide": "/guides/employer-guide"
         }
       ]
+    },
+    {
+      "date": "2026-10-29",
+      "articles": [
+        {
+          "title": "Is Notice Pay Taxable in Kenya?",
+          "slug": "is-notice-pay-taxable-in-kenya",
+          "hub": "/",
+          "supportingGuide": "/guides/employment-situations"
+        },
+        {
+          "title": "Is Unused Leave Pay Taxable in Kenya?",
+          "slug": "is-unused-leave-pay-taxable-in-kenya",
+          "hub": "/",
+          "supportingGuide": "/guides/employment-situations"
+        },
+        {
+          "title": "Redundancy Pay and Tax in Kenya",
+          "slug": "redundancy-pay-and-tax-in-kenya",
+          "hub": "/",
+          "supportingGuide": "/guides/employment-situations"
+        }
+      ]
     }
   ],
   "nextBatch": [
-    "Is Notice Pay Taxable in Kenya?",
-    "Is Unused Leave Pay Taxable in Kenya?",
-    "Redundancy Pay and Tax in Kenya"
+    "Does NSSF Count Towards Pension Tax Relief?",
+    "Education Insurance Tax Relief in Kenya",
+    "Tax Deductions vs Tax Relief in Kenya"
   ],
   "rules": [
     "Check latest main and existing content to avoid duplicate publishing.",
