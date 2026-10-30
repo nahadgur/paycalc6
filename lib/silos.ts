@@ -83,6 +83,9 @@ export const SILOS: Silo[] = [
     guideHref: '/guides/salary-breakdowns',
     blurb: 'Exactly what common Kenyan salaries look like after PAYE, NSSF, SHIF, and the Housing Levy, from KES 50,000 to KES 200,000 and beyond.',
     spokes: [
+      'how-much-of-a-pay-rise-do-you-keep',
+      'salary-vs-benefits-comparing-job-offers',
+      'how-to-compare-two-salary-offers',
       'gross-vs-net-salary-in-kenya',
       'how-to-read-your-kenyan-payslip',
       'taxable-pay-vs-gross-pay-in-kenya',
@@ -160,6 +163,7 @@ export function siloByKey(key: string): Silo | undefined {
 // Per-article CTA overrides: where an individual post matches a specific
 // tool more tightly than its silo default. Takes precedence over the silo cta.
 const CTA_OVERRIDES: Record<string, Cta> = {
+  'how-much-of-a-pay-rise-do-you-keep': { href: '/raise-calculator', label: 'Calculate your net pay rise' },
   'is-notice-pay-taxable-in-kenya': { href: '/', label: 'Understand your PAYE' },
   'is-unused-leave-pay-taxable-in-kenya': { href: '/', label: 'Understand your PAYE' },
   'redundancy-pay-and-tax-in-kenya': { href: '/', label: 'Understand your PAYE' },
@@ -261,6 +265,7 @@ const CTA_CARDS: Record<string, CtaCard> = {
   '/employer-cost-calculator': { title: 'True cost to employ', note: 'Gross plus employer NSSF and levy', action: 'Open calculator' },
   '/tax-calendar': { title: 'KRA tax calendar', note: '2026 filing deadlines', action: 'View calendar' },
   '/net-gross-calculator': { title: 'Net to gross', note: 'Work back to gross pay', action: 'Open calculator' },
+  '/raise-calculator': { title: 'Your pay rise after deductions', note: 'Compare current and proposed take-home pay', action: 'Compare pay rise' },
   '/p9-generator': { title: 'Generate your P9', note: 'Year-end tax certificate', action: 'Open generator' },
 }
 

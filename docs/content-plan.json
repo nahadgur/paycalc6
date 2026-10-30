@@ -140,12 +140,36 @@
           "supportingGuide": "/guides/employment-situations"
         }
       ]
+    },
+    {
+      "date": "2026-10-30",
+      "articles": [
+        {
+          "title": "How Much of a Pay Rise Do You Keep?",
+          "slug": "how-much-of-a-pay-rise-do-you-keep",
+          "hub": "/raise-calculator",
+          "supportingGuide": "/guides/salary-breakdowns"
+        },
+        {
+          "title": "Salary vs Benefits: Comparing Job Offers",
+          "slug": "salary-vs-benefits-comparing-job-offers",
+          "hub": "/salary-comparison",
+          "supportingGuide": "/guides/salary-breakdowns"
+        },
+        {
+          "title": "How to Compare Two Salary Offers",
+          "slug": "how-to-compare-two-salary-offers",
+          "hub": "/salary-comparison",
+          "supportingGuide": "/guides/salary-breakdowns"
+        }
+      ],
+      "selectionNote": "Skipped queued NSSF pension relief, education insurance relief and deductions-versus-relief topics because existing pension, insurance and taxable-pay articles already satisfy those intents. Published next distinct salary decision topics."
     }
   ],
   "nextBatch": [
-    "Does NSSF Count Towards Pension Tax Relief?",
-    "Education Insurance Tax Relief in Kenya",
-    "Tax Deductions vs Tax Relief in Kenya"
+    "How to Correct a PAYE Return on iTax",
+    "Nil PAYE Returns in Kenya Explained",
+    "Employee Exit Payroll Checklist: Kenya"
   ],
   "rules": [
     "Check latest main and existing content to avoid duplicate publishing.",

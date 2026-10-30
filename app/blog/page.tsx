@@ -73,6 +73,10 @@ const categories: Record<string, string[]> = {
     'tax-benefits-for-persons-with-disability-in-kenya',
   ],
   'Salary breakdowns': [
+    'how-much-of-a-pay-rise-do-you-keep',
+    'salary-vs-benefits-comparing-job-offers',
+    'how-to-compare-two-salary-offers',
+
     'gross-vs-net-salary-in-kenya',
     'how-to-read-your-kenyan-payslip',
     'taxable-pay-vs-gross-pay-in-kenya',

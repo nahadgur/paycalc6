@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import PAYECalculator from '@/components/PAYECalculator'
 import ToolNav from '@/components/ToolNav'
+import { SpokeGrid } from '@/components/SpokeGrid'
 
 export const metadata: Metadata = {
   title: { absolute: 'Pay Rise Calculator Kenya 2026 | How Much You Keep' },
@@ -16,11 +17,11 @@ export const metadata: Metadata = {
 const FAQ = [
   {
     q: 'How much of a pay rise do I actually keep in Kenya?',
-    a: 'Less than the headline figure. Every extra shilling is taxed at your marginal PAYE band, and SHIF and the Housing Levy also take 4.25% of the increase. On a salary already in the 30% band you typically keep around 65-66% of a raise after all deductions.',
+    a: 'Compare complete old and new payroll calculations. With the full taxable increase in the 30% band, standard contributions and no other changes, you retain 62.825% below the NSSF ceiling and 67.025% above it. An increase crossing the ceiling needs a split calculation.',
   },
   {
-    q: 'Why does a 10% raise not lift my take-home by 10%?',
-    a: 'Because deductions are applied to the increase too. PAYE on the new income is charged at your top band, then SHIF and the Housing Levy come off the higher gross. The percentage rise in your net pay is always smaller than the percentage rise in your gross.',
+    q: 'Does a 10% gross raise always mean a smaller percentage net rise?',
+    a: 'No universal rule applies. Gross and net percentage changes use different starting amounts. Calculate both net salaries, subtract them, then divide by the old net salary to measure the net percentage increase.',
   },
   {
     q: 'Does NSSF affect a raise above KES 108,000?',
@@ -88,6 +89,7 @@ export default function RaiseCalculatorPage() {
             </div>
           </div>
 
+          <SpokeGrid hubHref="/raise-calculator" light heading="Understand your pay rise" />
           <ToolNav current="/raise-calculator" />
         </div>
       </section>

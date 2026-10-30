@@ -1,0 +1,10 @@
+# Salary decisions — 30 October 2026
+Main ebad00105a06eb3fbf5b025bd4b4548ec0d5029b matched local tree. Read publishing instructions, ledger, all article headings/drafts, pension/insurance/taxable-pay coverage, silos and relevant calculators. Skipped the next three overlapping relief intents and selected the next row. Existing calculator overview does not supply the complete worked pay-rise reconciliation, benefit valuation worksheet or offer/cost/first-year comparison supplied here. Four drafts remain unpublished.
+
+Fresh official KRA PAYE and deduction guidance, NSSF Year 4 notice (also government MyGov PDF), SHA premium-rates page and KRA Affordable Housing Levy notice checked. Sources embedded in each article. Search Console evidence unavailable this week; no invented keyword volumes. Gross-to-net arithmetic uses current calculator assumptions. Worked examples are explicit about residency, pensionable pay and excluded personal adjustments. Hypothetical benefits and commuting costs are labelled assumptions.
+
+Original images: built-in imagegen, natural editorial photography, cream/coral palette. Prompts depict employee reviewing pay rise; employee considering benefits with folder and commuter bag; two offer folders compared with calculator. No readable personal records, logos or official screens. Optimised JPEG1200x630 assets under public/blog-images.
+
+Necessary hub change: add reciprocal pay-rise SpokeGrid and matching CTA card. Correct existing pay-rise FAQs claiming a universal lower net percentage increase and inaccurate generic retention percentage; do not alter calculator formulas or release checks. Salary comparison retains its existing silo grid linking all new salary spokes.
+
+Validation: final three image crops inspected. Build and both repository checks pass. Executed the actual calculator functions for 100000, 110000, 120000 and 130000 salary and a 10000 taxable-benefit increment; all article values match. React review: reused server-rendered SpokeGrid with direct import, no new effects, client state, dependencies or fetching. Mobile viewport control remains unavailable; disclose any incomplete visual gate.
