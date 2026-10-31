@@ -164,12 +164,35 @@
         }
       ],
       "selectionNote": "Skipped queued NSSF pension relief, education insurance relief and deductions-versus-relief topics because existing pension, insurance and taxable-pay articles already satisfy those intents. Published next distinct salary decision topics."
+    },
+    {
+      "date": "2026-10-31",
+      "articles": [
+        {
+          "title": "How to Correct a PAYE Return on iTax",
+          "slug": "how-to-correct-a-paye-return-on-itax",
+          "hub": "/employer-cost-calculator",
+          "supportingGuide": "/guides/employer-guide"
+        },
+        {
+          "title": "Nil PAYE Returns in Kenya Explained",
+          "slug": "nil-paye-returns-in-kenya",
+          "hub": "/employer-cost-calculator",
+          "supportingGuide": "/guides/employer-guide"
+        },
+        {
+          "title": "Employee Exit Payroll Checklist: Kenya",
+          "slug": "employee-exit-payroll-checklist-kenya",
+          "hub": "/employer-cost-calculator",
+          "supportingGuide": "/guides/employer-guide"
+        }
+      ]
     }
   ],
   "nextBatch": [
-    "How to Correct a PAYE Return on iTax",
-    "Nil PAYE Returns in Kenya Explained",
-    "Employee Exit Payroll Checklist: Kenya"
+    "NSSF Tier I and Tier II Explained",
+    "HELB Deductions Not Remitted: What Next?",
+    "Can Your Employer Deduct Your Salary?"
   ],
   "rules": [
     "Check latest main and existing content to avoid duplicate publishing.",
