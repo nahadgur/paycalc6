@@ -49,6 +49,7 @@ export const SILOS: Silo[] = [
     guideHref: '/guides/statutory-deductions',
     blurb: 'NSSF, SHIF, and the Housing Levy: the three mandatory deductions that come out of every Kenyan payslip in 2026.',
     spokes: [
+      'nssf-tier-ii-contracting-out',
       'how-to-check-your-nssf-contributions',
       'how-to-check-your-sha-contributions',
       'missing-nssf-contributions-what-to-do',
@@ -104,6 +105,8 @@ export const SILOS: Silo[] = [
     guideHref: '/guides/employment-situations',
     blurb: 'How PAYE behaves in real working life: bonuses, freelancing, HELB, changing jobs, employer errors, second jobs and terminal dues.',
     spokes: [
+      'helb-deductions-not-remitted',
+      'can-your-employer-deduct-your-salary',
       'is-notice-pay-taxable-in-kenya',
       'is-unused-leave-pay-taxable-in-kenya',
       'redundancy-pay-and-tax-in-kenya',
@@ -166,6 +169,8 @@ export function siloByKey(key: string): Silo | undefined {
 // Per-article CTA overrides: where an individual post matches a specific
 // tool more tightly than its silo default. Takes precedence over the silo cta.
 const CTA_OVERRIDES: Record<string, Cta> = {
+  'can-your-employer-deduct-your-salary': { href: '/', label: 'Check your salary deductions' },
+  'helb-deductions-not-remitted': { href: '/', label: 'Check your salary deductions' },
   'how-much-of-a-pay-rise-do-you-keep': { href: '/raise-calculator', label: 'Calculate your net pay rise' },
   'is-notice-pay-taxable-in-kenya': { href: '/', label: 'Understand your PAYE' },
   'is-unused-leave-pay-taxable-in-kenya': { href: '/', label: 'Understand your PAYE' },

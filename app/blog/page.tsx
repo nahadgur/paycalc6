@@ -55,6 +55,7 @@ const categories: Record<string, string[]> = {
     'working-backwards-from-net-to-gross-salary-in-kenya',
   ],
   'Statutory deductions': [
+    'nssf-tier-ii-contracting-out',
     'how-to-check-your-nssf-contributions',
     'how-to-check-your-sha-contributions',
     'missing-nssf-contributions-what-to-do',
@@ -86,6 +87,8 @@ const categories: Record<string, string[]> = {
     'the-real-cost-of-earning-kes-200000-in-kenya',
   ],
   'Employment situations': [
+    'helb-deductions-not-remitted',
+    'can-your-employer-deduct-your-salary',
     'is-notice-pay-taxable-in-kenya',
     'is-unused-leave-pay-taxable-in-kenya',
     'redundancy-pay-and-tax-in-kenya',

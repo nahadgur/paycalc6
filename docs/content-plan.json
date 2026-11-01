@@ -187,12 +187,36 @@
           "supportingGuide": "/guides/employer-guide"
         }
       ]
+    },
+    {
+      "date": "2026-11-01",
+      "articles": [
+        {
+          "title": "NSSF Tier II Contracting Out: Employer Checklist",
+          "slug": "nssf-tier-ii-contracting-out",
+          "hub": "/nssf-calculator",
+          "supportingGuide": "/guides/statutory-deductions"
+        },
+        {
+          "title": "HELB Deductions Not Remitted: What Next?",
+          "slug": "helb-deductions-not-remitted",
+          "hub": "/",
+          "supportingGuide": "/guides/employment-situations"
+        },
+        {
+          "title": "Can Your Employer Deduct Your Salary?",
+          "slug": "can-your-employer-deduct-your-salary",
+          "hub": "/",
+          "supportingGuide": "/guides/employment-situations"
+        }
+      ],
+      "selectionNote": "NSSF tier arithmetic already fully covered; substituted employer contracting-out implementation and approval checklist. HELB recovery expands brief existing mention into distinct evidence and escalation workflow."
     }
   ],
   "nextBatch": [
-    "NSSF Tier I and Tier II Explained",
-    "HELB Deductions Not Remitted: What Next?",
-    "Can Your Employer Deduct Your Salary?"
+    "PAYE on a Partial Month of Salary",
+    "How to Check Your P9 Against Payslips",
+    "Salary Overpayments: Payroll Reconciliation"
   ],
   "rules": [
     "Check latest main and existing content to avoid duplicate publishing.",
