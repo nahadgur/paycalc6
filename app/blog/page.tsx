@@ -74,6 +74,7 @@ const categories: Record<string, string[]> = {
     'tax-benefits-for-persons-with-disability-in-kenya',
   ],
   'Salary breakdowns': [
+    'check-p9-against-payslips',
     'how-much-of-a-pay-rise-do-you-keep',
     'salary-vs-benefits-comparing-job-offers',
     'how-to-compare-two-salary-offers',
@@ -87,6 +88,7 @@ const categories: Record<string, string[]> = {
     'the-real-cost-of-earning-kes-200000-in-kenya',
   ],
   'Employment situations': [
+    'paye-on-a-partial-month-of-salary',
     'helb-deductions-not-remitted',
     'can-your-employer-deduct-your-salary',
     'is-notice-pay-taxable-in-kenya',
@@ -106,6 +108,7 @@ const categories: Record<string, string[]> = {
     'how-a-second-job-is-taxed-in-kenya',
   ],
   'For employers': [
+    'salary-overpayments-payroll-reconciliation',
     'how-to-correct-a-paye-return-on-itax',
     'nil-paye-returns-in-kenya',
     'employee-exit-payroll-checklist-kenya',

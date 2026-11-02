@@ -84,6 +84,7 @@ export const SILOS: Silo[] = [
     guideHref: '/guides/salary-breakdowns',
     blurb: 'Exactly what common Kenyan salaries look like after PAYE, NSSF, SHIF, and the Housing Levy, from KES 50,000 to KES 200,000 and beyond.',
     spokes: [
+      'check-p9-against-payslips',
       'how-much-of-a-pay-rise-do-you-keep',
       'salary-vs-benefits-comparing-job-offers',
       'how-to-compare-two-salary-offers',
@@ -105,6 +106,7 @@ export const SILOS: Silo[] = [
     guideHref: '/guides/employment-situations',
     blurb: 'How PAYE behaves in real working life: bonuses, freelancing, HELB, changing jobs, employer errors, second jobs and terminal dues.',
     spokes: [
+      'paye-on-a-partial-month-of-salary',
       'helb-deductions-not-remitted',
       'can-your-employer-deduct-your-salary',
       'is-notice-pay-taxable-in-kenya',
@@ -130,6 +132,7 @@ export const SILOS: Silo[] = [
     guideHref: '/guides/employer-guide',
     blurb: 'Payroll obligations for Kenyan employers: the true cost of hiring, NSSF and Housing Levy duties, iTax filing, and benefits in kind.',
     spokes: [
+      'salary-overpayments-payroll-reconciliation',
       'how-to-correct-a-paye-return-on-itax',
       'nil-paye-returns-in-kenya',
       'employee-exit-payroll-checklist-kenya',
@@ -169,6 +172,9 @@ export function siloByKey(key: string): Silo | undefined {
 // Per-article CTA overrides: where an individual post matches a specific
 // tool more tightly than its silo default. Takes precedence over the silo cta.
 const CTA_OVERRIDES: Record<string, Cta> = {
+  'salary-overpayments-payroll-reconciliation': { href: '/', label: 'Check your PAYE calculation' },
+  'check-p9-against-payslips': { href: '/', label: 'Check your PAYE calculation' },
+  'paye-on-a-partial-month-of-salary': { href: '/', label: 'Check your PAYE calculation' },
   'can-your-employer-deduct-your-salary': { href: '/', label: 'Check your salary deductions' },
   'helb-deductions-not-remitted': { href: '/', label: 'Check your salary deductions' },
   'how-much-of-a-pay-rise-do-you-keep': { href: '/raise-calculator', label: 'Calculate your net pay rise' },
