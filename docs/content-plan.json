@@ -235,12 +235,36 @@
         }
       ],
       "selectionNote": "Queue exhausted after duplicate-intent exclusions recorded previously. New gaps: partial-period tax calculation, P9 column reconciliation, gross/net overpayment recovery reconciliation."
+    },
+    {
+      "date": "2026-11-04",
+      "articles": [
+        {
+          "title": "PAYE on Commission in Kenya",
+          "slug": "paye-on-commission-in-kenya",
+          "hub": "/",
+          "supportingGuide": "/guides/employment-situations"
+        },
+        {
+          "title": "Check Your Workplace Pension Contributions",
+          "slug": "check-workplace-pension-contributions",
+          "hub": "/",
+          "supportingGuide": "/guides/tax-relief"
+        },
+        {
+          "title": "Pension Transfers When Changing Jobs",
+          "slug": "pension-transfers-when-changing-jobs",
+          "hub": "/",
+          "supportingGuide": "/guides/employment-situations"
+        }
+      ],
+      "selectionNote": "Commission reconciliation distinct from bonuses; occupational contribution records distinct from NSSF. Replaced unpaid leave due to overlap with partial-month article; pension transfer is a new job-change workflow."
     }
   ],
   "nextBatch": [
-    "PAYE on Commission in Kenya",
-    "Unpaid Leave and Your Payslip",
-    "Checking Employer Pension Contributions"
+    "Payroll Tax on Salary Advances",
+    "How to Check a Company Car Taxable Value",
+    "Pension Beneficiary Nominations in Kenya"
   ],
   "rules": [
     "Check latest main and existing content to avoid duplicate publishing.",

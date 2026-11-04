@@ -64,6 +64,7 @@ const categories: Record<string, string[]> = {
     'everything-you-need-to-know-about-kenyas-housing-levy',
   ],
   'Tax savings': [
+    'check-workplace-pension-contributions',
     'personal-relief-in-kenya',
     'claim-tax-relief-through-payroll',
     'documents-for-paye-tax-relief',
@@ -88,6 +89,8 @@ const categories: Record<string, string[]> = {
     'the-real-cost-of-earning-kes-200000-in-kenya',
   ],
   'Employment situations': [
+    'pension-transfers-when-changing-jobs',
+    'paye-on-commission-in-kenya',
     'paye-on-a-partial-month-of-salary',
     'helb-deductions-not-remitted',
     'can-your-employer-deduct-your-salary',

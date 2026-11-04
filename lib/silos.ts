@@ -66,6 +66,7 @@ export const SILOS: Silo[] = [
     guideHref: '/guides/tax-relief',
     blurb: 'Legal ways to reduce your PAYE: insurance relief, mortgage interest relief, pension contributions, and disability exemptions.',
     spokes: [
+      'check-workplace-pension-contributions',
       'personal-relief-in-kenya',
       'claim-tax-relief-through-payroll',
       'documents-for-paye-tax-relief',
@@ -106,6 +107,8 @@ export const SILOS: Silo[] = [
     guideHref: '/guides/employment-situations',
     blurb: 'How PAYE behaves in real working life: bonuses, freelancing, HELB, changing jobs, employer errors, second jobs and terminal dues.',
     spokes: [
+      'pension-transfers-when-changing-jobs',
+      'paye-on-commission-in-kenya',
       'paye-on-a-partial-month-of-salary',
       'helb-deductions-not-remitted',
       'can-your-employer-deduct-your-salary',
@@ -172,6 +175,9 @@ export function siloByKey(key: string): Silo | undefined {
 // Per-article CTA overrides: where an individual post matches a specific
 // tool more tightly than its silo default. Takes precedence over the silo cta.
 const CTA_OVERRIDES: Record<string, Cta> = {
+  'pension-transfers-when-changing-jobs': { href: '/', label: 'Check your payroll calculation' },
+  'check-workplace-pension-contributions': { href: '/', label: 'Check your payroll calculation' },
+  'paye-on-commission-in-kenya': { href: '/', label: 'Check your payroll calculation' },
   'salary-overpayments-payroll-reconciliation': { href: '/', label: 'Check your PAYE calculation' },
   'check-p9-against-payslips': { href: '/', label: 'Check your PAYE calculation' },
   'paye-on-a-partial-month-of-salary': { href: '/', label: 'Check your PAYE calculation' },
