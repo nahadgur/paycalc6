@@ -66,6 +66,7 @@ export const SILOS: Silo[] = [
     guideHref: '/guides/tax-relief',
     blurb: 'Legal ways to reduce your PAYE: insurance relief, mortgage interest relief, pension contributions, and disability exemptions.',
     spokes: [
+      'pension-beneficiary-nominations-in-kenya',
       'check-workplace-pension-contributions',
       'personal-relief-in-kenya',
       'claim-tax-relief-through-payroll',
@@ -107,6 +108,7 @@ export const SILOS: Silo[] = [
     guideHref: '/guides/employment-situations',
     blurb: 'How PAYE behaves in real working life: bonuses, freelancing, HELB, changing jobs, employer errors, second jobs and terminal dues.',
     spokes: [
+      'salary-advances-and-paye-in-kenya',
       'pension-transfers-when-changing-jobs',
       'paye-on-commission-in-kenya',
       'paye-on-a-partial-month-of-salary',
@@ -135,6 +137,7 @@ export const SILOS: Silo[] = [
     guideHref: '/guides/employer-guide',
     blurb: 'Payroll obligations for Kenyan employers: the true cost of hiring, NSSF and Housing Levy duties, iTax filing, and benefits in kind.',
     spokes: [
+      'company-car-private-use-payroll-checks',
       'salary-overpayments-payroll-reconciliation',
       'how-to-correct-a-paye-return-on-itax',
       'nil-paye-returns-in-kenya',
@@ -175,6 +178,10 @@ export function siloByKey(key: string): Silo | undefined {
 // Per-article CTA overrides: where an individual post matches a specific
 // tool more tightly than its silo default. Takes precedence over the silo cta.
 const CTA_OVERRIDES: Record<string, Cta> = {
+  'salary-advances-and-paye-in-kenya': { href: '/', label: 'Check your payroll calculation' },
+  'company-car-private-use-payroll-checks': { href: '/', label: 'Check your payroll calculation' },
+  'pension-beneficiary-nominations-in-kenya': { href: '/', label: 'Check your payroll calculation' },
+
   'pension-transfers-when-changing-jobs': { href: '/', label: 'Check your payroll calculation' },
   'check-workplace-pension-contributions': { href: '/', label: 'Check your payroll calculation' },
   'paye-on-commission-in-kenya': { href: '/', label: 'Check your payroll calculation' },

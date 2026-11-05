@@ -259,12 +259,36 @@
         }
       ],
       "selectionNote": "Commission reconciliation distinct from bonuses; occupational contribution records distinct from NSSF. Replaced unpaid leave due to overlap with partial-month article; pension transfer is a new job-change workflow."
+    },
+    {
+      "date": "2026-11-05",
+      "articles": [
+        {
+          "title": "Salary Advances and PAYE in Kenya",
+          "slug": "salary-advances-and-paye-in-kenya",
+          "hub": "/",
+          "supportingGuide": "/guides/employment-situations"
+        },
+        {
+          "title": "Company Car Private Use: Payroll Checks",
+          "slug": "company-car-private-use-payroll-checks",
+          "hub": "/",
+          "supportingGuide": "/guides/employer-guide"
+        },
+        {
+          "title": "Pension Beneficiary Nominations in Kenya",
+          "slug": "pension-beneficiary-nominations-in-kenya",
+          "hub": "/",
+          "supportingGuide": "/guides/tax-relief"
+        }
+      ],
+      "selectionNote": "Queue exhausted. Salary advance timing is distinct from erroneous overpayments. General car valuation already covered and its draft remains unpublished; selected restricted-use evidence instead. Pension nomination is distinct from contribution/transfer records."
     }
   ],
   "nextBatch": [
-    "Payroll Tax on Salary Advances",
-    "How to Check a Company Car Taxable Value",
-    "Pension Beneficiary Nominations in Kenya"
+    "How to Check Employer Medical Cover on Payroll",
+    "Pension Scheme Fees: What to Ask",
+    "PAYE When Salary Is Paid Late"
   ],
   "rules": [
     "Check latest main and existing content to avoid duplicate publishing.",
