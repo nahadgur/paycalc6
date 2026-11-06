@@ -64,7 +64,8 @@ const categories: Record<string, string[]> = {
     'everything-you-need-to-know-about-kenyas-housing-levy',
   ],
   'Tax savings': [
-    'pension-beneficiary-nominations-in-kenya',
+    'pension-scheme-fees-kenya',
+      'pension-beneficiary-nominations-in-kenya',
     'check-workplace-pension-contributions',
     'personal-relief-in-kenya',
     'claim-tax-relief-through-payroll',
@@ -90,7 +91,8 @@ const categories: Record<string, string[]> = {
     'the-real-cost-of-earning-kes-200000-in-kenya',
   ],
   'Employment situations': [
-    'salary-advances-and-paye-in-kenya',
+    'employer-medical-cover-payslip',
+      'salary-advances-and-paye-in-kenya',
     'pension-transfers-when-changing-jobs',
     'paye-on-commission-in-kenya',
     'paye-on-a-partial-month-of-salary',
@@ -113,7 +115,8 @@ const categories: Record<string, string[]> = {
     'how-a-second-job-is-taxed-in-kenya',
   ],
   'For employers': [
-    'company-car-private-use-payroll-checks',
+    'staff-meals-and-paye-kenya',
+      'company-car-private-use-payroll-checks',
     'salary-overpayments-payroll-reconciliation',
     'how-to-correct-a-paye-return-on-itax',
     'nil-paye-returns-in-kenya',

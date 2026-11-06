@@ -66,6 +66,7 @@ export const SILOS: Silo[] = [
     guideHref: '/guides/tax-relief',
     blurb: 'Legal ways to reduce your PAYE: insurance relief, mortgage interest relief, pension contributions, and disability exemptions.',
     spokes: [
+      'pension-scheme-fees-kenya',
       'pension-beneficiary-nominations-in-kenya',
       'check-workplace-pension-contributions',
       'personal-relief-in-kenya',
@@ -108,6 +109,7 @@ export const SILOS: Silo[] = [
     guideHref: '/guides/employment-situations',
     blurb: 'How PAYE behaves in real working life: bonuses, freelancing, HELB, changing jobs, employer errors, second jobs and terminal dues.',
     spokes: [
+      'employer-medical-cover-payslip',
       'salary-advances-and-paye-in-kenya',
       'pension-transfers-when-changing-jobs',
       'paye-on-commission-in-kenya',
@@ -137,6 +139,7 @@ export const SILOS: Silo[] = [
     guideHref: '/guides/employer-guide',
     blurb: 'Payroll obligations for Kenyan employers: the true cost of hiring, NSSF and Housing Levy duties, iTax filing, and benefits in kind.',
     spokes: [
+      'staff-meals-and-paye-kenya',
       'company-car-private-use-payroll-checks',
       'salary-overpayments-payroll-reconciliation',
       'how-to-correct-a-paye-return-on-itax',
@@ -178,8 +181,11 @@ export function siloByKey(key: string): Silo | undefined {
 // Per-article CTA overrides: where an individual post matches a specific
 // tool more tightly than its silo default. Takes precedence over the silo cta.
 const CTA_OVERRIDES: Record<string, Cta> = {
+  'employer-medical-cover-payslip': { href: '/', label: 'Check your take-home pay' },
   'salary-advances-and-paye-in-kenya': { href: '/', label: 'Check your payroll calculation' },
+  'staff-meals-and-paye-kenya': { href: '/', label: 'Check your take-home pay' },
   'company-car-private-use-payroll-checks': { href: '/', label: 'Check your payroll calculation' },
+  'pension-scheme-fees-kenya': { href: '/', label: 'Check your take-home pay' },
   'pension-beneficiary-nominations-in-kenya': { href: '/', label: 'Check your payroll calculation' },
 
   'pension-transfers-when-changing-jobs': { href: '/', label: 'Check your payroll calculation' },

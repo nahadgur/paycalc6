@@ -283,12 +283,36 @@
         }
       ],
       "selectionNote": "Queue exhausted. Salary advance timing is distinct from erroneous overpayments. General car valuation already covered and its draft remains unpublished; selected restricted-use evidence instead. Pension nomination is distinct from contribution/transfer records."
+    },
+    {
+      "date": "2026-11-06",
+      "articles": [
+        {
+          "title": "Employer Medical Cover on a Kenyan Payslip",
+          "slug": "employer-medical-cover-payslip",
+          "hub": "/",
+          "supportingGuide": "/guides/employment-situations"
+        },
+        {
+          "title": "Pension Scheme Fees in Kenya: What to Ask",
+          "slug": "pension-scheme-fees-kenya",
+          "hub": "/",
+          "supportingGuide": "/guides/tax-relief"
+        },
+        {
+          "title": "Staff Meals and PAYE in Kenya",
+          "slug": "staff-meals-and-paye-kenya",
+          "hub": "/",
+          "supportingGuide": "/guides/employer-guide"
+        }
+      ],
+      "selectionNote": "Late salary overlapped salary arrears; selected staff meal valuation instead. Medical premium split and scheme fee basis answer separate questions."
     }
   ],
   "nextBatch": [
-    "How to Check Employer Medical Cover on Payroll",
-    "Pension Scheme Fees: What to Ask",
-    "PAYE When Salary Is Paid Late"
+    "How to Check Mileage Reimbursements on Payroll",
+    "Employee Share Options: What to Ask Payroll",
+    "How to Reconcile a Mortgage Interest Certificate"
   ],
   "rules": [
     "Check latest main and existing content to avoid duplicate publishing.",
