@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { SpokeGrid } from '@/components/SpokeGrid'
 import { CheckCircle2, AlertTriangle, ChevronRight } from 'lucide-react'
 import Hero from '@/components/Hero'
 
@@ -158,13 +159,15 @@ export default function MortgageReliefPage() {
           <div className="bg-amber-500/10 border border-amber-500/20 rounded-2xl p-6">
             <h2 className="text-lg font-bold text-white mb-3 flex items-center gap-2">
               <AlertTriangle className="w-5 h-5 text-amber-400" />
-              How to claim it (and why most people miss out)
+              How to claim and check the deduction
             </h2>
             <p className="text-stone-400 text-sm leading-relaxed mb-3">
-              Submit your annual mortgage interest certificate to your employer's HR/payroll team. From 2026 employers
-              are expected to apply the relief monthly rather than at year-end. If it was not applied during the year,
-              you can claim it on your annual iTax return for a refund. Thousands of borrowers never submit the
-              statement and lose up to KES 9,000 a month — if you have a home loan, send it to HR today.
+              Submit evidence of qualifying interest to your employer's HR/payroll team and check the deduction
+              against your lender statements. The deduction reduces taxable income; the tax saving depends on
+              your tax position. Reconcile any omitted or incorrect amounts before filing your annual return.
+              A certificate alone does not guarantee a refund.
+              {' '}<Link href="/blog/reconcile-mortgage-interest-certificate" className="underline">Check your mortgage interest certificate</Link>
+              {' '}before using its figures.
             </p>
             <Link href="/guides/tax-relief" className="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 text-sm font-semibold transition-colors">
               See all Kenya tax reliefs <ChevronRight className="w-4 h-4" />
@@ -178,6 +181,8 @@ export default function MortgageReliefPage() {
             Calculate your net pay with mortgage relief →
           </Link>
         </div>
+
+        <SpokeGrid hubHref="/mortgage-relief" heading="Mortgage interest articles" />
 
         {/* Related */}
         <section className="border-t border-white/10 pt-10">

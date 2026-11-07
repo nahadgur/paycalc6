@@ -66,6 +66,7 @@ export const SILOS: Silo[] = [
     guideHref: '/guides/tax-relief',
     blurb: 'Legal ways to reduce your PAYE: insurance relief, mortgage interest relief, pension contributions, and disability exemptions.',
     spokes: [
+      'reconcile-mortgage-interest-certificate',
       'pension-scheme-fees-kenya',
       'pension-beneficiary-nominations-in-kenya',
       'check-workplace-pension-contributions',
@@ -109,6 +110,7 @@ export const SILOS: Silo[] = [
     guideHref: '/guides/employment-situations',
     blurb: 'How PAYE behaves in real working life: bonuses, freelancing, HELB, changing jobs, employer errors, second jobs and terminal dues.',
     spokes: [
+      'mileage-reimbursements-paye-kenya',
       'employer-medical-cover-payslip',
       'salary-advances-and-paye-in-kenya',
       'pension-transfers-when-changing-jobs',
@@ -139,6 +141,7 @@ export const SILOS: Silo[] = [
     guideHref: '/guides/employer-guide',
     blurb: 'Payroll obligations for Kenyan employers: the true cost of hiring, NSSF and Housing Levy duties, iTax filing, and benefits in kind.',
     spokes: [
+      'employee-share-options-payroll-checks',
       'staff-meals-and-paye-kenya',
       'company-car-private-use-payroll-checks',
       'salary-overpayments-payroll-reconciliation',
@@ -181,6 +184,10 @@ export function siloByKey(key: string): Silo | undefined {
 // Per-article CTA overrides: where an individual post matches a specific
 // tool more tightly than its silo default. Takes precedence over the silo cta.
 const CTA_OVERRIDES: Record<string, Cta> = {
+  'mileage-reimbursements-paye-kenya': { href: '/', label: 'Check your take-home pay' },
+  'employee-share-options-payroll-checks': { href: '/', label: 'Check your take-home pay' },
+  'reconcile-mortgage-interest-certificate': { href: '/mortgage-relief', label: 'Check mortgage relief' },
+
   'employer-medical-cover-payslip': { href: '/', label: 'Check your take-home pay' },
   'salary-advances-and-paye-in-kenya': { href: '/', label: 'Check your payroll calculation' },
   'staff-meals-and-paye-kenya': { href: '/', label: 'Check your take-home pay' },

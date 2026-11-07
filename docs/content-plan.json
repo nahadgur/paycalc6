@@ -307,12 +307,36 @@
         }
       ],
       "selectionNote": "Late salary overlapped salary arrears; selected staff meal valuation instead. Medical premium split and scheme fee basis answer separate questions."
+    },
+    {
+      "date": "2026-11-07",
+      "articles": [
+        {
+          "title": "Mileage Reimbursements and PAYE in Kenya",
+          "slug": "mileage-reimbursements-paye-kenya",
+          "hub": "/",
+          "supportingGuide": "/guides/employment-situations"
+        },
+        {
+          "title": "Employee Share Options: What to Ask Payroll",
+          "slug": "employee-share-options-payroll-checks",
+          "hub": "/",
+          "supportingGuide": "/guides/employer-guide"
+        },
+        {
+          "title": "Reconcile Your Mortgage Interest Certificate",
+          "slug": "reconcile-mortgage-interest-certificate",
+          "hub": "/mortgage-relief",
+          "supportingGuide": "/guides/tax-relief"
+        }
+      ],
+      "selectionNote": "Queue exhausted. Mileage claim reconciliation goes beyond the allowances overview; share-option evidence and funding are not covered by the general benefits article; mortgage certificate reconciliation expands a distinct record-matching intent."
     }
   ],
   "nextBatch": [
-    "How to Check Mileage Reimbursements on Payroll",
-    "Employee Share Options: What to Ask Payroll",
-    "How to Reconcile a Mortgage Interest Certificate"
+    "Payroll Bank Details: Safe Changes and Failed Payments",
+    "How to Check a Certificate of Service in Kenya",
+    "Salary Review Letters: What to Confirm Before Payroll Changes"
   ],
   "rules": [
     "Check latest main and existing content to avoid duplicate publishing.",
