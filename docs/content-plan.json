@@ -331,12 +331,36 @@
         }
       ],
       "selectionNote": "Queue exhausted. Mileage claim reconciliation goes beyond the allowances overview; share-option evidence and funding are not covered by the general benefits article; mortgage certificate reconciliation expands a distinct record-matching intent."
+    },
+    {
+      "date": "2026-11-10",
+      "articles": [
+        {
+          "title": "Payroll Bank Details: Safe Changes and Failed Payments",
+          "slug": "payroll-bank-details-failed-payments",
+          "hub": "/",
+          "supportingGuide": "/guides/employment-situations"
+        },
+        {
+          "title": "How to Check a Certificate of Service in Kenya",
+          "slug": "check-certificate-of-service-kenya",
+          "hub": "/",
+          "supportingGuide": "/guides/employment-situations"
+        },
+        {
+          "title": "Salary Review Letters: What to Check",
+          "slug": "salary-review-letter-payroll-checks",
+          "hub": "/raise-calculator",
+          "supportingGuide": "/guides/salary-breakdowns"
+        }
+      ],
+      "selectionNote": "Recover unpublished 8 November drafts after official source access and workspace recovery. Queue exhausted; bank change/trace, certificate accuracy and salary-review instructions are distinct from existing onboarding, exit and pay-rise arithmetic."
     }
   ],
   "nextBatch": [
-    "Payroll Bank Details: Safe Changes and Failed Payments",
-    "How to Check a Certificate of Service in Kenya",
-    "Salary Review Letters: What to Confirm Before Payroll Changes"
+    "Checking a Payroll Loan Balance Before Leaving a Job",
+    "How to Reconcile a Salary Sacrifice Proposal",
+    "Payroll Name and KRA PIN Mismatches: What to Check"
   ],
   "rules": [
     "Check latest main and existing content to avoid duplicate publishing.",

@@ -88,6 +88,7 @@ export const SILOS: Silo[] = [
     guideHref: '/guides/salary-breakdowns',
     blurb: 'Exactly what common Kenyan salaries look like after PAYE, NSSF, SHIF, and the Housing Levy, from KES 50,000 to KES 200,000 and beyond.',
     spokes: [
+      'salary-review-letter-payroll-checks',
       'check-p9-against-payslips',
       'how-much-of-a-pay-rise-do-you-keep',
       'salary-vs-benefits-comparing-job-offers',
@@ -110,6 +111,8 @@ export const SILOS: Silo[] = [
     guideHref: '/guides/employment-situations',
     blurb: 'How PAYE behaves in real working life: bonuses, freelancing, HELB, changing jobs, employer errors, second jobs and terminal dues.',
     spokes: [
+      'payroll-bank-details-failed-payments',
+      'check-certificate-of-service-kenya',
       'mileage-reimbursements-paye-kenya',
       'employer-medical-cover-payslip',
       'salary-advances-and-paye-in-kenya',
@@ -184,6 +187,9 @@ export function siloByKey(key: string): Silo | undefined {
 // Per-article CTA overrides: where an individual post matches a specific
 // tool more tightly than its silo default. Takes precedence over the silo cta.
 const CTA_OVERRIDES: Record<string, Cta> = {
+  'payroll-bank-details-failed-payments': { href: '/', label: 'Check your salary calculation' },
+  'check-certificate-of-service-kenya': { href: '/', label: 'Check your salary calculation' },
+  'salary-review-letter-payroll-checks': { href: '/raise-calculator', label: 'Check your salary calculation' },
   'mileage-reimbursements-paye-kenya': { href: '/', label: 'Check your take-home pay' },
   'employee-share-options-payroll-checks': { href: '/', label: 'Check your take-home pay' },
   'reconcile-mortgage-interest-certificate': { href: '/mortgage-relief', label: 'Check mortgage relief' },
