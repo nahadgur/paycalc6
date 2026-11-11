@@ -78,6 +78,7 @@ const categories: Record<string, string[]> = {
     'tax-benefits-for-persons-with-disability-in-kenya',
   ],
   'Salary breakdowns': [
+    'salary-sacrifice-proposal-kenya',
     'salary-review-letter-payroll-checks',
       'check-p9-against-payslips',
     'how-much-of-a-pay-rise-do-you-keep',
@@ -93,6 +94,7 @@ const categories: Record<string, string[]> = {
     'the-real-cost-of-earning-kes-200000-in-kenya',
   ],
   'Employment situations': [
+    'payroll-loan-balance-before-leaving',
       'payroll-bank-details-failed-payments',
       'check-certificate-of-service-kenya',
       'mileage-reimbursements-paye-kenya',
@@ -120,6 +122,7 @@ const categories: Record<string, string[]> = {
     'how-a-second-job-is-taxed-in-kenya',
   ],
   'For employers': [
+    'payroll-name-kra-pin-mismatch',
     'employee-share-options-payroll-checks',
     'staff-meals-and-paye-kenya',
       'company-car-private-use-payroll-checks',

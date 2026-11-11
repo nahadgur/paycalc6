@@ -355,12 +355,36 @@
         }
       ],
       "selectionNote": "Recover unpublished 8 November drafts after official source access and workspace recovery. Queue exhausted; bank change/trace, certificate accuracy and salary-review instructions are distinct from existing onboarding, exit and pay-rise arithmetic."
+    },
+    {
+      "date": "2026-11-11",
+      "articles": [
+        {
+          "title": "Payroll Loan Balance: Checks Before Leaving a Job",
+          "slug": "payroll-loan-balance-before-leaving",
+          "hub": "/",
+          "supportingGuide": "/guides/employment-situations"
+        },
+        {
+          "title": "Salary Sacrifice in Kenya: Check the Proposal",
+          "slug": "salary-sacrifice-proposal-kenya",
+          "hub": "/salary-comparison",
+          "supportingGuide": "/guides/salary-breakdowns"
+        },
+        {
+          "title": "Payroll Name and KRA PIN Mismatches: What to Check",
+          "slug": "payroll-name-kra-pin-mismatch",
+          "hub": "/",
+          "supportingGuide": "/guides/employer-guide"
+        }
+      ],
+      "selectionNote": "Queue exhausted. Selected ledger candidates after inventory: lender/principal settlement reconciliation extends beyond advance timing; salary sacrifice implementation and tax classification differs from comparing job offers; PIN/name error correction differs from onboarding. Four unrelated drafts remain unpublished."
     }
   ],
   "nextBatch": [
-    "Checking a Payroll Loan Balance Before Leaving a Job",
-    "How to Reconcile a Salary Sacrifice Proposal",
-    "Payroll Name and KRA PIN Mismatches: What to Check"
+    "Checking a Payroll Deduction After a Loan Is Fully Repaid",
+    "How to Check a Pension Contribution Increase on Your Payslip",
+    "What to Request When Your Employer Changes Payroll Systems"
   ],
   "rules": [
     "Check latest main and existing content to avoid duplicate publishing.",
