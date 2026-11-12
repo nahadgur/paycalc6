@@ -94,6 +94,8 @@ const categories: Record<string, string[]> = {
     'the-real-cost-of-earning-kes-200000-in-kenya',
   ],
   'Employment situations': [
+    'sick-pay-and-paye-kenya',
+    'maternity-pay-and-paye-kenya',
     'payroll-loan-balance-before-leaving',
       'payroll-bank-details-failed-payments',
       'check-certificate-of-service-kenya',
@@ -122,6 +124,7 @@ const categories: Record<string, string[]> = {
     'how-a-second-job-is-taxed-in-kenya',
   ],
   'For employers': [
+    'changing-payroll-systems-kenya',
     'payroll-name-kra-pin-mismatch',
     'employee-share-options-payroll-checks',
     'staff-meals-and-paye-kenya',

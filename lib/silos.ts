@@ -112,6 +112,8 @@ export const SILOS: Silo[] = [
     guideHref: '/guides/employment-situations',
     blurb: 'How PAYE behaves in real working life: bonuses, freelancing, HELB, changing jobs, employer errors, second jobs and terminal dues.',
     spokes: [
+      'sick-pay-and-paye-kenya',
+      'maternity-pay-and-paye-kenya',
       'payroll-loan-balance-before-leaving',
       'payroll-bank-details-failed-payments',
       'check-certificate-of-service-kenya',
@@ -146,6 +148,7 @@ export const SILOS: Silo[] = [
     guideHref: '/guides/employer-guide',
     blurb: 'Payroll obligations for Kenyan employers: the true cost of hiring, NSSF and Housing Levy duties, iTax filing, and benefits in kind.',
     spokes: [
+      'changing-payroll-systems-kenya',
       'payroll-name-kra-pin-mismatch',
       'employee-share-options-payroll-checks',
       'staff-meals-and-paye-kenya',
@@ -190,6 +193,8 @@ export function siloByKey(key: string): Silo | undefined {
 // Per-article CTA overrides: where an individual post matches a specific
 // tool more tightly than its silo default. Takes precedence over the silo cta.
 const CTA_OVERRIDES: Record<string, Cta> = {
+  'sick-pay-and-paye-kenya': { href: '/', label: 'Estimate your take-home pay' },
+  'maternity-pay-and-paye-kenya': { href: '/', label: 'Estimate your take-home pay' },
   'payroll-loan-balance-before-leaving': { href: '/', label: 'Check your salary calculation' },
   'salary-sacrifice-proposal-kenya': { href: '/salary-comparison', label: 'Compare cash salaries' },
   'payroll-name-kra-pin-mismatch': { href: '/', label: 'Check your PAYE calculation' },
