@@ -426,7 +426,9 @@
           "supportingGuide": "/guides/employer-guide"
         }
       ],
-      "selectionNote": "Original queue exhausted. Retained paternity leave and payroll cut-off candidates. Corrected-payslip intent is already covered by wrong-PAYE and overpayment reconciliation; replaced with NSSF contact-update workflow, distinct from contribution-statement reconciliation. Four unrelated drafts remain unpublished."
+      "selectionNote": "Original queue exhausted. Retained paternity leave and payroll cut-off candidates. Corrected-payslip intent is already covered by wrong-PAYE and overpayment reconciliation; replaced with NSSF contact-update workflow, distinct from contribution-statement reconciliation. Four unrelated drafts remain unpublished.",
+      "verificationStatus": "PUBLISHING INCOMPLETE: three live; mobile-width visual review pending",
+      "verificationNote": "Build, both local audits, production daily audit, exact initial commit Vercel success, deployed editorial/image-byte checks and desktop article/card inspection passed. Native Chromium reports NET::ERR_CERT_AUTHORITY_INVALID for production; cloud browser loads production but rejects chrome://settings/appearance under URL policy, so required mobile-width article/card inspection could not be completed. Do not duplicate these articles. Next step: inspect all three live articles and blog cards in an approved browser with a valid connection and mobile viewport, then rerun production check and record completion."
     }
   ],
   "nextBatch": [
