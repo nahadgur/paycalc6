@@ -403,12 +403,36 @@
         }
       ],
       "selectionNote": "Queue exhausted. Loan-repayment and pension-increase candidates overlap existing coverage; substituted distinct sick-pay and maternity-pay entitlement versus tax questions. Retained payroll migration as an opening-balance and parallel-run workflow, distinct from general records and setup. Four unrelated drafts remain unpublished."
+    },
+    {
+      "date": "2026-11-13",
+      "articles": [
+        {
+          "title": "Paternity Leave Pay in Kenya: Payroll Checks",
+          "slug": "paternity-leave-pay-kenya",
+          "hub": "/",
+          "supportingGuide": "/guides/employment-situations"
+        },
+        {
+          "title": "Updating Your NSSF Contact Details in Kenya",
+          "slug": "update-nssf-contact-details",
+          "hub": "/nssf-calculator",
+          "supportingGuide": "/guides/statutory-deductions"
+        },
+        {
+          "title": "Payroll Cut-off Dates in Kenya: Late Salary Changes",
+          "slug": "payroll-cut-off-dates-kenya",
+          "hub": "/employer-cost-calculator",
+          "supportingGuide": "/guides/employer-guide"
+        }
+      ],
+      "selectionNote": "Original queue exhausted. Retained paternity leave and payroll cut-off candidates. Corrected-payslip intent is already covered by wrong-PAYE and overpayment reconciliation; replaced with NSSF contact-update workflow, distinct from contribution-statement reconciliation. Four unrelated drafts remain unpublished."
     }
   ],
   "nextBatch": [
-    "Paternity Leave Pay and Payroll Checks in Kenya",
-    "How to Reconcile a Corrected Payslip",
-    "Payroll Cut-off Dates: Handling Late Salary Changes"
+    "Pre-adoption Leave Pay and Payroll Checks in Kenya",
+    "Payroll Approval Checklist Before Releasing Salaries",
+    "How to Check Employer Pension Contributions on Exit"
   ],
   "rules": [
     "Check latest main and existing content to avoid duplicate publishing.",
