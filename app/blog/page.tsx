@@ -79,6 +79,7 @@ const categories: Record<string, string[]> = {
     'tax-benefits-for-persons-with-disability-in-kenya',
   ],
   'Salary breakdowns': [
+    'missing-p9-form-kenya',
     'salary-sacrifice-proposal-kenya',
     'salary-review-letter-payroll-checks',
       'check-p9-against-payslips',
@@ -95,6 +96,7 @@ const categories: Record<string, string[]> = {
     'the-real-cost-of-earning-kes-200000-in-kenya',
   ],
   'Employment situations': [
+    'pre-adoption-leave-pay-kenya',
     'paternity-leave-pay-kenya',
     'sick-pay-and-paye-kenya',
     'maternity-pay-and-paye-kenya',
@@ -126,6 +128,7 @@ const categories: Record<string, string[]> = {
     'how-a-second-job-is-taxed-in-kenya',
   ],
   'For employers': [
+    'payroll-approval-checklist-kenya',
     'payroll-cut-off-dates-kenya',
     'changing-payroll-systems-kenya',
     'payroll-name-kra-pin-mismatch',

@@ -429,12 +429,36 @@
       "selectionNote": "Original queue exhausted. Retained paternity leave and payroll cut-off candidates. Corrected-payslip intent is already covered by wrong-PAYE and overpayment reconciliation; replaced with NSSF contact-update workflow, distinct from contribution-statement reconciliation. Four unrelated drafts remain unpublished.",
       "verificationStatus": "PUBLISHING INCOMPLETE: three live; mobile-width visual review pending",
       "verificationNote": "Build, both local audits, production daily audit, exact initial commit Vercel success, deployed editorial/image-byte checks and desktop article/card inspection passed. Native Chromium reports NET::ERR_CERT_AUTHORITY_INVALID for production; cloud browser loads production but rejects chrome://settings/appearance under URL policy, so required mobile-width article/card inspection could not be completed. Do not duplicate these articles. Next step: inspect all three live articles and blog cards in an approved browser with a valid connection and mobile viewport, then rerun production check and record completion."
+    },
+    {
+      "date": "2026-11-14",
+      "articles": [
+        {
+          "title": "Pre-adoption Leave Pay in Kenya",
+          "slug": "pre-adoption-leave-pay-kenya",
+          "hub": "/",
+          "supportingGuide": "/guides/employment-situations"
+        },
+        {
+          "title": "Payroll Approval Checklist Before Releasing Salaries",
+          "slug": "payroll-approval-checklist-kenya",
+          "hub": "/employer-cost-calculator",
+          "supportingGuide": "/guides/employer-guide"
+        },
+        {
+          "title": "Missing P9 Form in Kenya: What to Do",
+          "slug": "missing-p9-form-kenya",
+          "hub": "/",
+          "supportingGuide": "/guides/salary-breakdowns"
+        }
+      ],
+      "selectionNote": "Original queue exhausted. Retained distinct pre-adoption placement/notice entitlement and final bank-file approval workflow. Replaced pension contributions on exit because workplace-contribution and transfer articles already cover that intent; missing-P9 acquisition and conditional filing route is distinct from checking an existing P9. Four unrelated drafts remain unpublished."
     }
   ],
   "nextBatch": [
-    "Pre-adoption Leave Pay and Payroll Checks in Kenya",
-    "Payroll Approval Checklist Before Releasing Salaries",
-    "How to Check Employer Pension Contributions on Exit"
+    "Unpaid Leave and PAYE in Kenya",
+    "How to Check a Salary Payment Reference in Kenya",
+    "Payroll Year-End Reconciliation for Kenyan Employers"
   ],
   "rules": [
     "Check latest main and existing content to avoid duplicate publishing.",

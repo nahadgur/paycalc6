@@ -89,6 +89,7 @@ export const SILOS: Silo[] = [
     guideHref: '/guides/salary-breakdowns',
     blurb: 'Exactly what common Kenyan salaries look like after PAYE, NSSF, SHIF, and the Housing Levy, from KES 50,000 to KES 200,000 and beyond.',
     spokes: [
+      'missing-p9-form-kenya',
       'salary-sacrifice-proposal-kenya',
       'salary-review-letter-payroll-checks',
       'check-p9-against-payslips',
@@ -113,6 +114,7 @@ export const SILOS: Silo[] = [
     guideHref: '/guides/employment-situations',
     blurb: 'How PAYE behaves in real working life: bonuses, freelancing, HELB, changing jobs, employer errors, second jobs and terminal dues.',
     spokes: [
+      'pre-adoption-leave-pay-kenya',
       'paternity-leave-pay-kenya',
       'sick-pay-and-paye-kenya',
       'maternity-pay-and-paye-kenya',
@@ -150,6 +152,7 @@ export const SILOS: Silo[] = [
     guideHref: '/guides/employer-guide',
     blurb: 'Payroll obligations for Kenyan employers: the true cost of hiring, NSSF and Housing Levy duties, iTax filing, and benefits in kind.',
     spokes: [
+      'payroll-approval-checklist-kenya',
       'payroll-cut-off-dates-kenya',
       'changing-payroll-systems-kenya',
       'payroll-name-kra-pin-mismatch',
@@ -196,6 +199,8 @@ export function siloByKey(key: string): Silo | undefined {
 // Per-article CTA overrides: where an individual post matches a specific
 // tool more tightly than its silo default. Takes precedence over the silo cta.
 const CTA_OVERRIDES: Record<string, Cta> = {
+  'pre-adoption-leave-pay-kenya': { href: '/', label: 'Estimate your take-home pay' },
+  'missing-p9-form-kenya': { href: '/', label: 'Check your PAYE calculation' },
   'paternity-leave-pay-kenya': { href: '/', label: 'Estimate your take-home pay' },
   'sick-pay-and-paye-kenya': { href: '/', label: 'Estimate your take-home pay' },
   'maternity-pay-and-paye-kenya': { href: '/', label: 'Estimate your take-home pay' },
