@@ -452,7 +452,9 @@
           "supportingGuide": "/guides/salary-breakdowns"
         }
       ],
-      "selectionNote": "Original queue exhausted. Retained distinct pre-adoption placement/notice entitlement and final bank-file approval workflow. Replaced pension contributions on exit because workplace-contribution and transfer articles already cover that intent; missing-P9 acquisition and conditional filing route is distinct from checking an existing P9. Four unrelated drafts remain unpublished."
+      "selectionNote": "Original queue exhausted. Retained distinct pre-adoption placement/notice entitlement and final bank-file approval workflow. Replaced pension contributions on exit because workplace-contribution and transfer articles already cover that intent; missing-P9 acquisition and conditional filing route is distinct from checking an existing P9. Four unrelated drafts remain unpublished.",
+      "verificationStatus": "PUBLISHING INCOMPLETE: three live; mobile-width visual review pending",
+      "verificationNote": "Release commit 15cdf2ca5808ab3e714d3d4f30e3557250b2180f received Vercel success. Build, blog audit and built/live daily publishing audits passed; desktop article and blog-card images visually checked. Native Chromium reports NET::ERR_CERT_AUTHORITY_INVALID on production. Local headless browser launch fails with socket() failed: Operation not permitted (1). HYPD reports its audit tools unavailable on the current plan. Cloud browser loads desktop production but exposes no supported viewport-setting capability. Next step: inspect all three live articles and blog cards at mobile width through an approved browser with valid TLS, then rerun the production audit and record completion. Do not duplicate this batch."
     }
   ],
   "nextBatch": [
