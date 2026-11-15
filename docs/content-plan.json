@@ -478,7 +478,9 @@
           "supportingGuide": "/guides/employer-guide"
         }
       ],
-      "selectionNote": "Original queue exhausted. Kept unpaid leave as a continuing-benefits and return-to-payroll workflow and employer annual reconciliation as a cross-record close. Replaced salary-payment-reference candidate because the failed-payments article already meets that intent; pension complaint evidence and escalation adds a distinct workflow beyond checking contribution credits. Four unrelated drafts remain unpublished."
+      "selectionNote": "Original queue exhausted. Kept unpaid leave as a continuing-benefits and return-to-payroll workflow and employer annual reconciliation as a cross-record close. Replaced salary-payment-reference candidate because the failed-payments article already meets that intent; pension complaint evidence and escalation adds a distinct workflow beyond checking contribution credits. Four unrelated drafts remain unpublished.",
+      "verificationStatus": "PUBLISHING INCOMPLETE: three live; mobile-width visual review pending",
+      "verificationNote": "Release commit 142d31ee1d4a9912c8467eeeaf6465a782d04571 received Vercel success. Build, blog audit, payroll suite and built/live daily publishing audits passed. Deployed full article text and exact image bytes matched the release; contextual internal links returned HTTP 200. All three desktop article and blog-card images visually inspected. Native Chromium currently reports NET::ERR_CERT_AUTHORITY_INVALID for production; cloud browser has no supported viewport-setting capability. Required mobile-width article and card inspection remains incomplete. Next step: inspect all three live pages and cards in an approved mobile-width browser with valid TLS, rerun production audit and record completion. Do not duplicate this batch."
     }
   ],
   "nextBatch": [
