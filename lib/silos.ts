@@ -67,6 +67,7 @@ export const SILOS: Silo[] = [
     guideHref: '/guides/tax-relief',
     blurb: 'Legal ways to reduce your PAYE: insurance relief, mortgage interest relief, pension contributions, and disability exemptions.',
     spokes: [
+      'pension-complaint-kenya',
       'reconcile-mortgage-interest-certificate',
       'pension-scheme-fees-kenya',
       'pension-beneficiary-nominations-in-kenya',
@@ -114,6 +115,7 @@ export const SILOS: Silo[] = [
     guideHref: '/guides/employment-situations',
     blurb: 'How PAYE behaves in real working life: bonuses, freelancing, HELB, changing jobs, employer errors, second jobs and terminal dues.',
     spokes: [
+      'unpaid-leave-and-paye-kenya',
       'pre-adoption-leave-pay-kenya',
       'paternity-leave-pay-kenya',
       'sick-pay-and-paye-kenya',
@@ -152,6 +154,7 @@ export const SILOS: Silo[] = [
     guideHref: '/guides/employer-guide',
     blurb: 'Payroll obligations for Kenyan employers: the true cost of hiring, NSSF and Housing Levy duties, iTax filing, and benefits in kind.',
     spokes: [
+      'payroll-year-end-reconciliation-kenya',
       'payroll-approval-checklist-kenya',
       'payroll-cut-off-dates-kenya',
       'changing-payroll-systems-kenya',
@@ -199,6 +202,8 @@ export function siloByKey(key: string): Silo | undefined {
 // Per-article CTA overrides: where an individual post matches a specific
 // tool more tightly than its silo default. Takes precedence over the silo cta.
 const CTA_OVERRIDES: Record<string, Cta> = {
+  'pension-complaint-kenya': { href: '/', label: 'Check your PAYE calculation' },
+  'unpaid-leave-and-paye-kenya': { href: '/', label: 'Check your PAYE calculation' },
   'pre-adoption-leave-pay-kenya': { href: '/', label: 'Estimate your take-home pay' },
   'missing-p9-form-kenya': { href: '/', label: 'Check your PAYE calculation' },
   'paternity-leave-pay-kenya': { href: '/', label: 'Estimate your take-home pay' },
