@@ -504,7 +504,10 @@
           "supportingGuide": "/guides/employer-guide"
         }
       ],
-      "selectionNote": "Original queue exhausted. No current-day batch or 16 November release on latest main. Retained return-from-overseas records and payroll ownership handover; replaced pension statement candidate because existing contribution checking already covers it. AGM preparation is distinct governance participation. Four drafts remain unpublished."
+      "selectionNote": "Original queue exhausted. No current-day batch or 16 November release on latest main. Retained return-from-overseas records and payroll ownership handover; replaced pension statement candidate because existing contribution checking already covers it. AGM preparation is distinct governance participation. Four drafts remain unpublished.",
+      "releaseCommit": "5d26a406ebf8cb7206020dddf31fde45b345dcf4",
+      "verificationStatus": "PUBLISHING INCOMPLETE: three live; mobile-width visual review pending",
+      "verificationNote": "Release commit 5d26a406ebf8cb7206020dddf31fde45b345dcf4 received Vercel success. Build, blog audit, payroll suite and built/live daily publishing audits passed. Deployed full article text and exact image bytes matched the release; 14 contextual internal destinations returned HTTP 200. All three desktop article and blog-card images visually inspected. Native Chromium reports NET::ERR_CERT_AUTHORITY_INVALID for production; cloud browser exposes no supported viewport-setting capability. Required mobile-width article and card inspection remains incomplete. Next step: inspect all three live articles and cards in an approved mobile-width browser with valid TLS, rerun production audit and record completion. Do not duplicate this batch."
     }
   ],
   "nextBatch": [
