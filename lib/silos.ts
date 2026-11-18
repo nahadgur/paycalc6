@@ -67,6 +67,8 @@ export const SILOS: Silo[] = [
     guideHref: '/guides/tax-relief',
     blurb: 'Legal ways to reduce your PAYE: insurance relief, mortgage interest relief, pension contributions, and disability exemptions.',
     spokes: [
+      'post-retirement-medical-fund-paye',
+      'verify-pension-scheme-registration-kenya',
       'pension-scheme-agm-kenya',
       'pension-complaint-kenya',
       'reconcile-mortgage-interest-certificate',
@@ -156,6 +158,7 @@ export const SILOS: Silo[] = [
     guideHref: '/guides/employer-guide',
     blurb: 'Payroll obligations for Kenyan employers: the true cost of hiring, NSSF and Housing Levy duties, iTax filing, and benefits in kind.',
     spokes: [
+      'payroll-contingency-plan-kenya',
       'payroll-handover-checklist-kenya',
       'payroll-year-end-reconciliation-kenya',
       'payroll-approval-checklist-kenya',
@@ -205,6 +208,8 @@ export function siloByKey(key: string): Silo | undefined {
 // Per-article CTA overrides: where an individual post matches a specific
 // tool more tightly than its silo default. Takes precedence over the silo cta.
 const CTA_OVERRIDES: Record<string, Cta> = {
+  'post-retirement-medical-fund-paye': { href: '/', label: 'Check your PAYE calculation' },
+  'verify-pension-scheme-registration-kenya': { href: '/', label: 'Check your PAYE calculation' },
   'pension-scheme-agm-kenya': { href: '/', label: 'Check your payroll calculation' },
   'returning-to-kenya-payroll-checks': { href: '/', label: 'Check your payroll calculation' },
   'pension-complaint-kenya': { href: '/', label: 'Check your PAYE calculation' },

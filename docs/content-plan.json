@@ -508,12 +508,36 @@
       "releaseCommit": "5d26a406ebf8cb7206020dddf31fde45b345dcf4",
       "verificationStatus": "PUBLISHING INCOMPLETE: three live; mobile-width visual review pending",
       "verificationNote": "Release commit 5d26a406ebf8cb7206020dddf31fde45b345dcf4 received Vercel success. Build, blog audit, payroll suite and built/live daily publishing audits passed. Deployed full article text and exact image bytes matched the release; 14 contextual internal destinations returned HTTP 200. All three desktop article and blog-card images visually inspected. Native Chromium reports NET::ERR_CERT_AUTHORITY_INVALID for production; cloud browser exposes no supported viewport-setting capability. Required mobile-width article and card inspection remains incomplete. Next step: inspect all three live articles and cards in an approved mobile-width browser with valid TLS, rerun production audit and record completion. Do not duplicate this batch."
+    },
+    {
+      "date": "2026-11-18",
+      "articles": [
+        {
+          "title": "Post-Retirement Medical Funds and PAYE in Kenya",
+          "slug": "post-retirement-medical-fund-paye",
+          "hub": "/",
+          "supportingGuide": "/guides/tax-relief"
+        },
+        {
+          "title": "How to Verify a Pension Scheme in Kenya",
+          "slug": "verify-pension-scheme-registration-kenya",
+          "hub": "/",
+          "supportingGuide": "/guides/tax-relief"
+        },
+        {
+          "title": "Payroll Contingency Planning in Kenya",
+          "slug": "payroll-contingency-plan-kenya",
+          "hub": "/employer-cost-calculator",
+          "supportingGuide": "/guides/employer-guide"
+        }
+      ],
+      "selectionNote": "Queue exhausted. Acting allowances and pension increases overlap existing substantive coverage; selected medical-fund deduction, independent provider verification and outage contingency instead. 90 published articles and four drafts inspected; no current-day batch. Weekly Windsor Search Console account inventory has no PAYE property."
     }
   ],
   "nextBatch": [
-    "PAYE on Acting Allowances in Kenya",
-    "How to Review a Pension Contribution Increase",
-    "Payroll Contingency Planning in Kenya"
+    "Payroll rounding differences in Kenya",
+    "Pension contribution instructions after a name change",
+    "Mortgage relief when moving out of your home"
   ],
   "rules": [
     "Check latest main and existing content to avoid duplicate publishing.",
