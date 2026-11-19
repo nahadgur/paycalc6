@@ -67,6 +67,8 @@ export const SILOS: Silo[] = [
     guideHref: '/guides/tax-relief',
     blurb: 'Legal ways to reduce your PAYE: insurance relief, mortgage interest relief, pension contributions, and disability exemptions.',
     spokes: [
+      'mortgage-deduction-after-moving-out',
+      'pension-name-change-records-kenya',
       'post-retirement-medical-fund-paye',
       'verify-pension-scheme-registration-kenya',
       'pension-scheme-agm-kenya',
@@ -93,6 +95,7 @@ export const SILOS: Silo[] = [
     guideHref: '/guides/salary-breakdowns',
     blurb: 'Exactly what common Kenyan salaries look like after PAYE, NSSF, SHIF, and the Housing Levy, from KES 50,000 to KES 200,000 and beyond.',
     spokes: [
+      'payroll-rounding-differences-kenya',
       'missing-p9-form-kenya',
       'salary-sacrifice-proposal-kenya',
       'salary-review-letter-payroll-checks',
@@ -208,6 +211,9 @@ export function siloByKey(key: string): Silo | undefined {
 // Per-article CTA overrides: where an individual post matches a specific
 // tool more tightly than its silo default. Takes precedence over the silo cta.
 const CTA_OVERRIDES: Record<string, Cta> = {
+  'mortgage-deduction-after-moving-out': { href: '/mortgage-relief', label: 'Check your calculation' },
+  'pension-name-change-records-kenya': { href: '/', label: 'Check your calculation' },
+  'payroll-rounding-differences-kenya': { href: '/', label: 'Check your calculation' },
   'post-retirement-medical-fund-paye': { href: '/', label: 'Check your PAYE calculation' },
   'verify-pension-scheme-registration-kenya': { href: '/', label: 'Check your PAYE calculation' },
   'pension-scheme-agm-kenya': { href: '/', label: 'Check your payroll calculation' },

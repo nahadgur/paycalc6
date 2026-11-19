@@ -535,12 +535,36 @@
       "releaseCommit": "874dc2b118819c9b49396b15bca97ed7fb1ba401",
       "verificationStatus": "PUBLISHING INCOMPLETE: three live; mobile-width visual review pending",
       "verificationNote": "Release commit 874dc2b118819c9b49396b15bca97ed7fb1ba401 received Vercel success. Build, blog audit, payroll suite and built/live daily publishing audits passed. Full deployed article text and exact image bytes matched the release; 12 contextual internal destinations returned HTTP 200 and all three contextual inbound links were verified. All three desktop article and blog-card images visually inspected. Native Chromium reports NET::ERR_CERT_AUTHORITY_INVALID for production; cloud browser exposes no supported viewport-setting capability. Required mobile-width article and card inspection remains incomplete. Next step: inspect all three live articles and cards in an approved mobile-width browser with valid TLS, rerun production audit and record completion. Do not duplicate this batch."
+    },
+    {
+      "date": "2026-11-19",
+      "articles": [
+        {
+          "title": "Payroll Rounding Differences in Kenya",
+          "slug": "payroll-rounding-differences-kenya",
+          "hub": "/",
+          "supportingGuide": "/guides/salary-breakdowns"
+        },
+        {
+          "title": "Pension Records After a Name Change in Kenya",
+          "slug": "pension-name-change-records-kenya",
+          "hub": "/",
+          "supportingGuide": "/guides/tax-relief"
+        },
+        {
+          "title": "Mortgage Tax Deduction After Moving Out in Kenya",
+          "slug": "mortgage-deduction-after-moving-out",
+          "hub": "/mortgage-relief",
+          "supportingGuide": "/guides/tax-relief"
+        }
+      ],
+      "selectionNote": "Queue exhausted. Reviewed 93 published articles and four drafts. Selected detailed rounding diagnosis, pension identity continuity and changed mortgage occupation; distinct from existing general reconciliation pages. No current-day batch. Weekly Search Console inventory checked 18 November had no PAYE property."
     }
   ],
   "nextBatch": [
-    "Payroll rounding differences in Kenya",
-    "Pension contribution instructions after a name change",
-    "Mortgage relief when moving out of your home"
+    "Payroll deductions during a secondment",
+    "Pension contribution allocation errors",
+    "Mortgage refinancing and payroll deduction records"
   ],
   "rules": [
     "Check latest main and existing content to avoid duplicate publishing.",

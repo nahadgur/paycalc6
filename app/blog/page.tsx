@@ -65,6 +65,8 @@ const categories: Record<string, string[]> = {
     'everything-you-need-to-know-about-kenyas-housing-levy',
   ],
   'Tax savings': [
+    'mortgage-deduction-after-moving-out',
+    'pension-name-change-records-kenya',
     'post-retirement-medical-fund-paye',
     'verify-pension-scheme-registration-kenya',
     'pension-scheme-agm-kenya',
@@ -83,6 +85,7 @@ const categories: Record<string, string[]> = {
     'tax-benefits-for-persons-with-disability-in-kenya',
   ],
   'Salary breakdowns': [
+    'payroll-rounding-differences-kenya',
     'missing-p9-form-kenya',
     'salary-sacrifice-proposal-kenya',
     'salary-review-letter-payroll-checks',
