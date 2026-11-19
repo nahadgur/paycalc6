@@ -558,7 +558,10 @@
           "supportingGuide": "/guides/tax-relief"
         }
       ],
-      "selectionNote": "Queue exhausted. Reviewed 93 published articles and four drafts. Selected detailed rounding diagnosis, pension identity continuity and changed mortgage occupation; distinct from existing general reconciliation pages. No current-day batch. Weekly Search Console inventory checked 18 November had no PAYE property."
+      "selectionNote": "Queue exhausted. Reviewed 93 published articles and four drafts. Selected detailed rounding diagnosis, pension identity continuity and changed mortgage occupation; distinct from existing general reconciliation pages. No current-day batch. Weekly Search Console inventory checked 18 November had no PAYE property.",
+      "releaseCommit": "fb01f57df9ba9739e0dc30e1516cc81497f3547f",
+      "verificationStatus": "PUBLISHING INCOMPLETE: three live; mobile visual review pending",
+      "verificationNote": "Vercel success for exact release. Build, blog audit (96 rendered, 5 redirects, 4 excluded drafts), payroll tests and built/production daily checks passed. Full text and exact image bytes matched production. Fourteen internal destinations and three contextual inbound links verified. All three desktop articles and cards visually inspected. Native Chromium reports NET::ERR_CERT_AUTHORITY_INVALID; working cloud browser has no supported viewport control. Next step: inspect all three live articles and cards at mobile width using a browser with valid TLS, rerun production audit and record completion. Do not duplicate this batch."
     }
   ],
   "nextBatch": [
