@@ -585,7 +585,10 @@
           "supportingGuide": "/guides/tax-relief"
         }
       ],
-      "selectionNote": "Original queue exhausted. Inspected 96 published articles, four drafts, all silo and guide/tool routes. Domestic secondment coordination and refinancing loan-purpose trail are distinct from job changes and interest certificate reconciliation. Replaced pension allocation errors because contribution-checking and complaint pages already cover that intent; mortgage guarantees versus quashed withdrawals is a substantive gap. Weekly Search Console inventory on 18 November had no PAYE property."
+      "selectionNote": "Original queue exhausted. Inspected 96 published articles, four drafts, all silo and guide/tool routes. Domestic secondment coordination and refinancing loan-purpose trail are distinct from job changes and interest certificate reconciliation. Replaced pension allocation errors because contribution-checking and complaint pages already cover that intent; mortgage guarantees versus quashed withdrawals is a substantive gap. Weekly Search Console inventory on 18 November had no PAYE property.",
+      "releaseCommit": "08a98073a3356c520d0cc8d78dabaddbf214b79d",
+      "verificationStatus": "PUBLISHING INCOMPLETE: three live; mobile visual review pending",
+      "verificationNote": "Vercel success for exact release. Build, blog audit (99 rendered articles, five redirects, four excluded drafts), payroll regression suite and built/production daily publishing checks passed. Full deployed text and exact image bytes matched all three articles; thirteen contextual internal destinations returned HTTP 200 and three contextual inbound links were verified. All three desktop article images and blog cards visually inspected. Native Chromium reports NET::ERR_CERT_AUTHORITY_INVALID; the working cloud browser has no supported viewport-setting capability and a supported zoom-key attempt left its CSS viewport unchanged at 1353 x 936. Required mobile visual review remains pending. Next step: inspect all three live articles and blog cards at mobile width in an approved browser with valid TLS, rerun the production audit and record completion. Do not duplicate this batch."
     }
   ],
   "nextBatch": [
