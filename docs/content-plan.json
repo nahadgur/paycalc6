@@ -562,12 +562,36 @@
       "releaseCommit": "fb01f57df9ba9739e0dc30e1516cc81497f3547f",
       "verificationStatus": "PUBLISHING INCOMPLETE: three live; mobile visual review pending",
       "verificationNote": "Vercel success for exact release. Build, blog audit (96 rendered, 5 redirects, 4 excluded drafts), payroll tests and built/production daily checks passed. Full text and exact image bytes matched production. Fourteen internal destinations and three contextual inbound links verified. All three desktop articles and cards visually inspected. Native Chromium reports NET::ERR_CERT_AUTHORITY_INVALID; working cloud browser has no supported viewport control. Next step: inspect all three live articles and cards at mobile width using a browser with valid TLS, rerun production audit and record completion. Do not duplicate this batch."
+    },
+    {
+      "date": "2026-11-20",
+      "articles": [
+        {
+          "title": "Secondment Payroll Checks in Kenya",
+          "slug": "secondment-payroll-checks-kenya",
+          "hub": "/",
+          "supportingGuide": "/guides/employment-situations"
+        },
+        {
+          "title": "Pension-Backed Mortgages in Kenya",
+          "slug": "pension-backed-mortgage-kenya",
+          "hub": "/mortgage-relief",
+          "supportingGuide": "/guides/tax-relief"
+        },
+        {
+          "title": "Mortgage Refinancing: Payroll Records to Update",
+          "slug": "mortgage-refinancing-payroll-records",
+          "hub": "/mortgage-relief",
+          "supportingGuide": "/guides/tax-relief"
+        }
+      ],
+      "selectionNote": "Original queue exhausted. Inspected 96 published articles, four drafts, all silo and guide/tool routes. Domestic secondment coordination and refinancing loan-purpose trail are distinct from job changes and interest certificate reconciliation. Replaced pension allocation errors because contribution-checking and complaint pages already cover that intent; mortgage guarantees versus quashed withdrawals is a substantive gap. Weekly Search Console inventory on 18 November had no PAYE property."
     }
   ],
   "nextBatch": [
-    "Payroll deductions during a secondment",
-    "Pension contribution allocation errors",
-    "Mortgage refinancing and payroll deduction records"
+    "HELB loan clearance and stopping payroll deductions",
+    "Checking a pension retirement quotation",
+    "Payroll treatment of professional subscriptions"
   ],
   "rules": [
     "Check latest main and existing content to avoid duplicate publishing.",

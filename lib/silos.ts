@@ -67,6 +67,8 @@ export const SILOS: Silo[] = [
     guideHref: '/guides/tax-relief',
     blurb: 'Legal ways to reduce your PAYE: insurance relief, mortgage interest relief, pension contributions, and disability exemptions.',
     spokes: [
+      'pension-backed-mortgage-kenya',
+      'mortgage-refinancing-payroll-records',
       'mortgage-deduction-after-moving-out',
       'pension-name-change-records-kenya',
       'post-retirement-medical-fund-paye',
@@ -121,6 +123,7 @@ export const SILOS: Silo[] = [
     guideHref: '/guides/employment-situations',
     blurb: 'How PAYE behaves in real working life: bonuses, freelancing, HELB, changing jobs, employer errors, second jobs and terminal dues.',
     spokes: [
+      'secondment-payroll-checks-kenya',
       'returning-to-kenya-payroll-checks',
       'unpaid-leave-and-paye-kenya',
       'pre-adoption-leave-pay-kenya',
@@ -211,6 +214,7 @@ export function siloByKey(key: string): Silo | undefined {
 // Per-article CTA overrides: where an individual post matches a specific
 // tool more tightly than its silo default. Takes precedence over the silo cta.
 const CTA_OVERRIDES: Record<string, Cta> = {
+  'secondment-payroll-checks-kenya': { href: '/', label: 'Check your PAYE calculation' },
   'mortgage-deduction-after-moving-out': { href: '/mortgage-relief', label: 'Check your calculation' },
   'pension-name-change-records-kenya': { href: '/', label: 'Check your calculation' },
   'payroll-rounding-differences-kenya': { href: '/', label: 'Check your calculation' },
