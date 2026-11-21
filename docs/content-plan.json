@@ -613,7 +613,9 @@
         }
       ],
       "selectionNote": "Original queue exhausted. Reviewed 99 published articles, four drafts, silo/category and all tool routes. HELB refund application and deduction stoppage after overpayment are distinct from missing remittances and brief settlement advice. Retirement quotation review is distinct from contribution accumulation and transfers. Club subscriptions have a specific KRA rule absent from general benefits coverage. Held professional-subscription topic for insufficient clear primary evidence; did not use school-fee topic while current amendment status was unclear. Weekly Search Console check on 18 November had no PAYE property.",
-      "verificationStatus": "Pending build and production verification"
+      "verificationStatus": "PUBLISHING INCOMPLETE: three live; mobile visual review and direct source availability pending",
+      "releaseCommit": "6f081ea256accff14b2f1b61eeccbe94a0431186",
+      "verificationNote": "Vercel success for exact release. Build, blog audit (102 rendered, 5 redirects, 4 excluded drafts), payroll regression and built/production daily checks passed. Full deployed body, one H1 and exact JPEG bytes verified for all three; twelve internal destinations HTTP 200 and three contextual inbound links verified. All three desktop article heroes and blog cards visually inspected. Native Chromium reports NET::ERR_CERT_AUTHORITY_INVALID; cloud browser has no supported viewport control, so required mobile inspection remains pending. Direct source checks: HELB pages 503/timeouts; RBA shell requests 403 although web retrieval succeeded. Official source content was available through retrieval, but direct source availability remains unverified. Next: inspect all three articles/cards at mobile width using a browser with valid TLS, recheck official source URLs, rerun live daily checker and record completion. No duplicate batch. Publisher confirmed enabled."
     }
   ],
   "nextBatch": [
