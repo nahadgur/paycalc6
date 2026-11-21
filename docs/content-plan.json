@@ -589,12 +589,37 @@
       "releaseCommit": "08a98073a3356c520d0cc8d78dabaddbf214b79d",
       "verificationStatus": "PUBLISHING INCOMPLETE: three live; mobile visual review pending",
       "verificationNote": "Vercel success for exact release. Build, blog audit (99 rendered articles, five redirects, four excluded drafts), payroll regression suite and built/production daily publishing checks passed. Full deployed text and exact image bytes matched all three articles; thirteen contextual internal destinations returned HTTP 200 and three contextual inbound links were verified. All three desktop article images and blog cards visually inspected. Native Chromium reports NET::ERR_CERT_AUTHORITY_INVALID; the working cloud browser has no supported viewport-setting capability and a supported zoom-key attempt left its CSS viewport unchanged at 1353 x 936. Required mobile visual review remains pending. Next step: inspect all three live articles and blog cards at mobile width in an approved browser with valid TLS, rerun the production audit and record completion. Do not duplicate this batch."
+    },
+    {
+      "date": "2026-11-21",
+      "articles": [
+        {
+          "title": "HELB Overpayment Refund: How to Apply",
+          "slug": "helb-overpayment-refund",
+          "hub": "/",
+          "supportingGuide": "/guides/employment-situations"
+        },
+        {
+          "title": "How to Check a Retirement Benefit Quotation",
+          "slug": "check-retirement-benefit-quotation",
+          "hub": "/",
+          "supportingGuide": "/guides/tax-relief"
+        },
+        {
+          "title": "Employer-Paid Club Subscriptions and PAYE",
+          "slug": "employer-paid-club-subscriptions-paye",
+          "hub": "/",
+          "supportingGuide": "/guides/employer-guide"
+        }
+      ],
+      "selectionNote": "Original queue exhausted. Reviewed 99 published articles, four drafts, silo/category and all tool routes. HELB refund application and deduction stoppage after overpayment are distinct from missing remittances and brief settlement advice. Retirement quotation review is distinct from contribution accumulation and transfers. Club subscriptions have a specific KRA rule absent from general benefits coverage. Held professional-subscription topic for insufficient clear primary evidence; did not use school-fee topic while current amendment status was unclear. Weekly Search Console check on 18 November had no PAYE property.",
+      "verificationStatus": "Pending build and production verification"
     }
   ],
   "nextBatch": [
-    "HELB loan clearance and stopping payroll deductions",
-    "Checking a pension retirement quotation",
-    "Payroll treatment of professional subscriptions"
+    "Employer housing benefit: checking the valuation",
+    "Retirement income drawdown: questions before choosing",
+    "Payroll deductions for staff welfare funds"
   ],
   "rules": [
     "Check latest main and existing content to avoid duplicate publishing.",

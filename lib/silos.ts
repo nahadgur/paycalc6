@@ -67,6 +67,7 @@ export const SILOS: Silo[] = [
     guideHref: '/guides/tax-relief',
     blurb: 'Legal ways to reduce your PAYE: insurance relief, mortgage interest relief, pension contributions, and disability exemptions.',
     spokes: [
+      'check-retirement-benefit-quotation',
       'pension-backed-mortgage-kenya',
       'mortgage-refinancing-payroll-records',
       'mortgage-deduction-after-moving-out',
@@ -123,6 +124,7 @@ export const SILOS: Silo[] = [
     guideHref: '/guides/employment-situations',
     blurb: 'How PAYE behaves in real working life: bonuses, freelancing, HELB, changing jobs, employer errors, second jobs and terminal dues.',
     spokes: [
+      'helb-overpayment-refund',
       'secondment-payroll-checks-kenya',
       'returning-to-kenya-payroll-checks',
       'unpaid-leave-and-paye-kenya',
@@ -164,6 +166,7 @@ export const SILOS: Silo[] = [
     guideHref: '/guides/employer-guide',
     blurb: 'Payroll obligations for Kenyan employers: the true cost of hiring, NSSF and Housing Levy duties, iTax filing, and benefits in kind.',
     spokes: [
+      'employer-paid-club-subscriptions-paye',
       'payroll-contingency-plan-kenya',
       'payroll-handover-checklist-kenya',
       'payroll-year-end-reconciliation-kenya',
@@ -214,6 +217,9 @@ export function siloByKey(key: string): Silo | undefined {
 // Per-article CTA overrides: where an individual post matches a specific
 // tool more tightly than its silo default. Takes precedence over the silo cta.
 const CTA_OVERRIDES: Record<string, Cta> = {
+  'employer-paid-club-subscriptions-paye': { href: '/', label: 'Check your PAYE calculation' },
+  'check-retirement-benefit-quotation': { href: '/', label: 'Check your PAYE calculation' },
+  'helb-overpayment-refund': { href: '/', label: 'Check your PAYE calculation' },
   'secondment-payroll-checks-kenya': { href: '/', label: 'Check your PAYE calculation' },
   'mortgage-deduction-after-moving-out': { href: '/mortgage-relief', label: 'Check your calculation' },
   'pension-name-change-records-kenya': { href: '/', label: 'Check your calculation' },

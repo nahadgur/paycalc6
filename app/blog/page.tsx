@@ -65,6 +65,7 @@ const categories: Record<string, string[]> = {
     'everything-you-need-to-know-about-kenyas-housing-levy',
   ],
   'Tax savings': [
+    'check-retirement-benefit-quotation',
     'pension-backed-mortgage-kenya',
     'mortgage-refinancing-payroll-records',
     'mortgage-deduction-after-moving-out',
@@ -105,6 +106,7 @@ const categories: Record<string, string[]> = {
     'the-real-cost-of-earning-kes-200000-in-kenya',
   ],
   'Employment situations': [
+    'helb-overpayment-refund',
     'secondment-payroll-checks-kenya',
     'returning-to-kenya-payroll-checks',
     'unpaid-leave-and-paye-kenya',
@@ -140,6 +142,7 @@ const categories: Record<string, string[]> = {
     'how-a-second-job-is-taxed-in-kenya',
   ],
   'For employers': [
+    'employer-paid-club-subscriptions-paye',
     'payroll-contingency-plan-kenya',
     'payroll-handover-checklist-kenya',
     'payroll-year-end-reconciliation-kenya',
