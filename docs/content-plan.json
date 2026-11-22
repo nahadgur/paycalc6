@@ -616,12 +616,37 @@
       "verificationStatus": "PUBLISHING INCOMPLETE: three live; mobile visual review and direct source availability pending",
       "releaseCommit": "6f081ea256accff14b2f1b61eeccbe94a0431186",
       "verificationNote": "Vercel success for exact release. Build, blog audit (102 rendered, 5 redirects, 4 excluded drafts), payroll regression and built/production daily checks passed. Full deployed body, one H1 and exact JPEG bytes verified for all three; twelve internal destinations HTTP 200 and three contextual inbound links verified. All three desktop article heroes and blog cards visually inspected. Native Chromium reports NET::ERR_CERT_AUTHORITY_INVALID; cloud browser has no supported viewport control, so required mobile inspection remains pending. Direct source checks: HELB pages 503/timeouts; RBA shell requests 403 although web retrieval succeeded. Official source content was available through retrieval, but direct source availability remains unverified. Next: inspect all three articles/cards at mobile width using a browser with valid TLS, recheck official source URLs, rerun live daily checker and record completion. No duplicate batch. Publisher confirmed enabled."
+    },
+    {
+      "date": "2026-11-22",
+      "articles": [
+        {
+          "title": "Employer Housing Benefit: Check the Valuation",
+          "slug": "employer-housing-benefit-valuation",
+          "hub": "/",
+          "supportingGuide": "/guides/employer-guide"
+        },
+        {
+          "title": "Retirement Income Drawdown in Kenya: What to Check",
+          "slug": "retirement-income-drawdown-kenya",
+          "hub": "/",
+          "supportingGuide": "/guides/tax-relief"
+        },
+        {
+          "title": "Staff Welfare Deductions: Payroll Checks in Kenya",
+          "slug": "staff-welfare-payroll-deductions",
+          "hub": "/",
+          "supportingGuide": "/guides/employment-situations"
+        }
+      ],
+      "selectionNote": "Original queue exhausted. Inventoried 102 published articles, four drafts, five redirects, six guides and all calculator/tool routes. Housing valuation is distinct from brief general-benefits coverage; drawdown rules and scenario comparison extend beyond quotation reconciliation; welfare instruction-to-receipt and exit checks address a distinct fund-membership task beyond general wage-deduction legality. All primary hubs are the PAYE calculator; retirement article explicitly limits calculator use to employment salary and contributions. Last weekly Search Console review 18 November had no PAYE property; next due 25 November.",
+      "verificationStatus": "Build, blog/payroll audits and built daily publishing check passed; production verification pending"
     }
   ],
   "nextBatch": [
-    "Employer housing benefit: checking the valuation",
-    "Retirement income drawdown: questions before choosing",
-    "Payroll deductions for staff welfare funds"
+    "Employer-provided utilities: checking the taxable benefit",
+    "Pension statement investment returns: checking the calculation",
+    "Payroll deductions for union dues: records and changes"
   ],
   "rules": [
     "Check latest main and existing content to avoid duplicate publishing.",
