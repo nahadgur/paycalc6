@@ -640,7 +640,9 @@
         }
       ],
       "selectionNote": "Original queue exhausted. Inventoried 102 published articles, four drafts, five redirects, six guides and all calculator/tool routes. Housing valuation is distinct from brief general-benefits coverage; drawdown rules and scenario comparison extend beyond quotation reconciliation; welfare instruction-to-receipt and exit checks address a distinct fund-membership task beyond general wage-deduction legality. All primary hubs are the PAYE calculator; retirement article explicitly limits calculator use to employment salary and contributions. Last weekly Search Console review 18 November had no PAYE property; next due 25 November.",
-      "verificationStatus": "Build, blog/payroll audits and built daily publishing check passed; production verification pending"
+      "verificationStatus": "PUBLISHING INCOMPLETE: three live; mobile visual review and direct source availability pending",
+      "releaseCommit": "d314179ca9129a48af65e3da897a6a9637323ff7",
+      "verificationNote": "Exact release Vercel status success. Build, blog audit (105 rendered, 5 redirects, 4 excluded drafts), payroll regression and production daily checker passed for all three. Desktop article heroes and category cards visually inspected; deployed body reviewed editorially. Required mobile inspection blocked by native Chromium NET::ERR_CERT_AUTHORITY_INVALID; working cloud browser has no supported viewport resize. No security warning bypassed. KRA source URLs HTTP200; RBA source links HTTP403 from direct checker although official web retrieval succeeds; Kenya Law Employment Act URL returned HTTP202 with zero bytes. Next: verify all three mobile article/card layouts using a browser with valid TLS, recheck RBA and Kenya Law source access, rerun live checker and record completion. Publisher remains enabled; no duplicate automation. Supplemental checks passed: full deployed body, one H1 and exact JPEG bytes for each article; thirteen internal destinations HTTP200 and three contextual existing-content inbound links."
     }
   ],
   "nextBatch": [
