@@ -667,7 +667,9 @@
         }
       ],
       "selectionNote": "Original queue exhausted. Inspected 105 published articles, four drafts, five redirects, six guides and actual calculator routes. Narrowed utilities to telephone bills using current KRA reporting instructions. Pension return reconciliation and deposit-timing examples answer a distinct statement-calculation task beyond fee and AGM coverage. Union dues authority, remittance and resignation timing are distinct from welfare and general deduction legality. Last weekly Search Console review 18 November had no PAYE property; next due 25 November.",
-      "verificationStatus": "Pending release checks"
+      "verificationStatus": "PUBLISHING INCOMPLETE: three live; mobile visual review and direct source availability pending",
+      "releaseCommit": "c44157b4f3e3537eda4428fb702bc55215697b55",
+      "verificationNote": "Exact release Vercel status success. Build, blog audit108rendered/5redirects/4excluded drafts, payroll regression and built/production daily checker passed. Deployed article bodies reviewed editorially; desktop article heroes and all three category cards visually inspected. Required mobile review blocked by native Chromium NET::ERR_CERT_AUTHORITY_INVALID; cloud browser has no supported viewport resizing. No security warning bypassed. KRA and Parliament links HTTP200; direct RBA FAQ/member-rights requests HTTP403 and Labour Ministry Act PDF HTTP503 although official indexed text retrieved. Next: inspect all three mobile article/card layouts in a browser with valid TLS, recheck affected official source access, rerun live daily gate and record completion. Publisher confirmed enabled; no duplicate automation. Supplemental verification PASS: exact full deployed body, one H1 and byte-for-byte featured JPEG match for all three; twelve internal destinations HTTP200; three contextual inbound links from existing articles."
     }
   ],
   "nextBatch": [
