@@ -108,6 +108,7 @@ const categories: Record<string, string[]> = {
     'the-real-cost-of-earning-kes-200000-in-kenya',
   ],
   'Employment situations': [
+    'salary-attachment-orders-kenya',
     'union-dues-payroll-deductions-kenya',
     'staff-welfare-payroll-deductions',
     'helb-overpayment-refund',
@@ -146,6 +147,8 @@ const categories: Record<string, string[]> = {
     'how-a-second-job-is-taxed-in-kenya',
   ],
   'For employers': [
+    'employer-paid-school-fees-paye',
+    'payslip-privacy-secure-delivery',
     'employer-paid-phone-bills-paye',
     'employer-housing-benefit-valuation',
     'employer-paid-club-subscriptions-paye',

@@ -126,6 +126,7 @@ export const SILOS: Silo[] = [
     guideHref: '/guides/employment-situations',
     blurb: 'How PAYE behaves in real working life: bonuses, freelancing, HELB, changing jobs, employer errors, second jobs and terminal dues.',
     spokes: [
+      'salary-attachment-orders-kenya',
       'union-dues-payroll-deductions-kenya',
       'staff-welfare-payroll-deductions',
       'helb-overpayment-refund',
@@ -170,6 +171,8 @@ export const SILOS: Silo[] = [
     guideHref: '/guides/employer-guide',
     blurb: 'Payroll obligations for Kenyan employers: the true cost of hiring, NSSF and Housing Levy duties, iTax filing, and benefits in kind.',
     spokes: [
+      'employer-paid-school-fees-paye',
+      'payslip-privacy-secure-delivery',
       'employer-paid-phone-bills-paye',
       'employer-housing-benefit-valuation',
       'employer-paid-club-subscriptions-paye',
@@ -223,6 +226,10 @@ export function siloByKey(key: string): Silo | undefined {
 // Per-article CTA overrides: where an individual post matches a specific
 // tool more tightly than its silo default. Takes precedence over the silo cta.
 const CTA_OVERRIDES: Record<string, Cta> = {
+  'employer-paid-school-fees-paye': { href: '/', label: 'Check your PAYE calculation' },
+  'payslip-privacy-secure-delivery': { href: '/', label: 'Check your PAYE calculation' },
+  'salary-attachment-orders-kenya': { href: '/', label: 'Check your PAYE calculation' },
+
   'union-dues-payroll-deductions-kenya': { href: '/', label: 'Check your PAYE calculation' },
   'pension-statement-investment-returns': { href: '/', label: 'Check your PAYE calculation' },
   'employer-paid-phone-bills-paye': { href: '/', label: 'Check your PAYE calculation' },

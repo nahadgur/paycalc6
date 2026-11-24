@@ -670,12 +670,37 @@
       "verificationStatus": "PUBLISHING INCOMPLETE: three live; mobile visual review and direct source availability pending",
       "releaseCommit": "c44157b4f3e3537eda4428fb702bc55215697b55",
       "verificationNote": "Exact release Vercel status success. Build, blog audit108rendered/5redirects/4excluded drafts, payroll regression and built/production daily checker passed. Deployed article bodies reviewed editorially; desktop article heroes and all three category cards visually inspected. Required mobile review blocked by native Chromium NET::ERR_CERT_AUTHORITY_INVALID; cloud browser has no supported viewport resizing. No security warning bypassed. KRA and Parliament links HTTP200; direct RBA FAQ/member-rights requests HTTP403 and Labour Ministry Act PDF HTTP503 although official indexed text retrieved. Next: inspect all three mobile article/card layouts in a browser with valid TLS, recheck affected official source access, rerun live daily gate and record completion. Publisher confirmed enabled; no duplicate automation. Supplemental verification PASS: exact full deployed body, one H1 and byte-for-byte featured JPEG match for all three; twelve internal destinations HTTP200; three contextual inbound links from existing articles."
+    },
+    {
+      "date": "2026-11-24",
+      "articles": [
+        {
+          "title": "Employer-Paid School Fees and PAYE in Kenya",
+          "slug": "employer-paid-school-fees-paye",
+          "hub": "/",
+          "supportingGuide": "/guides/employer-guide"
+        },
+        {
+          "title": "Payslip Privacy in Kenya: Secure Delivery and Corrections",
+          "slug": "payslip-privacy-secure-delivery",
+          "hub": "/",
+          "supportingGuide": "/guides/employer-guide"
+        },
+        {
+          "title": "Salary Attachment Orders in Kenya: Payroll Checks",
+          "slug": "salary-attachment-orders-kenya",
+          "hub": "/",
+          "supportingGuide": "/guides/employment-situations"
+        }
+      ],
+      "selectionNote": "Original queue exhausted. Inspected 108 published articles, four drafts, five redirects, six guides and calculator routes. Replaced proposed pension-transfer reconciliation because the existing transfer article already satisfies that intent. School-fee classification, secure individual payslip delivery and civil salary attachment instructions are distinct gaps. Last weekly Search Console review 18 November had no PAYE property; next due 25 November.",
+      "verificationStatus": "Prepared; build and production verification pending"
     }
   ],
   "nextBatch": [
-    "Employer-paid school fees: PAYE classification and evidence",
-    "Pension transfers: reconciling the receiving scheme opening balance",
-    "Payroll garnishee orders: checking the deduction instruction"
+    "Employee payroll data access requests: obtaining a usable record copy",
+    "Employer-paid professional subscriptions: payroll classification and evidence",
+    "Variable commission statements: matching sales adjustments to payroll"
   ],
   "rules": [
     "Check latest main and existing content to avoid duplicate publishing.",
