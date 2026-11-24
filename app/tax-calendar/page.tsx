@@ -10,9 +10,30 @@ export const metadata: Metadata = {
 }
 
 const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December']
+const YEAR = 2026
+const NSSF_PENALTY = '5% of the unpaid contribution for each month or part of a month it remains unpaid'
+const SHIF_PENALTY = '2% of the outstanding amount for each month it remains unpaid'
+const HOUSING_PENALTY = '3% of the unpaid levy for each month or part of a month it remains unpaid'
+
+// Kenyan nationwide public holidays that fall before the ninth working day
+// of a 2026 remittance month. UTC keeps the calendar dates host-independent.
+const EARLY_PUBLIC_HOLIDAYS = new Set(['2026-01-01', '2026-04-03', '2026-04-06', '2026-05-01', '2026-06-01'])
+
+function housingDueDay(monthIndex: number): number {
+  const date = new Date(Date.UTC(YEAR, monthIndex, 1))
+  let workingDays = 0
+  for (;;) {
+    const weekday = date.getUTCDay()
+    if (weekday !== 0 && weekday !== 6 && !EARLY_PUBLIC_HOLIDAYS.has(date.toISOString().slice(0, 10))) {
+      if (++workingDays === 9) return date.getUTCDate()
+    }
+    date.setUTCDate(date.getUTCDate() + 1)
+  }
+}
 
 type Deadline = {
   day: number
+  workingDay?: boolean
   label: string
   type: 'employer' | 'employee' | 'both'
   description: string
@@ -31,22 +52,23 @@ const MONTHLY_DEADLINES: Deadline[] = [
     day: 9,
     label: 'SHIF Contribution',
     type: 'employer',
-    description: 'Social Health Insurance Fund contributions (2.75% employee share + employer match) remitted to SHA via payroll integration.',
-    penalty: '2% monthly on outstanding balance',
+    description: 'Employers deduct the employee’s SHIF contribution from payroll (2.75% of gross salary or wage) and remit it to SHA by the 9th. There is no separate statutory employer match.',
+    penalty: SHIF_PENALTY,
   },
   {
     day: 9,
+    workingDay: true,
     label: 'Housing Levy',
     type: 'employer',
-    description: 'Affordable Housing Levy — 1.5% employee + 1.5% employer of gross salary — remitted to KRA alongside PAYE.',
-    penalty: '5% + 1% per month',
+    description: 'The employer deducts 1.5% of gross monthly salary from the employee and matches it with another 1.5%. Remit both shares to KRA by the ninth working day after the salary month ends.',
+    penalty: HOUSING_PENALTY,
   },
   {
-    day: 15,
+    day: 9,
     label: 'NSSF Remittance',
     type: 'employer',
-    description: 'NSSF contributions (employee 6% + employer 6%, capped at KES 108,000 pensionable pay from Feb 2026, max KES 6,480 each) remitted to NSSF portal or M-Pesa Paybill 333300.',
-    penalty: '5% initial + 1% monthly interest',
+    description: 'NSSF contributions (employee 6% + employer 6%, capped at KES 108,000 pensionable pay from Feb 2026, max KES 6,480 each) remitted to NSSF by the 9th of the following month.',
+    penalty: NSSF_PENALTY,
   },
 ]
 
@@ -65,10 +87,10 @@ const ANNUAL_DEADLINES = [
 const PENALTY_GUIDE = [
   { item: 'Late PAYE Filing', penalty: '5% of the tax due, minimum KES 10,000', interest: '1% per month on outstanding' },
   { item: 'Failure to File Return', penalty: 'KES 20,000 per return for individuals; KES 50,000 for companies', interest: '1% per month' },
-  { item: 'Late NSSF Payment', penalty: '5% of contribution due', interest: '1% per month compound' },
-  { item: 'Late SHIF Payment', penalty: '2% of outstanding amount per month', interest: 'Compounded monthly' },
+  { item: 'Late NSSF Payment', penalty: NSSF_PENALTY, interest: '—' },
+  { item: 'Late SHIF Payment', penalty: SHIF_PENALTY, interest: '—' },
   { item: 'False P9 Information', penalty: 'Criminal prosecution under Income Tax Act Cap 470', interest: 'N/A' },
-  { item: 'Late Housing Levy', penalty: '5% + 1% per month', interest: 'KRA discretionary waiver available' },
+  { item: 'Late Housing Levy', penalty: HOUSING_PENALTY, interest: '—' },
 ]
 
 const typeConfig = {
@@ -84,7 +106,7 @@ export default function TaxCalendarPage() {
     headline: 'KRA Tax Calendar 2026 — All PAYE, NSSF, SHIF & iTax Deadlines',
     description: 'Complete calendar of KRA tax deadlines for 2026 including monthly PAYE remittance, NSSF, SHIF, and annual iTax filing dates.',
     url: 'https://www.payecalculator.co.ke/tax-calendar',
-    dateModified: '2026-04-06',
+    dateModified: '2026-11-24',
   }
 
   return (
@@ -98,7 +120,7 @@ export default function TaxCalendarPage() {
           <h1 className="text-3xl md:text-4xl font-bold text-white mb-3">KRA Tax Calendar 2026</h1>
           <p className="text-stone-400 max-w-xl mx-auto text-sm leading-relaxed">
             Every PAYE, NSSF, SHIF, Housing Levy, and iTax filing deadline for Kenyan employers and employees.
-            Missing a deadline can trigger penalties of 5% + 1% per month.
+            Late charges depend on which payment or filing is overdue.
           </p>
         </div>
 
@@ -116,7 +138,7 @@ export default function TaxCalendarPage() {
                   <div className="flex items-start gap-4">
                     <div className="w-14 h-14 bg-red-500/20 rounded-xl flex flex-col items-center justify-center shrink-0">
                       <span className="text-red-400 font-black text-lg leading-none">{d.day}</span>
-                      <span className="text-red-400/60 text-xs">of month</span>
+                      <span className="text-red-400/60 text-[10px] text-center leading-tight">{d.workingDay ? <>working<br />day</> : 'of month'}</span>
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex flex-wrap items-center gap-2 mb-1">
@@ -144,21 +166,29 @@ export default function TaxCalendarPage() {
             <Calendar className="w-5 h-5 text-blue-400" />
             2026 Monthly Remittance Calendar
           </h2>
+          <p className="text-stone-400 text-sm leading-relaxed mb-4">
+            Each card shows the month payments are due for the previous month’s payroll. For November 2026 payroll, NSSF is due 9 December and Housing Levy is due 11 December. Housing Levy dates count Monday to Friday, excluding Kenyan public holidays. Check the relevant agency’s notices for any changes and plan to pay early if the 9th falls on a weekend or holiday.
+          </p>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3">
             {MONTHS.map((month, i) => {
-              const payeDate   = `${month.slice(0,3)} 9`
-              const nssfDate   = `${month.slice(0,3)} 15`
+              const shortMonth = month.slice(0, 3)
+              const fixedDate = `${shortMonth} 9`
+              const housingDate = `${shortMonth} ${housingDueDay(i)}`
               return (
                 <div key={month} className="bg-white/5 border border-white/10 rounded-xl p-4">
-                  <h3 className="font-bold text-white text-sm mb-3">{month} 2026</h3>
+                  <h3 className="font-bold text-white text-sm mb-3">{month} {YEAR}</h3>
                   <div className="space-y-1.5 text-xs">
                     <div className="flex items-center justify-between">
-                      <span className="text-stone-400">PAYE + SHIF + Housing</span>
-                      <span className="text-red-400 font-semibold">{payeDate}</span>
+                      <span className="text-stone-400">PAYE + SHIF</span>
+                      <span className="text-red-400 font-semibold">{fixedDate}</span>
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="text-stone-400">NSSF</span>
-                      <span className="text-blue-400 font-semibold">{nssfDate}</span>
+                      <span className="text-blue-400 font-semibold">{fixedDate}</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-stone-400">Housing Levy</span>
+                      <span className="text-amber-400 font-semibold">{housingDate}</span>
                     </div>
                     {i === 0 && (
                       <div className="mt-2 pt-2 border-t border-white/10 text-amber-400/80">
@@ -270,6 +300,12 @@ export default function TaxCalendarPage() {
               </tbody>
             </table>
           </div>
+          <p className="text-xs text-stone-400 mt-3">
+            Payroll sources: <a className="underline" href="https://www.nssf.or.ke/new-nssf-rates-employer-obligations">NSSF employer obligations</a>,{' '}
+            <a className="underline" href="https://new.sha.go.ke/wp-content/uploads/2025/07/PUBLIC_NOTICE_ON_EMPLOYER_REMITTENCES.pdf">SHA remittance notice</a>,{' '}
+            <a className="underline" href="https://www.kra.go.ke/news-center/public-notices/2099-collection-of-the-affordable-housing-levy-by-kenya-revenue-authority">KRA Housing Levy guidance</a> and{' '}
+            <a className="underline" href="https://new.kenyalaw.org/akn/ke/act/2024/2/eng@2024-03-22/source">Affordable Housing Act, section 7</a>.
+          </p>
           <p className="text-xs text-stone-600 mt-2">
             KRA may issue penalty waivers on application for first-time offenders in genuine hardship cases. Contact KRA on 0800 722 226 (toll-free).
           </p>
