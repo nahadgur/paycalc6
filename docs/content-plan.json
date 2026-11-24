@@ -694,7 +694,9 @@
         }
       ],
       "selectionNote": "Original queue exhausted. Inspected 108 published articles, four drafts, five redirects, six guides and calculator routes. Replaced proposed pension-transfer reconciliation because the existing transfer article already satisfies that intent. School-fee classification, secure individual payslip delivery and civil salary attachment instructions are distinct gaps. Last weekly Search Console review 18 November had no PAYE property; next due 25 November.",
-      "verificationStatus": "Prepared; build and production verification pending"
+      "verificationStatus": "PUBLISHING INCOMPLETE: three live; mandatory mobile visual review blocked",
+      "releaseCommit": "17cd1d747d67ed493f096b8ad20512a1c7b695db",
+      "verificationNote": "Exact release Vercel status success. Build, unchanged blog audit (111 rendered, five redirects, four excluded drafts), payroll regressions and built/production daily checks passed. Full deployed bodies reviewed editorially, each has one H1; all three featured JPEGs match local bytes exactly. Eight contextual internal destinations and all six authoritative external source links HTTP200. Calculator reciprocal links, breadcrumbs, CTA, canonical, dates, index, sitemap and image/social/schema checks passed. Three contextual inbound links verified. Desktop article heroes and category cards visually inspected. Mobile article/card review blocked: native Chromium NET::ERR_CERT_AUTHORITY_INVALID; available cloud browser has no supported viewport resize, and zoom key did not change layout. No security warning bypassed. Next: inspect all three production articles and cards at mobile widths in a browser with valid TLS, rerun the live daily checker and record completion. Publisher automation confirmed enabled; no duplicate created. Search Console evidence remains unavailable for PAYE as of the last weekly review; next review due 25 November."
     }
   ],
   "nextBatch": [
