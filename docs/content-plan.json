@@ -697,12 +697,37 @@
       "verificationStatus": "PUBLISHING INCOMPLETE: three live; mandatory mobile visual review blocked",
       "releaseCommit": "17cd1d747d67ed493f096b8ad20512a1c7b695db",
       "verificationNote": "Exact release Vercel status success. Build, unchanged blog audit (111 rendered, five redirects, four excluded drafts), payroll regressions and built/production daily checks passed. Full deployed bodies reviewed editorially, each has one H1; all three featured JPEGs match local bytes exactly. Eight contextual internal destinations and all six authoritative external source links HTTP200. Calculator reciprocal links, breadcrumbs, CTA, canonical, dates, index, sitemap and image/social/schema checks passed. Three contextual inbound links verified. Desktop article heroes and category cards visually inspected. Mobile article/card review blocked: native Chromium NET::ERR_CERT_AUTHORITY_INVALID; available cloud browser has no supported viewport resize, and zoom key did not change layout. No security warning bypassed. Next: inspect all three production articles and cards at mobile widths in a browser with valid TLS, rerun the live daily checker and record completion. Publisher automation confirmed enabled; no duplicate created. Search Console evidence remains unavailable for PAYE as of the last weekly review; next review due 25 November."
+    },
+    {
+      "date": "2026-11-25",
+      "articles": [
+        {
+          "title": "Request Your Payroll Data in Kenya",
+          "slug": "request-payroll-data-kenya",
+          "hub": "/",
+          "supportingGuide": "/guides/employer-guide"
+        },
+        {
+          "title": "Voluntary NSSF Contributions in Kenya",
+          "slug": "voluntary-nssf-contributions-kenya",
+          "hub": "/nssf-calculator",
+          "supportingGuide": "/guides/statutory-deductions"
+        },
+        {
+          "title": "Casual Employment and PAYE in Kenya",
+          "slug": "casual-employment-paye-kenya",
+          "hub": "/",
+          "supportingGuide": "/guides/employment-situations"
+        }
+      ],
+      "selectionNote": "Original queue exhausted. Inspected 111 published articles, four drafts, five redirects, six guides and calculator/tool routes. Formal payroll data access, voluntary NSSF joining/payment and casual-employment PAYE classification are distinct gaps. Commission reconciliation was rejected as duplicating existing coverage; professional subscriptions deferred pending clear primary support. Weekly Search Console review on 25 November: Windsor has no PAYE property and HYPD returns no sites; no performance metrics available. Next review due 2 December.",
+      "verificationStatus": "Pending build, release and production verification"
     }
   ],
   "nextBatch": [
-    "Employee payroll data access requests: obtaining a usable record copy",
-    "Employer-paid professional subscriptions: payroll classification and evidence",
-    "Variable commission statements: matching sales adjustments to payroll"
+    "Payroll records after an employer closes: retrieval and evidence",
+    "NSSF member details mismatch: reconciling identity and contributions",
+    "Piece-rate employment pay: earnings records and PAYE classification"
   ],
   "rules": [
     "Check latest main and existing content to avoid duplicate publishing.",
