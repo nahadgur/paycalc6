@@ -724,12 +724,37 @@
       "verificationStatus": "PUBLISHING INCOMPLETE: three live; mandatory mobile visual review blocked",
       "releaseCommit": "ea1b69b37d75c32b11a2d39bab5254dc90147d49",
       "verificationNote": "Exact release Vercel status success. Build, unchanged blog audit (114 rendered, five redirects, four excluded drafts), payroll regressions and built/production daily checks passed. All six authoritative source URLs HTTP200 on final direct checks. Full deployed article text reviewed editorially in browser; desktop article heroes and all three category cards visually inspected. Calculator reciprocal links, CTA, breadcrumb, dates, canonical, index, sitemap, featured bytes/MIME and social/schema checks passed. Mobile review remains pending: native Chromium launch produced no window; local /usr/bin/chromium launch failed because /usr/lib/chromium/chromium is missing; Playwright browser download failed with environment Unable to access this site response. Cloud browser has no supported viewport resizing. No security warning bypassed. Next: inspect all three production articles and blog cards at mobile width in a functioning browser, rerun live checker and record completion. Daily publisher confirmed enabled; no duplicate automation. Weekly Search Console review found no PAYE property in Windsor and no HYPD sites; next due2December. Supplemental verification passed: exact full deployed body, one H1 and byte-for-byte featured JPEG equality for all three; fifteen internal destinations HTTP200; all three contextual existing-content inbound links present. Production robots.txt allows crawling, with no noindex or X-Robots-Tag restriction on the checked article."
+    },
+    {
+      "date": "2026-11-26",
+      "articles": [
+        {
+          "title": "Employer Closed? Prepare Your Unpaid-Wage Evidence",
+          "slug": "employer-closed-unpaid-wages-kenya",
+          "hub": "/",
+          "supportingGuide": "/guides/employment-situations"
+        },
+        {
+          "title": "NSSF Name or Member Number Wrong? What to Check",
+          "slug": "nssf-member-identity-mismatch",
+          "hub": "/nssf-calculator",
+          "supportingGuide": "/guides/statutory-deductions"
+        },
+        {
+          "title": "Piece-Rate Wages and PAYE in Kenya",
+          "slug": "piece-rate-wages-paye-kenya",
+          "hub": "/",
+          "supportingGuide": "/guides/employment-situations"
+        }
+      ],
+      "selectionNote": "Original queue exhausted. Reviewed inventory114published,4drafts,5redirects, six guides and calculator routes. Closure scope narrowed to unpaid-wage evidence and insolvency submission, distinct from existing missing-P9 guidance. NSSF identity allocation differs from contact updates. Piece-work units and pay timing differ from casual employment classification. Search Console weekly review25November found no PAYE property; next due2December.",
+      "verificationStatus": "Build, blog audit, payroll regression and built daily gate passed; production verification pending."
     }
   ],
   "nextBatch": [
-    "Payroll records after an employer closes: retrieval and evidence",
-    "NSSF member details mismatch: reconciling identity and contributions",
-    "Piece-rate employment pay: earnings records and PAYE classification"
+    "Employee payroll reimbursement receipts: avoiding duplicate reimbursement",
+    "NSSF survivor benefit claim preparation",
+    "Apprentice wages and payroll records"
   ],
   "rules": [
     "Check latest main and existing content to avoid duplicate publishing.",
