@@ -33,3 +33,10 @@ Primary hubs respectively /, /nssf-calculator, /. CTA/breadcrumb agree; SpokeGri
 Pending build, unchanged regression gates, production deployment and deployed visual/content checks.
 
 Pre-release gates passed: npm run build; unchanged blog audit117rendered/5redirects/4excluded drafts; payroll regression; daily built checker for26November with three articles. All seven final external URLs returned HTTP200 with nonempty appropriate HTML/PDF bytes. NEA section18 independently extracted from PDF and checked. No check scripts modified.
+
+
+## Production outcome
+
+Release acee19d7cec8d1514f9a8782edf651585f26c5e1 deployed successfully to production; exact Vercel status success, deployment https://vercel.com/vchatwani-7631s-projects/paycalc5-ik41/HY9fJXbuFMtf1H87VNY1gcVVTnpz . Production daily checker passed for all three26November articles. Supplemental check confirmed complete deployed body matches, one H1, no noindex, byte-identical featured JPEGs, twelve contextual internal destinations HTTP200 and three existing-content inbound links. Canonical, dates, sitemap/index, reciprocal calculator links and social/schema images passed unchanged release gate. Browser editorial review read all three full deployed articles. Desktop heroes and all three blog cards visually inspected and passed.
+
+PUBLISHING INCOMPLETE: three live articles, zero counted as fully verified until mandatory mobile review. Fresh native Chromium launch opened no window; /usr/bin/chromium --version exit127 reports /usr/lib/chromium/chromium: not found. Cloud browser advertises no viewport-resize capability. No visual mobile pass claimed and no security bypass attempted. Next required action: inspect these three production articles and blog cards at mobile width in a functioning browser, rerun production checker and record completion. Existing daily publisher confirmed enabled; no duplicate automation created. Search Console limitation unchanged from25November review.

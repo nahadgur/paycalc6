@@ -748,7 +748,9 @@
         }
       ],
       "selectionNote": "Original queue exhausted. Reviewed inventory114published,4drafts,5redirects, six guides and calculator routes. Closure scope narrowed to unpaid-wage evidence and insolvency submission, distinct from existing missing-P9 guidance. NSSF identity allocation differs from contact updates. Piece-work units and pay timing differ from casual employment classification. Search Console weekly review25November found no PAYE property; next due2December.",
-      "verificationStatus": "Build, blog audit, payroll regression and built daily gate passed; production verification pending."
+      "verificationStatus": "PUBLISHING INCOMPLETE: three articles live on26November; exact-commit Vercel success. Build, unchanged blog audit, payroll regression, built and production daily gates passed. Full deployed body, one H1, image byte equality, twelve internal destinations and three contextual inbound links checked. Desktop article heroes and blog cards visually passed. Mandatory mobile visual review blocked: native Chromium launch opened no window; /usr/bin/chromium reports /usr/lib/chromium/chromium: not found. Cloud browser has no supported viewport resize. Next: review all three articles and cards at mobile width in a working browser and rerun live gate. Publisher remains enabled.",
+      "releaseCommit": "acee19d7cec8d1514f9a8782edf651585f26c5e1",
+      "deploymentUrl": "https://vercel.com/vchatwani-7631s-projects/paycalc5-ik41/HY9fJXbuFMtf1H87VNY1gcVVTnpz"
     }
   ],
   "nextBatch": [
