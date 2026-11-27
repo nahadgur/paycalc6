@@ -55,7 +55,8 @@ const categories: Record<string, string[]> = {
     'working-backwards-from-net-to-gross-salary-in-kenya',
   ],
   'Statutory deductions': [
-    'nssf-member-identity-mismatch',
+    'nssf-survivor-benefit-claim',
+      'nssf-member-identity-mismatch',
       'voluntary-nssf-contributions-kenya',
     'update-nssf-contact-details',
     'nssf-tier-ii-contracting-out',
@@ -110,7 +111,8 @@ const categories: Record<string, string[]> = {
     'the-real-cost-of-earning-kes-200000-in-kenya',
   ],
   'Employment situations': [
-    'employer-closed-unpaid-wages-kenya',
+    'expense-claim-reconciliation-kenya',
+      'employer-closed-unpaid-wages-kenya',
       'piece-rate-wages-paye-kenya',
       'casual-employment-paye-kenya',
     'salary-attachment-orders-kenya',
@@ -152,7 +154,8 @@ const categories: Record<string, string[]> = {
     'how-a-second-job-is-taxed-in-kenya',
   ],
   'For employers': [
-    'request-payroll-data-kenya',
+    'apprentice-payroll-records-kenya',
+      'request-payroll-data-kenya',
     'employer-paid-school-fees-paye',
     'payslip-privacy-secure-delivery',
     'employer-paid-phone-bills-paye',

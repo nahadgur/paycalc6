@@ -751,12 +751,37 @@
       "verificationStatus": "PUBLISHING INCOMPLETE: three articles live on26November; exact-commit Vercel success. Build, unchanged blog audit, payroll regression, built and production daily gates passed. Full deployed body, one H1, image byte equality, twelve internal destinations and three contextual inbound links checked. Desktop article heroes and blog cards visually passed. Mandatory mobile visual review blocked: native Chromium launch opened no window; /usr/bin/chromium reports /usr/lib/chromium/chromium: not found. Cloud browser has no supported viewport resize. Next: review all three articles and cards at mobile width in a working browser and rerun live gate. Publisher remains enabled.",
       "releaseCommit": "acee19d7cec8d1514f9a8782edf651585f26c5e1",
       "deploymentUrl": "https://vercel.com/vchatwani-7631s-projects/paycalc5-ik41/HY9fJXbuFMtf1H87VNY1gcVVTnpz"
+    },
+    {
+      "date": "2026-11-27",
+      "articles": [
+        {
+          "title": "Expense Reimbursements: Check What You Are Owed",
+          "slug": "expense-claim-reconciliation-kenya",
+          "hub": "/",
+          "supportingGuide": "/guides/employment-situations"
+        },
+        {
+          "title": "NSSF Survivor Benefit: Preparing a Claim",
+          "slug": "nssf-survivor-benefit-claim",
+          "hub": "/nssf-calculator",
+          "supportingGuide": "/guides/statutory-deductions"
+        },
+        {
+          "title": "Apprentice Pay in Kenya: Payroll Record Checks",
+          "slug": "apprentice-payroll-records-kenya",
+          "hub": "/employer-cost-calculator",
+          "supportingGuide": "/guides/employer-guide"
+        }
+      ],
+      "selectionNote": "Original queue exhausted;117published/four drafts/five redirects reviewed. Distinct receipt reconciliation, survivor claim preparation and apprentice stage-pay records. Weekly GSC unavailable25November; next2December.",
+      "verificationStatus": "Pending release verification"
     }
   ],
   "nextBatch": [
-    "Employee payroll reimbursement receipts: avoiding duplicate reimbursement",
-    "NSSF survivor benefit claim preparation",
-    "Apprentice wages and payroll records"
+    "NSSF invalidity benefit preparation",
+    "Payroll payment returned by bank: employer reconciliation",
+    "Checking a salary retention bonus agreement"
   ],
   "rules": [
     "Check latest main and existing content to avoid duplicate publishing.",

@@ -49,6 +49,7 @@ export const SILOS: Silo[] = [
     guideHref: '/guides/statutory-deductions',
     blurb: 'NSSF, SHIF, and the Housing Levy: the three mandatory deductions that come out of every Kenyan payslip in 2026.',
     spokes: [
+      'nssf-survivor-benefit-claim',
       'nssf-member-identity-mismatch',
       'voluntary-nssf-contributions-kenya',
       'update-nssf-contact-details',
@@ -128,6 +129,7 @@ export const SILOS: Silo[] = [
     guideHref: '/guides/employment-situations',
     blurb: 'How PAYE behaves in real working life: bonuses, freelancing, HELB, changing jobs, employer errors, second jobs and terminal dues.',
     spokes: [
+      'expense-claim-reconciliation-kenya',
       'employer-closed-unpaid-wages-kenya',
       'piece-rate-wages-paye-kenya',
       'casual-employment-paye-kenya',
@@ -176,6 +178,7 @@ export const SILOS: Silo[] = [
     guideHref: '/guides/employer-guide',
     blurb: 'Payroll obligations for Kenyan employers: the true cost of hiring, NSSF and Housing Levy duties, iTax filing, and benefits in kind.',
     spokes: [
+      'apprentice-payroll-records-kenya',
       'request-payroll-data-kenya',
       'employer-paid-school-fees-paye',
       'payslip-privacy-secure-delivery',
@@ -232,6 +235,7 @@ export function siloByKey(key: string): Silo | undefined {
 // Per-article CTA overrides: where an individual post matches a specific
 // tool more tightly than its silo default. Takes precedence over the silo cta.
 const CTA_OVERRIDES: Record<string, Cta> = {
+  'expense-claim-reconciliation-kenya': { href: '/', label: 'Check your PAYE calculation' },
   'employer-closed-unpaid-wages-kenya': { href: '/', label: 'Check your PAYE calculation' },
   'piece-rate-wages-paye-kenya': { href: '/', label: 'Check your PAYE calculation' },
 
