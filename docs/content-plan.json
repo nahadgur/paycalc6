@@ -775,7 +775,12 @@
         }
       ],
       "selectionNote": "Original queue exhausted;117published/four drafts/five redirects reviewed. Distinct receipt reconciliation, survivor claim preparation and apprentice stage-pay records. Weekly GSC unavailable25November; next2December.",
-      "verificationStatus": "Pending release verification"
+      "verificationStatus": "PUBLISHING INCOMPLETE: 3 live articles; build, blog audit, payroll tests and production release gate PASS. Desktop article and blog-card visual reviews PASS. Mandatory mobile visual review remains blocked.",
+      "releaseCommit": "cc22998b502c51f0a2d27b9d8404ae61558652c0",
+      "productionDeployment": "https://vercel.com/vchatwani-7631s-projects/paycalc5-ik41/6gCRConuM2AvLYysxRf26UDJ72zT",
+      "remainingBlocker": "All three articles and cards need mobile-width visual review. Local Chromium exits127: /usr/lib/chromium/chromium: not found. Cloud browser has no viewport-resize capability; attempted browser zoom left viewport1363x936 with DPR1 unchanged. Restore an available mobile-capable browser, inspect all six renderings, and rerun live gate.",
+      "automationStatus": "Existing daily publisher confirmed enabled27November; unchanged.",
+      "searchConsoleStatus": "Weekly25November check found no PAYE property available; next review2December."
     }
   ],
   "nextBatch": [
