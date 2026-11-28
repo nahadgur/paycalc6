@@ -805,7 +805,12 @@
         }
       ],
       "selectionNote": "Queue exhausted. Replaced duplicate bank-return proposal with emigration claims. New intents: invalidity assessment preparation, emigration scheme/destination evidence, retention agreement conditions.",
-      "verificationStatus": "Pending checks and deployment"
+      "verificationStatus": "PUBLISHING INCOMPLETE: 3 live articles; build, blog audit, payroll regression, built and production daily gates PASS. Deployed full article bodies, one H1 each, exact image bytes, twelve internal destinations and three contextual inbound links verified. Desktop article heroes and blog cards visually reviewed; mandatory mobile visual review remains blocked.",
+      "releaseCommit": "71880dc3f8ad8c6e539f91638b4c1278fcd2bb07",
+      "deploymentUrl": "https://vercel.com/vchatwani-7631s-projects/paycalc5-ik41/43So8sSUEDgZuJbxHUgZHwuFarX7",
+      "remainingBlocker": "All three articles and cards need mobile-width visual review. Local Chromium exits 127: /usr/lib/chromium/chromium: not found. Cloud browser exposes no viewport-resize capability. Next: use a working mobile-capable browser to inspect all six renderings, then rerun the live daily gate.",
+      "searchConsoleStatus": "Weekly 25 November check found no PAYE property available; next review 2 December.",
+      "automationStatus": "No automation settings changed in this run."
     }
   ],
   "nextBatch": [

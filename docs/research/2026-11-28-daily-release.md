@@ -18,3 +18,11 @@ Images: original built-in generator outputs c2585e65-4d10-44f2-9480-c16286358917
 NSSF spokes use /nssf-calculator and statutory-deductions guide. Retention uses /bonus-calculator and employment-situations guide. Automatic reciprocal hub grids retained. Contextual inbound links added from contribution-check, identity-mismatch and bonus articles; original dates retained. Pending release verification.
 
 Build, blog audit (123 articles, five redirects, four excluded drafts), payroll regression checks and built daily gate PASS. Initial gate correctly detected the bonus calculator lacked a reciprocal link; added a SpokeGrid for that calculator and rebuilt. No checks weakened. All five external source destinations returned HTTP200. Local Chromium still exits127: /usr/lib/chromium/chromium not found. Mobile visual review remains outstanding.
+
+## Production verification
+
+Release commit `71880dc3f8ad8c6e539f91638b4c1278fcd2bb07` pushed with an expected-head lease against `328eb82f9f162845b87973401b4c7785e70aef99`. Exact-commit Vercel status succeeded: https://vercel.com/vchatwani-7631s-projects/paycalc5-ik41/43So8sSUEDgZuJbxHUgZHwuFarX7 .
+
+Production daily gate PASS for all three on 28 November: index/sitemap, canonical, dates, calculator reciprocal links, source/body links, article/card images, social and structured metadata and deployed image responses. Supplemental checks confirmed complete normalized body equality, one H1 each, byte-for-byte deployed JPEG equality, all twelve distinct contextual internal destinations HTTP200, and the three existing-content inbound links. Desktop live article heroes and blog cards visually inspected; all images loaded, relevant crops and readable titles.
+
+PUBLISHING INCOMPLETE: three articles are live, but mandatory mobile-width visual review of articles and cards remains outstanding. Fresh local Chromium check exited127 with `/usr/lib/chromium/chromium: not found`; current cloud browser exposes no viewport resize. No mobile pass claimed. Next required step: inspect these six renderings in a working mobile-capable browser and rerun the live daily gate. No automation settings changed.
