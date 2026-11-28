@@ -55,7 +55,9 @@ const categories: Record<string, string[]> = {
     'working-backwards-from-net-to-gross-salary-in-kenya',
   ],
   'Statutory deductions': [
-    'nssf-survivor-benefit-claim',
+    'nssf-invalidity-benefit-claim',
+      'nssf-emigration-benefit-claim',
+      'nssf-survivor-benefit-claim',
       'nssf-member-identity-mismatch',
       'voluntary-nssf-contributions-kenya',
     'update-nssf-contact-details',
@@ -111,7 +113,8 @@ const categories: Record<string, string[]> = {
     'the-real-cost-of-earning-kes-200000-in-kenya',
   ],
   'Employment situations': [
-    'expense-claim-reconciliation-kenya',
+    'retention-bonus-agreement-kenya',
+      'expense-claim-reconciliation-kenya',
       'employer-closed-unpaid-wages-kenya',
       'piece-rate-wages-paye-kenya',
       'casual-employment-paye-kenya',

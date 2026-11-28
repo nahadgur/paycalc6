@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import PAYECalculator from '@/components/PAYECalculator'
+import { SpokeGrid } from '@/components/SpokeGrid'
 import ToolNav from '@/components/ToolNav'
 
 export const metadata: Metadata = {
@@ -88,6 +89,7 @@ export default function BonusCalculatorPage() {
             </div>
           </div>
 
+          <SpokeGrid hubHref="/bonus-calculator" heading="Understand bonus payments and conditions" />
           <ToolNav current="/bonus-calculator" />
         </div>
       </section>

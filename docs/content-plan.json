@@ -781,12 +781,37 @@
       "remainingBlocker": "All three articles and cards need mobile-width visual review. Local Chromium exits127: /usr/lib/chromium/chromium: not found. Cloud browser has no viewport-resize capability; attempted browser zoom left viewport1363x936 with DPR1 unchanged. Restore an available mobile-capable browser, inspect all six renderings, and rerun live gate.",
       "automationStatus": "Existing daily publisher confirmed enabled27November; unchanged.",
       "searchConsoleStatus": "Weekly25November check found no PAYE property available; next review2December."
+    },
+    {
+      "date": "2026-11-28",
+      "articles": [
+        {
+          "title": "NSSF Invalidity Benefit: Preparing Your Claim",
+          "slug": "nssf-invalidity-benefit-claim",
+          "hub": "/nssf-calculator",
+          "supportingGuide": "/guides/statutory-deductions"
+        },
+        {
+          "title": "NSSF Emigration Benefit: Checks Before Moving",
+          "slug": "nssf-emigration-benefit-claim",
+          "hub": "/nssf-calculator",
+          "supportingGuide": "/guides/statutory-deductions"
+        },
+        {
+          "title": "Retention Bonuses in Kenya: What to Check",
+          "slug": "retention-bonus-agreement-kenya",
+          "hub": "/bonus-calculator",
+          "supportingGuide": "/guides/employment-situations"
+        }
+      ],
+      "selectionNote": "Queue exhausted. Replaced duplicate bank-return proposal with emigration claims. New intents: invalidity assessment preparation, emigration scheme/destination evidence, retention agreement conditions.",
+      "verificationStatus": "Pending checks and deployment"
     }
   ],
   "nextBatch": [
-    "NSSF invalidity benefit preparation",
-    "Payroll payment returned by bank: employer reconciliation",
-    "Checking a salary retention bonus agreement"
+    "Payroll reconciliation after unpaid suspension",
+    "NSSF retirement claim preparation",
+    "Comparing a guaranteed bonus with a discretionary bonus"
   ],
   "rules": [
     "Check latest main and existing content to avoid duplicate publishing.",
